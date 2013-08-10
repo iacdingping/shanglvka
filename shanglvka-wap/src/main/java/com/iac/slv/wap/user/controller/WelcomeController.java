@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
-public class Welcome {
+public class WelcomeController {
 
 	@RequestMapping
 	public String welcome() {

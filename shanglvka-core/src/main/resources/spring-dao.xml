@@ -21,30 +21,18 @@
 	<!-- 强制使用CGLIB代理 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
-	<!-- Spring iBatis SqlMapClient
+	<!-- Spring iBatis SqlMapClient-->
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="configLocation" value="classpath:ibatis/sqlmap-config.xml" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
+	
 	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
 		<property name="sqlMapClient">
 			<ref bean="sqlMapClient" />
 		</property>
 	</bean>
-	 -->
-	<!-- base on app datasource 
-	<bean id="appDatasourceSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-		<property name="configLocation" value="classpath:ibatis/appsqlmap-config.xml" />
-		<property name="dataSource" ref="appDataSource" />
-	</bean>
-
-	<bean id="appDatasourceSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
-		<property name="sqlMapClient">
-			<ref bean="appDatasourceSqlMapClient" />
-		</property>
-	</bean>
-	-->
+	 
 	<!--事务管理DataSourceTransactionManager -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

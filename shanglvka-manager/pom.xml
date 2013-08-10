@@ -8,6 +8,7 @@
 	</parent>
 	<artifactId>shanglvka-manager</artifactId>
 	<packaging>war</packaging>
+	<description>后台管理</description>
 
 
 	<dependencies>
