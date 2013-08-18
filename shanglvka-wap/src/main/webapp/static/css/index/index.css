@@ -1,0 +1,61 @@
+.icon_list {
+	background: url("/static/img/index/icon.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+
+.icon_list_1 {
+	background-position: 0px 0px;
+}
+
+.icon_list_2 {
+	background-position: 0px -50px;
+}
+
+.icon_list_3 {
+	background-position: 0px -100px;
+}
+.icon_list_4 {
+	background-position: 0px -150px;
+}
+.icon_list_5 {
+	background-position: 0px -202px;
+}
+.icon_list_6 {
+	background-position: 0px -252px;
+}
+
+.border_right {
+	border-right: 1px solid #d5d5d5
+}
+
+li.styleAuto {
+	width: 33%;
+	float: left;
+	text-align: center;
+}
+.words01{
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 40px;
+	letter-spacing: 3px;
+}
+.words02{
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 40px;
+	letter-spacing: 1px;
+}
+.words03{
+	font-size: 18px;
+	font-weight: bold;
+	color:#000;
+}
+.words04{
+	font-size: 14px;
+	font-weight: bold;
+	color:#696969;
+}
