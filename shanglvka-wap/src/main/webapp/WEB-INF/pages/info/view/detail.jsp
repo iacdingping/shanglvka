@@ -30,7 +30,7 @@
 	</div>
 	<header class="title">
 		<div class="limit_wth">
-		<div class="floatL margin_L20 font_color_b bold font_size_16" style="line-height: 45px;">我这里是一个文章的标题</div>
+		<div class="floatL margin_L20 font_color_b bold font_size_16" style="line-height: 45px;">房祖名涉毒被抓 恐涉刑事犯罪</div>
 		<div class="floatR" style="margin-top:5px;margin-right: 10px;">
 			<div class="">
 				<img src="${ctx}/static/img/info/icon01.png" width="85%" onclick="showClass()"/>
@@ -40,10 +40,10 @@
 	</header>
 	
 	<article class="conetnt limit_wth">
-		<p class="sj2">习近平指出，第二届夏季青年奥运会今晚即将在南京拉开帷幕，青奥会是一项创新，把体育和文化教育结合起来，既是世界各国青少年的竞技场，又是他们沟通交流的平台，为广泛传播奥林匹克精神，引导年轻人思考正确的生活方式和生活态度，增进世界青年融合、友谊作出了贡献。中方非常重视南京青奥会筹备工作，从各方面给予了全力保障和大力支持，力争把青奥会办得精彩，办出中国特色。
+		<p class="sj2">前晚,有网友爆料演员柯震东吸毒，一开始，柯震东的经纪人表示自己与柯震东父母都联络不到柯震东，同时对于“吸毒事件”没有直接否认，一时间让“柯震东吸毒”的消息在网上传得沸沸扬扬。随后，有网友表示该消息为假消息，最先发布该微博的网友“火华社队长豆豆”也在网上表示是误会，并删除原帖。
 		</p>
-		<img src="${ctx}/static/img/common/ty01.jpg" align="middle" style="margin: auto;vertical-align:middle" width="96%"/>
-		<p class="sj2">习近平强调，体育是社会发展和人类进步的重要标志，是综合国力和社会文明程度的重要体现，能为经济社会发展增添动力，凝聚力量。现代奥林匹克运动发展至今已有百余年历史，奥林匹克精神超越国界，在全世界深入人心。中方赞赏和支持国际奥委会推进改革，为推动奥林匹克运动、促进世界可持续发展作出的努力。北京市和张家口市是2022年冬奥会候选城市，中国政府和人民都希望在成功举办北京奥运会后办一届冬奥会，为奥林匹克运动作出新贡献。
+		<img src="${ctx}/static/img/test/test03.gif" align="middle" style="margin: auto;vertical-align:middle" width="96%"/>
+		<p class="sj2">不过，事情峰回路转，昨天下午，有消息指柯震东吸毒情况属实，而房祖名也牵涉其中，并被爆不光涉毒，还牵涉刑事犯罪，再度引起舆论哗然。对此，有网友调侃道：“网络时代，人人都是爆料者。”而近日因为与新男友甜蜜互动的照片被曝光的萧亚轩也感叹现在的艺人没有隐私：“现在根本就是全民狗仔的时代！”本报记者 黄岸
 		</p>
 		<br/>
 		<div class="other_info margin_R20 margin_T20 limit_wth" style="font-weight: normal;">

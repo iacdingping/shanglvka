@@ -12,7 +12,7 @@
 	src="${ctx}/static/js/common/jquery.min.js"></script>
 <link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
 <link rel="stylesheet" href="${ctx}/static/css/index/index.css" />
-<title>详情页</title>
+<title>商旅卡</title>
 </head>
 <body>
 	<header class="">
@@ -20,14 +20,14 @@
 	</header>
 	<div class="limit_wth" style="width: 90%;">
 		<ul class="margin_T20">
-			<li class="styleAuto border_right"><span
-				class="icon_list icon_list_1 "></span><span class="words01">新闻</span></li>
+			<li class="styleAuto border_right"><a 
+				href="${ctx}/info/view/infolist/1" ><span
+					class="icon_list icon_list_1 "></span><span class="words01">新闻</span></a></li>
 			<li class="styleAuto border_right"><span
 				class="icon_list icon_list_3 "></span></span><span class="words01">视频</span></li>
 			<li class="styleAuto"><span class="icon_list icon_list_2 "></span></span><span
 				class="words01">文学</span></li>
-
-			<li class="clearboth"></li>
+			<li class="clearboth"></li>	
 			<li
 				style="background: #d5d5d5; height: 1px; width: 100%; margin: 30px 0px;"></li>
 
@@ -40,40 +40,32 @@
 			<li class="clearboth"></li>
 		</ul>
 	</div>
-	<div  class="margin_T20" style="background: #f5f5f5">
+	<div class="margin_T20" style="background: #f5f5f5">
 		<ul>
-			<li class=" padding-T10 border_bottom1 padding-B10 positionR">
-				<img
+			<li class=" padding-T10 border_bottom1 padding-B10 positionR"><img
 				src="${ctx}/static/img/test/test01.gif" align="left"
 				style="margin: 0px 10px;" width="60" />
-				<p style="height: 43px;line-height: 40px;">
+				<p style="height: 43px; line-height: 40px;">
 					<span class="words03">热点新闻</span>
 				</p>
 				<p>
-					<span class="words04">
-						柯震东在京被抓 | 雷军挑战冰桶
-					</span>
+					<span class="words04"> 柯震东在京被抓 | 雷军挑战冰桶 </span>
 				</p>
-				<p class="floatR positionA" style="right: 15px;top:30px;">
+				<p class="floatR positionA" style="right: 15px; top: 30px;">
 					<img src="${ctx}/static/img/index/jiantou01.png" />
-				</p>
-			</li>
-			<li class=" padding-T10 border_bottom1 padding-B10 positionR">
-				<img
+				</p></li>
+			<li class=" padding-T10 border_bottom1 padding-B10 positionR"><img
 				src="${ctx}/static/img/test/test02.gif" align="left"
 				style="margin: 0px 10px;" width="60" />
-				<p style="height: 43px;line-height: 40px;">
+				<p style="height: 43px; line-height: 40px;">
 					<span class="words03">商旅推荐</span>
 				</p>
 				<p>
-					<span class="words04">
-						乌镇水乡| 哈哈哈哈
-					</span>
+					<span class="words04"> 乌镇水乡| 哈哈哈哈 </span>
 				</p>
-				<p class="floatR positionA" style="right: 15px;top:30px;">
+				<p class="floatR positionA" style="right: 15px; top: 30px;">
 					<img src="${ctx}/static/img/index/jiantou01.png" />
-				</p>
-			</li>
+				</p></li>
 		</ul>
 	</div>
 	<script type="text/javascript">
