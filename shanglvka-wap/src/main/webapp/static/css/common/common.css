@@ -28,6 +28,7 @@ a{text-decoration: none;}
 .margin_T10{margin-top: 10px;}
 .margin_T20{margin-top: 20px;}
 
+.margin_B5{margin-bottom: 5px;}
 .margin_B10{margin-bottom: 10px;}
 
 .padding_L30{padding-left: 30px;}
@@ -39,7 +40,10 @@ a{text-decoration: none;}
 
 
 .font_color_b{color: #fff;}
-.font_color_h{ color:#ccc;}s
+.font_color_h{ color:#ccc;}
+.font_color_h2{color:#999999}
+.font_color_l{color:#07acf0}
+.font_color_hei{color:#000}
 
 .font_size_14{font-size: 14px;}
 .font_size_15{font-size: 15px;}
