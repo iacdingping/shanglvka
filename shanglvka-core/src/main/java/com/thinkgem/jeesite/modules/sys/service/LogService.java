@@ -44,7 +44,7 @@ public class LogService extends BaseService {
 
 		Long createById = StringUtils.toLong(paramMap.get("createById"));
 		if (createById > 0){
-			dc.add(Restrictions.eq("createBy.id", createById));
+			dc.add(Restrictions.eq("createBy.id", createById.toString()));
 		}
 		
 		String requestUri = ObjectUtils.toString(paramMap.get("requestUri"));
