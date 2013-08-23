@@ -16,6 +16,7 @@
 </head>
 <body >
 	<div class=" margin_T20 ">
+	${viewData }
 		<header class="border_bottom1 padding-B10 content_area">
 			<div class="title">房祖名有网友爆料演员柯震东吸毒</div>
 			<div class="font_size_15 font_color_h2">2014-08-08 10:10</div>
