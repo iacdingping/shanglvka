@@ -10,7 +10,7 @@
 	<modules>
 		<module>shanglvka-core</module>
 		<module>shanglvka-wap</module>
-		<module>shanglvka-manager</module>
+		<module>shanglvka-manager2</module>
 		<module>shanglvka-business</module>
 	</modules>
 	<parent>

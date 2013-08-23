@@ -2,6 +2,8 @@ package com.slk.core;
 
 import java.util.List;
 
+import com.thinkgem.jeesite.common.persistence.annotation.MyBatisDao;
+
 /**
  * 
  * @author iacdp
@@ -9,7 +11,7 @@ import java.util.List;
  * @param <E>	entity
  * @param <K>	primary key
  */
-@MyBatisRepository
+@MyBatisDao
 public interface BaseMyBatisRepository<E, K> {
 
 	public E getById(K k);

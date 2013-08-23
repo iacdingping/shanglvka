@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<decorators defaultdir="/WEB-INF/layouts/">
-	<excludes>
-		<pattern>/static/*</pattern>
-		<pattern>/login</pattern>
-		<pattern>/cxf/*</pattern>
-		<pattern>/api/*</pattern>
-		<pattern>/javasimon/*</pattern>
-	</excludes>
+<decorators defaultdir="/WEB-INF/views">
 	
-	<decorator name="default" page="default.jsp">
-		<pattern>/*</pattern>
-	</decorator>
+	<!-- 默认装饰页面, 在需要装饰的页面增加<meta name="decorator" content="default"/> -->
+	<decorator name="default" page="layouts/default.jsp" />
+	<decorator name="default_mb" page="mobile/layouts/default.jsp" />
+	
+	<!-- CMS基础主题装饰页面 -->
+	<decorator name="cms_default_basic" page="modules/cms/front/themes/basic/layouts/default.jsp" />
+	<decorator name="cms_default_zgxj_blue" page="modules/cms/front/themes/zgxj_blue/layouts/default.jsp" />
+	
 </decorators>
