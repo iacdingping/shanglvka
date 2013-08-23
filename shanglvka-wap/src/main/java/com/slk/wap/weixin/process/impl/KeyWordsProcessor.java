@@ -3,9 +3,9 @@ package com.slk.wap.weixin.process.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.slk.core.entity.platform.PlatformKeyword;
-import com.slk.core.entity.platform.PlatformUser;
-import com.slk.core.manager.platform.PlatformKeywordManager;
+import com.slk.core.entity.mp.Keyword;
+import com.slk.core.entity.mp.WeixinUser;
+import com.slk.core.manager.mp.KeywordManager;
 import com.slk.wap.controller.weixin.WeixinRequest;
 import com.slk.wap.controller.weixin.WeixinResponse;
 import com.slk.wap.weixin.instruction.ResponseType;
@@ -22,13 +22,13 @@ import com.slk.wap.weixin.process.AbstractCompositeProcessor;
 public class KeyWordsProcessor extends AbstractCompositeProcessor {
 
 	@Autowired
-	private PlatformKeywordManager platformKeywordManager;
+	private KeywordManager keywordManager;
 	
 	@Override
 	public WeixinResponse process(WeixinRequest request) {
-		PlatformUser user = queryUser(request);
+		WeixinUser user = queryUser(request);
 		
-		PlatformKeyword keyword = platformKeywordManager.findByKey(request.getContent());
+		Keyword keyword = keywordManager.findByKey(request.getContent());
 		boolean responseBindMessage = keyword.getNeedBind() && user != null;
 		ResponseType responseType = ResponseType.valueOf(keyword.getResponseType());
 		WeixinResponse response = null;

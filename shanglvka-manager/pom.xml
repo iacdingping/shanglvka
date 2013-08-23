@@ -205,13 +205,6 @@
 			<artifactId>jface</artifactId>
 			<version>3.3.0-I20070606-0010</version>
 		</dependency>
-		<dependency>
-            <groupId>org.insightech.er</groupId>
-            <artifactId>ERMaster</artifactId>
-            <version>20121127-2328</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/org.insightech.er_1.0.0.v20121127-2328.jar</systemPath>
-        </dependency>
 		<!-- ERMaster end -->
 		<dependency>
 		   <groupId>bitwalker</groupId>

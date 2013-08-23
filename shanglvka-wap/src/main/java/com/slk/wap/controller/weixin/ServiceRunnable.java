@@ -7,10 +7,9 @@ import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springside.modules.mapper.JaxbMapper;
-
 import com.slk.wap.weixin.instruction.InstructionMatcher;
 import com.slk.wap.weixin.process.Processor;
+import com.thinkgem.jeesite.common.mapper.JaxbMapper;
 
 public class ServiceRunnable {
 
