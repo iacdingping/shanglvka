@@ -2,10 +2,12 @@ package com.iac.slk.model.platform;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.iac.slk.model.BaseEntity;
 
 @Entity
+@Table(name = "slv_platform_user")
 public class PlatformUser extends BaseEntity {
 
 	@Column(nullable = false)

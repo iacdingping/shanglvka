@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.jsp;
+package com.iac.slk.manager.platform;
 
 import java.util.Date;
 import java.util.Map;
@@ -24,16 +24,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("welcome")
 public class WelcomeController {
 
 	@Value("${application.message:Hello World}")
 	private String message = "Hello World";
 
-	@RequestMapping("/")
+	@RequestMapping("default")
 	public String welcome(Map<String, Object> model) {
 		model.put("time", new Date());
 		model.put("message", this.message);
-		return "welcome";
+		return "home";
 	}
 
 }

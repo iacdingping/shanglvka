@@ -23,7 +23,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,9 +42,15 @@ public class PlatformRepositoryTests {
 	PlatformRepository repository;
 
 	@Test
-	public void findsFirstPageOfCities() {
+	public void pageList() {
 
 		Page<PlatformUser> platformUsers = this.repository.findAll(new PageRequest(0, 10));
 		assertThat(platformUsers.getTotalElements(), is(equalTo(0L)));
+	}
+	
+	@Test
+	public void getByPlatformCoding() {
+		PlatformUser user = this.repository.getByPlatformCoding("xxx");
+		assertThat(user, is(equalTo(null)));
 	}
 }
