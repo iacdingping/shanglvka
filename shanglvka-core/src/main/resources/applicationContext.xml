@@ -58,7 +58,8 @@
 	<!-- production环境 -->
  	<beans profile="production">
  		<context:property-placeholder ignore-unresolvable="true"
-			location="classpath*:/application.properties" />	
+			location="classpath*:/application.production.properties,
+				classpath*:/override.production.properties" />	
 		
 		<!-- 数据源配置, 使用Tomcat JDBC连接池 -->
 		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
@@ -82,8 +83,8 @@
 	<!-- local development环境 -->
 	<beans profile="development">
 		<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/application.properties,
-          			  classpath*:/application.development.properties" />	
+			location="classpath*:/application.development.properties,
+				classpath*:/override.development.properties" />	
 
 		<!-- Tomcat JDBC连接池 -->
 		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
@@ -93,35 +94,13 @@
 			<property name="password" value="${jdbc.password}" />
 			<property name="defaultAutoCommit" value="false" />
 		</bean>
-	</beans>
-	
-	<!-- functional test 环境 -->
-	<beans profile="functional">
-		<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/application.properties,
-          			  classpath*:/application.functional.properties,
-          			  classpath*:/application.functional-local.properties" />	
-
-		<!-- Tomcat JDBC连接池 -->
-		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
-			<property name="driverClassName" value="${jdbc.driver}" />
-			<property name="url" value="${jdbc.url}" />
-			<property name="username" value="${jdbc.username}" />
-			<property name="password" value="${jdbc.password}" />
-			<property name="defaultAutoCommit" value="false" />
-		</bean>
-
-		<!-- 初始化数据表结构 
-		<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
-			<jdbc:script location="classpath:sql/${db.type}/schema.sql" />
-		</jdbc:initialize-database>	-->
 	</beans>
 	
 	<!-- unit test环境 -->
 	<beans profile="test">
 	 	<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/application.properties,
-          			  classpath*:/application.test.properties" />	
+			location="classpath*:/application.test.properties,
+				classpath*:/override.test.properties" />	
 		
 		<!-- Spring Simple连接池 -->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
