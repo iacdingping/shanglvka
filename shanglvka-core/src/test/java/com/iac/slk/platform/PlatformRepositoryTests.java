@@ -13,31 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.iac.slk.model.platform;
+package com.iac.slk.platform;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.ContextConfiguration;
 
-import com.iac.slk.Application;
+import com.iac.slk.SpringTransactionalTestCase;
 
 /**
  * Integration tests for {@link PlatformRepository}.
  * 
  * @author Oliver Gierke
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-public class PlatformRepositoryTests {
+@ContextConfiguration(locations = { "/applicationContext.xml" })
+public class PlatformRepositoryTests extends SpringTransactionalTestCase {
 
 	@Autowired
 	PlatformRepository repository;

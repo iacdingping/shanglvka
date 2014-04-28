@@ -2,39 +2,32 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.0.1.RELEASE</version>
+		<groupId>iac.dp</groupId>
+		<artifactId>parent</artifactId>
+ 		<version>1.0</version>
 	</parent>
-
-	<groupId>iac.dp</groupId>
 	<artifactId>shanglvka</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>shanglvka</name>
 	<description>商旅卡</description>
+	
+	<properties>
+		<jdk.version>1.7</jdk.version>
+	</properties>
+	
 	<modules>
 		<module>shanglvka-core</module>
 		<module>shanglvka-wap</module>
 		<module>shanglvka-manager</module>
 	</modules>
 
-	<properties>
-		<!-- Plugin的属性定义 -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.6</jdk.version>
-		<mysql.version>5.1.30</mysql.version>
-		<slf4j.version>1.7.5</slf4j.version>
-		<logback.version>1.0.13</logback.version>
-		<spring-data-jpa.version>1.5.1.RELEASE</spring-data-jpa.version>
-	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.version}</version>
+				<version>5.1.30</version>
 			</dependency>
 
 			<!-- LOGGING begin -->
@@ -85,12 +78,6 @@
 			</dependency>
 			<!-- LOGGING end -->
 
-			<!-- spring data jpa -->
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-jpa</artifactId>
-				<version>${spring-data-jpa.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -101,7 +88,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
@@ -113,19 +99,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<useSystemClassLoader>false</useSystemClassLoader>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

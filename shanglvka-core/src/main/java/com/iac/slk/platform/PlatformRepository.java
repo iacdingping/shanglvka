@@ -1,4 +1,4 @@
-package com.iac.slk.model.platform;
+package com.iac.slk.platform;
 
 import javax.annotation.Resource;
 
