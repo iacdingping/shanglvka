@@ -2,7 +2,6 @@ package com.iac.slk;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
@@ -13,16 +12,13 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
  * 子类需要定义applicationContext文件的位置, 如:
  * 
  * @ContextConfiguration(locations = { "/applicationContext.xml" })
- * 
- * @author calvin
  */
-@ActiveProfiles(Profiles.UNIT_TEST)
+@ActiveProfiles("test")
 public abstract class SpringTransactionalTestCase extends AbstractTransactionalJUnit4SpringContextTests {
 
 	protected DataSource dataSource;
 
 	@Override
-	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		super.setDataSource(dataSource);
 		this.dataSource = dataSource;
