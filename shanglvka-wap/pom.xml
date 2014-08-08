@@ -8,12 +8,35 @@
 	</parent>
 	<artifactId>shanglvka-wap</artifactId>
 	<packaging>war</packaging>
+	<description>前台</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>iac.dp</groupId>
 			<artifactId>shanglvka-core</artifactId>
-			<version>${project.version}</version>
+			<version>0.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>iac.dp</groupId>
+			<artifactId>shanglvka-business</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<!-- WEB begin -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.0.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- WEB end -->
 	</dependencies>
 </project>
