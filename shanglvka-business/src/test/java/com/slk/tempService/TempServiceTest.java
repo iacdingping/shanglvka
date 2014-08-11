@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
+@SuppressWarnings("unused")
 @ActiveProfiles("test")
 @ContextConfiguration(locations={"classpath:spring-dao.xml"})
 public class TempServiceTest extends AbstractJUnit4SpringContextTests {
