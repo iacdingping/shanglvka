@@ -9,22 +9,4 @@
 	<artifactId>shanglvka-manager</artifactId>
 	<packaging>war</packaging>
 	<description>后台管理</description>
-
-
-	<dependencies>
-		<dependency>
-			<groupId>iac.dp</groupId>
-			<artifactId>shanglvka-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>
