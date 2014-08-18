@@ -17,167 +17,169 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`shanglvka` /*!40100 DEFAULT CHARACTER S
 
 USE `shanglvka`;
 
-/*Table structure for table `slk_code` */
+/*Table structure for table `sys_code` */
 
-DROP TABLE IF EXISTS `slk_code`;
+DROP TABLE IF EXISTS `sys_code`;
 
-CREATE TABLE `slk_code` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `type` varchar(3) DEFAULT NULL COMMENT '类型码',
-  `code` varchar(50) DEFAULT '0' COMMENT '编码',
-  `dictionary_code` varchar(50) DEFAULT NULL COMMENT '字典码',
-  `dictionary_value` varchar(50) DEFAULT NULL COMMENT '字典值',
-  `reserve_value` varchar(200) DEFAULT NULL COMMENT '备用值',
-  `comment` varchar(50) DEFAULT NULL COMMENT '备注',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
+CREATE TABLE `sys_code` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(3) DEFAULT NULL COMMENT '类型码',
+  `code` VARCHAR(50) DEFAULT '0' COMMENT '编码',
+  `dictionary_code` VARCHAR(50) DEFAULT NULL COMMENT '字典码',
+  `dictionary_value` VARCHAR(50) DEFAULT NULL COMMENT '字典值',
+  `reserve_value` VARCHAR(200) DEFAULT NULL COMMENT '备用值',
+  `comment` VARCHAR(50) DEFAULT NULL COMMENT '备注',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-/*Data for the table `slk_code` */
+/*Data for the table `sys_code` */
 
-/*Table structure for table `slk_department` */
+/*Table structure for table `sys_department` */
 
-DROP TABLE IF EXISTS `slk_department`;
+DROP TABLE IF EXISTS `sys_department`;
 
-CREATE TABLE `slk_department` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL COMMENT '名称',
-  `parent` bigint(20) DEFAULT NULL COMMENT '上级部门',
-  `duty` varchar(100) DEFAULT NULL COMMENT '职责',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
+CREATE TABLE `sys_department` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) DEFAULT NULL COMMENT '名称',
+  `parent` BIGINT(20) DEFAULT NULL COMMENT '上级部门',
+  `duty` VARCHAR(100) DEFAULT NULL COMMENT '职责',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-/*Data for the table `slk_department` */
+/*Data for the table `sys_department` */
 
-/*Table structure for table `slk_module` */
+/*Table structure for table `sys_module` */
 
-DROP TABLE IF EXISTS `slk_module`;
+DROP TABLE IF EXISTS `sys_module`;
 
-CREATE TABLE `slk_module` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `parent` varchar(50) DEFAULT NULL COMMENT '父模块',
-  `name` varchar(50) DEFAULT NULL COMMENT '名称',
-  `icon` varchar(100) DEFAULT NULL COMMENT '图标',
-  `expanded` varchar(100) DEFAULT NULL COMMENT '是否展开',
-  `type` varchar(100) DEFAULT NULL COMMENT '类型 1菜单 2功能',
-  `order` int(11) DEFAULT NULL COMMENT '排序',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
+CREATE TABLE `sys_module` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `parent` VARCHAR(50) DEFAULT NULL COMMENT '父模块',
+  `name` VARCHAR(50) DEFAULT NULL COMMENT '名称',
+  `icon` VARCHAR(100) DEFAULT NULL COMMENT '图标',
+  `expanded` VARCHAR(100) DEFAULT NULL COMMENT '是否展开',
+  `type` INT(3) DEFAULT NULL COMMENT '类型 1菜单 2功能',
+  `permission` VARCHAR(255) COMMENT '权限query edit delete',
+  `order` INT(11) DEFAULT NULL COMMENT '排序',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-/*Data for the table `slk_module` */
+/*Data for the table `sys_module` */
 
-/*Table structure for table `slk_platform_user` */
+/*Table structure for table `sys_role` */
+
+DROP TABLE IF EXISTS `sys_role`;
+
+CREATE TABLE `sys_role` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) DEFAULT NULL COMMENT '名称',
+  `icon` VARCHAR(100) DEFAULT NULL COMMENT '图标',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_role` */
+
+/*Table structure for table `sys_role_module` */
+
+DROP TABLE IF EXISTS `sys_role_module`;
+
+CREATE TABLE `sys_role_module` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) DEFAULT NULL COMMENT '名称',
+  `icon` VARCHAR(100) DEFAULT NULL COMMENT '图标',
+  `module` BIGINT(20) DEFAULT NULL COMMENT '模块',
+  `role` BIGINT(20) DEFAULT NULL COMMENT '角色',
+  `permission` VARCHAR(255) COMMENT '权限',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_role_module` */
+
+/*Table structure for table `sys_user` */
+
+DROP TABLE IF EXISTS `sys_user`;
+
+CREATE TABLE `sys_user` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) DEFAULT NULL COMMENT '用户名',
+  `login_name`	VARCHAR(255) NOT NULL UNIQUE,
+  `password` VARCHAR(50) DEFAULT NULL COMMENT '密码',
+  `salt` VARCHAR(64),
+  `email` VARCHAR(128),
+  `login_enable` TINYINT(1) DEFAULT '1' COMMENT '是否能登陆',
+  `ip_enable` VARCHAR(255) DEFAULT NULL COMMENT '允许登陆IP',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user` */
+
+/*Table structure for table `sys_user_log` */
+
+DROP TABLE IF EXISTS `sys_user_log`;
+
+CREATE TABLE `sys_user_log` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `user` VARCHAR(50) DEFAULT NULL COMMENT '用户',
+  `ip` VARCHAR(50) DEFAULT NULL COMMENT '用户登陆IP',
+  `remark` VARCHAR(200) DEFAULT NULL COMMENT '备注',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user_log` */
+
+/*Table structure for table `sys_user_role` */
+
+DROP TABLE IF EXISTS `sys_user_role`;
+
+CREATE TABLE `sys_user_role` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `user` BIGINT(20) DEFAULT NULL COMMENT '用户',
+  `role` BIGINT(20) DEFAULT NULL COMMENT '角色',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user_role` */
+
+/*Table structure for table `sys_platform_user` */
 
 DROP TABLE IF EXISTS `slk_platform_user`;
 
 CREATE TABLE `slk_platform_user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `platform_coding` varchar(100) DEFAULT NULL COMMENT '平台号码',
-  `bind` int(11) DEFAULT '0' COMMENT '绑定状态， 0 取消关注， 1 关注， 2 绑定， 3 解绑定',
-  `bind_user` varchar(50) DEFAULT NULL COMMENT '绑定用户',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `platform_coding` VARCHAR(100) DEFAULT NULL COMMENT '平台号码',
+  `bind` INT(11) DEFAULT '0' COMMENT '绑定状态， 0 取消关注， 1 关注， 2 绑定， 3 解绑定',
+  `bind_user` VARCHAR(50) DEFAULT NULL COMMENT '绑定用户',
+  `created` DATE DEFAULT NULL,
+  `deleted` TINYINT(4) DEFAULT '0',
+  `last_operate_time` DATE DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-/*Data for the table `slk_platform_user` */
-
-/*Table structure for table `slk_role` */
-
-DROP TABLE IF EXISTS `slk_role`;
-
-CREATE TABLE `slk_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `parent` varchar(50) DEFAULT NULL COMMENT '父角色',
-  `name` varchar(50) DEFAULT NULL COMMENT '名称',
-  `icon` varchar(100) DEFAULT NULL COMMENT '图标',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `slk_role` */
-
-/*Table structure for table `slk_role_module` */
-
-DROP TABLE IF EXISTS `slk_role_module`;
-
-CREATE TABLE `slk_role_module` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `parent` varchar(50) DEFAULT NULL COMMENT '父角色',
-  `name` varchar(50) DEFAULT NULL COMMENT '名称',
-  `icon` varchar(100) DEFAULT NULL COMMENT '图标',
-  `module` bigint(20) DEFAULT NULL COMMENT '模块',
-  `role` bigint(20) DEFAULT NULL COMMENT '角色',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `slk_role_module` */
-
-/*Table structure for table `slk_user` */
-
-DROP TABLE IF EXISTS `slk_user`;
-
-CREATE TABLE `slk_user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL COMMENT '用户名',
-  `true_name` varchar(50) DEFAULT NULL COMMENT '真实名',
-  `password` varchar(50) DEFAULT NULL COMMENT '密码',
-  `login_enable` tinyint(4) DEFAULT '1' COMMENT '是否能登陆',
-  `ip_enable` varchar(100) DEFAULT NULL COMMENT '允许登陆IP',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `slk_user` */
-
-/*Table structure for table `slk_user_log` */
-
-DROP TABLE IF EXISTS `slk_user_log`;
-
-CREATE TABLE `slk_user_log` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user` varchar(50) DEFAULT NULL COMMENT '用户',
-  `ip` varchar(50) DEFAULT NULL COMMENT '用户登陆IP',
-  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `slk_user_log` */
-
-/*Table structure for table `slk_user_role` */
-
-DROP TABLE IF EXISTS `slk_user_role`;
-
-CREATE TABLE `slk_user_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user` varchar(50) DEFAULT NULL COMMENT '用户',
-  `role` varchar(50) DEFAULT NULL COMMENT '角色',
-  `created` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  `last_operate_time` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `slk_user_role` */
+/*Data for the table `sys_platform_user` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

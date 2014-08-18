@@ -10,6 +10,19 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.iac</groupId>
+			<artifactId>share-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.iac</groupId>
+			<artifactId>share-extension</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.iac</groupId>
+			<artifactId>share-metrics</artifactId>
+		</dependency>
+	
 		<!-- SPRING basic begin -->
 		<!-- email/scheduler/freemarker -->
 		<dependency>
@@ -108,6 +121,21 @@
 			<artifactId>log4jdbc</artifactId>
 		</dependency>
 		<!-- LOGGING end -->
+		
+		<!-- Tool begin -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<!-- Tool end -->
 		
 		<!-- TEST begin -->
 		<dependency>

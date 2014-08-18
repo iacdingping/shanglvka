@@ -1,0 +1,72 @@
+.title{
+	width:100%;
+	height:45px;
+	background: #63bcde;
+	
+}
+
+.conetnt{
+	width: 90%;
+	color:#000;
+	font-size:13px;
+	font-weight:800;
+	line-height: 20px;
+	padding: 10px 0px;
+}
+
+.other_info{
+	 text-align: right;
+}
+.other_info_icon{
+		background: url("/static/img/info/icon02.png") no-repeat 50%;
+		float: right;
+}
+.other_info_icon01{
+	background-position: 0px 0px;
+	width: 30px;
+	height: 20px;
+}
+.other_info_icon02{
+	background-position: -30px 0px;
+	width: 30px;
+	height: 20px;
+}
+
+.footStyle{
+	height:60px;
+	background: #63bcde
+}
+
+.rotate180{
+-moz-transform:rotate(180deg);
+-webkit-transform:rotate(180deg);
+-o-transform:rotate(180deg);
+transform:rotate(180deg); 
+filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+
+.button_class {
+border-style: solid;
+border-width: 0;
+cursor: pointer;
+font-family: inherit;
+font-weight: bold;
+line-height: normal;
+margin: 0 0 1.25em;
+position: relative;
+text-decoration: none;
+text-align: center;
+display: inline-block;
+padding-top: 0.75em;
+padding-right: 1.5em;
+padding-bottom: 0.8125em;
+padding-left: 1.5em;
+font-size: 1em;
+background-color: #2daebf;
+border-color: #238896;
+color: white;
+margin-right: 5px;
+border-radius: 4px;
+width:20%
+}

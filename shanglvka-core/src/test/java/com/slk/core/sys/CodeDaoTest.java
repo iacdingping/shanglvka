@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springside.modules.mapper.JsonMapper;
 
 import com.slk.core.SpringTransactionalTestCase;
 import com.slk.core.dao.sys.CodeDao;
@@ -114,5 +115,10 @@ public class CodeDaoTest extends SpringTransactionalTestCase{
 		codeDao.deleteById(code.getId());
 		long deleteRows = codeDao.count(query);
 		assertEquals(startRows, deleteRows);
+	}
+	
+	public static void main(String[] args) {
+		JsonMapper mapper = JsonMapper.nonDefaultMapper();
+		System.out.println(mapper.toJson(new Code()));
 	}
 }
