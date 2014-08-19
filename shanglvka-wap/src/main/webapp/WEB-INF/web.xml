@@ -7,7 +7,8 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:/spring-dao.xml
+			classpath*:/applicationContext.xml
+			classpath*:/applicationContext-wap.xml
 		</param-value>
 	</context-param>
 	<context-param>

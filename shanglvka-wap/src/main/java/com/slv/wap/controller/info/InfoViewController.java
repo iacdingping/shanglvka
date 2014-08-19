@@ -1,4 +1,4 @@
-package com.iac.slv.wap.info.controller;
+package com.slv.wap.controller.info;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -9,7 +9,7 @@ import com.slk.service.ShiroDbRealm.ShiroUser;
 public class UserUtil {
 
 	/**
-	 * 取出Shiro中的当前用户LoginName.
+	 * 取出Shiro中的当前用户
 	 */
 	public ShiroUser getCurrentUser() {
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
