@@ -9,7 +9,7 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="sys-User-columns">
 	    <![CDATA[
-		`id` as `id`, `name` as `name`, `login_name` as `loginName`, `password` as `password`, `salt` as `salt`, `email` as `email`, `login_enable` as `loginEnable`, `ip_enable` as `ipEnable`, `created` as `created`, `deleted` as `deleted`, `last_operate_time` as `lastOperateTime`
+		`id` as `id`, `company_id` as `companyId`, `office_id` as `officeId`, `login_name` as `loginName`, `password` as `password`, `no` as `no`, `name` as `name`, `email` as `email`, `phone` as `phone`, `mobile` as `mobile`, `user_type` as `userType`, `login_ip` as `loginIp`, `login_date` as `loginDate`, `create_by` as `createBy`, `create_date` as `createDate`, `update_by` as `updateBy`, `update_date` as `updateDate`, `remarks` as `remarks`, `del_flag` as `delFlag`
 	    ]]>
 	</sql>	
 
@@ -17,9 +17,9 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO sys_user (
-        `id`, `name`, `login_name`, `password`, `salt`, `email`, `login_enable`, `ip_enable`, `created`, `deleted`, `last_operate_time`
+        `id`, `company_id`, `office_id`, `login_name`, `password`, `no`, `name`, `email`, `phone`, `mobile`, `user_type`, `login_ip`, `login_date`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`
         ) VALUES (
-        #{id}, #{name}, #{loginName}, #{password}, #{salt}, #{email}, #{loginEnable}, #{ipEnable}, #{created}, #{deleted}, #{lastOperateTime}        
+        #{id}, #{companyId}, #{officeId}, #{loginName}, #{password}, #{no}, #{name}, #{email}, #{phone}, #{mobile}, #{userType}, #{loginIp}, #{loginDate}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}        
         )
     ]]>
 		<!--	
@@ -34,7 +34,7 @@
 	<update id="update">
     <![CDATA[
         UPDATE sys_user SET
-	        `name` = #{name} , `login_name` = #{loginName} , `password` = #{password} , `salt` = #{salt} , `email` = #{email} , `login_enable` = #{loginEnable} , `ip_enable` = #{ipEnable} , `created` = #{created} , `deleted` = #{deleted} , `last_operate_time` = #{lastOperateTime}  
+	        `company_id` = #{companyId} , `office_id` = #{officeId} , `login_name` = #{loginName} , `password` = #{password} , `no` = #{no} , `name` = #{name} , `email` = #{email} , `phone` = #{phone} , `mobile` = #{mobile} , `user_type` = #{userType} , `login_ip` = #{loginIp} , `login_date` = #{loginDate} , `create_by` = #{createBy} , `create_date` = #{createDate} , `update_by` = #{updateBy} , `update_date` = #{updateDate} , `remarks` = #{remarks} , `del_flag` = #{delFlag}  
         WHERE 
         	id = #{id}  	        
     ]]>
@@ -62,8 +62,11 @@
 	       <if test="id">
 				AND `id` = #{id}
 			</if>
-	       <if test="name">
-				AND `name` = #{name}
+	       <if test="companyId">
+				AND `company_id` = #{companyId}
+			</if>
+	       <if test="officeId">
+				AND `office_id` = #{officeId}
 			</if>
 	       <if test="loginName">
 				AND `login_name` = #{loginName}
@@ -71,33 +74,57 @@
 	       <if test="password">
 				AND `password` = #{password}
 			</if>
-	       <if test="salt">
-				AND `salt` = #{salt}
+	       <if test="no">
+				AND `no` = #{no}
+			</if>
+	       <if test="name">
+				AND `name` = #{name}
 			</if>
 	       <if test="email">
 				AND `email` = #{email}
 			</if>
-	       <if test="loginEnable">
-				AND `login_enable` = #{loginEnable}
+	       <if test="phone">
+				AND `phone` = #{phone}
 			</if>
-	       <if test="ipEnable">
-				AND `ip_enable` = #{ipEnable}
+	       <if test="mobile">
+				AND `mobile` = #{mobile}
 			</if>
-	       <if test="createdBegin != null">
-				AND `created` >= #{createdBegin}
-		   </if>
-		   <if test="createdEnd != null">
-				AND `created` &lt;= #{createdEnd}
-		   </if>
-	       <if test="deleted">
-				AND `deleted` = #{deleted}
+	       <if test="userType">
+				AND `user_type` = #{userType}
 			</if>
-	       <if test="lastOperateTimeBegin != null">
-				AND `last_operate_time` >= #{lastOperateTimeBegin}
+	       <if test="loginIp">
+				AND `login_ip` = #{loginIp}
+			</if>
+	       <if test="loginDateBegin != null">
+				AND `login_date` >= #{loginDateBegin}
 		   </if>
-		   <if test="lastOperateTimeEnd != null">
-				AND `last_operate_time` &lt;= #{lastOperateTimeEnd}
+		   <if test="loginDateEnd != null">
+				AND `login_date` &lt;= #{loginDateEnd}
 		   </if>
+	       <if test="createBy">
+				AND `create_by` = #{createBy}
+			</if>
+	       <if test="createDateBegin != null">
+				AND `create_date` >= #{createDateBegin}
+		   </if>
+		   <if test="createDateEnd != null">
+				AND `create_date` &lt;= #{createDateEnd}
+		   </if>
+	       <if test="updateBy">
+				AND `update_by` = #{updateBy}
+			</if>
+	       <if test="updateDateBegin != null">
+				AND `update_date` >= #{updateDateBegin}
+		   </if>
+		   <if test="updateDateEnd != null">
+				AND `update_date` &lt;= #{updateDateEnd}
+		   </if>
+	       <if test="remarks">
+				AND `remarks` = #{remarks}
+			</if>
+	       <if test="delFlag">
+				AND `del_flag` = #{delFlag}
+			</if>
 		</where>
 	</sql>
 		
@@ -111,6 +138,18 @@
     	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
     -->
     <select id="findPage" resultType="User">
+		SELECT <include refid="sys-User-columns" /> FROM (
+			SELECT <include refid="sys-User-columns" />
+			FROM sys_user 
+			<include refid="User-where"/>
+			
+			<if test="sortColumns != null">
+				ORDER BY ${sortColumns}
+			</if>
+		) limit #{offset}, #{pageSize}
+    </select>
+	
+	<select id="list" resultType="User">
     	SELECT <include refid="sys-User-columns" />
 	    FROM sys_user 
 		<include refid="User-where"/>
@@ -119,24 +158,7 @@
 			ORDER BY ${sortColumns}
 		</if>
     </select>
-	
-	<select id="list" resultType="User">
-		SELECT <include refid="sys-User-columns" /> FROM (
-	    	SELECT <include refid="sys-User-columns" />
-		    FROM sys_user 
-			<include refid="User-where"/>
-			
-			<if test="sortColumns != null">
-				ORDER BY ${sortColumns}
-			</if>
-		) limit ${offset}, ${pageSize}
-    </select>
 
-    <select id="getByLoginName" resultType="User" parameterType="java.lang.String">
-	    SELECT <include refid="sys-User-columns"/>
-	    FROM sys_user where login_name = #{loginName}
-    </select>
-    
 	
 </mapper>
 

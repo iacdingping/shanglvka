@@ -4,22 +4,22 @@
 
 
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.slk.core.dao.sys.RoleDao">
+<mapper namespace="com.slk.core.dao.platform.PlatformUserDao">
 	
 	<!-- 用于select查询公用抽取的列 -->
-	<sql id="sys-Role-columns">
+	<sql id="platform-PlatformUser-columns">
 	    <![CDATA[
-		`id` as `id`, `office_id` as `officeId`, `name` as `name`, `data_scope` as `dataScope`, `create_by` as `createBy`, `create_date` as `createDate`, `update_by` as `updateBy`, `update_date` as `updateDate`, `remarks` as `remarks`, `del_flag` as `delFlag`
+		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag`
 	    ]]>
 	</sql>	
 
 	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
-        INSERT INTO sys_role (
-        `id`, `office_id`, `name`, `data_scope`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`
+        INSERT INTO mp_platform_user (
+        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`
         ) VALUES (
-        #{id}, #{officeId}, #{name}, #{dataScope}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{remarks}, #{delFlag}        
+        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}        
         )
     ]]>
 		<!--	
@@ -33,8 +33,8 @@
     
 	<update id="update">
     <![CDATA[
-        UPDATE sys_role SET
-	        `office_id` = #{officeId} , `name` = #{name} , `data_scope` = #{dataScope} , `create_by` = #{createBy} , `create_date` = #{createDate} , `update_by` = #{updateBy} , `update_date` = #{updateDate} , `remarks` = #{remarks} , `del_flag` = #{delFlag}  
+        UPDATE mp_platform_user SET
+	        `identification` = #{identification} , `platform_code` = #{platformCode} , `type` = #{type} , `create_date` = #{createDate} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
         WHERE 
         	id = #{id}  	        
     ]]>
@@ -42,37 +42,34 @@
 
     <delete id="deleteById">
     <![CDATA[
-        DELETE FROM sys_role WHERE
+        DELETE FROM mp_platform_user WHERE
         `id` = #{id} 
     ]]>
     </delete>
     
-    <select id="getById" resultType="Role">
-		SELECT <include refid="sys-Role-columns" />
+    <select id="getById" resultType="PlatformUser">
+		SELECT <include refid="platform-PlatformUser-columns" />
 	    <![CDATA[
-		    FROM sys_role 
+		    FROM mp_platform_user 
 	        WHERE 
 		        `id` = #{id} 
 	    ]]>
 	</select>
 	
-	<sql id="Role-where">
+	<sql id="PlatformUser-where">
 		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
 		<where>	      				
 	       <if test="id">
 				AND `id` = #{id}
 			</if>
-	       <if test="officeId">
-				AND `office_id` = #{officeId}
+	       <if test="identification">
+				AND `identification` = #{identification}
 			</if>
-	       <if test="name">
-				AND `name` = #{name}
+	       <if test="platformCode">
+				AND `platform_code` = #{platformCode}
 			</if>
-	       <if test="dataScope">
-				AND `data_scope` = #{dataScope}
-			</if>
-	       <if test="createBy">
-				AND `create_by` = #{createBy}
+	       <if test="type">
+				AND `type` = #{type}
 			</if>
 	       <if test="createDateBegin != null">
 				AND `create_date` >= #{createDateBegin}
@@ -80,18 +77,12 @@
 		   <if test="createDateEnd != null">
 				AND `create_date` &lt;= #{createDateEnd}
 		   </if>
-	       <if test="updateBy">
-				AND `update_by` = #{updateBy}
-			</if>
 	       <if test="updateDateBegin != null">
 				AND `update_date` >= #{updateDateBegin}
 		   </if>
 		   <if test="updateDateEnd != null">
 				AND `update_date` &lt;= #{updateDateEnd}
 		   </if>
-	       <if test="remarks">
-				AND `remarks` = #{remarks}
-			</if>
 	       <if test="delFlag">
 				AND `del_flag` = #{delFlag}
 			</if>
@@ -99,19 +90,19 @@
 	</sql>
 		
     <select id="count" resultType="long">
-        SELECT count(*) FROM sys_role 
-		<include refid="Role-where"/>    
+        SELECT count(*) FROM mp_platform_user 
+		<include refid="PlatformUser-where"/>    
     </select>
     
     <!--
     	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
     	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
     -->
-    <select id="findPage" resultType="Role">
-		SELECT <include refid="sys-Role-columns" /> FROM (
-			SELECT <include refid="sys-Role-columns" />
-			FROM sys_role 
-			<include refid="Role-where"/>
+    <select id="findPage" resultType="PlatformUser">
+		SELECT <include refid="platform-PlatformUser-columns" /> FROM (
+			SELECT <include refid="platform-PlatformUser-columns" />
+			FROM mp_platform_user 
+			<include refid="PlatformUser-where"/>
 			
 			<if test="sortColumns != null">
 				ORDER BY ${sortColumns}
@@ -119,10 +110,10 @@
 		) limit #{offset}, #{pageSize}
     </select>
 	
-	<select id="list" resultType="Role">
-    	SELECT <include refid="sys-Role-columns" />
-	    FROM sys_role 
-		<include refid="Role-where"/>
+	<select id="list" resultType="PlatformUser">
+    	SELECT <include refid="platform-PlatformUser-columns" />
+	    FROM mp_platform_user 
+		<include refid="PlatformUser-where"/>
 		
 		<if test="sortColumns != null">
 			ORDER BY ${sortColumns}

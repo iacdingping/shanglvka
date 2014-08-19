@@ -199,4 +199,5 @@ public class WeixinRequest {
 	public void setFormat(String format) {
 		this.format = format;
 	}
+
 }
