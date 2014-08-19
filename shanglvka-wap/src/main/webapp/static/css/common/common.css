@@ -11,7 +11,7 @@ h1,h2,h3,h4,h5,h6{font-size:100%;}
 .frg{float:right;}
 img{ border:none;}
 table{border-collapse:collapse;border-spacing:0;}
-a{text-decoration:none;}
+a{text-decoration: none;}
 
 
 .floatL{float:left;}
@@ -65,7 +65,7 @@ a{text-decoration:none;}
 .underline{text-decoration: underline; }
 .clearboth{clear: both;}
 .textCenter{text-align: center;width: 100%}
-
+.touming{filter:alpha(Opacity=80);-moz-opacity:0.8;opacity: 0.8;}
 
 .sj2{text-indent: 2em;}
 

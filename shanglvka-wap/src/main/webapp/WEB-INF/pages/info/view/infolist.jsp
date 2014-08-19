@@ -19,10 +19,10 @@
 		<div class=" positionR">
 			<div>
 			
-			<img src="${ctx}/static/img/common/ty01.jpg" align="middle"
+			<img src="${ctx}/static/img/test/test03.gif" align="middle"
 				style="margin: auto; vertical-align: middle" width="100%" />
-			<p class="positionA" style="bottom: 0px;height:30px;width: 100%;background: #000;line-height: 30px;">
-				<span style="color:#fff">我是轮播的标题</span>
+			<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
+				<span style="color:#fff;padding-left: 10px;">台湾演员柯震东在京吸毒被抓</span>
 			</p>
 			</div>
 				
@@ -37,62 +37,46 @@
 
 		<div class="margin_T20">
 			<ul>
-				<li class=" padding-T10 border_bottom1 padding-B10"><img
-					src="${ctx}/static/img/common/ty02.jpg" align="left"
-					style="margin: 0px 10px;" width="60" />
-					<p style="height: 43px;">
-						<span class="bold font_size_15">带上超级无敌的商旅卡，让你享受无限方便无限简单的生活方式</span>
+				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;">
+					<a href="${ctx}/info/view/detail/1">
+					<img
+					src="${ctx}/static/img/test/test04.gif" align="left"
+					style="margin: 0px 10px;" width="70" />
+					<p style="height: 30px;">
+						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
 					</p>
 					<p>
-						<span class="font_size_13 font_color_h">1小时前</span>
-					</p></li>
+						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
+					</p>
+					</a>
+					</li>
 
-				<li class=" padding-T10 border_bottom1 padding-B10"><img
-					src="${ctx}/static/img/common/ty02.jpg" align="left"
-					style="margin: 0px 10px;" width="60" />
-					<p style="height: 43px;">
-						<span class="bold font_size_15">我是一个开发者，我为自己带烟，虽然我不抽烟</span>
+				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;"><img
+					src="${ctx}/static/img/test/test01.gif" align="left"
+					style="margin: 0px 10px;" width="70" />
+					<p style="height: 30px;">
+						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
 					</p>
 					<p>
-						<span class="font_size_13 font_color_h">21小时前</span>
+						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
 					</p></li>
-				<li class=" padding-T10 border_bottom1 padding-B10"><img
-					src="${ctx}/static/img/common/ty02.jpg" align="left"
-					style="margin: 0px 10px;" width="60" />
-					<p style="height: 43px;">
-						<span class="bold font_size_15">带上超级无敌的商旅卡，让你享受无限方便无限简单的生活方式</span>
+				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;"><img
+					src="${ctx}/static/img/test/test02.gif" align="left"
+					style="margin: 0px 10px;" width="70" />
+					<p style="height: 30px;">
+						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
 					</p>
 					<p>
-						<span class="font_size_13 font_color_h">2014-07-17</span>
+						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
 					</p></li>
-
-				<li class=" padding-T10 border_bottom1 padding-B10"><img
-					src="${ctx}/static/img/common/ty02.jpg" align="left"
-					style="margin: 0px 10px;" width="60" />
-					<p style="height: 43px;">
-						<span class="bold font_size_15">我是一个开发者，我为自己带烟，虽然我不抽烟</span>
+				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;"><img
+					src="${ctx}/static/img/test/test04.gif" align="left"
+					style="margin: 0px 10px;" width="70" />
+					<p style="height: 30px;">
+						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
 					</p>
 					<p>
-						<span class="font_size_13 font_color_h">2014-07-15</span>
-					</p></li>
-				<li class=" padding-T10 border_bottom1 padding-B10"><img
-					src="${ctx}/static/img/common/ty02.jpg" align="left"
-					style="margin: 0px 10px;" width="60" />
-					<p style="height: 43px;">
-						<span class="bold font_size_15">带上超级无敌的商旅卡，让你享受无限方便无限简单的生活方式</span>
-					</p>
-					<p>
-						<span class="font_size_13 font_color_h">2014-07-11</span>
-					</p></li>
-
-				<li class=" padding-T10 border_bottom1 padding-B10"><img
-					src="${ctx}/static/img/common/ty02.jpg" align="left"
-					style="margin: 0px 10px;" width="60" />
-					<p style="height: 43px;">
-						<span class="bold font_size_15">带上超级无敌的商旅卡，让你享受无限方便无限简单的生活方式</span>
-					</p>
-					<p>
-						<span class="font_size_13 font_color_h">2014-07-01</span>
+						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
 					</p></li>
 			</ul>
 			<br/>
@@ -102,7 +86,7 @@
 				<span style="color:#fff">查看更多</span>
 	</div>
 	<br/>
-	<footer class="footStyle">
+	<footer class="footStyle" style="display: none">
 		<div class="limit_wth" style="color:#fff;line-height: 60px;text-align: center;">
 			<span style="font-size: 20px;">页脚</span>
 		</div>

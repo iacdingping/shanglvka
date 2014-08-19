@@ -16,16 +16,16 @@
 }
 
 .icon_list_3 {
-	background-position: 0px -100px;
+	background-position: 0px -101px;
 }
 .icon_list_4 {
 	background-position: 0px -150px;
 }
 .icon_list_5 {
-	background-position: 0px -202px;
+	background-position: 0px -203px;
 }
 .icon_list_6 {
-	background-position: 0px -252px;
+	background-position: 0px -253px;
 }
 
 .border_right {
@@ -42,6 +42,7 @@ li.styleAuto {
 	font-size: 16px;
 	line-height: 40px;
 	letter-spacing: 3px;
+	color: #666;
 }
 .words02{
 	font-weight: 700;
