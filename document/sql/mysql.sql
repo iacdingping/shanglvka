@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS `mp_platform_user`;
 DROP TABLE IF EXISTS `mp_platform_keyword`;
+DROP TABLE IF EXISTS `mp_platform_button_menu`;
 
 CREATE TABLE `mp_platform_user`
 (
@@ -30,4 +31,17 @@ CREATE TABLE `mp_platform_keyword` (
   `update_date` DATE DEFAULT NULL,
   `del_flag` INT(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MYISAM DEFAULT CHARSET=utf8 COMMENT='平台关键字自动回复'
+) COMMENT='平台关键字自动回复';
+
+
+CREATE TABLE mp_platform_button_menu (
+`id` 		BIGINT(20) 	PRIMARY KEY AUTO_INCREMENT,
+`name` 		VARCHAR(10) 	COMMENT '菜单名称',
+`key` 		VARCHAR(20) 	COMMENT '响应键标识(mp_platform_keyword关键字对应)',
+`parent` 	BIGINT(20) 	COMMENT '父ID',
+`type` 		VARCHAR(20) 	COMMENT '类型 BUTTON,LINK',
+`create_date` 	DATE,
+`update_date`	DATE,
+`del_flag` 	TINYINT(1) DEFAULT 0
+)
+COMMENT '微信平台自定义菜单';
