@@ -37,26 +37,3 @@ li.styleAuto {
 	float: left;
 	text-align: center;
 }
-.words01{
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 40px;
-	letter-spacing: 3px;
-	color: #666;
-}
-.words02{
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 40px;
-	letter-spacing: 1px;
-}
-.words03{
-	font-size: 18px;
-	font-weight: bold;
-	color:#000;
-}
-.words04{
-	font-size: 14px;
-	font-weight: bold;
-	color:#696969;
-}

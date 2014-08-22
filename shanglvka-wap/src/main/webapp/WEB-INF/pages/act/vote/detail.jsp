@@ -30,72 +30,26 @@
 				黄岸</p>
 			<br />
 		</article>
-		<div class="font_color_l font_size_16 floatR" style="line-height:20px;">
-			<img src="${ctx}/static/img/info/recommend.gif"  style="width:20px;height:20px; " align="left"/>
-			&nbsp;<span id="commandBTN">评论</span>
-			&nbsp;<span class="font_color_h2">(3)</span>
+		<div class="font_color_l font_size_16 line-height">
+			<div class="border_bottom1" style="height:36px;">
+				<div class="margin_L10 floatL"><img src="${ctx}/static/img/info/vote.gif"  style="width:20px;"/></div>
+				<div class="margin_L10 floatL font_color_hei bold" style="line-height:35px;">投票</div>
+			<div class="clearboth "></div>
+			</div>
+			<div class="margin_T20 ">
+				<p class="font_color_hei margin_L20">柯震东吸毒被抓，您的第一反应是?</p>
+				<p style="width:80%;margin: auto;margin-top: 10px;">
+					<input type="radio" value="" name="vote_select"/>【震惊】希望好好改造<br/>
+					<input type="radio" value="" name="vote_select" />【恍然】果真如此<br/>
+					<input type="radio" value="" name="vote_select" />【质疑】房祖名呢？<br/>
+					<input type="radio" value="" name="vote_select" />【吐槽】明天就出道三周年了<br/>
+					<input type="radio" value="" name="vote_select" />【路过】不关心<br/>
+				</p>
+				<div class="BTN00 BTN08">投票</div>
+			</div>
 		</div>
-		<div class="clearboth"></div>
 	</div>
-		<div class="border_bottom1 margin_B10 margin_T10 positionR">
-			<div class="positionA" style="right:70px;top:-11px;">
-				<img src="${ctx}/static/img/info/icon05.gif" height="10"/>
-			</div>		
-		
-		</div>
-		<div class="content_area">
-			<ul>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名1</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">日因为与新男友甜蜜互动的照片被曝光的萧亚轩也感叹现在的艺人没有隐私：“现在根本就是全民狗仔的时代！</span>
-					</p>
-					<div class="clearboth"></div></li>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名2</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">不好意思，沙发了</span>
-					</p>
-					<div class="clearboth"></div></li>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名3</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">日因为与新男友甜蜜互动的照片被曝光的萧亚轩也感叹现在的艺人没有隐私：“现在根本就是全民狗仔的时代！</span>
-					</p>
-					<div class="clearboth"></div></li>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名1</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">不好意思，沙发了</span>
-					</p>
-					<div class="clearboth"></div></li>
-			</ul>
-		</div>
 	<br />
-	<br />
-	<br />
-	<br />
-	
 	
 	<div class="positionF black_layout touming displayN" id="touming_layout">
 	</div>
