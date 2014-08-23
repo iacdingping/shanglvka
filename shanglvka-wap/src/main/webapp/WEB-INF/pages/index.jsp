@@ -16,57 +16,37 @@
 </head>
 <body>
 	<header class="">
-		<img src="${ctx}/static/img/index/guangao_01.jpg" width="100%" />
+		<c:forEach items="${wapHomes1}" var="wapHome">
+			<img src="${wapHome.pic}" width="100%" />
+		</c:forEach>	
 	</header>
 	<div class="limit_wth" style="width: 90%;">
 		<ul class="margin_T20">
-			<li class="styleAuto border_right"><a 
-				href="${ctx}/info/view/infolist/1" ><span
-					class="icon_list "><img src="${ctx}/static/img/index/icon01.png" width="50" height="50"/></span>
-					<br/><span class="words01">新闻</span></a></li>
-			<li class="styleAuto border_right"><span
-				class="icon_list"><img src="${ctx}/static/img/index/icon03.png" width="50" height="50"/></span><br/><span class="words01">视频</span></li>
-			<li class="styleAuto"><span class="icon_list"><img src="${ctx}/static/img/index/icon02.png" width="50" height="50"/></span><br/><span
-				class="words01">文学</span></li>
-			<li class="clearboth"></li>	
-			<li
-				style="background: #d5d5d5; height: 1px; width: 100%; margin: 30px 0px;"></li>
-
-			<li class="styleAuto  border_right"><span
-				class="icon_list  "><img src="${ctx}/static/img/index/icon04.png" width="50" height="50"/></span><br/><span class="words02">活动专区</span></li>
-			<li class="styleAuto  border_right"><span
-				class="icon_list  "><img src="${ctx}/static/img/index/icon05.png" width="50" height="50"/></span><br/><span class="words02">积分商城</span></li>
-			<li class="styleAuto"><span class="icon_list "><img src="${ctx}/static/img/index/icon06.png" width="50" height="50"/></span><br/><span
-				class="words02">敬请期待</span></li>
+			<c:forEach items="${wapHomes2}" var="wapHome">
+				<li class="styleAuto border_right"><a 
+				href="${wapHome.link}" ><span
+					class="icon_list "><img src="${wapHome.pic}" width="50" height="50"/></span>
+					<br/><span class="words01">${wapHome.title}</span></a></li>
+			</c:forEach>
 			<li class="clearboth"></li>
 		</ul>
 	</div>
 	<div class="margin_T20" style="background: #f5f5f5">
 		<ul>
-			<li class=" padding-T10 border_bottom1 padding-B10 positionR"><img
-				src="${ctx}/static/img/test/test01.gif" align="left"
+			<c:forEach items="${wapHomes3}" var="wapHome">
+				<li class=" padding-T10 border_bottom1 padding-B10 positionR"><img
+				src="${wapHome.pic}" align="left"
 				style="margin: 0px 10px;" width="60" />
 				<p style="height: 43px; line-height: 40px;">
-					<span class="words03">热点新闻</span>
+					<span class="words03">${wapHome.title}</span>
 				</p>
 				<p>
-					<span class="words04"> 柯震东在京被抓 | 雷军挑战冰桶 </span>
+					<span class="words04"> ${wapHome.desc} </span>
 				</p>
 				<p class="floatR positionA" style="right: 15px; top: 30px;">
 					<img src="${ctx}/static/img/index/jiantou01.png" />
 				</p></li>
-			<li class=" padding-T10 border_bottom1 padding-B10 positionR"><img
-				src="${ctx}/static/img/test/test02.gif" align="left"
-				style="margin: 0px 10px;" width="60" />
-				<p style="height: 43px; line-height: 40px;">
-					<span class="words03">商旅推荐</span>
-				</p>
-				<p>
-					<span class="words04"> 乌镇水乡| 哈哈哈哈 </span>
-				</p>
-				<p class="floatR positionA" style="right: 15px; top: 30px;">
-					<img src="${ctx}/static/img/index/jiantou01.png" />
-				</p></li>
+			</c:forEach>
 		</ul>
 	</div>
 	<script type="text/javascript">
