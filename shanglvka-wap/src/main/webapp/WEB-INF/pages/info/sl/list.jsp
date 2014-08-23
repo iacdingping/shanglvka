@@ -21,7 +21,7 @@
 					src="${item.smallPic}" />
 					<div class="margin_T20">
 						<span class="words05">${item.title}</span><br /> <span
-							class="words06">店铺地址：${item.address}</span>
+							class="words06">${item.label}</span>
 					</div>
 					<div class="clearboth"></div></a></li>
 			</c:forEach>
