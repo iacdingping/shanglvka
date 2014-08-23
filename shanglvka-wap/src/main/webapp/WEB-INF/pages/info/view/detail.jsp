@@ -28,10 +28,10 @@
 			
 			<br />
 		</article>
-		<div class="font_color_l font_size_16 floatR" style="line-height:20px;">
+		<div class="font_color_l font_size_16 floatR" style="line-height:20px;margin-right: 10px;">
 			<img src="${ctx}/static/img/info/recommend.gif"  style="width:20px;height:20px; " align="left"/>
 			&nbsp;<span id="commandBTN">评论</span>
-			&nbsp;<span class="font_color_h2">(3)</span>
+			&nbsp;<span class="font_color_h2">(${commends.count})</span>
 		</div>
 		<div class="clearboth"></div>
 	</div>
@@ -39,54 +39,24 @@
 			<div class="positionA" style="right:70px;top:-11px;">
 				<img src="${ctx}/static/img/info/icon05.gif" height="10"/>
 			</div>		
-		
 		</div>
 		<div class="content_area">
+		
 			<ul>
+				<c:forEach items="${commends.list}" var="commend">
+				
 				<li class="border_bottom1 padding-B10 margin_B10"><img
 					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
 					style="margin: 0px 10px;" />
 					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名1</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
+						<span class=" font_color_h font_size_16">${commend.name}</span>
+						<span class=1"font_size_14 font_color_h floatR"><fmt:formatDate value="${commend.createDate}" pattern="yyyy-MM-dd HH:mm"/></span>
 					</p>
 					<p>
-						<span class="font_size_15 font_color_hei">日因为与新男友甜蜜互动的照片被曝光的萧亚轩也感叹现在的艺人没有隐私：“现在根本就是全民狗仔的时代！</span>
+						<span class="font_size_15 font_color_hei">${commend.content}</span>
 					</p>
 					<div class="clearboth"></div></li>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名2</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">不好意思，沙发了</span>
-					</p>
-					<div class="clearboth"></div></li>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名3</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">日因为与新男友甜蜜互动的照片被曝光的萧亚轩也感叹现在的艺人没有隐私：“现在根本就是全民狗仔的时代！</span>
-					</p>
-					<div class="clearboth"></div></li>
-				<li class="border_bottom1 padding-B10 margin_B10"><img
-					src="${ctx}/static/img/common/default_touxiang.jpg" align="left"
-					style="margin: 0px 10px;" />
-					<p class="margin_B5">
-						<span class=" font_color_h font_size_16">用户名1</span>
-						<span class="font_size_14 font_color_h floatR">2014-08-08 10:20</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_hei">不好意思，沙发了</span>
-					</p>
-					<div class="clearboth"></div></li>
+				</c:forEach>
 			</ul>
 		</div>
 	<br />
@@ -101,7 +71,7 @@
 		<div class="border_bottom1">
 			<textarea rows="" cols="" placeholder="说点什么吧……"></textarea>
 		</div>
-		<p class="floatL" id="biaoqing">
+		<p class="floatL displayN" id="biaoqing">
 			<img src="${ctx}/static/img/info/icon07.gif" width="30" class="BTN00" style="border:0px;"/>
 		</p>
 		<p class="floatR">
