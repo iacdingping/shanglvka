@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.slk.core.dao.mp.WapHomeDao">
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="mp-WapHome-columns">
+	    <![CDATA[
+		`id` as `id`, `location` as `location`, `title` as `title`, `desc` as `desc`, `link` as `link`, `pic` as `pic`, `sort` as `sort`, `create_by` as `createBy`, `create_date` as `createDate`, `update_by` as `updateBy`, `update_date` as `updateDate`, `del_flag` as `delFlag`
+	    ]]>
+	</sql>	
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO mp_wap_home (
+        `id`, `location`, `title`, `desc`, `link`, `pic`, `sort`, `create_by`, `create_date`, `update_by`, `update_date`, `del_flag`
+        ) VALUES (
+        #{id}, #{location}, #{title}, #{desc}, #{link}, #{pic}, #{sort}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{delFlag}        
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="update">
+    <![CDATA[
+        UPDATE mp_wap_home SET
+	        `location` = #{location} , `title` = #{title} , `desc` = #{desc}, `link` = #{link} , `pic` = #{pic} , `sort` = #{sort} , `create_by` = #{createBy} , `create_date` = #{createDate} , `update_by` = #{updateBy} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
+        WHERE 
+        	id = #{id}  	        
+    ]]>
+	</update>
+
+    <delete id="deleteById">
+    <![CDATA[
+        DELETE FROM mp_wap_home WHERE
+        `id` = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultType="com.slk.core.entity.mp.WapHome">
+		SELECT <include refid="mp-WapHome-columns" />
+	    <![CDATA[
+		    FROM mp_wap_home 
+	        WHERE 
+		        `id` = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="WapHome-where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	       <if test="id">
+				AND `id` = #{id}
+			</if>
+	       <if test="location">
+				AND `location` = #{location}
+			</if>
+	       <if test="title">
+				AND `title` = #{title}
+			</if>
+	       <if test="link">
+				AND `link` = #{link}
+			</if>
+	       <if test="pic">
+				AND `pic` = #{pic}
+			</if>
+	       <if test="sort">
+				AND `sort` = #{sort}
+			</if>
+	       <if test="createBy">
+				AND `create_by` = #{createBy}
+			</if>
+	       <if test="createDateBegin != null">
+				AND `create_date` >= #{createDateBegin}
+		   </if>
+		   <if test="createDateEnd != null">
+				AND `create_date` &lt;= #{createDateEnd}
+		   </if>
+	       <if test="updateBy">
+				AND `update_by` = #{updateBy}
+			</if>
+	       <if test="updateDateBegin != null">
+				AND `update_date` >= #{updateDateBegin}
+		   </if>
+		   <if test="updateDateEnd != null">
+				AND `update_date` &lt;= #{updateDateEnd}
+		   </if>
+	       <if test="delFlag">
+				AND `del_flag` = #{delFlag}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM mp_wap_home 
+		<include refid="WapHome-where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="findPage" resultType="com.slk.core.entity.mp.WapHome">
+		SELECT <include refid="mp-WapHome-columns" /> FROM (
+			SELECT <include refid="mp-WapHome-columns" />
+			FROM mp_wap_home 
+			<include refid="WapHome-where"/>
+			
+			<if test="sortColumns != null">
+				ORDER BY ${sortColumns}
+			</if>
+		) limit #{offset}, #{pageSize}
+    </select>
+	
+	<select id="list" resultType="com.slk.core.entity.mp.WapHome">
+    	SELECT <include refid="mp-WapHome-columns" />
+	    FROM mp_wap_home 
+		<include refid="WapHome-where"/>
+		
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+	
+</mapper>
+
