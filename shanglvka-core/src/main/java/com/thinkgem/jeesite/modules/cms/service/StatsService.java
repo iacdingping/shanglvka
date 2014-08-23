@@ -57,14 +57,14 @@ public class StatsService extends BaseService {
 		Long categoryId = StringUtils.toLong(paramMap.get("categoryId"));
 		if (categoryId > 0){
 			ql.append(" and (c.id = :id or c.parentIds like :parentIds)");
-			pm.put("id", categoryId);
+			pm.put("id", categoryId.toString());
 			pm.put("parentIds", "%,"+categoryId+",%");
 		}
 		
 		Long officeId = StringUtils.toLong(paramMap.get("officeId"));
 		if (officeId > 0){
 			ql.append(" and (o.id = :officeId or o.parentIds like :officeParentIds)");
-			pm.put("officeId", officeId);
+			pm.put("officeId", officeId.toString());
 			pm.put("officeParentIds", "%,"+officeId+",%");
 		}
 		
