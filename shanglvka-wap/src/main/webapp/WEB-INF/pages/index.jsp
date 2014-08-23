@@ -22,20 +22,21 @@
 		<ul class="margin_T20">
 			<li class="styleAuto border_right"><a 
 				href="${ctx}/info/view/infolist/1" ><span
-					class="icon_list icon_list_1 "></span><span class="words01">新闻</span></a></li>
+					class="icon_list "><img src="${ctx}/static/img/index/icon01.png" width="50" height="50"/></span>
+					<br/><span class="words01">新闻</span></a></li>
 			<li class="styleAuto border_right"><span
-				class="icon_list icon_list_3 "></span></span><span class="words01">视频</span></li>
-			<li class="styleAuto"><span class="icon_list icon_list_2 "></span></span><span
+				class="icon_list"><img src="${ctx}/static/img/index/icon03.png" width="50" height="50"/></span><br/><span class="words01">视频</span></li>
+			<li class="styleAuto"><span class="icon_list"><img src="${ctx}/static/img/index/icon02.png" width="50" height="50"/></span><br/><span
 				class="words01">文学</span></li>
 			<li class="clearboth"></li>	
 			<li
 				style="background: #d5d5d5; height: 1px; width: 100%; margin: 30px 0px;"></li>
 
 			<li class="styleAuto  border_right"><span
-				class="icon_list icon_list_4 "></span></span><span class="words02">活动专区</span></li>
+				class="icon_list  "><img src="${ctx}/static/img/index/icon04.png" width="50" height="50"/></span><br/><span class="words02">活动专区</span></li>
 			<li class="styleAuto  border_right"><span
-				class="icon_list icon_list_5 "></span></span><span class="words02">积分商城</span></li>
-			<li class="styleAuto"><span class="icon_list icon_list_6"></span></span><span
+				class="icon_list  "><img src="${ctx}/static/img/index/icon05.png" width="50" height="50"/></span><br/><span class="words02">积分商城</span></li>
+			<li class="styleAuto"><span class="icon_list "><img src="${ctx}/static/img/index/icon06.png" width="50" height="50"/></span><br/><span
 				class="words02">敬请期待</span></li>
 			<li class="clearboth"></li>
 		</ul>
