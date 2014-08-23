@@ -9,15 +9,14 @@
 	<artifactId>shanglvka-wap</artifactId>
 	<packaging>war</packaging>
 	<description>前台</description>
-
+	<properties>
+		<druid.version>1.0.1</druid.version>
+		<mysql.driver.version>5.1.13</mysql.driver.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>iac.dp</groupId>
 			<artifactId>shanglvka-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>iac.dp</groupId>
-			<artifactId>shanglvka-business</artifactId>
 		</dependency>
 		<!-- WEB begin -->
 		<dependency>
