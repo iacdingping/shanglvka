@@ -43,6 +43,15 @@ public class MerchantMap extends DataEntity<MerchantMap> {
 	private java.lang.String phone; // phone
 	private java.lang.String offer; // offer
 	private java.lang.String detail; // detail
+	private String label;
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
 
 	private Area area;
 
