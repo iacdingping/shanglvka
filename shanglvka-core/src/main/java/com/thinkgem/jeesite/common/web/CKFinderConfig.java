@@ -54,7 +54,7 @@ public class CKFinderConfig extends Configuration {
 		AccessControlUtil.getInstance(this).loadACLConfig();
 		try {
 			Principal principal = (Principal)SecurityUtils.getSubject().getPrincipal();
-			this.baseURL = ServletContextFactory.getServletContext().getContextPath()+"/userfiles/"+
+			this.baseURL = "http://127.0.0.1:8089/shanglvka-manager/userfiles/"+
 					(principal!=null?principal.getId():0)+"/";
 			/*Principal principal = (Principal) SecurityUtils.getSubject().getPrincipal();
 			String parentDir = principal != null ? principal.getId() : "0";
