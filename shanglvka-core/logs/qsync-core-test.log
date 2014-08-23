@@ -1,0 +1,6 @@
+14:48:41.110 [main] WARN  o.s.aop.framework.CglibAopProxy - Unable to proxy method [public final void org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests.setApplicationContext(org.springframework.context.ApplicationContext)] because it is final: All calls to this method via a proxy will NOT be routed to the target instance.
+14:49:49.202 [main] WARN  o.s.aop.framework.CglibAopProxy - Unable to proxy method [public final void org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests.setApplicationContext(org.springframework.context.ApplicationContext)] because it is final: All calls to this method via a proxy will NOT be routed to the target instance.
+14:49:49.807 [main] INFO  jdbc.sqltiming - INSERT INTO sys_user ( `id`, `name`, `login_name`, `password`, `salt`, `email`, `login_enable`, 
+`ip_enable`, `created`, `deleted`, `last_operate_time` ) VALUES ( NULL, '系统帐号', 'admin', 'f10fc0af8257c400d147c7e6ddb876d070ada331', 
+'721040c095e41ab8', NULL, 1, NULL, NULL, NULL, NULL ) 
+ {executed in 38 msec}

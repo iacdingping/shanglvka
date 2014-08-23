@@ -62,10 +62,10 @@
 
 		<!-- ibatis -->
 		<dependency>
-	<groupId>com.ibatis</groupId>
-	<artifactId>ibatis-sqlmap</artifactId>
-	<version>2.1.0.565</version>
-</dependency>
+			<groupId>com.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>2.1.0.565</version>
+		</dependency>
 		<!-- <dependency> <groupId>org.apache.ibatis</groupId> <artifactId>ibatis-core</artifactId> 
 			<version>3.0</version> </dependency> -->
 		<dependency>
@@ -107,11 +107,6 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-		<dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.1</version>
-      </dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>

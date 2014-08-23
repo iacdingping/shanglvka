@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.slk.core.dao.sys.CodeDao">
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="sys-Code-columns">
+	    <![CDATA[
+		`id` as `id`, `type` as `type`, `code` as `code`, `dictionary_code` as `dictionaryCode`, `dictionary_value` as `dictionaryValue`, `reserve_value` as `reserveValue`, `comment` as `comment`, `created` as `created`, `deleted` as `deleted`, `last_operate_time` as `lastOperateTime`
+	    ]]>
+	</sql>	
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO slk_code (
+        `id`, `type`, `code`, `dictionary_code`, `dictionary_value`, `reserve_value`, `comment`, `created`, `deleted`, `last_operate_time`
+        ) VALUES (
+        #{id}, #{type}, #{code}, #{dictionaryCode}, #{dictionaryValue}, #{reserveValue}, #{comment}, #{created}, #{deleted}, #{lastOperateTime}        
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="update">
+    <![CDATA[
+        UPDATE slk_code SET
+	        `type` = #{type} , `code` = #{code} , `dictionary_code` = #{dictionaryCode} , `dictionary_value` = #{dictionaryValue} , `reserve_value` = #{reserveValue} , `comment` = #{comment} , `created` = #{created} , `deleted` = #{deleted} , `last_operate_time` = #{lastOperateTime}  
+        WHERE 
+        	id = #{id}  	        
+    ]]>
+	</update>
+
+    <delete id="deleteById">
+    <![CDATA[
+        DELETE FROM slk_code WHERE
+        `id` = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultType="Code">
+		SELECT <include refid="sys-Code-columns" />
+	    <![CDATA[
+		    FROM slk_code 
+	        WHERE 
+		        `id` = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="Code-where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	       <if test="id">
+				AND `id` = #{id}
+			</if>
+	       <if test="type">
+				AND `type` = #{type}
+			</if>
+	       <if test="code">
+				AND `code` = #{code}
+			</if>
+	       <if test="dictionaryCode">
+				AND `dictionary_code` = #{dictionaryCode}
+			</if>
+	       <if test="dictionaryValue">
+				AND `dictionary_value` = #{dictionaryValue}
+			</if>
+	       <if test="reserveValue">
+				AND `reserve_value` = #{reserveValue}
+			</if>
+	       <if test="comment">
+				AND `comment` = #{comment}
+			</if>
+	       <if test="createdBegin != null">
+				AND `created` >= #{createdBegin}
+		   </if>
+		   <if test="createdEnd != null">
+				AND `created` &lt;= #{createdEnd}
+		   </if>
+	       <if test="deleted">
+				AND `deleted` = #{deleted}
+			</if>
+	       <if test="lastOperateTimeBegin != null">
+				AND `last_operate_time` >= #{lastOperateTimeBegin}
+		   </if>
+		   <if test="lastOperateTimeEnd != null">
+				AND `last_operate_time` &lt;= #{lastOperateTimeEnd}
+		   </if>
+		</where>
+	</sql>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM slk_code 
+		<include refid="Code-where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="findPage" resultType="Code">
+    	SELECT <include refid="sys-Code-columns" />
+	    FROM slk_code 
+		<include refid="Code-where"/>
+		
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+	
+	<select id="list" resultType="Code">
+    	SELECT <include refid="sys-Code-columns" />
+	    FROM slk_code 
+		<include refid="Code-where"/>
+		
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+	
+</mapper>
+

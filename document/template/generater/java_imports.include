@@ -1,0 +1,5 @@
+import ${basepackage}.${appModule}.${className};
+import ${basepackage}.${appModule}.${className}Dao;
+import ${basepackage}.${appModule}.${className}Manager;
+import ${basepackage}.${appModule}.${className}Query;
+
