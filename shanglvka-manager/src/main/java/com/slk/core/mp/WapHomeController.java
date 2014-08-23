@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.slk.core.PageList;
 import com.slk.core.entity.mp.WapHome;
 import com.slk.core.manager.mp.WapHomeManager;
 import com.slk.core.query.mp.WapHomeQuery;
@@ -75,7 +74,7 @@ public class WapHomeController extends BaseController {
 		if (!beanValidator(model, wapHome)) {
 			return form(wapHome, model);
 		}
-		wapHomeManager.save(wapHome);
+		wapHomeManager.saveOrUpdate(wapHome);
 		addMessage(redirectAttributes, "保存网站首页成功");
 		return "redirect:" + Global.getAdminPath()
 				+ "/mp/wapHome/?repage";

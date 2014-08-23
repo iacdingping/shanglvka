@@ -9,7 +9,7 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="mp-WapHome-columns">
 	    <![CDATA[
-		`id` as `id`, `location` as `location`, `title` as `title`, `link` as `link`, `pic` as `pic`, `sort` as `sort`, `create_by` as `createBy`, `create_date` as `createDate`, `update_by` as `updateBy`, `update_date` as `updateDate`, `del_flag` as `delFlag`
+		`id` as `id`, `location` as `location`, `title` as `title`, `desc` as `desc`, `link` as `link`, `pic` as `pic`, `sort` as `sort`, `create_by` as `createBy`, `create_date` as `createDate`, `update_by` as `updateBy`, `update_date` as `updateDate`, `del_flag` as `delFlag`
 	    ]]>
 	</sql>	
 
@@ -17,9 +17,9 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO mp_wap_home (
-        `id`, `location`, `title`, `link`, `pic`, `sort`, `create_by`, `create_date`, `update_by`, `update_date`, `del_flag`
+        `id`, `location`, `title`, `desc`, `link`, `pic`, `sort`, `create_by`, `create_date`, `update_by`, `update_date`, `del_flag`
         ) VALUES (
-        #{id}, #{location}, #{title}, #{link}, #{pic}, #{sort}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{delFlag}        
+        #{id}, #{location}, #{title}, #{desc}, #{link}, #{pic}, #{sort}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{delFlag}        
         )
     ]]>
 		<!--	
@@ -34,7 +34,7 @@
 	<update id="update">
     <![CDATA[
         UPDATE mp_wap_home SET
-	        `location` = #{location} , `title` = #{title} , `link` = #{link} , `pic` = #{pic} , `sort` = #{sort} , `create_by` = #{createBy} , `create_date` = #{createDate} , `update_by` = #{updateBy} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
+	        `location` = #{location} , `title` = #{title} , `desc` = #{desc}, `link` = #{link} , `pic` = #{pic} , `sort` = #{sort} , `create_by` = #{createBy} , `create_date` = #{createDate} , `update_by` = #{updateBy} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
         WHERE 
         	id = #{id}  	        
     ]]>

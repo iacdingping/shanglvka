@@ -75,6 +75,6 @@
 	<mvc:default-servlet-handler/>
 	
 	<!-- 定义无Controller的path<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="redirect:${web.view.index}"/>
+	<mvc:view-controller path="/" view-name="redirect:/index"/>
 
 </beans>

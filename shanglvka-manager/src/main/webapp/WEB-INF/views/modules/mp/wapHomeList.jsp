@@ -25,44 +25,27 @@
 			value="查询" />
 	</form:form>
 	<tags:message content="${message}" />
-	<table id="contentTable"
-		class="table table-striped table-bordered table-condensed">
-		<thead>
-			<tr>
-				<th>location</th>
-				<th>title</th>
-				<th>link</th>
-				<th>pic</th>
-				<th>sort</th>
-				<th>create_by</th>
-				<th>create_date</th>
-				<th>update_by</th>
-				<th>update_date</th>
-				<shiro:hasPermission name="mp:wapHome:edit">
-					<th>操作</th>
-				</shiro:hasPermission>
-			</tr>
-		</thead>
-		<tbody>
+		<form id="listForm" method="post">
+		<table id="treeTable" class="table table-striped table-bordered table-condensed">
+			<tr><th>首页模块位置</th><th>标题</th><th>超链接</th><th>图片</th><th>排序</th><th>操作</th></tr>
 			<c:forEach items="${page}" var="wapHome">
-				<tr>
-					<td>${wapHome.location}</td>
+				<tr id="${wapHome.id}">
+					<td>${fns:getDictLabel(wapHome.location, 'index_module', '未知')}</td>
 					<td>${wapHome.title}</td>
 					<td>${wapHome.link}</td>
-					<td>${wapHome.pic}</td>
+					<td><img src="${wapHome.pic}" width="30px"> </td>
 					<td>${wapHome.sort}</td>
-					<td>${wapHome.createBy}</td>
-					<td>${wapHome.createDate}</td>
-					<td>${wapHome.updateBy}</td>
-					<td>${wapHome.updateDate}</td>
-					<shiro:hasPermission name="mp:wapHome:edit">
-						<td><a href="${ctx}/mp/wapHome/form?id=${wapHome.id}">修改</a>
-							<a href="${ctx}/mp/wapHome/delete?id=${wapHome.id}"
-							onclick="return confirmx('确认要删除该网站首页吗？', this.href)">删除</a></td>
-					</shiro:hasPermission>
+					<td>
+						<a href="${pageContext.request.contextPath}${fns:getFrontPath()}/list-${tpl.id}${fns:getUrlSuffix()}" target="_blank">访问</a>
+						<shiro:hasPermission name="mp:wapHome:edit">
+							<a href="${ctx}/mp/wapHome/form?id=${wapHome.id}">修改</a>
+								<a href="${ctx}/mp/wapHome/delete?id=${wapHome.id}"
+								onclick="return confirmx('确认要删除该网站首页吗？', this.href)">删除</a>
+						</shiro:hasPermission>
+					</td>
 				</tr>
 			</c:forEach>
-		</tbody>
-	</table>
+		</table>
+	</form>
 </body>
 </html>

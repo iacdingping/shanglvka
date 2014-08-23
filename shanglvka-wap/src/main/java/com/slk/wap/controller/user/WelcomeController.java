@@ -1,14 +1,27 @@
 package com.slk.wap.controller.user;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.slk.core.entity.mp.WapHome;
+import com.slk.core.manager.mp.WapHomeManager;
 
 @Controller
 @RequestMapping
 public class WelcomeController {
 
+	@Autowired
+	private WapHomeManager wapHomeManager;
+	
 	@RequestMapping(value="index")
-	public String welcome() {
+	public String welcome(ModelMap model) {
+		Map<Integer, List<WapHome>> wapHomes = wapHomeManager.listSortedIndexShow();
+		model.put("wapHomes", wapHomes);
 		return "index";
 	}
 }

@@ -34,31 +34,34 @@
 		<form:hidden path="id"/>
 		<tags:message content="${message}"/>
         <div class="control-group">
-			<label class="control-label">location:</label>
+			<label class="control-label">首页模块位置:</label>
 			<div class="controls">
-				<form:input path="location" htmlEscape="false" maxlength="11" class="required"/>
+				<form:select path="location">
+					<form:options items="${fns:getDictList('index_module')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
         <div class="control-group">
-			<label class="control-label">title:</label>
+			<label class="control-label">标题:</label>
 			<div class="controls">
 				<form:input path="title" htmlEscape="false" maxlength="50" class="required"/>
 			</div>
 		</div>
         <div class="control-group">
-			<label class="control-label">link:</label>
+			<label class="control-label">超链接:</label>
 			<div class="controls">
 				<form:input path="link" htmlEscape="false" maxlength="200" class="required"/>
 			</div>
 		</div>
         <div class="control-group">
-			<label class="control-label">pic:</label>
+			<label class="control-label">图片:</label>
 			<div class="controls">
-				<form:input path="pic" htmlEscape="false" maxlength="100" class="required"/>
+                <input type="hidden" id="pic" name="pic" value="${wapHome.pic}"  class="required"/>
+				<tags:ckfinder input="pic" type="thumb" uploadPath="/cms/wapHome" selectMultiple="false"/>
 			</div>
 		</div>
         <div class="control-group">
-			<label class="control-label">sort:</label>
+			<label class="control-label">排序:</label>
 			<div class="controls">
 				<form:input path="sort" htmlEscape="false" maxlength="11" class="required"/>
 			</div>

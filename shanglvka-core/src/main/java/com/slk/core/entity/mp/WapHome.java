@@ -19,6 +19,7 @@ public class WapHome extends BaseEntity<WapHome> {
 	public static final String ALIAS_ID = "id";
 	public static final String ALIAS_LOCATION = "位置，1活动，2快捷图标，3底部列表";
 	public static final String ALIAS_TITLE = "标题名称";
+	public static final String ALIAS_DESC = "描述";
 	public static final String ALIAS_LINK = "超链接";
 	public static final String ALIAS_PIC = "图片地址";
 	public static final String ALIAS_SORT = "排序（升序）";
@@ -42,6 +43,10 @@ public class WapHome extends BaseEntity<WapHome> {
 	 * 标题名称 db_column: title
 	 */
 	private java.lang.String title;
+	/**
+	 * 描述 db_column: desc
+	 */
+	private java.lang.String desc;
 	/**
 	 * 超链接 db_column: link
 	 */
@@ -106,6 +111,14 @@ public class WapHome extends BaseEntity<WapHome> {
 
 	public java.lang.String getTitle() {
 		return this.title;
+	}
+
+	public java.lang.String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(java.lang.String desc) {
+		this.desc = desc;
 	}
 
 	public void setLink(java.lang.String value) {

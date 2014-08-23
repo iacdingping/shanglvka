@@ -1,5 +1,8 @@
 package com.slk.core.manager.mp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +38,19 @@ public class WapHomeManager {
 	 **/
 	public WapHome save(WapHome wapHome) {
 	    Assert.notNull(wapHome,"'wapHome' must be not null");
-	    initDefaultValuesForCreate(wapHome);
-	    new WapHomeChecker().checkCreateWapHome(wapHome);
 	    this.wapHomeDao.save(wapHome);
+	    return wapHome;
+	}
+	
+	/** 
+	 * 保存WapHome
+	 **/
+	public WapHome saveOrUpdate(WapHome wapHome) {
+	    Assert.notNull(wapHome,"'wapHome' must be not null");
+	    if(wapHome.getId() == null) 
+	    	this.wapHomeDao.save(wapHome);
+	    else
+	    	this.wapHomeDao.update(wapHome);
 	    return wapHome;
 	}
 	
@@ -46,7 +59,6 @@ public class WapHomeManager {
 	 **/	
     public WapHome update(WapHome wapHome) {
         Assert.notNull(wapHome,"'wapHome' must be not null");
-        new WapHomeChecker().checkUpdateWapHome(wapHome);
         this.wapHomeDao.update(wapHome);
         return wapHome;
     }	
@@ -90,32 +102,18 @@ public class WapHomeManager {
 	}
 	
     
-	/**
-	 * 为创建时初始化相关默认值 
-	 **/
-    public void initDefaultValuesForCreate(WapHome v) {
-    }
-    
-    /**
-     * WapHome的属性检查类,根据自己需要编写自定义检查
-     **/
-    public class WapHomeChecker {
-        /**可以在此检查只有更新才需要的特殊检查 */
-        public void checkUpdateWapHome(WapHome v) {
-            checkWapHome(v);
-        }
-    
-        /**可以在此检查只有创建才需要的特殊检查 */
-        public void checkCreateWapHome(WapHome v) {
-            checkWapHome(v);
-        }
-        
-        /** 检查到有错误请直接抛异常，不要使用 return errorCode的方式 */
-        public void checkWapHome(WapHome v) {
-        	// Bean Validator检查,属性检查失败将抛异常
-//            validateWithException(v);
-            
-        	//复杂的属性的检查一般需要分开写几个方法，如 checkProperty1(v),checkProperty2(v)
-        }
-    }
+	public Map<Integer, List<WapHome>> listSortedIndexShow() {
+		WapHomeQuery query = new WapHomeQuery();
+		query.setSortColumns("`location`, `sort`");
+		List<WapHome> list = list(query);
+		Map<Integer, List<WapHome>> result = new HashMap<Integer, List<WapHome>>();
+		for(WapHome wh : list) {
+			List<WapHome> tmp = result.get(wh.getLocation());
+			if(tmp == null) {
+				tmp = new ArrayList<WapHome>();
+			}
+			tmp.add(wh);
+		}
+		return result;
+	}
 }
