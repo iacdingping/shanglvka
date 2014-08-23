@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
+<%@ include file="/WEB-INF/pages/include/taglib.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,46 +16,15 @@
 <body>
 	<div class="content_style">
 		<ul>
-			<li class="list_element">
-				<img src="${ctx}/static/img/test/test05.gif" />
-				<div class="margin_T20">
-					<span class="words05">怡口香</span><br/>
-					<span class="words06">店铺地址：西湖区留河路396号</span>
-				</div>
-				<div class="clearboth"></div>
-			</li>
-			<li class="list_element">
-				<img src="${ctx}/static/img/test/test06.gif" />
-				<div class="margin_T20">
-					<span class="words05">中国旅游(嘉善)</span><br/>
-					<span class="words06">江南水乡，邂逅浪漫温柔</span>
-				</div>
-				<div class="clearboth"></div>
-			</li>
-			<li class="list_element">
-				<img src="${ctx}/static/img/test/test07.gif" />
-				<div class="margin_T20">
-					<span class="words05">宋城景区</span><br/>
-					<span class="words06">中国人气最旺的主题公园之一</span>
-				</div>
-				<div class="clearboth"></div>
-			</li>
-			<li class="list_element">
-				<img src="${ctx}/static/img/test/test08.gif" />
-				<div class="margin_T20">
-					<span class="words05">千岛湖水之灵</span><br/>
-					<span class="words06">相约水之灵，乐活千岛湖</span>
-				</div>
-				<div class="clearboth"></div>
-			</li>
-			<li class="list_element">
-				<img src="${ctx}/static/img/test/test05.gif" />
-				<div class="margin_T20">
-					<span class="words05">怡口香</span><br/>
-					<span class="words06">店铺地址：西湖区留河路396号</span>
-				</div>
-				<div class="clearboth"></div>
-			</li>
+			<c:forEach var="item" items="${merchantMaps}" varStatus="merchantMap">
+				<li class="list_element"><a href="${ctx}/sl/detail/${item.id}"><img
+					src="${item.smallPic}" />
+					<div class="margin_T20">
+						<span class="words05">${item.title}</span><br /> <span
+							class="words06">${item.label}</span>
+					</div>
+					<div class="clearboth"></div></a></li>
+			</c:forEach>
 		</ul>
 	</div>
 </body>
