@@ -18,9 +18,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springside.modules.mapper.JaxbMapper;
 
 import com.slk.wap.weixin.instruction.ResponseUtil;
+import com.thinkgem.jeesite.common.mapper.JaxbMapper;
 
 @Controller
 @RequestMapping(value = { "/weixin" })

@@ -9,9 +9,9 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.springside.modules.mapper.JaxbMapper;
 
 import com.slk.wap.controller.weixin.WeixinRequest;
+import com.thinkgem.jeesite.common.mapper.JaxbMapper;
 
 public class WeixinTest {
 	

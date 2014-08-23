@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.slk.core.entity.platform.PlatformUser;
-import com.slk.core.manager.platform.PlatformUserManager;
+import com.slk.core.entity.mp.WeixinUser;
+import com.slk.core.manager.mp.WeixinUserManager;
 import com.slk.wap.controller.weixin.WeixinRequest;
 
 @Service
@@ -13,10 +13,10 @@ import com.slk.wap.controller.weixin.WeixinRequest;
 public abstract class AbstractProcessor implements Processor<WeixinRequest> {
 
 	@Autowired
-	protected PlatformUserManager platformUserManager;
+	protected WeixinUserManager weixinUserManager;
 	
-	public PlatformUser queryUser(WeixinRequest request) {
-		PlatformUser user = platformUserManager.getByPlatformCode(request.getFromUserName());
+	public WeixinUser queryUser(WeixinRequest request) {
+		WeixinUser user = weixinUserManager.getbyPlatformCode(request.getFromUserName());
 		return user;
 	}
 }
