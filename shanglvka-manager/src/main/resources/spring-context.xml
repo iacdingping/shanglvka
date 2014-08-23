@@ -16,14 +16,14 @@
 	<context:property-placeholder ignore-unresolvable="true" location="classpath*:/jeesite.properties" />
 	
 	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。  -->
-	<context:component-scan base-package="com.thinkgem.jeesite,com.slk.core"><!-- base-package 如果多个，用“,”分隔 -->
+	<context:component-scan base-package="com.thinkgem.jeesite,com.slk.core,com.slk.hibernate"><!-- base-package 如果多个，用“,”分隔 -->
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
 	<!-- 定义Hibernate Session工厂 -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
 		<property name="dataSource" ref="dataSource"/>
-		<property name="packagesToScan" value="com.thinkgem.jeesite,com.slk.core"/><!-- 如果多个，用“,”分隔 -->
+		<property name="packagesToScan" value="com.thinkgem.jeesite,com.slk.hibernate.core"/><!-- 如果多个，用“,”分隔 -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
