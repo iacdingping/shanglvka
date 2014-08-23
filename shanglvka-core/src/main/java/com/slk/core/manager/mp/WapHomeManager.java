@@ -102,15 +102,16 @@ public class WapHomeManager {
 	}
 	
     
-	public Map<Integer, List<WapHome>> listSortedIndexShow() {
+	public Map<String, List<WapHome>> listSortedIndexShow() {
 		WapHomeQuery query = new WapHomeQuery();
 		query.setSortColumns("`location`, `sort`");
 		List<WapHome> list = list(query);
-		Map<Integer, List<WapHome>> result = new HashMap<Integer, List<WapHome>>();
+		Map<String, List<WapHome>> result = new HashMap<String, List<WapHome>>();
 		for(WapHome wh : list) {
 			List<WapHome> tmp = result.get(wh.getLocation());
 			if(tmp == null) {
 				tmp = new ArrayList<WapHome>();
+				result.put(wh.getLocation() + "", tmp);
 			}
 			tmp.add(wh);
 		}
