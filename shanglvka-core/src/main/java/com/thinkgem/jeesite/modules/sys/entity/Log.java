@@ -9,6 +9,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
@@ -40,7 +42,7 @@ import com.thinkgem.jeesite.common.utils.IdGen;
 public class Log extends BaseEntity<Log> {
 
 	private static final long serialVersionUID = 1L;
-	private String id;			// 日志编号
+	private Long id;			// 日志编号
 	private String type; 		// 日志类型（1：接入日志；2：错误日志）
 	private User createBy;		// 创建者
 	private Date createDate;	// 日志创建时间
@@ -58,22 +60,23 @@ public class Log extends BaseEntity<Log> {
 		super();
 	}
 	
-	public Log(String id){
+	public Log(Long id){
 		this();
 		this.id = id;
 	}
 
-	@PrePersist
-	public void prePersist(){
-		this.id = IdGen.uuid();
-	}
+//	@PrePersist
+//	public void prePersist(){
+//		this.id = IdGen.uuid();
+//	}
 	
 	@Id
-	public String getId() {
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
