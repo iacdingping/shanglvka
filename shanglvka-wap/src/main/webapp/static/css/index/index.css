@@ -1,5 +1,9 @@
 .icon_list {
-	background: url("/static/img/index/icon.png") no-repeat 50% 50%;
+
+}
+
+.icon_list_1 {
+	background: url("/static/img/index/icon01.png") no-repeat 50% 50%;
 	background-size: 100%;
 	display: block;
 	width: 50px;
@@ -7,25 +11,46 @@
 	margin: auto;
 }
 
-.icon_list_1 {
-	background-position: 0px 0px;
-}
-
 .icon_list_2 {
-	background-position: 0px -50px;
+	background: url("/static/img/index/icon02.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
 }
 
 .icon_list_3 {
-	background-position: 0px -101px;
+	background: url("/static/img/index/icon03.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
 }
 .icon_list_4 {
-	background-position: 0px -150px;
+	background: url("/static/img/index/icon04.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
 }
 .icon_list_5 {
-	background-position: 0px -203px;
+	background: url("/static/img/index/icon05.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
 }
 .icon_list_6 {
-	background-position: 0px -253px;
+	background: url("/static/img/index/icon06.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
 }
 
 .border_right {

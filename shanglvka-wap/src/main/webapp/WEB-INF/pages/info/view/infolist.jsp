@@ -16,6 +16,7 @@
 </head>
 <body>
 	<div class="limit_wth">
+	${pagelist}
 		<div class=" positionR">
 			<div>
 			
@@ -25,9 +26,6 @@
 				<span style="color:#fff;padding-left: 10px;">台湾演员柯震东在京吸毒被抓</span>
 			</p>
 			</div>
-				
-				
-				
 			<div class="floatL"
 				style="width: 25%; height: 4px; background: #339af5"></div>
 			<div class="floatL" style="width: 25%; height: 4px; background: #ccc"></div>
@@ -37,47 +35,22 @@
 
 		<div class="margin_T20">
 			<ul>
+				<c:forEach items="${page.list}"  var="article">
+				
 				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;">
-					<a href="${ctx}/info/view/detail/1">
+					<a href="${ctx}/info/view/detail/${article.id}">
 					<img
-					src="${ctx}/static/img/test/test04.gif" align="left"
+					src="http://localhost:882${article.image}" align="left"
 					style="margin: 0px 10px;" width="70" />
 					<p style="height: 30px;">
-						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
+						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">${article.title}</span>
 					</p>
 					<p>
-						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
+						<span class="font_size_15 font_color_h" style="color:#696969">${article.description}</span>
 					</p>
 					</a>
 					</li>
-
-				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;"><img
-					src="${ctx}/static/img/test/test01.gif" align="left"
-					style="margin: 0px 10px;" width="70" />
-					<p style="height: 30px;">
-						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
-					</p></li>
-				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;"><img
-					src="${ctx}/static/img/test/test02.gif" align="left"
-					style="margin: 0px 10px;" width="70" />
-					<p style="height: 30px;">
-						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
-					</p></li>
-				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;"><img
-					src="${ctx}/static/img/test/test04.gif" align="left"
-					style="margin: 0px 10px;" width="70" />
-					<p style="height: 30px;">
-						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">房祖名涉毒被抓 恐涉刑事犯罪</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_h" style="color:#696969">媒体：此次并非简单的涉毒治安案件，恐涉刑事犯罪。</span>
-					</p></li>
+				</c:forEach>
 			</ul>
 			<br/>
 		</div>
