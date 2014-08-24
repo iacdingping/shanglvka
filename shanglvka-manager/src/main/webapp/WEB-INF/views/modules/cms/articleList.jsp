@@ -51,7 +51,7 @@
 				<td>${article.createBy.name}</td>
 				<td><fmt:formatDate value="${article.updateDate}" type="both"/></td>
 				<td>
-					<a href="${pageContext.request.contextPath}${fns:getFrontPath()}/view-${article.category.id}-${article.id}${fns:getUrlSuffix()}" target="_blank">访问</a>
+					<a href="${wap_url}/info/view/detail/${article.category.id}" target="_blank">访问</a>
 					<shiro:hasPermission name="cms:article:edit">
 						<c:if test="${article.category.allowComment eq '1'}"><shiro:hasPermission name="cms:comment:view">
 							<a href="${ctx}/cms/comment/?module=article&contentId=${article.id}&delFlag=2" onclick="return viewComment(this.href);">评论</a>
