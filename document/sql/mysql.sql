@@ -129,6 +129,30 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+INSERT INTO `test1`.`sys_user`
+            (`id`,
+             `name`,
+             `login_name`,
+             `password`,
+             `salt`,
+             `email`,
+             `login_enable`,
+             `ip_enable`,
+             `created`,
+             `deleted`,
+             `last_operate_time`)
+VALUES (NULL,
+        'admin',
+        'admin',
+        'f10fc0af8257c400d147c7e6ddb876d070ada331',
+        '721040c095e41ab8',
+        NULL,
+        1,
+        NULL,
+        NOW(),
+        0,
+        NOW());
+
 /*Data for the table `sys_user` */
 
 /*Table structure for table `sys_user_log` */
