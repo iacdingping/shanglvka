@@ -5,21 +5,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript"
 	src="${ctx}/static/js/common/jquery.min.js"></script>
+<script type="text/javascript"
+	src="${ctx}/static/js/plugins/scrollAd.js"></script>
 <link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
 <link rel="stylesheet" href="${ctx}/static/css/index/index.css" />
 <title>商旅卡</title>
 </head>
 <body>
-	<header class="">
+	<!--<header class="">
 		<c:forEach items="${wapHomes1}" var="wapHome">
 			<img src="${wapHome.pic}" width="100%" />
 		</c:forEach>	
-	</header>
+	</header> -->
+	 <!-- 轮播图片 -->
+	<div class="box">
+		<ol></ol>
+		<ul>
+			<li class="active" style="left: 0; z-index: 11;"><img
+				src="${ctx}/static/img/index/guangao_01.jpg" width="100%" /></li>
+			<li><img src="${ctx}/static/img/index/guangao_01.jpg"
+				width="100%" /></li>
+			<li><img src="${ctx}/static/img/index/guangao_01.jpg"
+				width="100%" /></li>
+			<li><img src="${ctx}/static/img/index/guangao_01.jpg"
+				width="100%" /></li>
+		</ul>
+	</div>
 	<div class="limit_wth" style="width: 90%;">
 		<ul class="margin_T20">
 			<c:forEach items="${wapHomes2}" var="wapHome">
@@ -49,6 +64,7 @@
 			</c:forEach>
 		</ul>
 	</div>
+	
 	<script type="text/javascript">
 		
 	</script>
