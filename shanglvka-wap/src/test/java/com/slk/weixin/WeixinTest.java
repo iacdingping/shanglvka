@@ -57,5 +57,4 @@ public class WeixinTest {
 				post.releaseConnection();
 		}
 	}
-	
 }

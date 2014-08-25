@@ -1,8 +1,3 @@
-/**
- * Copyright &copy; 2012-2013 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- */
 package com.thinkgem.jeesite.modules.cms.service;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,8 +15,7 @@ import com.thinkgem.jeesite.modules.cms.entity.Comment;
 
 /**
  * 评论Service
- * @author ThinkGem
- * @version 2013-01-15
+ *
  */
 @Service
 @Transactional(readOnly = true)
@@ -42,7 +36,7 @@ public class CommentService extends BaseService {
 		if (StringUtils.isNotEmpty(comment.getTitle())){
 			dc.add(Restrictions.like("title", "%"+comment.getTitle()+"%"));
 		}
-		dc.add(Restrictions.eq(Comment.FIELD_DEL_FLAG, comment.getDelFlag()));
+		dc.add(Restrictions.eq(Comment.FIELD_DEL_FLAG, Comment.DEL_FLAG_NORMAL));
 		dc.addOrder(Order.desc("id"));
 		return commentDao.find(page, dc);
 	}
