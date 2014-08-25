@@ -54,7 +54,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">列表图片:</label>
+			<label class="control-label">列表图片(50*50):</label>
 			<div class="controls">
 				<input type="hidden" id="smallPic" name="smallPic"
 					value="${merchantMap.smallPic}" />
@@ -63,7 +63,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">大图片:</label>
+			<label class="control-label">大图片(640*320):</label>
 			<div class="controls">
 				<input type="hidden" id="bgPic" name="bgPic"
 					value="${merchantMap.bgPic}" />
