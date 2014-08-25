@@ -22,6 +22,7 @@ public class WelcomeController {
 	public String welcome(ModelMap model) {
 		Map<String, List<WapHome>> wapHomes = wapHomeManager.listSortedIndexShow();
 		model.put("wapHomes1", wapHomes.get("1"));
+		System.out.println(wapHomes.get("2").size());
 		model.put("wapHomes2", wapHomes.get("2"));
 		model.put("wapHomes3", wapHomes.get("3"));
 		return "index";

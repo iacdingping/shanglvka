@@ -15,9 +15,9 @@
 <title>商旅卡</title>
 </head>
 <body>
-	<header class="">
+	<header class="limit_wth">
 		<c:forEach items="${wapHomes1}" var="wapHome">
-			<img src="${wapHome.pic}" width="100%" />
+			<img src="${wapHome.pic}" width="100%" max-width="320px;" />
 		</c:forEach>	
 	</header>
 	<div class="limit_wth" style="width: 90%;">

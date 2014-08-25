@@ -139,12 +139,12 @@
     </select>
 
 	<select id="findByKey" resultType="Keyword">
-		SELECT <include refid="mp-Keyword-columns" />(
-	    	SELECT <include refid="mp-Keyword-columns" />
+		SELECT <include refid="mp-Keyword-columns" /> FROM (
+	    	SELECT *
 		    FROM mp_keyword 
 			WHERE `key` LIKE CONCAT('%', #{content}, '%')
 			OR content LIKE CONCAT('%', `key`, '%')
-			ORDER BY `priority`
+			ORDER BY `priority` DESC
 		) a LIMIT 0, 1
     </select>
 </mapper>

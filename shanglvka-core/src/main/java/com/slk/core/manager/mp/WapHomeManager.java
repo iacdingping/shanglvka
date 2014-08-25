@@ -108,7 +108,7 @@ public class WapHomeManager {
 		List<WapHome> list = list(query);
 		Map<String, List<WapHome>> result = new HashMap<String, List<WapHome>>();
 		for(WapHome wh : list) {
-			List<WapHome> tmp = result.get(wh.getLocation());
+			List<WapHome> tmp = result.get(wh.getLocation() + "");
 			if(tmp == null) {
 				tmp = new ArrayList<WapHome>();
 				result.put(wh.getLocation() + "", tmp);
