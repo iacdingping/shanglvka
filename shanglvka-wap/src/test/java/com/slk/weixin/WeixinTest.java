@@ -22,7 +22,7 @@ public class WeixinTest {
 		HttpPost post = new HttpPost(s);
 		try {
 			WeixinRequest request = new WeixinRequest();
-			//request.setContent("JC#18120102150");//18067908749");//18120102150");
+//			request.setContent("JC#18120102150");//18067908749");//18120102150");
 			//request.setContent("BD#18067908749");
 			//request.setContent("CX");
 			//request.setContent("jiangl");
@@ -37,9 +37,9 @@ public class WeixinTest {
 		   // request.setFromUserName("oyAj1jtQYNKg98k6bZAPGmMTPVn0");//18905710189
 			request.setToUserName("liuliangguanjia");
 			request.setMsgType("event");
-//			request.setEvent("CLICK");
-			request.setEvent("subscribe");
-//			request.setEventKey("SYLL");
+			request.setEvent("CLICK");
+//			request.setEvent("subscribe");
+			request.setEventKey("SYLL");
 			String requestBody = JaxbMapper.toXml(request);
 			System.out.println(requestBody);
 			
@@ -57,5 +57,4 @@ public class WeixinTest {
 				post.releaseConnection();
 		}
 	}
-	
 }
