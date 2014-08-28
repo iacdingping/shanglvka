@@ -8,4 +8,4 @@
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}${fns:getAdminPath()}"/>
 <c:set var="ctxStatic" value="${pageContext.request.contextPath}/static"/>
-<c:set var="wap_url" value="http://localhost:881/"></c:set>
+<c:set var="wap_url" value="http://202.101.166.21"></c:set>

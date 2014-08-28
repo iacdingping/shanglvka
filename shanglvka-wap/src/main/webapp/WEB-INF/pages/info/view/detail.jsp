@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fns" uri="/WEB-INF/tlds/fns.tld" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
 		</header>
 		<article class="conetnt limit_wth content_area">
 			<p class="sj2 margin_T10">
-				${viewData.articleData.content}
+				${fns:unescapeHtml(viewData.articleData.content)}
 			</p>
 			
 			<br />
