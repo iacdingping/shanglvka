@@ -5,8 +5,6 @@
  *****************************************************************/
 package com.slk.core.mp;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.slk.core.PageList;
 import com.slk.core.entity.mp.WapHome;
 import com.slk.core.manager.mp.WapHomeManager;
 import com.slk.core.query.mp.WapHomeQuery;
@@ -49,14 +48,10 @@ public class WapHomeController extends BaseController {
 
 	@RequiresPermissions("mp:wapHome:view")
 	@RequestMapping(value = { "list", "" })
-	public String list(WapHome wapHome, HttpServletRequest request,
+	public String list(WapHomeQuery wapHomeQuery, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
-		// User user = UserUtils.getUser();
-		// if (!user.isAdmin()) {
-		// wapHome.setCreateBy(user.getId());
-		// }
-		List<WapHome> page = wapHomeManager.list(new WapHomeQuery());
-		model.addAttribute("page", page);
+		PageList<WapHome> pageList = wapHomeManager.findPage(wapHomeQuery);
+		model.addAttribute("pageList", pageList);
 		return "modules/mp/wapHomeList";
 	}
 

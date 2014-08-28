@@ -86,7 +86,7 @@ public class ${className}Manager {
 	@Transactional(readOnly=true)
 	public PageList<${className}> findPage(${className}Query query) {
 	    Assert.notNull(query,"'query' must be not null");
-		return new PageList<${className}>(list(query), 
+		return new PageList<${className}>(${classNameLower}Dao.findPage(query), 
 				query.getPage(), query.getPageSize(), count(query));
 	}
 	

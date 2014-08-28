@@ -94,13 +94,15 @@
     	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
     -->
     <select id="findPage" resultType="${className}">
-    	SELECT <include refid="${appModule}-${className}-columns" />
-	    FROM ${table.sqlName} 
-		<include refid="${className}-where"/>
-		
-		<if test="sortColumns != null">
-			ORDER BY <@jspEl 'sortColumns'/>
-		</if>
+		SELECT <include refid="${appModule}-${className}-columns" /> FROM (
+			SELECT *
+			FROM ${table.sqlName} 
+			<include refid="${className}-where"/>
+			
+			<if test="sortColumns != null">
+				ORDER BY <@jspEl 'sortColumns'/>
+			</if>
+		) a limit <@mapperEl 'offset' />, <@mapperEl 'pageSize' />
     </select>
 	
 	<select id="list" resultType="${className}">

@@ -97,7 +97,7 @@ public class WapHomeManager {
 	@Transactional(readOnly=true)
 	public PageList<WapHome> findPage(WapHomeQuery query) {
 	    Assert.notNull(query,"'query' must be not null");
-		return new PageList<WapHome>(list(query), 
+		return new PageList<WapHome>(wapHomeDao.findPage(query), 
 				query.getPage(), query.getPageSize(), count(query));
 	}
 	

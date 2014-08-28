@@ -83,7 +83,7 @@ public class KeywordManager {
 	@Transactional(readOnly=true)
 	public PageList<Keyword> findPage(KeywordQuery query) {
 	    Assert.notNull(query,"'query' must be not null");
-		return new PageList<Keyword>(list(query), 
+		return new PageList<Keyword>(keywordDao.findPage(query), 
 				query.getPage(), query.getPageSize(), count(query));
 	}
 

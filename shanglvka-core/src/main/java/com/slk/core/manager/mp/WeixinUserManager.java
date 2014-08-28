@@ -83,7 +83,7 @@ public class WeixinUserManager {
 	@Transactional(readOnly=true)
 	public PageList<WeixinUser> findPage(WeixinUserQuery query) {
 	    Assert.notNull(query,"'query' must be not null");
-		return new PageList<WeixinUser>(list(query), 
+		return new PageList<WeixinUser>(userDao.findPage(query), 
 				query.getPage(), query.getPageSize(), count(query));
 	}
 

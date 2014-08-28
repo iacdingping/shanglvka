@@ -8,6 +8,13 @@
 		$(document).ready(function() {
 			
 		});
+		
+		function page(n,s){
+			$("#pageNo").val(n);
+			$("#pageSize").val(s);
+			$("#searchForm").submit();
+        	return false;
+        }
 	</script>
 </head>
 <body>
@@ -17,18 +24,18 @@
 			<li><a href="${ctx}/mp/wapHome/form">网站首页添加</a></li>
 		</shiro:hasPermission>
 	</ul>
-	<form:form id="searchForm" modelAttribute="wapHome"
+	<form id="searchForm" modelAttribute="wapHome"
 		action="${ctx}/mp/wapHome/" method="post"
 		class="breadcrumb form-search">
-		<!--添加查询条件-->
-		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit"
-			value="查询" />
-	</form:form>
+		<input id="pageNo" name="page" type="hidden" value="${pageList.page}"/>
+		<input id="pageSize" name="pageSize" type="hidden" value="${pageList.pageSize}"/>
+		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
+	</form>
 	<tags:message content="${message}" />
 		<form id="listForm" method="post">
 		<table id="treeTable" class="table table-striped table-bordered table-condensed">
 			<tr><th>首页模块位置</th><th>标题</th><th>超链接</th><th>图片</th><th>排序</th><th>操作</th></tr>
-			<c:forEach items="${page}" var="wapHome">
+			<c:forEach items="${pageList.items}" var="wapHome">
 				<tr id="${wapHome.id}">
 					<td>${fns:getDictLabel(wapHome.location, 'index_module', '未知')}</td>
 					<td>${wapHome.title}</td>
@@ -47,5 +54,6 @@
 			</c:forEach>
 		</table>
 	</form>
+	<div class="pagination">${pageList}</div>
 </body>
 </html>

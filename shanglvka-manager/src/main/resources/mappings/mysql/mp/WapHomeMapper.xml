@@ -112,14 +112,14 @@
     -->
     <select id="findPage" resultType="com.slk.core.entity.mp.WapHome">
 		SELECT <include refid="mp-WapHome-columns" /> FROM (
-			SELECT <include refid="mp-WapHome-columns" />
+			SELECT *
 			FROM mp_wap_home 
 			<include refid="WapHome-where"/>
 			
 			<if test="sortColumns != null">
 				ORDER BY ${sortColumns}
 			</if>
-		) limit #{offset}, #{pageSize}
+		) a limit #{offset}, #{pageSize}
     </select>
 	
 	<select id="list" resultType="com.slk.core.entity.mp.WapHome">
