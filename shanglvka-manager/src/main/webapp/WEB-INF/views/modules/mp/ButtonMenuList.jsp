@@ -44,6 +44,7 @@
 				<th>createDate</th>
 				<th>updateDate</th>
 				<th>delFlag</th>
+				<th>操作</th>
 			</tr>
 			<c:forEach items="${pageList.items}" var="buttonMenu">
 				<tr id="bl${buttonMenu.id}">
@@ -55,7 +56,6 @@
 						<td>${buttonMenu.createDate}</td>
 						<td>${buttonMenu.updateDate}</td>
 						<td>${buttonMenu.delFlag}</td>
-						<td>操作</td>
 					<td>
 						<shiro:hasPermission name="mp:buttonMenu:edit">
 							<a href="${ctx}/mp/buttonMenu/form?id=${buttonMenu.id}">修改</a>
