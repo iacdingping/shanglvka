@@ -4,12 +4,15 @@
 <#assign classNameLower = className?uncap_first> 
 package ${basepackage}.entity.${appModule};
 
+import com.slk.core.entity.mp.WeixinUser;
+import com.thinkgem.jeesite.common.persistence.BaseEntity;
+
 <#include "/java_imports.include">
 
 /**
 <#include "/java_description.include">
  */
-public class ${className} {
+public class ${className} extends BaseEntity<${className}> {
 	
 	//alias
 	public static final String TABLE_ALIAS = "${table.tableAlias}";

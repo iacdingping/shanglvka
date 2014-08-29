@@ -3,7 +3,7 @@
  *@author 禹波
  *@copyright all rights reserved (c) wyyft@163.com
  *****************************************************************/
-package com.slk.core.mp;
+package com.slk.core.controller.mp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,6 +52,7 @@ public class WapHomeController extends BaseController {
 			HttpServletResponse response, Model model) {
 		PageList<WapHome> pageList = wapHomeManager.findPage(wapHomeQuery);
 		model.addAttribute("pageList", pageList);
+		model.addAttribute("pageQuery", wapHomeQuery);
 		return "modules/mp/wapHomeList";
 	}
 

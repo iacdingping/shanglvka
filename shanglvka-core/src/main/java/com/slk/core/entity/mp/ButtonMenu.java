@@ -10,14 +10,15 @@ import com.thinkgem.jeesite.common.persistence.BaseEntity;
  * @version 1.0
  * @since 1.0
  * */
-public class WeixinUser extends BaseEntity<WeixinUser> {
+public class ButtonMenu extends BaseEntity<ButtonMenu>{
 	
 	//alias
-	public static final String TABLE_ALIAS = "微信用户";
+	public static final String TABLE_ALIAS = "微信平台自定义菜单";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_IDENTIFICATION = "身份标识";
-	public static final String ALIAS_PLATFORM_CODE = "平台号码";
-	public static final String ALIAS_TYPE = "类型 1 关注 2 取消关注 3 绑定";
+	public static final String ALIAS_NAME = "菜单名称";
+	public static final String ALIAS_KEY = "响应键标识(mp_platform_keyword关键字对应)";
+	public static final String ALIAS_PARENT = "父ID";
+	public static final String ALIAS_TYPE = "类型 BUTTON,LINK";
 	public static final String ALIAS_CREATE_DATE = "createDate";
 	public static final String ALIAS_UPDATE_DATE = "updateDate";
 	public static final String ALIAS_DEL_FLAG = "delFlag";
@@ -29,17 +30,21 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
      */	
 	private java.lang.Long id;
     /**
-     * 身份标识       db_column: identification 
+     * 菜单名称       db_column: name 
      */	
-	private java.lang.String identification;
+	private java.lang.String name;
     /**
-     * 平台号码       db_column: platform_code 
+     * 响应键标识(mp_platform_keyword关键字对应)       db_column: key 
      */	
-	private java.lang.String platformCode;
+	private java.lang.String key;
     /**
-     * 类型 1 关注 2 取消关注 3 绑定       db_column: type 
+     * 父ID       db_column: parent 
      */	
-	private java.lang.Integer type;
+	private java.lang.Long parent;
+    /**
+     * 类型 BUTTON,LINK       db_column: type 
+     */	
+	private java.lang.String type;
     /**
      * createDate       db_column: create_date 
      */	
@@ -51,13 +56,13 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
     /**
      * delFlag       db_column: del_flag 
      */	
-	private java.lang.Integer delFlag;
+	private java.lang.Boolean delFlag;
 	//columns END
 
-	public WeixinUser(){
+	public ButtonMenu(){
 	}
 
-	public WeixinUser(
+	public ButtonMenu(
 		java.lang.Long id
 	){
 		this.id = id;
@@ -69,22 +74,28 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 	public java.lang.Long getId() {
 		return this.id;
 	}
-	public void setIdentification(java.lang.String value) {
-		this.identification = value;
+	public void setName(java.lang.String value) {
+		this.name = value;
 	}
-	public java.lang.String getIdentification() {
-		return this.identification;
+	public java.lang.String getName() {
+		return this.name;
 	}
-	public void setPlatformCode(java.lang.String value) {
-		this.platformCode = value;
+	public void setKey(java.lang.String value) {
+		this.key = value;
 	}
-	public java.lang.String getPlatformCode() {
-		return this.platformCode;
+	public java.lang.String getKey() {
+		return this.key;
 	}
-	public void setType(java.lang.Integer value) {
+	public void setParent(java.lang.Long value) {
+		this.parent = value;
+	}
+	public java.lang.Long getParent() {
+		return this.parent;
+	}
+	public void setType(java.lang.String value) {
 		this.type = value;
 	}
-	public java.lang.Integer getType() {
+	public java.lang.String getType() {
 		return this.type;
 	}
 	public void setCreateDate(java.util.Date value) {
@@ -99,10 +110,10 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 	public java.util.Date getUpdateDate() {
 		return this.updateDate;
 	}
-	public void setDelFlag(java.lang.Integer value) {
+	public void setDelFlag(java.lang.Boolean value) {
 		this.delFlag = value;
 	}
-	public java.lang.Integer getDelFlag() {
+	public java.lang.Boolean getDelFlag() {
 		return this.delFlag;
 	}
 }

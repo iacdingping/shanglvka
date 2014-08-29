@@ -10,7 +10,7 @@ import com.thinkgem.jeesite.common.persistence.BaseEntity;
  * @version 1.0
  * @since 1.0
  * */
-public class Keyword extends BaseEntity<WapHome> {
+public class Keyword extends BaseEntity<Keyword> {
 	
 	//alias
 	public static final String TABLE_ALIAS = "平台关键字自动回复";

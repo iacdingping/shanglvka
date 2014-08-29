@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import com.slk.core.entity.mp.ButtonMenu;
+
 <#include "/java_imports.include">
 
 /**
@@ -51,6 +53,14 @@ public class ${className}Manager {
         this.${classNameLower}Dao.update(${classNameLower});
         return ${classNameLower};
     }	
+    
+    public void saveOrUpdate(${className} ${classNameLower}) {
+		if(${classNameLower}.getId() == null) {
+			this.${classNameLower}Dao.save(${classNameLower});
+		} else {
+			this.${classNameLower}Dao.update(${classNameLower});
+		}
+	}
     
 	/** 
 	 * 删除${className}
