@@ -1,5 +1,6 @@
 package com.slk.core.manager.mp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,9 @@ public class ButtonMenuManager {
     }	
     
     public void saveOrUpdate(ButtonMenu buttonMenu) {
+		buttonMenu.setUpdateDate(new Date());
     	if(buttonMenu.getId() == null) {
+    		buttonMenu.setCreateDate(new Date());
     		this.buttonMenuDao.save(buttonMenu);
 		} else {
 			this.buttonMenuDao.update(buttonMenu);
