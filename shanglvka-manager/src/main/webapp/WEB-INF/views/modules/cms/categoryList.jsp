@@ -24,7 +24,7 @@
 	<tags:message content="${message}"/>
 	<form id="listForm" method="post">
 		<table id="treeTable" class="table table-striped table-bordered table-condensed">
-			<tr><th>栏目名称</th><th>归属机构</th><th>栏目模型</th><th style="text-align:center;">排序</th><th title="是否在导航中显示该栏目">导航菜单</th><th title="是否在分类页中显示该栏目的文章列表">栏目列表</th><th>展现方式</th><th>操作</th></tr>
+			<tr><th>栏目名称</th><th>归属机构</th><th>栏目模型</th><th style="text-align:center;">排序</th><th title="是否在导航中显示该栏目" style="display:none">导航菜单</th><th title="是否在分类页中显示该栏目的文章列表" style="display:none">栏目列表</th><th style="display:none">展现方式</th><th>操作</th></tr>
 			<c:forEach items="${list}" var="tpl">
 				<tr id="${tpl.id}" pId="${tpl.parent.id ne '1' ? tpl.parent.id : '0'}">
 					<td><a href="${ctx}/cms/category/form?id=${tpl.id}">${tpl.name}</a></td>
@@ -38,9 +38,9 @@
 							${tpl.sort}
 						</shiro:lacksPermission>
 					</td>
-					<td>${fns:getDictLabel(tpl.inMenu, 'show_hide', '隐藏')}</td>
-					<td>${fns:getDictLabel(tpl.inList, 'show_hide', '隐藏')}</td>
-					<td>${fns:getDictLabel(tpl.showModes, 'cms_show_modes', '默认展现方式')}</td>
+					<td style="display:none">${fns:getDictLabel(tpl.inMenu, 'show_hide', '隐藏')}</td>
+					<td style="display:none">${fns:getDictLabel(tpl.inList, 'show_hide', '隐藏')}</td>
+					<td style="display:none">${fns:getDictLabel(tpl.showModes, 'cms_show_modes', '默认展现方式')}</td>
 					<td>
 						<a href="${wap_url}info/view/infolist/${tpl.id}" target="_blank">访问</a>
 						<shiro:hasPermission name="cms:category:edit">

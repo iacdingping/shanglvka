@@ -1,5 +1,7 @@
 package com.slk.core.controller.mp;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,9 +41,11 @@ public class ButtonMenuController extends BaseController {
 	 * 因为仅update()方法的form中有id属性，因此仅在update时实际执行.
 	 */
 	@ModelAttribute
-	public void getButtonMenu(@RequestParam(value = "id", defaultValue = "-1") Long id, Model model) {
-		if (id != -1) {
-			model.addAttribute("buttonMenu", buttonMenuManager.getById(id));
+	public ButtonMenu getButtonMenu(@RequestParam(required = false) Long id) {
+		if (id != null) {
+			return buttonMenuManager.getById(id);
+		} else {
+			return new ButtonMenu();
 		}
 	}
 	

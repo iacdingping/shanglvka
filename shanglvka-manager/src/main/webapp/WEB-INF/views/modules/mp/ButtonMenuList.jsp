@@ -21,7 +21,7 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="${ctx}/mp/buttonMenu/">微信平台自定义菜单列表</a></li>
-		<shiro:hasPermission name="mp:buttonMenu:edit">
+		<shiro:hasPermission name="mp:buttonMenu:view">
 			<li><a href="${ctx}/mp/buttonMenu/form">微信平台自定义菜单添加</a></li>
 		</shiro:hasPermission>
 	</ul>
@@ -36,14 +36,14 @@
 		<form id="listForm" method="post">
 		<table id="treeTable" class="table table-striped table-bordered table-condensed">
 			<tr>
-				<th>id</th>
+				<th>ID</th>
 				<th>菜单名称</th>
-				<th>响应键标识(mp_platform_keyword关键字对应)</th>
+				<th>关键字</th>
 				<th>父ID</th>
-				<th>类型 BUTTON,LINK</th>
-				<th>createDate</th>
-				<th>updateDate</th>
-				<th>delFlag</th>
+				<th>类型</th>
+				<th>创建时间</th>
+				<th>更新时间</th>
+				<th>是否有效</th>
 				<th>操作</th>
 			</tr>
 			<c:forEach items="${pageList.items}" var="buttonMenu">
@@ -51,16 +51,14 @@
 						<td>${buttonMenu.id}</td>
 						<td>${buttonMenu.name}</td>
 						<td>${buttonMenu.key}</td>
-						<td>${buttonMenu.parent}</td>
-						<td>${buttonMenu.type}</td>
-						<td>${buttonMenu.createDate}</td>
-						<td>${buttonMenu.updateDate}</td>
-						<td>${buttonMenu.delFlag}</td>
+						<td><c:if test="${buttonMenu.parent==0}">顶级</c:if><c:if test="${buttonMenu.parent!=0}">${buttonMenu.parent}</c:if></td>
+						<td><c:if test="${buttonMenu.type=='click'}">按钮</c:if><c:if test="${buttonMenu.type=='view'}">链接</c:if></td>
+						<td><fmt:formatDate value="${buttonMenu.createDate}" type="both"/></td>
+						<td><fmt:formatDate value="${buttonMenu.updateDate}" type="both"/></td>
+						<td><c:if test="${!buttonMenu.delFlag}">有效</c:if><c:if test="${buttonMenu.delFlag}">无效</c:if></td>
 					<td>
 						<shiro:hasPermission name="mp:buttonMenu:edit">
 							<a href="${ctx}/mp/buttonMenu/form?id=${buttonMenu.id}">修改</a>
-								<a href="${ctx}/mp/buttonMenu/delete?id=${buttonMenu.id}"
-								onclick="return confirmx('确认要删除该网站首页吗？', this.href)">删除</a>
 						</shiro:hasPermission>
 					</td>
 				</tr>
@@ -70,3 +68,4 @@
 	<div class="pagination">${pageList}</div>
 </body>
 </html>
+

@@ -28,7 +28,7 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/mp/buttonMenu/">微信平台自定义菜单列表</a></li>
-		<li class="active"><a href="${ctx}/mp/buttonMenu/form?id=${buttonMenu.id}">网站首页<shiro:hasPermission name="mp:buttonMenu:edit">${not empty buttonMenu.id?"修改":"添加"}</shiro:hasPermission><shiro:lacksPermission name="mp:buttonMenu:edit">查看</shiro:lacksPermission></a></li>
+		<li class="active"><a href="${ctx}/mp/buttonMenu/form?id=${buttonMenu.id}">微信平台自定义菜单添加	<shiro:hasPermission name="mp:buttonMenu:edit">${not empty buttonMenu.id?"修改":"添加"}</shiro:hasPermission><shiro:lacksPermission name="mp:buttonMenu:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="buttonMenu" action="${ctx}/mp/buttonMenu/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
@@ -47,22 +47,35 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">响应键标识(mp_platform_keyword关键字对应):</label>
+			<label class="control-label">关键字</label>
 			<div class="controls">
 				<form:input path="key" htmlEscape="false" maxlength="50" class="required"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">父ID:</label>
+			<!--<div class="controls">
+				<tags:treeselect id="buttonMenu" name="buttonMenu.id" value="${buttonMenu.id}" labelName="buttonMenu.name" labelValue="${buttonMenu.name}"
+					title="父ID" url="#" module="buttonMenu" notAllowSelectRoot="false" cssClass="input-small"/>
+			</div>-->
+			  
 			<div class="controls">
 				<form:input path="parent" htmlEscape="false" maxlength="50" class="required"/>
 			</div>
+			
 		</div>
 		<div class="control-group">
-			<label class="control-label">类型 BUTTON,LINK:</label>
+			<label class="control-label">类型:</label>
 			<div class="controls">
+			<form:select id="type" path="type" class="input-small">
+				<form:option value="click" label="按钮"/>
+				<form:option value="view" label="链接"/>
+			</form:select>
+			</div>
+			<!-- <div class="controls">
 				<form:input path="type" htmlEscape="false" maxlength="50" class="required"/>
 			</div>
+			 -->
 		</div>
 		
 		<div class="form-actions">

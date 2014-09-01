@@ -58,11 +58,12 @@
 			<label class="control-label">标题:</label>
 			<div class="controls">
 				<form:input path="title" htmlEscape="false" maxlength="200" class="input-xxlarge measure-input required"/>
-				&nbsp;<label>颜色:</label>
+			<!-- 	&nbsp;<label>颜色:</label>
 				<form:select path="color" class="input-mini">
 					<form:option value="" label="默认"/>
 					<form:options items="${fns:getDictList('color')}" itemLabel="label" itemValue="value" htmlEscape="false" />
 				</form:select>
+				 -->
 			</div>
 		</div>
         <div id="linkBody" class="control-group" style="display:none">
@@ -72,7 +73,7 @@
                 <span class="help-inline">绝对或相对地址。</span>
             </div>
         </div>
-		<div class="control-group">
+		<!--<div class="control-group">
 			<label class="control-label">关键字:</label>
 			<div class="controls">
 				<form:input path="keywords" htmlEscape="false" maxlength="200" class="input-xlarge"/>
@@ -92,7 +93,7 @@
 					onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true});"/>
 				<span class="help-inline">数值越大排序越靠前，过期时间可为空，过期后取消置顶。</span>
 			</div>
-		</div>
+		</div>-->
 		<div class="control-group">
 			<label class="control-label">摘要:</label>
 			<div class="controls">
@@ -100,7 +101,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">缩略图:</label>
+			<label class="control-label">缩略图(50X50):</label>
 			<div class="controls">
                 <input type="hidden" id="image" name="image" value="${article.imageSrc}" />
 				<tags:ckfinder input="image" type="thumb" uploadPath="/cms/article" selectMultiple="false"/>
@@ -113,7 +114,7 @@
 				<tags:ckeditor replace="content" uploadPath="/cms/article" />
 			</div>
 		</div>
-		<div class="control-group">
+		<!-- <div class="control-group">
 			<label class="control-label">来源:</label>
 			<div class="controls">
 				<form:input path="articleData.copyfrom" htmlEscape="false" maxlength="200" class="input-xlarge"/>
@@ -165,19 +166,20 @@
 					});
 				</script>
 			</div>
-		</div>
+		</div> -->
 		<div class="control-group">
 			<label class="control-label">是否允许评论:</label>
 			<div class="controls">
 				<form:radiobuttons path="articleData.allowComment" items="${fns:getDictList('yes_no')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 			</div>
 		</div>
-		<div class="control-group">
+		<!-- <div class="control-group">
 			<label class="control-label">推荐位:</label>
 			<div class="controls">
 				<form:checkboxes path="posidList" items="${fns:getDictList('cms_posid')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 			</div>
 		</div>
+		 -->
 		<div class="control-group">
 			<label class="control-label">发布时间:</label>
 			<div class="controls">
@@ -195,7 +197,7 @@
 				</div>
 			</div>
 		</shiro:hasPermission>
-		<shiro:hasPermission name="cms:category:edit">
+	<!--	<shiro:hasPermission name="cms:category:edit">
             <div class="control-group">
                 <label class="control-label">自定义内容视图:</label>
                 <div class="controls">
@@ -214,6 +216,7 @@
                 </div>
             </div>
 		</shiro:hasPermission>
+		-->
 		<c:if test="${not empty article.id}">
 			<div class="control-group">
 				<label class="control-label">查看评论:</label>
