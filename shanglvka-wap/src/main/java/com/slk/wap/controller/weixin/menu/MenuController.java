@@ -63,11 +63,11 @@ public class MenuController {
 	@ResponseBody
 	public Map<String , Object> set(@RequestParam("appid")String appid,
 			@RequestParam("secret")String secret,
-			@RequestParam("menuStr")String menuStr) throws Exception{
+			@RequestParam("menuID")String menuID) throws Exception{
 		
 		Map<String , Object> map = new HashMap<String , Object>();
 		String result = "" ;
-		String params = this.organizMenu(menuStr);
+		String params = this.organizMenu(menuID);
 		String accessToken = this.getAccessToken(appid, secret);
 		String delStr = deleteMenuInfo(accessToken);
 		if(delStr.equals("ok")){
@@ -77,10 +77,70 @@ public class MenuController {
 		return map;
 	}
 	
+	@RequestMapping("/view")
+	@ResponseBody
+	public Map<String , Object> view(@RequestParam("appid")String appid,
+			@RequestParam("secret")String secret){
+		Map<String , Object> map = new HashMap<String , Object>();
+		try {
+			map.put("result", this.getMenuInfo(this.getAccessToken(appid, secret)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map; 
+	}
 	
-	//组织菜单
-	public String organizMenu(String menuStr){
-		return menuStr;
+	
+	//构建菜单
+	public String organizMenu(String menuID){
+		String jsonStr="{"+
+			     "\"button\":["+
+			     "{"+
+		           "\"name\":\"查询\","+
+		           "\"type\":\"click\","+
+		           "\"key\":\"CX\""+
+		         "},"+
+		           
+		         "{"+
+	               "\"name\":\"流量加油\","+
+	               "\"type\":\"click\","+
+	               "\"key\":\"lljy\""+
+	             "},"+
+	           
+
+			      "{"+
+						" \"name\":\"发现\","+
+						"\"sub_button\":["+
+						
+						"{"+
+						"\"type\":\"click\","+
+						"\"name\":\"流量俱乐部\","+
+						"\"key\":\"qiandao\""+
+						"}," +
+							
+					"{"+
+					"\"type\":\"click\","+
+					"\"name\":\"活动专区\","+
+					"\"key\":\"tqb\""+
+					"}," +
+						
+						"{"+
+							"\"type\":\"click\","+
+							"\"name\":\"中奖纪录\","+
+							"\"key\":\"ZJJL\""+
+						"}," +
+						
+						
+						"{"+
+							"\"type\":\"click\","+
+							"\"name\":\"管家帮助\","+
+							"\"key\":\"HELP\""+
+							"}" +
+						"]" +
+				  " }"+
+		      "]"+
+		" }";
+		return jsonStr;
 	}
 	/** 
      * 获取accessToken  
