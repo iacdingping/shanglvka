@@ -24,13 +24,6 @@
 			<li><a href="${ctx}/mp/wapHome/form">网站首页添加</a></li>
 		</shiro:hasPermission>
 	</ul>
-	<form id="searchForm" modelAttribute="wapHome"
-		action="${ctx}/mp/wapHome/" method="post"
-		class="breadcrumb form-search">
-		<input id="pageNo" name="page" type="hidden" value="${pageQuery.page}"/>
-		<input id="pageSize" name="pageSize" type="hidden" value="${pageQuery.pageSize}"/>
-		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
-	</form>
 	<tags:message content="${message}" />
 		<form id="listForm" method="post">
 		<table id="treeTable" class="table table-striped table-bordered table-condensed">

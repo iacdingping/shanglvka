@@ -57,6 +57,9 @@ public class ButtonMenu extends BaseEntity<ButtonMenu>{
      * delFlag       db_column: del_flag 
      */	
 	private java.lang.Boolean delFlag;
+	
+	private boolean parentClass;
+	private boolean subClass;
 	//columns END
 
 	public ButtonMenu(){
@@ -66,6 +69,24 @@ public class ButtonMenu extends BaseEntity<ButtonMenu>{
 		java.lang.Long id
 	){
 		this.id = id;
+	}
+
+	
+	public boolean isSubClass() {
+		return subClass;
+	}
+
+	public void setSubClass(boolean subClass) {
+		this.subClass = subClass;
+	}
+
+
+	public boolean isParentClass() {
+		return parentClass;
+	}
+
+	public void setParentClass(boolean parentClass) {
+		this.parentClass = parentClass;
 	}
 
 	public void setId(java.lang.Long value) {

@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="${ctx}/static/css/info/view.css" />
 <title>详情页</title>
 </head>
-<body >
+<body>
 	<div class=" margin_T20 ">
 		<header class="border_bottom1 padding-B10 content_area">
 			<div class="title">${viewData.title}</div>
@@ -26,7 +26,6 @@
 			<p class="sj2 margin_T10">
 				${fns:unescapeHtml(viewData.articleData.content)}
 			</p>
-			
 			<br />
 		</article>
 		<div class="font_color_l font_size_16 floatR" style="line-height:20px;margin-right: 10px;">

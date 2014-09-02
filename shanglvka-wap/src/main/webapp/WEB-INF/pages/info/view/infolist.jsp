@@ -10,21 +10,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript"
 	src="${ctx}/static/js/common/jquery.min.js"></script>
-<link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
+<script type="text/javascript"
+	src="${ctx}/static/js/plugins/scrollAd.js"></script>
 <link rel="stylesheet" href="${ctx}/static/css/info/view.css" />
+<link rel="stylesheet" href="${ctx}/static/css/index/index.css" />
 <title>文章列表</title>
 </head>
 <body>
 	<div class="limit_wth">
-	${pagelist}
+	
 		<div class=" positionR">
 			<div>
-			
-			<img src="${ctx}/static/img/test/test03.gif" align="middle"
-				style="margin: auto; vertical-align: middle" width="100%" />
-			<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
-				<span style="color:#fff;padding-left: 10px;">台湾演员柯震东在京吸毒被抓</span>
-			</p>
+				<img src="${ctx}/static/img/test/test03.gif" align="middle"
+					style="margin: auto; vertical-align: middle" width="100%" />
+				<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
+					<span style="color:#fff;padding-left: 10px;">台湾演员柯震东在京吸毒被抓</span>
+				</p>
 			</div>
 			<div class="floatL"
 				style="width: 25%; height: 4px; background: #339af5"></div>
@@ -32,15 +33,13 @@
 			<div class="floatL" style="width: 25%; height: 4px; background: #ccc"></div>
 			<div class="floatL" style="width: 25%; height: 4px; background: #ccc"></div>
 		</div>
-
 		<div class="margin_T20">
 			<ul>
 				<c:forEach items="${page.list}"  var="article">
 				
 				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;">
 					<a href="${ctx}/info/view/detail/${article.id}">
-					<img
-					src="http://localhost:882${article.image}" align="left"
+					<img src="${article.image}" align="left"
 					style="margin: 0px 10px;" width="70" />
 					<p style="height: 30px;">
 						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">${article.title}</span>
@@ -55,7 +54,7 @@
 			<br/>
 		</div>
 	</div>
-	<div class="textCenter" style="height:40px;line-height: 40px;background: #5f96c8;width:94%;margin: auto">
+	<div class="textCenter displayN" style="height:40px;line-height: 40px;background: #5f96c8;width:94%;margin: auto;">
 				<span style="color:#fff">查看更多</span>
 	</div>
 	<br/>

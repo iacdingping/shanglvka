@@ -16,6 +16,9 @@
 			$("#searchForm").submit();
         	return false;
         }
+		function shengcanniu(){
+			location.href="http://202.101.166.21/set-menu?appid=wx4aca1adff0c2ffd9&secret=0f9a89339f7234ed090493138898ce1f";
+		}
 	</script>
 </head>
 <body>
@@ -25,13 +28,12 @@
 			<li><a href="${ctx}/mp/buttonMenu/form">微信平台自定义菜单添加</a></li>
 		</shiro:hasPermission>
 	</ul>
-	<form id="searchForm" modelAttribute="buttonMenu"
-		action="${ctx}/mp/buttonMenu" method="post"
-		class="breadcrumb form-search">
-		<input id="pageNo" name="page" type="hidden" value="${pageQuery.page}"/>
-		<input id="pageSize" name="pageSize" type="hidden" value="${pageQuery.pageSize}"/>
-		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
-	</form>
+	<div class="breadcrumb form-search" >
+		<div style="border-radius:5px;background: blue;padding:5px;width:80px;text-align: center">
+			<a href="javascript:shengcanniu()" style="color:#fff">菜单生成</a>
+		</div>
+	</div>
+	
 	<tags:message content="${message}" />
 		<form id="listForm" method="post">
 		<table id="treeTable" class="table table-striped table-bordered table-condensed">
