@@ -17,7 +17,7 @@
 		return false;
 	}
 	function shengcanniu() {
-		location.href = "http://202.101.166.21/set-menu?appid=wx4aca1adff0c2ffd9&secret=0f9a89339f7234ed090493138898ce1f";
+		location.href = "http://"+${pageContext.request.remoteHost}+"/set-menu?appid=wx4aca1adff0c2ffd9&secret=0f9a89339f7234ed090493138898ce1f";
 	}
 </script>
 </head>
