@@ -53,7 +53,7 @@
 		        `parent` = #{parent} 
 	    ]]>
 	</select>
-	
+
 	<select id="getById" resultMap="ButtonMenuResult">
 		SELECT
 		<include refid="mp-ButtonMenu-columns" />
@@ -104,9 +104,10 @@
 		SELECT count(1) FROM mp_button_menu
 		<include refid="ButtonMenu-where" />
 	</select>
-	
+
 	<select id="countByParent" resultType="long">
-		SELECT count(1) FROM mp_button_menu
+		SELECT count(1) FROM
+		mp_button_menu
 		where `parent`=#{parent.id} and `id`!=#{id}
 	</select>
 
@@ -136,7 +137,14 @@
 			ORDER BY ${sortColumns}
 		</if>
 	</select>
-
-
+	<select id="getChildrensById" resultMap="ButtonMenuResult">
+		SELECT
+		<include refid="mp-ButtonMenu-columns" />
+	    <![CDATA[
+		    FROM mp_button_menu 
+	        WHERE 
+		        `parent` = #{id} 
+	    ]]>
+	</select>
 </mapper>
 
