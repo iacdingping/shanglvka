@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/pages/include/taglib.jsp"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -25,13 +26,11 @@
 			<div id="imgSwipe" class="swipe" style="visibility: visible;">
 				<c:forEach items="${topPage.list}" var="article" varStatus="status">
 					<div class="swipe-wrap" data-sudaclick="imgswipe"
-					style="width: 4480px;">
+					style="width: 4480px;" alt="${article.title}" title="${article.title}">
 						<div class="swipe_pic" data-loaded="1" data-index="${status.index}">
 							<a href="${ctx}/info/view/detail/${article.id}">
-								<img width="320" height="160"
-								src="${article.image}"
-								alt="${article.title}">
-								<h3 class="swipe_h3">${article.title}</h3>
+								<img width="320" height="160" src="${article.image}" >
+								<h3 class="swipe_h3">${fns:rabbr(article.title, 40)}</h3>
 							</a>
 						</div>
 					</div>
@@ -46,18 +45,17 @@
 		<div class="margin_T20">
 			<ul>
 				<c:forEach items="${notTopPage.list}" var="article">
-
 					<li class=" padding-T10 border_bottom1 padding-B10"
-						style="height: 70px; padding-left: 10px;"><a
+						style="height: 70px; padding-left: 10px;"alt="${article.title}" title="${article.title}"><a
 						href="${ctx}/info/view/detail/${article.id}"> <img
 							src="${article.image}" align="left" style="margin-right: 10px;"
 							width="70" />
 							<p style="height: 30px;">
 								<span class="font_size_17"
-									style="color: #0b0c0e; font-weight: 700">${article.title}</span>
+									style="color: #0b0c0e; font-weight: 700">${fns:rabbr(article.title, 24)}</span>
 							</p>
 							<p>
-								<span class="font_size_15 font_color_h" style="color: #696969">${article.description}</span>
+								<span class="font_size_15 font_color_h" style="color: #696969">${fns:rabbr(article.description, 60)}</span>
 							</p>
 					</a></li>
 				</c:forEach>

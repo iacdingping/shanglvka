@@ -18,7 +18,7 @@
 	<jsp:include page="/WEB-INF/pages/include/common.jsp"></jsp:include>
 	<div class=" margin_T20 ">
 		<header class="border_bottom1 padding-B10 content_area">
-			<div class="title">${viewData.title}</div>
+			<div class="title">${fns:rabbr(viewData.title, 34)}</div>
 			<div class="font_size_15 font_color_h2"><fmt:formatDate value="${viewData.createDate}" pattern="yyyy年MM月dd日  HH:mm:ss"/></div>
 		</header>
 		<article class="conetnt limit_wth content_area">
