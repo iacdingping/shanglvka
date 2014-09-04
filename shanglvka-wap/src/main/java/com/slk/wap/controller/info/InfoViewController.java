@@ -52,15 +52,19 @@ public class InfoViewController {
 		Category category = categoryService.get(categoryId);
 		// 获取文章内容
 		Page<Article> page = new Page<Article>(1, 5);
+		Page<Article> page4Top = new Page<Article>(1, 5);
 		Article article = new Article(category);
 		article.setPosid("-1");
 		page = articleService.find(page, article, false);
+		article.setPosid("2");
+		page4Top = articleService.find(page, article, false);
 		if (page.getList().size()>0){
 			article = page.getList().get(0);
 			articleService.updateHitsAddOne(article.getId());
 		}
 		modelMap.addAttribute("category", category);
 		modelMap.addAttribute("page", page);
+		modelMap.addAttribute("page4Top", page4Top);
 		return "info/view/infolist";
 	}
 }

@@ -15,71 +15,27 @@
 	<link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
 <link rel="stylesheet" href="${ctx}/static/css/info/view.css" />
 <title>文章列表</title>
-<style type="text/css">
-li {
-	list-style-type: none;
-}
-
-.box {
-	width: 100%;
-	height: 190px;
-	text-align: left;
-	font-size: 50px;
-	position: relative;
-	overflow: hidden;
-}
-
-.box ul {
-	height: 190px;
-	width: 100%;
-	position: relative;
-}
-
-.box ul li {
-	width: 100%;
-	height: 190px;
-	top: 0;
-	position: absolute;
-}
-
-.box ol {
-	position: absolute;
-	bottom: 0px;
-	width: 100%;
-	z-index: 20;
-	text-align: center;
-	bottom:-12px;
-}
-
-.box ol a {
-	width: 50%;
-	height: 4px;
-	background: #cccccc;
-	display: inline-block;
-}
-
-.box ol a.active {
-	background: #339af5;
-	z-index: 18;
-}
-</style>
 </head>
 <body>
 	<div class="limit_wth">
+	
 		<div class=" positionR">
 			<!--顶部轮播 -->
 			<div class="box">
 				<ol></ol>
+				
 				<ul id="top_swipe_list">
-					<li class="active" style="left: 0; z-index: 11;">
-							<a href="">
-							<img src="${ctx}/static/img/test/test03.gif" align="middle" style="margin: auto; vertical-align: middle" width="100%" />
-							<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
-							<span style="color:#fff;padding-left: 10px;">台湾演员柯震东在京吸毒被抓1</span>
-							</p>
-							</a>
-					</li>
-					<li class="active" style="left: 0; z-index: 11;">
+					<c:forEach items="${page4Top.list}"  var="article">
+						<li class="active" style="left: 0; z-index: 11;">
+								<a href="${ctx}/info/view/detail/${article.id}">
+								<img src="${article.image}" align="middle" style="margin: auto; vertical-align: middle" width="100%" />
+								<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
+								<span style="color:#fff;padding-left: 10px;">${article.title}</span>
+								</p>
+								</a>
+						</li>
+					</c:forEach>
+					<!-- <li class="active" style="left: 0; z-index: 11;">
 							<a href="">
 							<img src="${ctx}/static/img/test/test03.gif" align="middle" style="margin: auto; vertical-align: middle" width="100%" />
 							<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
@@ -95,6 +51,7 @@ li {
 							</p>
 							</a>
 					</li>
+					 -->
 				</ul>
 			</div>
 			<div>
@@ -104,7 +61,6 @@ li {
 		<div class="margin_T20">
 			<ul>
 				<c:forEach items="${page.list}"  var="article">
-				
 				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;padding-left:10px;">
 					<a href="${ctx}/info/view/detail/${article.id}">
 					<img src="${article.image}" align="left"
