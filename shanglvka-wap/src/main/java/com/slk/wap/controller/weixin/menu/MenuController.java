@@ -1,9 +1,12 @@
 package com.slk.wap.controller.weixin.menu;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.activiti.engine.impl.util.json.JSONArray;
+import org.activiti.engine.impl.util.json.JSONException;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -49,8 +52,10 @@ public class MenuController {
 			@RequestParam("secret") String secret) throws Exception {
 
 		Map<String, Object> map = new HashMap<String, Object>();
+		ButtonMenuQuery query=new ButtonMenuQuery();
+		query.setParent(new ButtonMenu(0l));
 		String result = "";
-		String params = this.organizMenu();
+		String params = getMenuJson(buttonMenuManager.list(query));
 		String accessToken = this.getAccessToken(appid, secret);
 		String delStr = deleteMenuInfo(accessToken);
 		if (delStr.equals("ok")) {
@@ -72,81 +77,6 @@ public class MenuController {
 			e.printStackTrace();
 		}
 		return map;
-	}
-
-	// 构建菜单
-	public String organizMenu() {
-		ButtonMenuQuery query = new ButtonMenuQuery();
-		List<ButtonMenu> list = buttonMenuManager.list(query);
-
-		// 区分出有子类的父类
-		for (ButtonMenu buttonMenu : list) {
-			for (ButtonMenu bm : list) {
-				if (bm.getParent().getId().intValue() == buttonMenu.getId().intValue() && bm.getParent().getId()!=0) {
-					buttonMenu.setParentClass(true);
-				}
-				if(bm.getParent().getId()>0){
-					bm.setSubClass(true);
-				}
-			}
-		}
-		StringBuilder sb = new StringBuilder();
-		sb.append("{");
-		sb.append("\"button\":[");
-
-		for (int i = 0; i < list.size(); i++) {
-			ButtonMenu buttonMenu = list.get(i);
-			String subMenu =  "";
-			if (!buttonMenu.isParentClass() && !buttonMenu.isSubClass()) {
-				String visitType = buttonMenu.getType().equals("click") ? "key"
-						: "url";
-				subMenu = "{\"type\":\"" + buttonMenu.getType() + "\", "
-						+ "\"name\":\"" + buttonMenu.getName() + "\"," + "\""
-						+ visitType + "\":\"" + buttonMenu.getKey() + "\"}";
-				sb.append(subMenu+",");
-			}else if(buttonMenu.isParentClass()){
-				String subListM = "";
-				subMenu = "{\"name\":\"" + buttonMenu.getName() + "\",\"sub_button\":[SUBLIST]}";
-				for(ButtonMenu subM : list){
-					String visitType = subM.getType().equals("click") ? "key"
-							: "url";
-					if(subM.getParent().getId().longValue() == buttonMenu.getId().longValue()){
-						subListM += "{\"type\":\"" + subM.getType() + "\", "
-								+ "\"name\":\"" + subM.getName() + "\"," + "\""
-								+ visitType + "\":\"" + subM.getKey() + "\"},";
-					}
-				}
-				subMenu = subMenu.replace("SUBLIST", subListM);
-				sb.append(subMenu+",");
-			}
-		}
-		sb.append("]}");
-		
-		
-		
-		
-		
-		System.out.println(sb.toString());
-		// jsonStr = "{" + "\"button\":[" + "{" + "\"name\":\"查询\","
-		// + "\"type\":\"click\"," + "\"key\":\"CX\"" + "}," +
-		//
-		// "{" + "\"name\":\"流量加油\"," + "\"type\":\"click\","
-		// + "\"key\":\"lljy\"" + "}," +
-		//
-		// "{" + " \"name\":\"发现\"," + "\"sub_button\":[" +
-		//
-		// "{" + "\"type\":\"click\"," + "\"name\":\"流量俱乐部\","
-		// + "\"key\":\"qiandao\"" + "}," +
-		//
-		// "{" + "\"type\":\"click\"," + "\"name\":\"活动专区\","
-		// + "\"key\":\"tqb\"" + "}," +
-		//
-		// "{" + "\"type\":\"click\"," + "\"name\":\"中奖纪录\","
-		// + "\"key\":\"ZJJL\"" + "}," +
-		//
-		// "{" + "\"type\":\"click\"," + "\"name\":\"管家帮助\","
-		// + "\"key\":\"HELP\"" + "}" + "]" + " }" + "]" + " }";
-		return sb.toString();
 	}
 
 	/**
@@ -234,5 +164,42 @@ public class MenuController {
 		pmethod.addHeader("User-Agent",
 				"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0) ");
 		return pmethod;
+	}
+
+	private String getMenuJson(List<ButtonMenu> list) {
+		JSONObject jsonObj = new JSONObject();// 创建json格式的数据
+		JSONArray jsonArr = new JSONArray();// json格式的数组
+
+		try {
+			for (ButtonMenu menu : list) {
+				JSONObject jsonObject = new JSONObject();
+				List<ButtonMenu> childrens = buttonMenuManager
+						.getChildrensById(menu.getId());
+				if (childrens != null && childrens.size() > 0) {
+					jsonObject.put("name", menu.getName());
+					JSONArray jsonArr2 = new JSONArray();// json格式的数组
+					for (ButtonMenu menu2 : childrens) {
+						JSONObject jsonObject2 = new JSONObject();
+						jsonObject2.put("type", menu2.getType());
+						jsonObject2.put("name", menu2.getName());
+						jsonObject2.put(menu2.getType().equals("view")?"url":"key", menu2.getKey());
+						jsonArr2.put(jsonObject2);
+					}
+					jsonObject.put("sub_button", jsonArr2);
+				} else {
+					jsonObject.put("type", menu.getType());
+					jsonObject.put("name", menu.getName());
+					
+					jsonObject.put(menu.getType().equals("view")?"url":"key", menu.getKey());
+				}
+				jsonArr.put(jsonObject);
+			}
+
+			jsonObj.put("button", jsonArr);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonObj.toString();
 	}
 }
