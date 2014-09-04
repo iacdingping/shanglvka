@@ -1,5 +1,7 @@
 package com.slk.core.entity.mp;
 
+import java.util.List;
+
 import com.thinkgem.jeesite.common.persistence.BaseEntity;
 
 /**
@@ -153,5 +155,4 @@ public class ButtonMenu extends BaseEntity<ButtonMenu> {
 	public void setParent(ButtonMenu parent) {
 		this.parent = parent;
 	}
-
 }

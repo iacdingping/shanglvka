@@ -90,6 +90,13 @@ public class ButtonMenuManager {
 	}
 
 	/**
+	 * list ButtonMenu
+	 **/
+	public List<ButtonMenu> getChildrensById(Long id) {
+		return buttonMenuDao.getChildrensById(id);
+	}
+
+	/**
 	 * 分页查询: ButtonMenu
 	 **/
 	@Transactional(readOnly = true)
@@ -102,13 +109,13 @@ public class ButtonMenuManager {
 
 	@Transactional(readOnly = true)
 	public Long countByParent(ButtonMenu buttonMenu) {
-		ButtonMenuQuery buttonMenuQuery=new ButtonMenuQuery();
+		ButtonMenuQuery buttonMenuQuery = new ButtonMenuQuery();
 		buttonMenuQuery.setParent(buttonMenu.getParent());
 		buttonMenuQuery.setId(buttonMenu.getId());
-		if(buttonMenu.getParent().getId()==null){
+		if (buttonMenu.getParent().getId() == null) {
 			buttonMenuQuery.setParent(new ButtonMenu(0L));
 		}
-		if(buttonMenu.getId()==null){
+		if (buttonMenu.getId() == null) {
 			buttonMenuQuery.setId(0l);
 		}
 		return buttonMenuDao.countByParent(buttonMenuQuery);

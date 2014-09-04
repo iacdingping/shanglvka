@@ -1,5 +1,7 @@
 package com.slk.core.dao.mp;
 
+import java.util.List;
+
 import com.slk.core.BaseMyBatisRepository;
 import com.slk.core.entity.mp.ButtonMenu;
 import com.slk.core.query.mp.ButtonMenuQuery;
@@ -15,7 +17,9 @@ import com.thinkgem.jeesite.common.persistence.annotation.MyBatisDao;
 public interface ButtonMenuDao extends
 		BaseMyBatisRepository<ButtonMenu, java.lang.Long> {
 	public void deleteByParentId(Long parent);
+
 	public Long countByParent(ButtonMenuQuery buttonMenuQuery);
-	
-	
+
+	public List<ButtonMenu> getChildrensById(Long id);
+
 }
