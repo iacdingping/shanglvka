@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fns" uri="/WEB-INF/tlds/fns.tld" %>
+<%@ include file="/WEB-INF/pages/include/taglib.jsp"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -17,6 +15,7 @@
 <title>详情页</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/pages/include/common.jsp"></jsp:include>
 	<div class=" margin_T20 ">
 		<header class="border_bottom1 padding-B10 content_area">
 			<div class="title">${viewData.title}</div>
@@ -28,14 +27,14 @@
 			</p>
 			<br />
 		</article>
-		<div class="font_color_l font_size_16 floatR" style="line-height:20px;margin-right: 10px;">
+		<div class="font_color_l font_size_16 floatR displayN" style="line-height:20px;margin-right: 10px;">
 			<img src="${ctx}/static/img/info/recommend.gif"  style="width:20px;height:20px; " align="left"/>
 			&nbsp;<span id="commandBTN">评论</span>
 			&nbsp;<span class="font_color_h2">(${commends.count})</span>
 		</div>
 		<div class="clearboth"></div>
 	</div>
-		<div class="border_bottom1 margin_B10 margin_T10 positionR">
+		<div class="border_bottom1 margin_B10 margin_T10 positionR displayN">
 			<div class="positionA" style="right:70px;top:-11px;">
 				<img src="${ctx}/static/img/info/icon05.gif" height="10"/>
 			</div>		
@@ -63,8 +62,6 @@
 	<br />
 	<br />
 	<br />
-	
-	
 	<div class="positionF black_layout touming displayN" id="touming_layout">
 	</div>
 	<div class="positionF textarea_layout displayN" id="textarea_layout">

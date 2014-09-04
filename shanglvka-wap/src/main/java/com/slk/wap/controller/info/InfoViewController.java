@@ -1,19 +1,10 @@
 package com.slk.wap.controller.info;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.modules.cms.entity.Article;
@@ -44,10 +35,10 @@ public class InfoViewController {
 	@RequestMapping(value = "/detail/{infoid}")
 	public String detail(@PathVariable String infoid, ModelMap modelMap) {
 		modelMap.addAttribute("viewData", articleService.get(infoid));
-		Page<Comment> page = new Page<Comment>(1,5);
 		Comment comment =  new Comment();
 		comment.setContentId(infoid);
-		modelMap.addAttribute("commends", commentService.find(page, comment));
+		//Page<Comment> page = new Page<Comment>(1,5);
+		//modelMap.addAttribute("commends", commentService.find(page, comment));
 		articleService.updateHitsAddOne(infoid);
 		return "info/view/detail";
 	}
@@ -62,6 +53,7 @@ public class InfoViewController {
 		// 获取文章内容
 		Page<Article> page = new Page<Article>(1, 5);
 		Article article = new Article(category);
+		article.setPosid("-1");
 		page = articleService.find(page, article, false);
 		if (page.getList().size()>0){
 			article = page.getList().get(0);

@@ -45,7 +45,7 @@
 		<c:forEach items="${page.list}" var="article">
 			<tr>
 				<td><a href="javascript:" onclick="$('#categoryId').val('${article.category.id}');$('#categoryName').val('${article.category.name}');$('#searchForm').submit();return false;">${article.category.name}</a></td>
-				<td><a href="${ctx}/cms/article/form?id=${article.id}" title="${article.title}">${fns:abbr(article.title,40)}</a></td>
+				<td><a href="${ctx}/cms/article/form?id=${article.id}" title="${article.title}"><c:if test="${article.posid==',2,'}"><span style="color:green">【已推荐】</span></c:if>${fns:abbr(article.title,40)}</a></td>
 				<td>${article.weight}</td>
 				<td>${article.hits}</td>
 				<td>${article.createBy.name}</td>

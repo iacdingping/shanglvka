@@ -10,6 +10,13 @@
                 $('#linkBody').show();
                 $('#url').attr("checked", true);
             }
+            $("#posidListArea").find("input[name='posidList']").click(function(){
+            	if($(this).attr("checked")=='checked'){
+            		$("#image_size_id").html("640X314");
+            	}else{
+            		$("#image_size_id").html("50X50");
+            	}
+            });
 			$("#title").focus();
 			$("#inputForm").validate({
 				submitHandler: function(form){
@@ -101,7 +108,13 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">缩略图(50X50):</label>
+			<label class="control-label">推荐位:</label>
+			<div class="controls" id="posidListArea">
+				<form:checkboxes path="posidList" items="${fns:getDictList('cms_posid')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">缩略图(<span id="image_size_id">50X50</span>):</label>
 			<div class="controls">
                 <input type="hidden" id="image" name="image" value="${article.imageSrc}" />
 				<tags:ckfinder input="image" type="thumb" uploadPath="/cms/article" selectMultiple="false"/>
@@ -173,13 +186,6 @@
 				<form:radiobuttons path="articleData.allowComment" items="${fns:getDictList('yes_no')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 			</div>
 		</div>
-		<!-- <div class="control-group">
-			<label class="control-label">推荐位:</label>
-			<div class="controls">
-				<form:checkboxes path="posidList" items="${fns:getDictList('cms_posid')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-			</div>
-		</div>
-		 -->
 		<div class="control-group">
 			<label class="control-label">发布时间:</label>
 			<div class="controls">
