@@ -21,7 +21,7 @@ public class MenuControllerTest extends AbstractTransactionalJUnit4SpringContext
 	
 	@Test
 	public void testOrganizMenu(){
-		System.out.println(mc.organizMenu());
+//		System.out.println(mc.);
 	}
 	
 	public void test() {
