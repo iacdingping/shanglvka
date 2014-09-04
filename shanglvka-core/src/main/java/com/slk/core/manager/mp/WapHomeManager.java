@@ -97,6 +97,7 @@ public class WapHomeManager {
 	@Transactional(readOnly=true)
 	public PageList<WapHome> findPage(WapHomeQuery query) {
 	    Assert.notNull(query,"'query' must be not null");
+	    query.setSortColumns("location,sort");
 		return new PageList<WapHome>(wapHomeDao.findPage(query), 
 				query.getPage(), query.getPageSize(), count(query));
 	}

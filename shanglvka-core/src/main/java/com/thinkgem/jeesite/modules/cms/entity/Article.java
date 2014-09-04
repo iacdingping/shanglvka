@@ -257,6 +257,9 @@ public class Article extends IdEntity<Article> {
 	}
 
 	public Integer getOptionalNum() {
+		if(optionalNum==null){
+			return 1;
+		}
 		return optionalNum;
 	}
 
