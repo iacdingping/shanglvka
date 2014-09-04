@@ -22,6 +22,18 @@
 					}
 				}
 			});
+			
+			
+			$('#location_select').change(function(){ 
+				var p1=$(this).children('option:selected').val();//这就是selected的值 
+				if(p1 == 1) {
+					$('#size').html("(640*320)");
+				} else if(p1 == 2) {
+					$('#size').html("(50*50)");
+				} else if(p1 == 3) {
+					$('#size').html("(50*50)");
+				}
+			}); 
 		});
 	</script>
 </head>
@@ -36,7 +48,7 @@
         <div class="control-group">
 			<label class="control-label">首页模块位置:</label>
 			<div class="controls">
-				<form:select path="location">
+				<form:select path="location" id="location_select">
 					<form:options items="${fns:getDictList('index_module')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
 			</div>
@@ -54,7 +66,7 @@
 			</div>
 		</div>
         <div class="control-group">
-			<label class="control-label">图片(640*320):</label>
+			<label class="control-label">图片<span id="size">(640*320)</span>:</label>
 			<div class="controls">
                 <input type="hidden" id="pic" name="pic" value="${wapHome.pic}"  class="required"/>
 				<tags:ckfinder input="pic" type="thumb" uploadPath="/cms/wapHome" selectMultiple="false"/>
