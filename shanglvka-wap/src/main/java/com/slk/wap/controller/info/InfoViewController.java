@@ -5,11 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.modules.cms.entity.Article;
 import com.thinkgem.jeesite.modules.cms.entity.Category;
-import com.thinkgem.jeesite.modules.cms.entity.Comment;
 import com.thinkgem.jeesite.modules.cms.service.ArticleService;
 import com.thinkgem.jeesite.modules.cms.service.CategoryService;
 import com.thinkgem.jeesite.modules.cms.service.CommentService;
@@ -51,16 +52,38 @@ public class InfoViewController {
 	public String infoList(@PathVariable String categoryId, ModelMap modelMap) {
 		Category category = categoryService.get(categoryId);
 		// 获取文章内容
-		Page<Article> page = new Page<Article>(1, 5);
+		Page<Article> notTopPage = new Page<Article>(1, 5);
 		Article article = new Article(category);
 		article.setPosid("-1");
-		page = articleService.find(page, article, false);
-		if (page.getList().size()>0){
-			article = page.getList().get(0);
-			articleService.updateHitsAddOne(article.getId());
-		}
+		notTopPage = articleService.find(notTopPage, article, false);
+		
+		
+		article.setPosid("2");
+		Page<Article> topPage = new Page<Article>(1, 5);
+		topPage = articleService.find(topPage, article, false);
+		
 		modelMap.addAttribute("category", category);
-		modelMap.addAttribute("page", page);
+		modelMap.addAttribute("notTopPage", notTopPage);
+		modelMap.addAttribute("topPage", topPage);
 		return "info/view/infolist";
+	}
+	
+	/**
+	 * 文章列表
+	 * @return
+	 */
+	@RequestMapping(value = "/ajax/more/{categoryId}")
+	@ResponseBody
+	public Page<Article> ajaxMore(@PathVariable String categoryId, ModelMap modelMap, 
+			@RequestParam(value="page", required=false) Integer page) {
+		if(page == null)
+			page = 1;
+		Category category = categoryService.get(categoryId);
+		// 获取文章内容
+		Page<Article> notTopPage = new Page<Article>(1, 5);
+		Article article = new Article(category);
+		article.setPosid("-1");
+		notTopPage = articleService.find(notTopPage, article, false);
+		return notTopPage;
 	}
 }
