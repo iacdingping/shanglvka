@@ -13,6 +13,7 @@ import com.thinkgem.jeesite.modules.cms.entity.Comment;
 import com.thinkgem.jeesite.modules.cms.service.ArticleService;
 import com.thinkgem.jeesite.modules.cms.service.CategoryService;
 import com.thinkgem.jeesite.modules.cms.service.CommentService;
+import com.thinkgem.jeesite.modules.cms.service.VotingService;
 
 /**
  * 文章查阅相关
@@ -27,6 +28,8 @@ public class InfoViewController {
 	private CategoryService categoryService;
 	@Autowired
 	private CommentService commentService;
+	@Autowired
+	private VotingService votingService;
 
 	/**
 	 * 文章详情
@@ -35,10 +38,7 @@ public class InfoViewController {
 	@RequestMapping(value = "/detail/{infoid}")
 	public String detail(@PathVariable String infoid, ModelMap modelMap) {
 		modelMap.addAttribute("viewData", articleService.get(infoid));
-		Comment comment =  new Comment();
-		comment.setContentId(infoid);
-		//Page<Comment> page = new Page<Comment>(1,5);
-		//modelMap.addAttribute("commends", commentService.find(page, comment));
+		modelMap.addAttribute("votings", votingService.listByArticleId(infoid));
 		articleService.updateHitsAddOne(infoid);
 		return "info/view/detail";
 	}
