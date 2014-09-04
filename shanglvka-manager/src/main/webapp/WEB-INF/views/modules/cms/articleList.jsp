@@ -51,9 +51,9 @@
 				<td>
 					<a href="http://${pageContext.request.remoteHost}/info/view/detail/${article.id}" target="_blank">访问</a>
 					<shiro:hasPermission name="cms:article:edit">
-						<c:if test="${article.category.allowComment eq '1'}"><shiro:hasPermission name="cms:comment:view">
+						<shiro:hasPermission name="cms:voting:view">
 							<a href="${ctx}/cms/voting/?module=article&articleId=${article.id}&delFlag=0" onclick="return viewComment(this.href,'${article.title}');">投票查看</a>
-						</shiro:hasPermission></c:if>
+						</shiro:hasPermission>
 	    				<a href="${ctx}/cms/article/form?id=${article.id}">修改</a>
 	    				<shiro:hasPermission name="cms:article:audit">
 							<a href="${ctx}/cms/article/delete?id=${article.id}${article.delFlag ne 0?'&isRe=true':''}&categoryId=${article.category.id}" onclick="return confirmx('确认要${article.delFlag ne 0?'发布':'删除'}该文章吗？', this.href)" >${article.delFlag ne 0?'发布':'删除'}</a>
