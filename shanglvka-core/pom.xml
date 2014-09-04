@@ -29,11 +29,6 @@
 		<oracle.driver.version>10.2.0.1.0</oracle.driver.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>com.iac</groupId>
-			<artifactId>share-metrics</artifactId>
-		</dependency>
-
 		<!-- SPRING basic begin -->
 		<!-- email/scheduler/freemarker -->
 		<dependency>
