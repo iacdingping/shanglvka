@@ -23,7 +23,6 @@
 			<!--顶部轮播 -->
 			<div class="box">
 				<ol></ol>
-				
 				<ul id="top_swipe_list">
 					<c:forEach items="${topPage.list}" var="article" varStatus="status">
 						<li class="active" style="left: 0; z-index: 11;" alt="${article.title}" title="${article.title}">
