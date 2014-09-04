@@ -36,22 +36,20 @@
 					title="栏目" url="/cms/category/treeData" module="article" notAllowSelectRoot="false" cssClass="input-small"/>
 		<label>标题：</label><form:input path="title" htmlEscape="false" maxlength="50" class="input-small"/>&nbsp;
 		<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>&nbsp;&nbsp;
-		<label>状态：</label><form:radiobuttons onclick="$('#searchForm').submit();" path="delFlag" items="${fns:getDictList('cms_del_flag')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+		<div style="display: none;"><label>状态：</label><form:radiobuttons onclick="$('#searchForm').submit();" path="delFlag" items="${fns:getDictList('cms_del_flag')}" itemLabel="label" itemValue="value" htmlEscape="false"/></div>
+		<label></label><a href="http://${pageContext.request.remoteHost}/info/view/infolist/${article.category.id}">访问该模块地址</a>
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>栏目</th><th>标题</th><th>权重</th><th>点击数</th><th>发布者</th><th>更新时间</th><th>操作</th></tr></thead>
+		<thead><tr><th>标题</th><th>栏目</th><th>更新时间</th><th>操作</th></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="article">
 			<tr>
-				<td><a href="javascript:" onclick="$('#categoryId').val('${article.category.id}');$('#categoryName').val('${article.category.name}');$('#searchForm').submit();return false;">${article.category.name}</a></td>
 				<td><a href="${ctx}/cms/article/form?id=${article.id}" title="${article.title}"><c:if test="${article.posid==',2,'}"><span style="color:green">【已推荐】</span></c:if>${fns:abbr(article.title,40)}</a></td>
-				<td>${article.weight}</td>
-				<td>${article.hits}</td>
-				<td>${article.createBy.name}</td>
+				<td><a href="javascript:" onclick="$('#categoryId').val('${article.category.id}');$('#categoryName').val('${article.category.name}');$('#searchForm').submit();return false;">${article.category.name}</a></td>
 				<td><fmt:formatDate value="${article.updateDate}" type="both"/></td>
 				<td>
-					<a href="${wap_url}/info/view/detail/${article.id}" target="_blank">访问</a>
+					<a href="http://${pageContext.request.remoteHost}/info/view/detail/${article.id}" target="_blank">访问</a>
 					<shiro:hasPermission name="cms:article:edit">
 						<c:if test="${article.category.allowComment eq '1'}"><shiro:hasPermission name="cms:comment:view">
 							<a href="${ctx}/cms/comment/?module=article&contentId=${article.id}&delFlag=2" onclick="return viewComment(this.href);">评论</a>

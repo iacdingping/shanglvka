@@ -5,16 +5,16 @@
 <title>商旅地图管理</title>
 <meta name="decorator" content="default" />
 <script type="text/javascript">
-		$(document).ready(function() {
-			
-		});
-		function page(n,s){
-			$("#pageNo").val(n);
-			$("#pageSize").val(s);
-			$("#searchForm").submit();
-        	return false;
-        }
-	</script>
+	$(document).ready(function() {
+
+	});
+	function page(n, s) {
+		$("#pageNo").val(n);
+		$("#pageSize").val(s);
+		$("#searchForm").submit();
+		return false;
+	}
+</script>
 </head>
 <body>
 	<ul class="nav nav-tabs">
@@ -35,6 +35,8 @@
 		<!--添加查询条件-->
 		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit"
 			value="查询" />
+		<label></label>
+		<a href="http://${pageContext.request.remoteHost}/sl/list/">访问该模块地址</a>
 	</form:form>
 	<tags:message content="${message}" />
 	<table id="contentTable"
@@ -61,6 +63,8 @@
 					<td>${merchantMap.offer}</td>
 					<shiro:hasPermission name="business:merchantMap:edit">
 						<td><a
+							href="http://${pageContext.request.remoteHost}/sl/detail/${merchantMap.id}"
+							target="_blank">访问</a> <a
 							href="${ctx}/business/merchantMap/form?id=${merchantMap.id}">修改</a>
 							<a href="${ctx}/business/merchantMap/delete?id=${merchantMap.id}"
 							onclick="return confirmx('确认要删除该商旅地图吗？', this.href)">删除</a></td>

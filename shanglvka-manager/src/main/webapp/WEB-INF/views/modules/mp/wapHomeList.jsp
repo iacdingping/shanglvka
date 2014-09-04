@@ -27,16 +27,15 @@
 	<tags:message content="${message}" />
 		<form id="listForm" method="post">
 		<table id="treeTable" class="table table-striped table-bordered table-condensed">
-			<tr><th>首页模块位置</th><th>标题</th><th>超链接</th><th>图片</th><th>排序</th><th>操作</th></tr>
+			<tr><th>首页模块位置</th><th>标题</th><th>图片</th><th>排序</th><th>操作</th></tr>
 			<c:forEach items="${pageList.items}" var="wapHome">
 				<tr id="${wapHome.id}">
 					<td>${fns:getDictLabel(wapHome.location, 'index_module', '未知')}</td>
 					<td>${wapHome.title}</td>
-					<td>${wapHome.link}</td>
 					<td><img src="${wapHome.pic}" width="30px"> </td>
 					<td>${wapHome.sort}</td>
 					<td>
-						<a href="${pageContext.request.contextPath}${fns:getFrontPath()}/list-${tpl.id}${fns:getUrlSuffix()}" target="_blank">访问</a>
+						<a href="${wapHome.link}" target="_blank">访问</a>
 						<shiro:hasPermission name="mp:wapHome:edit">
 							<a href="${ctx}/mp/wapHome/form?id=${wapHome.id}">修改</a>
 								<a href="${ctx}/mp/wapHome/delete?id=${wapHome.id}"
