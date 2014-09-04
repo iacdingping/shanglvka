@@ -82,10 +82,10 @@ public class MenuController {
 		// 区分出有子类的父类
 		for (ButtonMenu buttonMenu : list) {
 			for (ButtonMenu bm : list) {
-				if (bm.getParent().intValue() == buttonMenu.getId().intValue() && bm.getParent()!=0) {
+				if (bm.getParent().getId().intValue() == buttonMenu.getId().intValue() && bm.getParent().getId()!=0) {
 					buttonMenu.setParentClass(true);
 				}
-				if(bm.getParent()>0){
+				if(bm.getParent().getId()>0){
 					bm.setSubClass(true);
 				}
 			}
@@ -110,7 +110,7 @@ public class MenuController {
 				for(ButtonMenu subM : list){
 					String visitType = subM.getType().equals("click") ? "key"
 							: "url";
-					if(subM.getParent().longValue() == buttonMenu.getId().longValue()){
+					if(subM.getParent().getId().longValue() == buttonMenu.getId().longValue()){
 						subListM += "{\"type\":\"" + subM.getType() + "\", "
 								+ "\"name\":\"" + subM.getName() + "\"," + "\""
 								+ visitType + "\":\"" + subM.getKey() + "\"},";
