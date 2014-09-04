@@ -68,6 +68,7 @@ public class MerchantMapService extends BaseService {
 
 	@Transactional(readOnly = false)
 	public void save(MerchantMap merchantMap) {
+		merchantMapDao.clear();
 		merchantMapDao.save(merchantMap);
 	}
 

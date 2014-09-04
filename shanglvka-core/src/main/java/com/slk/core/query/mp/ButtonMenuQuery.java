@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.slk.core.PageQuery;
+import com.slk.core.entity.mp.ButtonMenu;
 
 
 /**
@@ -21,8 +22,8 @@ public class ButtonMenuQuery extends PageQuery {
 	private java.lang.String name;
 	/** 响应键标识(mp_platform_keyword关键字对应) */
 	private java.lang.String key;
-	/** 父ID */
-	private java.lang.Long parent;
+//	/** 父ID */
+	private ButtonMenu parent;
 	/** 类型 BUTTON,LINK */
 	private java.lang.String type;
 	/** createDate */
@@ -58,11 +59,11 @@ public class ButtonMenuQuery extends PageQuery {
 		this.key = value;
 	}
 	
-	public java.lang.Long getParent() {
+	public ButtonMenu getParent() {
 		return this.parent;
 	}
 	
-	public void setParent(java.lang.Long value) {
+	public void setParent(ButtonMenu value) {
 		this.parent = value;
 	}
 	
