@@ -36,7 +36,7 @@
 		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit"
 			value="查询" />
 		<label></label>
-		<a href="http://${pageContext.request.remoteHost}/sl/list/">访问该模块地址</a>
+		<a href="http://${pageContext.request.remoteHost}/sl/list/"  target="_blank">访问该模块地址</a>
 	</form:form>
 	<tags:message content="${message}" />
 	<table id="contentTable"

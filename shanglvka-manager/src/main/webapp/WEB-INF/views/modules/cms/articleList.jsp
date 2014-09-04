@@ -5,8 +5,8 @@
 	<title>文章管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
-		function viewComment(href){
-			top.$.jBox.open('iframe:'+href,'查看评论',$(top.document).width()-220,$(top.document).height()-120,{
+		function viewComment(href,title){
+			top.$.jBox.open('iframe:'+href,'【'+title+'】投票情况',$(top.document).width()-220,$(top.document).height()-120,{
 				buttons:{"关闭":true},
 				loaded:function(h){
 					$(".jbox-content", top.document).css("overflow-y","hidden");
@@ -37,7 +37,7 @@
 		<label>标题：</label><form:input path="title" htmlEscape="false" maxlength="50" class="input-small"/>&nbsp;
 		<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>&nbsp;&nbsp;
 		<div style="display: none;"><label>状态：</label><form:radiobuttons onclick="$('#searchForm').submit();" path="delFlag" items="${fns:getDictList('cms_del_flag')}" itemLabel="label" itemValue="value" htmlEscape="false"/></div>
-		<label></label><a href="http://${pageContext.request.remoteHost}/info/view/infolist/${article.category.id}">访问该模块地址</a>
+		<label></label><a href="http://${pageContext.request.remoteHost}/info/view/infolist/${article.category.id}" target="_blank">访问该模块地址</a>
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
@@ -52,7 +52,7 @@
 					<a href="http://${pageContext.request.remoteHost}/info/view/detail/${article.id}" target="_blank">访问</a>
 					<shiro:hasPermission name="cms:article:edit">
 						<c:if test="${article.category.allowComment eq '1'}"><shiro:hasPermission name="cms:comment:view">
-							<a href="${ctx}/cms/comment/?module=article&contentId=${article.id}&delFlag=2" onclick="return viewComment(this.href);">评论</a>
+							<a href="${ctx}/cms/voting/?module=article&articleId=${article.id}&delFlag=0" onclick="return viewComment(this.href,'${article.title}');">投票查看</a>
 						</shiro:hasPermission></c:if>
 	    				<a href="${ctx}/cms/article/form?id=${article.id}">修改</a>
 	    				<shiro:hasPermission name="cms:article:audit">

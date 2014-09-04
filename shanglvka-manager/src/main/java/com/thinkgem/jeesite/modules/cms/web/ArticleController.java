@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.thinkgem.jeesite.modules.cms.service.FileTplService;
 import com.thinkgem.jeesite.modules.cms.service.SiteService;
+import com.thinkgem.jeesite.modules.cms.service.VotingService;
 import com.thinkgem.jeesite.modules.cms.utils.TplUtils;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +54,8 @@ public class ArticleController extends BaseController {
    	private FileTplService fileTplService;
     @Autowired
    	private SiteService siteService;
+    @Autowired
+    private VotingService votingService;
 	
 	@ModelAttribute
 	public Article get(@RequestParam(required=false) String id) {
@@ -91,19 +95,20 @@ public class ArticleController extends BaseController {
         model.addAttribute("contentViewList",getTplContent());
         model.addAttribute("article_DEFAULT_TEMPLATE",Article.DEFAULT_TEMPLATE);
 		model.addAttribute("article", article);
+		model.addAttribute("votings",votingService.listByArticleId(article.getId()));
 		return "modules/cms/articleForm";
 	}
 
 	@RequiresPermissions("cms:article:edit")
 	@RequestMapping(value = "save")
-	public String save(Article article, Model model, RedirectAttributes redirectAttributes) {
+	public String save(Article article, Model model, RedirectAttributes redirectAttributes,String[] votingTitle) {
 		if (!beanValidator(model, article)){
 			return form(article, model);
 		}
 		if(article.getPosid().contains("null")){
 			article.setPosid(",-1,");
 		}
-		articleService.save(article);
+		articleService.save(article,votingTitle);
 		addMessage(redirectAttributes, "保存文章'" + StringUtils.abbr(article.getTitle(),50) + "'成功");
 		String categoryId = article.getCategory()!=null?article.getCategory().getId():null;
 		return "redirect:"+Global.getAdminPath()+"/cms/article/?repage&category.id="+(categoryId!=null?categoryId:"");
