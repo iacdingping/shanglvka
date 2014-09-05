@@ -172,6 +172,9 @@ public class MenuController {
 
 		try {
 			for (ButtonMenu menu : list) {
+				if(jsonArr.length()>3){
+					continue;
+				}
 				JSONObject jsonObject = new JSONObject();
 				List<ButtonMenu> childrens = buttonMenuManager
 						.getChildrensById(menu.getId());
@@ -179,6 +182,9 @@ public class MenuController {
 					jsonObject.put("name", menu.getName());
 					JSONArray jsonArr2 = new JSONArray();// json格式的数组
 					for (ButtonMenu menu2 : childrens) {
+						if(jsonArr2.length()>5){
+							continue;
+						}
 						JSONObject jsonObject2 = new JSONObject();
 						jsonObject2.put("type", menu2.getType());
 						jsonObject2.put("name", menu2.getName());
