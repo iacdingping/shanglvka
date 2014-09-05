@@ -37,7 +37,7 @@
 		<label>标题：</label><form:input path="title" htmlEscape="false" maxlength="50" class="input-small"/>&nbsp;
 		<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>&nbsp;&nbsp;
 		<div style="display: none;"><label>状态：</label><form:radiobuttons onclick="$('#searchForm').submit();" path="delFlag" items="${fns:getDictList('cms_del_flag')}" itemLabel="label" itemValue="value" htmlEscape="false"/></div>
-		<label></label><a href="http://${pageContext.request.remoteHost}/info/view/infolist/${article.category.id}" target="_blank">访问该模块地址</a>
+		<label></label><a href="http://${pageContext.request.serverName}/info/view/infolist/${article.category.id}" target="_blank">访问该模块地址</a>
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
@@ -49,7 +49,7 @@
 				<td><a href="javascript:" onclick="$('#categoryId').val('${article.category.id}');$('#categoryName').val('${article.category.name}');$('#searchForm').submit();return false;">${article.category.name}</a></td>
 				<td><fmt:formatDate value="${article.updateDate}" type="both"/></td>
 				<td>
-					<a href="http://${pageContext.request.remoteHost}/info/view/detail/${article.id}" target="_blank">访问</a>
+					<a href="http://${pageContext.request.serverName}/info/view/detail/${article.id}" target="_blank">访问</a>
 					<shiro:hasPermission name="cms:article:edit">
 						<shiro:hasPermission name="cms:voting:view">
 							<a href="${ctx}/cms/voting/?module=article&articleId=${article.id}&delFlag=0" onclick="return viewComment(this.href,'${article.title}');">投票查看</a>
