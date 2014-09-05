@@ -1,5 +1,6 @@
 package com.slk.core.manager.mp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.util.Assert;
 import com.slk.core.PageList;
 import com.slk.core.PageQuery;
 import com.slk.core.dao.mp.KeywordDao;
+import com.slk.core.entity.mp.ButtonMenu;
 import com.slk.core.entity.mp.Keyword;
 import com.slk.core.query.mp.KeywordQuery;
 
@@ -48,7 +50,15 @@ public class KeywordManager {
         this.keywordDao.update(keyword);
         return keyword;
     }	
-    
+    public void saveOrUpdate(Keyword keyword) {
+    	keyword.setUpdateDate(new Date());
+		if (keyword.getId() == null) {
+			keyword.setCreateDate(new Date());
+			this.keywordDao.save(keyword);
+		} else {
+			this.keywordDao.update(keyword);
+		}
+	}
 	/** 
 	 * 删除Keyword
 	 **/
