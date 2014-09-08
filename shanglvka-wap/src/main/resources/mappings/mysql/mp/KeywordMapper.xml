@@ -143,7 +143,7 @@
 	    	SELECT *
 		    FROM mp_keyword 
 			WHERE `key` LIKE CONCAT('%', #{content}, '%')
-			OR content LIKE CONCAT('%', `key`, '%')
+			OR #{content} LIKE CONCAT('%', `key`, '%')
 			ORDER BY `priority` DESC
 		) a LIMIT 0, 1
     </select>
