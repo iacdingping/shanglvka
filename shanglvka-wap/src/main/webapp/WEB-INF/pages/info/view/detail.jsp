@@ -25,13 +25,13 @@
 			}
 		}
 		if (num == 0) {
-			alert("请选择投票项");
+			$("#submit_notice").html("请选择投票项");
 			return;
 		} else if (num > optionalNum) {
-			alert("投票不能超过" + optionalNum + "项");
+			$("#submit_notice").html("投票不能超过" + optionalNum + "项");
 			return;
 		} else if ($("#phone").val() == '' || $("#phone").val().length != 11) {
-			alert("请输入正确的手机号码");
+			$("#submit_notice").html("请输入正确的手机号码");
 			return;
 		}
 		//此处需要验证传入字段是否全部
@@ -46,9 +46,9 @@
 			cache : false,
 			success : function(data) {
 				if (data.success) {
-					alert('提交成功');
+					$("#submit_notice").html('提交成功');
 				} else {
-					alert(data.message);
+					$("#submit_notice").html(data.message);
 				}
 			}
 		});
@@ -81,27 +81,28 @@
 						style="line-height: 35px;">投票</div>
 					<div class="clearboth "></div>
 				</div>
-				<div class="margin_T20 ">
+				<div class="margin_T20 border_bottom1 padding-B10">
 					<p class="font_color_hei margin_L20">
 						<c:if test="${!isHas}">快来参与投票吧，最多选择${viewData.optionalNum}项</c:if>
 						<c:if test="${isHas}">您已经参与了投票</c:if>
 					</p>
 					<p style="width: 80%; margin: auto; margin-top: 10px;">
-
 						<c:forEach var="item" items="${votings}" varStatus="votings">
 							<c:if test="${!isHas}">
-								<input type="checkbox" value="${item.id}" name="voteSelect" />
+								<input type="checkbox" value="${item.id}" name="voteSelect"  onchange="validateValue()"/>
 							</c:if>&nbsp;&nbsp;${item.title}<c:if test="${isHas}">(${item.voteCount}人)</c:if>
 							<br />
 						</c:forEach>
-
 					</p>
-					<c:if test="${!isHas}">
-						<input id="phone" type="text" value="请输入手机号码" class="BTN00">
-						<a href="javascript:void(0);" class="BTN00 BTN08"
-							onclick="submitVoting();">投票</a>
-					</c:if>
 				</div>
+				<c:if test="${!isHas}">
+						<div style="width:170px;text-align: left;margin: auto;" class="padding-T10">
+							<span id="submit_notice" style="color:red"></span>
+							<input id="phone" type="text" value="" class="BTN00" placeholder="请输入手机号">
+						</div>
+						<a href="javascript:void(0);" class="BTN00 BTN08"
+							onclick="submitVoting();" style="margin-top: 5px;">投票</a>
+					</c:if>
 			</div>
 		</c:if>
 		<div class="font_color_l font_size_16 floatR displayN"

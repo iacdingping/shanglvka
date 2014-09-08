@@ -60,6 +60,12 @@
 			</div>
 		</div>
         <div class="control-group">
+			<label class="control-label">简要描述:</label>
+			<div class="controls">
+				<form:input path="desc" htmlEscape="false" maxlength="50" class="required"/>
+			</div>
+		</div>
+        <div class="control-group">
 			<label class="control-label">超链接:</label>
 			<div class="controls">
 				<form:input path="link" htmlEscape="false" maxlength="200" class="required"/>

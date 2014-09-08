@@ -16,9 +16,6 @@
 		$("#searchForm").submit();
 		return false;
 	}
-	function shengcanniu() {
-		location.href = "http://"+${pageContext.request.remoteHost}+"/set-menu?appid=wx4aca1adff0c2ffd9&secret=0f9a89339f7234ed090493138898ce1f";
-	}
 </script>
 </head>
 <body>
@@ -31,7 +28,7 @@
 	<div class="breadcrumb form-search">
 		<div
 			style="border-radius: 5px; background: blue; padding: 5px; width: 80px; text-align: center">
-			<a href="javascript:shengcanniu()" style="color: #fff">菜单生成</a>
+			<a href="http://${pageContext.request.serverName}/set-menu?appid=wx4aca1adff0c2ffd9&secret=0f9a89339f7234ed090493138898ce1f" target="_blank" style="color: #fff">菜单生成</a>
 		</div>
 	</div>
 

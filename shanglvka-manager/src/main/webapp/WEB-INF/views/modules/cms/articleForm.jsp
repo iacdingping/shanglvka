@@ -103,7 +103,7 @@
 					url="/cms/category/treeData" module="article"
 					selectScopeModule="true" notAllowSelectRoot="false"
 					notAllowSelectParent="true" cssClass="required" />
-				&nbsp; <span> <input id="url" type="checkbox"
+				&nbsp; <span style="display: none;"> <input id="url" type="checkbox"
 					onclick="if(this.checked){$('#linkBody').show()}else{$('#linkBody').hide()}$('#link').val()"><label
 					for="url">外部链接</label>
 				</span>

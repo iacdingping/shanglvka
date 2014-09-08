@@ -36,7 +36,7 @@
 		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit"
 			value="查询" />
 		<label></label>
-		<a href="http://${pageContext.request.remoteHost}/sl/list/"  target="_blank">访问该模块地址</a>
+		<a href="http://${pageContext.request.serverName}/sl/list/"  target="_blank">访问该模块地址</a>
 	</form:form>
 	<tags:message content="${message}" />
 	<table id="contentTable"
@@ -63,7 +63,7 @@
 					<td>${merchantMap.offer}</td>
 					<shiro:hasPermission name="business:merchantMap:edit">
 						<td><a
-							href="http://${pageContext.request.remoteHost}/sl/detail/${merchantMap.id}"
+							href="http://${pageContext.request.serverName}/sl/detail/${merchantMap.id}"
 							target="_blank">访问</a> <a
 							href="${ctx}/business/merchantMap/form?id=${merchantMap.id}">修改</a>
 							<a href="${ctx}/business/merchantMap/delete?id=${merchantMap.id}"
