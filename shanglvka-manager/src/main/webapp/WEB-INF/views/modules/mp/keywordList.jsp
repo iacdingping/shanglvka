@@ -27,12 +27,11 @@
 			<tr>
 				<th>ID</th>
 				<th>关键字</th>
+				<th>类型</th>
 				<th>回复内容</th>
-				<!--
 				<th>图文标题</th>
 				<th>图片</th>
 				<th>链接地址</th>
-				 -->
 				<shiro:hasPermission name="mp:keyword:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
@@ -45,12 +44,22 @@
 				<td>
 					${keyword.key}
 				</td>
+				<td>
+					${keyword.responseType}
+				</td>
 				<td>${keyword.unbindContent}</td>
-				<!-- 
-				<td>${keyword.title}</td>
-				<td>${keyword.picture}</td>
-				<td>${keyword.url}</td>
-				 -->
+				<c:choose>
+					<c:when test="${keyword.responseType!='TEXT'}">
+						<td>${keyword.title}</td>
+						<td><img src="${keyword.picture}" width="45" /></td>
+						<td><a href="${keyword.url}" target="_blank">点击查阅</a></td>					
+					</c:when>
+					<c:when test="${keyword.responseType=='TEXT'}">
+						<td style="color:#ccc">图文回复使用</td>
+						<td style="color:#ccc">图文回复使用</td>
+						<td style="color:#ccc">图文回复使用</td>
+					</c:when>
+				</c:choose>
 				<shiro:hasPermission name="mp:keyword:edit"><th>
 					<a href="${ctx}/mp/keyword/form?id=${keyword.id}">修改</a>
 					&nbsp;

@@ -65,7 +65,6 @@ public class KeywordController extends BaseController {
 		if (!beanValidator(model, keyword)){
 			return form(keyword, model);
 		}
-		keyword.setResponseType("TEXT");
 		keywordManager.saveOrUpdate(keyword);
 		addMessage(redirectAttributes, "保存关键字'" + keyword.getKey() + "'成功");
 		return "redirect:"+Global.getAdminPath()+"/mp/keyword/?repage";

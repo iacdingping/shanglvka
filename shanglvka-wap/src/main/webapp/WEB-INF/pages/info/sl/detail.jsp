@@ -43,7 +43,7 @@
 			</div>
 			<div class="list">
 				<span class="words07 margin_L20">商户介绍：</span>
-				<p class="sj2 words06 margin_L20 margin_R20">${merchantMap.detail}<
+				<p class="sj2 words06 margin_L20 margin_R20">${merchantMap.detail}
 					<br /> <br /> <br />
 				</p>
 			</div>

@@ -136,7 +136,7 @@ public class Keyword extends BaseEntity<Keyword> {
 		return this.url;
 	}
 	public void setPriority(java.lang.Integer value) {
-		this.priority = value;
+		this.priority = (value==null?0:value);
 	}
 	public java.lang.Integer getPriority() {
 		return this.priority;
@@ -145,7 +145,7 @@ public class Keyword extends BaseEntity<Keyword> {
 		return needBind;
 	}
 	public void setNeedBind(java.lang.Boolean needBind) {
-		this.needBind = needBind;
+		this.needBind = (needBind==null?false:needBind);
 	}
 	public void setUnbindContent(java.lang.String value) {
 		this.unbindContent = value;
@@ -166,7 +166,7 @@ public class Keyword extends BaseEntity<Keyword> {
 		return this.updateDate;
 	}
 	public void setDelFlag(java.lang.Integer value) {
-		this.delFlag = value;
+		this.delFlag =  (value==null?1:value);
 	}
 	public java.lang.Integer getDelFlag() {
 		return this.delFlag;
