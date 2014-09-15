@@ -70,7 +70,7 @@
 		<div class="control-group">
 			<label class="control-label">属性值</label>
 			<div class="controls">
-				<form:input path="key" htmlEscape="false" maxlength="50"
+				<form:input path="key" htmlEscape="false" maxlength="200"
 					class="required" />
 			</div>
 		</div>
