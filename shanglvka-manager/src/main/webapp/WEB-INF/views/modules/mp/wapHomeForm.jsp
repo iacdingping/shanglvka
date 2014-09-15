@@ -23,18 +23,26 @@
 				}
 			});
 			
+			var p1=$('#location_select').children('option:selected').val();//这就是selected的值
+			changeSize(p1);
+			
 			
 			$('#location_select').change(function(){ 
 				var p1=$(this).children('option:selected').val();//这就是selected的值 
-				if(p1 == 1) {
-					$('#size').html("(640*320)");
-				} else if(p1 == 2) {
-					$('#size').html("(50*50)");
-				} else if(p1 == 3) {
-					$('#size').html("(50*50)");
-				}
+				changeSize(p1);
 			}); 
 		});
+		
+		function changeSize(val) {
+			console.log(val + '    ' + (val == 2));
+			if(val == 1) {
+				$('#size').html("(640*320)");
+			} else if(val == 2) {
+				$('#size').html("(50*50)");
+			} else if(val == 3) {
+				$('#size').html("(50*50)");
+			}
+		}
 	</script>
 </head>
 <body>
