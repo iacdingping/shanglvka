@@ -171,7 +171,7 @@
 			</label>
 			<div class="controls">
 				<input type="hidden" id="image" name="image"
-					value="${article.imageSrc}" />
+					value="${article.image}" />
 				<tags:ckfinder input="image" type="thumb" uploadPath="/cms/article"
 					selectMultiple="false" />
 			</div>
