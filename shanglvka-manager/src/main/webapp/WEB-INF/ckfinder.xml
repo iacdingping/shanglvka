@@ -67,8 +67,8 @@
 		<url>%BASE_URL%_thumbs/</url>
 		<directory>%BASE_DIR%_thumbs</directory>
 		<directAccess>true</directAccess>
-		<maxWidth>720</maxWidth>
-		<maxHeight>1280</maxHeight>
+		<maxWidth>640</maxWidth>
+		<maxHeight>400</maxHeight>
 		<quality>80</quality>
 	</thumbs>
 	<plugins>
