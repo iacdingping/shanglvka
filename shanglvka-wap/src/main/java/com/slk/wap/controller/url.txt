@@ -1,0 +1,4 @@
+联系我们:/about/come
+签到: /act/sign/index
+报名：/act/enroll/index
+抽奖：/act/draw/index

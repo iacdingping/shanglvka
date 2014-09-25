@@ -66,7 +66,7 @@
 					pattern="yyyy年MM月dd日  HH:mm:ss" />
 			</div>
 		</header>
-		<article class="conetnt limit_wth content_area">
+		<article class="conetnt limit_wth content_area" style="overflow: hidden;">
 			<p class="sj2 margin_T10">
 				${fns:unescapeHtml(viewData.articleData.content)}</p>
 			<br />
