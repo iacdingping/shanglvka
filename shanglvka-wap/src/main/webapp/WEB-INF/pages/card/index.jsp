@@ -38,31 +38,34 @@
 	<div class="palette palette-peter-river"
 		style="height: 100px; position: relative; margin-bottom: 10px;">
 		<p style="text-align: center; height: 25px; width: 100%">
-			刘德华&nbsp;<img src="${ctx}/static/img/common/v.gif" style="width: 20px;" />
+			${businessCard.name}&nbsp;<img src="${ctx}/static/img/common/v.gif" style="width: 20px;" />
 		</p>
 		<div>
-			<img src="${ctx}/static/img/test/touxiang01.png" id="touxiang" width="120"
+			<img src="${businessCard.icoHeader}" id="touxiang" width="120"
 				style="position: absolute; width: 100px; height: 100px; border-radius: 50px; left: 36%; top: 50px; border: 5px solid #2980B9;" />
 		</div>
 	</div>
 	<div style="height: 50px; width: 100%"></div>
 	<div style="position: relative; width: auto; font-size: 14px;" id="detail-info">
 		<div>
-			<span class="fui-user"></span>&nbsp;职位：商旅集团客户经理
+			<span class="fui-user"></span>&nbsp;职位：${businessCard.job}
 		</div>
 		<div>
-			<span class="fui-mic"></span>&nbsp;手机：15924150050
+			<span class="fui-mic"></span>&nbsp;手机：<a href="tel:${businessCard.phone}">${businessCard.phone}</a>
 		</div>
 		<div>
-			<span class="fui-mail"></span>&nbsp;&nbsp;邮箱：ABC@SLK.COM
+			<span class="fui-mail"></span>&nbsp;&nbsp;邮箱：${businessCard.mail}
 		</div>
 		<div>
-			<span class="fui-location"></span>&nbsp;地址：银河系太阳村地球部落中国村32号
+			<span class="fui-location"></span>&nbsp;地址：
+			<a
+					href="http://map.baidu.com/mobile/webapp/place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${businessCard.address}/?fromhash=1#place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${businessCard.address}&vt=map">
+					${businessCard.address}</a>
 		</div>
 	</div>
 	<div style="background: #6CF; margin-top: 20px; height: 100px;padding-top:10px">
 		<ul id="service-list">
-			<li><a href="">
+			<li><a href="${ctx}/">
 					<div
 						style="width: 60px; height: 60px; border: 2px solid yellow; border-radius: 50px; text-align: center; line-height: 64px;">
 						<span class="fui-windows"></span>
@@ -93,7 +96,7 @@
 	<footer>
 		<div
 			style="width: 100%; text-align: center; padding: 10px 0px; font-size: 14px;">
-			商旅卡服务者<br /> 浙ICP备案号1234567
+			杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
 		</div>
 	</footer>
 	<script type="text/javascript">

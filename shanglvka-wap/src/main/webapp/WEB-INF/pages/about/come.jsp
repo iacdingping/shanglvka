@@ -26,8 +26,7 @@
 			<span class="fui-volume"></span> 联系电话 ：<a href="tel:0571-87250823"><font
 				color="#F39C12"> 0571-87250823</font></a><br /> <span class="fui-user"></span>关于我们
 			：<font color="#F39C12"><a href="${ctx}/">杭州商旅卡微信公众简介</a></font><br />
-			<span class="fui-mail"></span> 联系邮箱 ： <a
-				href="Mailto:info@4000001888.com">info@4000001888.com</a><br /> <span
+			<span class="fui-mail"></span> 联系邮箱 ：info@4000001888.com<br /> <span
 				class="fui-home"></span> 官方网址 ： <a href="http://www.51ctcard.com">商旅卡-商旅集团</a><br />
 			<span class="fui-new"></span> 新浪微博 ： @杭州市商贸旅游集团
 		</div>
