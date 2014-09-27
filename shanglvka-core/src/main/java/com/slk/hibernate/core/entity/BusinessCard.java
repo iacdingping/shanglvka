@@ -45,6 +45,7 @@ public class BusinessCard extends BaseEntity<BusinessCard> {
 	private java.lang.String mail; // mail
 	private java.lang.String address; // address
 	private java.lang.String icoHeader; // address
+	private java.lang.String job; //工作 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -94,6 +95,14 @@ public class BusinessCard extends BaseEntity<BusinessCard> {
 
 	public void setIcoHeader(java.lang.String icoHeader) {
 		this.icoHeader = icoHeader;
+	}
+
+	public java.lang.String getJob() {
+		return job;
+	}
+
+	public void setJob(java.lang.String job) {
+		this.job = job;
 	}
 
 }
