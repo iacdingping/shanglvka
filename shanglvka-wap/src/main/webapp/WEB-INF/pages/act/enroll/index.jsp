@@ -13,7 +13,7 @@
 <!-- Loading Flat UI -->
 <link href="${ctx}/static/css/common/flat-ui/flat-ui.css" rel="stylesheet">
 <link href="${ctx}/static/css/common/flat-ui/demo.css" rel="stylesheet">
-<title>活动报名</title>
+<title>快. 速来报名</title>
 </head>
 <body>
 	<div>

@@ -13,7 +13,7 @@
 <!-- Loading Flat UI -->
 <link href="${ctx}/static/css/common/flat-ui/flat-ui.css" rel="stylesheet">
 <link href="${ctx}/static/css/common/flat-ui/demo.css" rel="stylesheet">
-<title>商旅卡</title>
+<title>抢. 购商旅卡</title>
 <style type="text/css">
 #service-list li {
 	list-style: none;

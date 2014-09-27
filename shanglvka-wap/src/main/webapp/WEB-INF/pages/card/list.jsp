@@ -16,7 +16,7 @@
 <link href="${ctx}/static/css/common/flat-ui/flat-ui.css"
 	rel="stylesheet">
 <link href="${ctx}/static/css/common/flat-ui/demo.css" rel="stylesheet">
-<title>商旅客服</title>
+<title>抢. 购商旅卡</title>
 <style type="text/css">
 #new-li {
 	background: #fff;

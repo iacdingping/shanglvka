@@ -15,7 +15,7 @@
 <link href="${ctx}/static/css/common/flat-ui/demo.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="${ctx}/static/css/card/wei_webapp.css" />
-<title>会员卡详情</title>
+<title>查. MY商旅卡</title>
 </head>
 <body>
 	<div id="">
