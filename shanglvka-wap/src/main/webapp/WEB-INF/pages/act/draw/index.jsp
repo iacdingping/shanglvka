@@ -108,24 +108,25 @@ body {
 					{
 						bind : {
 							click : function() {
-								var time = [ 0, 1 ];
-								time = time[Math.floor(Math.random()
-										* time.length)];
-								if (time == 0) {
-									timeOut(); //网络超时
-								}
-								if (time == 1) {
+								//var time = [ 0, 1 ];
+								//time = time[Math.floor(Math.random()
+								//		* time.length)];
+								//if (time == 0) {
+								//	timeOut(); //网络超时
+								//}
+								//if (time == 1) {
+									$('#msg').html("正在抽奖中…");
 									var data = [ 1, 2, 3, 0 ]; //返回的数组
 									data = data[Math.floor(Math.random()
 											* data.length)];
 									if (data == 1) {
-										rotateFunc(1, 157, '恭喜您抽中的一等奖')
+										rotateFunc(1, 157, '恭喜您抽中一等奖')
 									}
 									if (data == 2) {
-										rotateFunc(2, 247, '恭喜您抽中的二等奖')
+										rotateFunc(2, 247, '恭喜您抽中二等奖')
 									}
 									if (data == 3) {
-										rotateFunc(3, 22, '恭喜您抽中的三等奖')
+										rotateFunc(3, 22, '恭喜您抽中三等奖')
 									}
 									if (data == 0) {
 										var angle = [ 67, 112, 202, 292, 337 ];
@@ -133,7 +134,7 @@ body {
 												* angle.length)]
 										rotateFunc(0, angle, '很遗憾，这次您未抽中奖')
 									}
-								}
+									//}
 							}
 						}
 
