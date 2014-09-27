@@ -115,32 +115,41 @@ body {
 								//	timeOut(); //网络超时
 								//}
 								//if (time == 1) {
-									$('#msg').html("正在抽奖中…");
-									var data = [ 1, 2, 3, 0 ]; //返回的数组
-									data = data[Math.floor(Math.random()
-											* data.length)];
-									if (data == 1) {
-										rotateFunc(1, 157, '恭喜您抽中一等奖')
-									}
-									if (data == 2) {
-										rotateFunc(2, 247, '恭喜您抽中二等奖')
-									}
-									if (data == 3) {
-										rotateFunc(3, 22, '恭喜您抽中三等奖')
-									}
-									if (data == 0) {
-										var angle = [ 67, 112, 202, 292, 337 ];
-										angle = angle[Math.floor(Math.random()
-												* angle.length)]
-										rotateFunc(0, angle, '很遗憾，这次您未抽中奖')
-									}
-									//}
+								$('#msg').html("正在抽奖中…");
+								var data = [ 1, 2, 3, 0 ]; //返回的数组
+								data = data[Math.floor(Math.random()
+										* data.length)];
+								if (data == 1) {
+									rotateFunc(1, 157, '恭喜您抽中一等奖')
+									recordLog(1);
+								}
+								if (data == 2) {
+									rotateFunc(2, 247, '恭喜您抽中二等奖')
+									recordLog(2);
+								}
+								if (data == 3) {
+									rotateFunc(3, 22, '恭喜您抽中三等奖')
+									recordLog(3);
+								}
+								if (data == 0) {
+									var angle = [ 67, 112, 202, 292, 337 ];
+									angle = angle[Math.floor(Math.random()
+											* angle.length)]
+									rotateFunc(0, angle, '很遗憾，这次您未抽中奖')
+									recordLog(0);
+								}
+								//}
 							}
 						}
 
 					});
 
 		})
+
+		//记录中奖信息
+		function recordLog(i) {
+
+		}
 	</script>
 </body>
 </html>
