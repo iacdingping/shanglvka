@@ -11,20 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.validator.constraints.Length;
 
 import com.thinkgem.jeesite.common.persistence.BaseEntity;
-import com.thinkgem.jeesite.common.persistence.DataEntity;
-import com.thinkgem.jeesite.modules.sys.entity.User;
+import com.thinkgem.jeesite.common.utils.DateUtils;
 
 /**
  * 商旅活动Entity
@@ -38,12 +31,13 @@ import com.thinkgem.jeesite.modules.sys.entity.User;
 public class Enroll extends BaseEntity<Enroll> {
 
 	private static final long serialVersionUID = 1L;
+	public static final String FIELD_CONTACT_PHONE = "contactPhone";
 
 	private java.lang.Long id; // id
 	private java.lang.String contact; // contact
 	private java.lang.String contactPhone; // contact_phone
-	private String enrollDate; // enroll_date
-	private String enrollTime; // enroll_time
+	private Date enrollDate; // enroll_date
+	private Date enrollTime; // enroll_time
 	private java.lang.String note; // note
 	private Date createDate;
 
@@ -81,19 +75,27 @@ public class Enroll extends BaseEntity<Enroll> {
 		this.contactPhone = contactPhone;
 	}
 
-	public String getEnrollDate() {
+	public Date getEnrollDate() {
 		return enrollDate;
 	}
+	
+	public void setEnrollDateStr(String enrollDateStr) {
+		setEnrollDate(DateUtils.parseDate(enrollDateStr));
+	}
 
-	public void setEnrollDate(String enrollDate) {
+	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
 
-	public String getEnrollTime() {
+	public Date getEnrollTime() {
 		return enrollTime;
 	}
+	
+	public void setEnrollTimeStr(String enrollTimeStr) {
+		setEnrollTime(DateUtils.parseDate(enrollTimeStr));
+	}
 
-	public void setEnrollTime(String enrollTime) {
+	public void setEnrollTime(Date enrollTime) {
 		this.enrollTime = enrollTime;
 	}
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib-activity.jsp"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html >
 <html>
 <head>
@@ -8,6 +9,16 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="text/javascript" src="${ctx}/static/js/common/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/validate/jquery.validate.method.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/validate/jquery.validate.method.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/validate/localization/messages_zh.js"></script>
+
+<script type="text/javascript" src="${ctx}/static/js/plugins/My97DatePicker/calendar.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/plugins/My97DatePicker/WdatePicker.js"></script>
+
+
+<link href="${ctx}/static/js/common/validate/jquery.validate.min.css" rel="stylesheet">
 <!-- Loading Bootstrap -->
 <link href="${ctx}/static/css/common/flat-ui/bootstrap.min.css" rel="stylesheet">
 <!-- Loading Flat UI -->
@@ -48,14 +59,17 @@
 				<span class="fui-new"></span>&nbsp;&nbsp;<strong>报名信息</strong>
 			</p>
 			<div>
-				联系人：<input type="text" value="" placeholder="您的称呼" class="form-control">联系电话：<input
-					type="text" value="" placeholder="你的固定电话或手机 " class="form-control">预约日期：<input
-					type="text" value="" placeholder="选择您的日期" class="form-control">
-				预约时间：<input type="text" value="" placeholder="选择您的时间" class="form-control">备注：
-				<textarea class="form-control" rows="3" placeholder="请输入备注信息"></textarea>
-				<button type="submit" class="btn btn-primary"
-					style="width: 100%; margin: auto; margin-top: 20px;">提交</button>
-
+				<form id="enroll_form" action="${ctx}/act/enroll/submit" method="post"  modelAttribute="enroll" name="enroll">
+					联系人：<div class="controls"><input type="text" name="contact" value="" placeholder="您的称呼" class="form-control required"></div>
+					联系电话：<div class="controls"><input type="text"  name="contactPhone" value="" placeholder="你的固定电话或手机 " class="form-control required"></div>
+					预约日期：<div class="controls"><input id="enrollDateStr" name="enrollDateStr" type="text" readonly="readonly" class="input-small Wdate form-control required"
+					value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false});" placeholder="选择您的日期" /></div>
+					预约时间：<div class="controls"><input id="enrollTimeStr" name="enrollTimeStr" type="text" readonly="readonly" class="input-small Wdate form-control required"
+					value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false});" placeholder="选择预约时间" /></div>
+					备注：<textarea class="form-control" name="note" rows="3" placeholder="请输入备注信息"></textarea>
+					<button type="submit" class="btn btn-primary"
+						style="width: 100%; margin: auto; margin-top: 20px;">提交</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -67,5 +81,18 @@
 			杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
 		</div>
 	</footer>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		if('${exists}' == 'true') {
+			alert('该号码已经申请过');
+		}
+		if('${success}' == 'true') {
+			alert('报名成功');
+		}
+		$("#enroll_form").validate();
+	});
+	</script>
 </body>
 </html>

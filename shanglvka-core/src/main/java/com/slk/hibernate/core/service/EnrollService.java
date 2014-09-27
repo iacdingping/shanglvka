@@ -4,9 +4,9 @@
  *@copyright all rights reserved (c) wyyft@163.com
  *****************************************************************/
 package com.slk.hibernate.core.service;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Date;
+
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,12 +50,20 @@ public class EnrollService extends BaseService {
 	
 	@Transactional(readOnly = false)
 	public void save(Enroll enroll) {
+		enroll.setCreateDate(new Date());
 		enrollDao.save(enroll);
 	}
 	
 	@Transactional(readOnly = false)
 	public void delete(Long id) {
 		enrollDao.deleteById(id);
+	}
+
+	@Transactional(readOnly = false)
+	public boolean exists(String contactPhone) {
+		DetachedCriteria dc = enrollDao.createDetachedCriteria();
+		dc.add(Restrictions.eq(Enroll.FIELD_CONTACT_PHONE, contactPhone));
+		return enrollDao.count(dc) > 0;
 	}
 	
 }

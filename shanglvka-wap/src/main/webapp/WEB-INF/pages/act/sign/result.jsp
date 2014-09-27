@@ -18,16 +18,9 @@
 <title>签到</title>
 </head>
 <body>
-<div style="width:100%; text-align: center; display:none;" class="binddiv">
-   <h6>首次签到，绑定手机领话费</h6>
-</div>
 <div style="min-width:320px;">
-
-	<div class="form-group" style="display:none;" class="binddiv">
-		<input type="tel" id="phone" value="" placeholder="请输入您的手机号" class="form-control" style="width:250px;margin: auto;" maxlength="11">
-	</div>
 	<div style="width:200px;margin: auto;">
-		<a id="sign" href="javascript:void(0);" class="btn btn-block btn-lg btn-primary">签到</a>
+		<span id="message">${message}</span>
 	</div>
 </div>
 <br/>
@@ -36,31 +29,5 @@
 		杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
 	</div>
 </footer>
-<script type="text/javascript">
-	var bind = '${bind}' == 'true';
-	$(document).ready(function() {
-		if(!bind) {
-			$('.binddiv').show();
-			$('.sign').text('绑定并签到');
-		}
-		
-		$('#sign').click(submit);
-	});
-	
-	function submit() {
-		if(bind) {
-			location = '${ctx}' + '/act/sign/do';
-		} else {
-			var phone = $('#phone').val();
-			if(/^1\d{10}$/.test(phone) == false) {
-				console.log(phone);
-				$('#phone').focus();
-				alert('请输入正确的手机号码' + phone);
-				return;
-			}
-			location = '${ctx}' + '/act/sign/do?mobile=' + phone;
-		}
-	}
-</script>
 </body>
 </html>
