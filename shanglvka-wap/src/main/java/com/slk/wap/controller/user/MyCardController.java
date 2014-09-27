@@ -19,4 +19,9 @@ public class MyCardController {
 	public String detail(){
 		return "/card/detail";
 	}
+	
+	@RequestMapping("list")
+	public  String list(){
+		return "/card/list";
+	}
 }
