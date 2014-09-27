@@ -5,10 +5,9 @@
  *****************************************************************/
 package com.slk.hibernate.core.service;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,11 @@ public class BusinessCardService extends BaseService {
 	@Transactional(readOnly = false)
 	public void delete(Long id) {
 		businessCardDao.deleteById(id);
+	}
+
+	@Transactional
+	public List<BusinessCard> list() {
+		return businessCardDao.findAll();
 	}
 
 }
