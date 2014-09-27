@@ -56,6 +56,7 @@ public class MenuController {
 		query.setParent(new ButtonMenu(0l));
 		String result = "";
 		String params = getMenuJson(buttonMenuManager.list(query));
+		System.out.println(params);
 		String accessToken = this.getAccessToken(appid, secret);
 		String delStr = deleteMenuInfo(accessToken);
 		if (delStr.equals("ok")) {

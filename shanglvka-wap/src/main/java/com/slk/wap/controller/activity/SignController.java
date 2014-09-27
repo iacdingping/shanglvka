@@ -58,11 +58,12 @@ public class SignController {
 		
 		if(alreadySign) {
 			model.put("alreadySign", alreadySign);
-			model.put("message", "您今日已签到");
+			model.put("message", "您今日已签到！");
 		} else {
-			model.put("message", "恭喜，签到成功");
-			
-			CookieUtils.setCookie(response, USER_ID_COOKIE, mobile, 30 * 24 * 60 * 60);
+			model.put("message", "签到成功，获得5个积分！");
+			if(mobile!=null){
+				CookieUtils.setCookie(response, USER_ID_COOKIE, mobile, 30 * 24 * 60 * 60);
+			}
 			CookieUtils.setCookie(response, SIGN_TIMESTAMP, System.currentTimeMillis() + "");
 		}
 		return ConstantActivity.URI_SIGN+"/result";

@@ -19,7 +19,7 @@
 </head>
 <body>
 <div style="min-width:320px;">
-	<div style="width:200px;margin: auto;">
+	<div style="width:220px;margin: auto;margin-top: 20px;">
 		<span id="message">${message}</span>
 	</div>
 </div>
