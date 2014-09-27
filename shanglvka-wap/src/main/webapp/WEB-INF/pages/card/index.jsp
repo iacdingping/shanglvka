@@ -51,13 +51,16 @@
 			<span class="fui-user"></span>&nbsp;职位：${businessCard.job}
 		</div>
 		<div>
-			<span class="fui-mic"></span>&nbsp;手机：${businessCard.phone}
+			<span class="fui-mic"></span>&nbsp;手机：<a href="tel:${businessCard.phone}">${businessCard.phone}</a>
 		</div>
 		<div>
 			<span class="fui-mail"></span>&nbsp;&nbsp;邮箱：${businessCard.mail}
 		</div>
 		<div>
-			<span class="fui-location"></span>&nbsp;地址：${businessCard.address}
+			<span class="fui-location"></span>&nbsp;地址：
+			<a
+					href="http://map.baidu.com/mobile/webapp/place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${businessCard.address}/?fromhash=1#place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${businessCard.address}&vt=map">
+					${businessCard.address}</a>
 		</div>
 	</div>
 	<div style="background: #6CF; margin-top: 20px; height: 100px;padding-top:10px">
