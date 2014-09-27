@@ -16,20 +16,20 @@ import com.slk.hibernate.core.service.BusinessCardService;
 public class MyCardController {
 	@Autowired
 	private BusinessCardService businessCardService;
-
+	@RequestMapping("/list")
+	public String list(Model model) {
+		model.addAttribute("list", businessCardService.list());
+		return "/card/list";
+	}
+	
 	@RequestMapping("/index")
 	public String index(BusinessCard businessCard,Model model) {
-		model.addAttribute("businessCard", businessCardService.get(1L));
+		model.addAttribute("businessCard", businessCardService.get(businessCard.getId()));
 		return "/card/index";
 	}
 
 	@RequestMapping("detail")
 	public String detail() {
 		return "/card/detail";
-	}
-	
-	@RequestMapping("list")
-	public  String list(){
-		return "/card/list";
 	}
 }
