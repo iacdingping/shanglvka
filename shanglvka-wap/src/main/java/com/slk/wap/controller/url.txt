@@ -2,3 +2,6 @@
 签到: /act/sign/index
 报名：/act/enroll/index
 抽奖：/act/draw/index
+刷卡 ： /act/pos/index
+会员名片: /card/index
+会员卡信息：/card/detail

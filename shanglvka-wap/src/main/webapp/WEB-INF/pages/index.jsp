@@ -60,7 +60,6 @@
 			</c:forEach>
 		</ul>
 	</div>
-
 	<script type="text/javascript">
 		
 	</script>

@@ -7,14 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<script type="text/javascript"
-	src="${ctx}/static/js/common/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/jquery.min.js"></script>
 <!-- Loading Bootstrap -->
-<link href="${ctx}/static/css/common/flat-ui/bootstrap.min.css"
-	rel="stylesheet">
+<link href="${ctx}/static/css/common/flat-ui/bootstrap.min.css" rel="stylesheet">
 <!-- Loading Flat UI -->
-<link href="${ctx}/static/css/common/flat-ui/flat-ui.css"
-	rel="stylesheet">
+<link href="${ctx}/static/css/common/flat-ui/flat-ui.css" rel="stylesheet">
 <link href="${ctx}/static/css/common/flat-ui/demo.css" rel="stylesheet">
 <title>活动报名</title>
 </head>
@@ -50,12 +47,11 @@
 			<p>
 				<span class="fui-new"></span>&nbsp;&nbsp;<strong>报名信息</strong>
 			</p>
-			<div>联系人：<input type="text" value="" placeholder="您的称呼"
-					class="form-control">联系电话：<input type="text" value=""
-					placeholder="你的固定电话或手机 " class="form-control">预约日期：<input
+			<div>
+				联系人：<input type="text" value="" placeholder="您的称呼" class="form-control">联系电话：<input
+					type="text" value="" placeholder="你的固定电话或手机 " class="form-control">预约日期：<input
 					type="text" value="" placeholder="选择您的日期" class="form-control">
-				预约时间：<input type="text" value="" placeholder="选择您的时间"
-					class="form-control">备注：
+				预约时间：<input type="text" value="" placeholder="选择您的时间" class="form-control">备注：
 				<textarea class="form-control" rows="3" placeholder="请输入备注信息"></textarea>
 				<button type="submit" class="btn btn-primary"
 					style="width: 100%; margin: auto; margin-top: 20px;">提交</button>
