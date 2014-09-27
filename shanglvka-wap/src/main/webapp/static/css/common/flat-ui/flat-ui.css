@@ -5112,8 +5112,9 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 .todo li.todo-done .todo-name {
   color: #1abc9c;
   }
+   /**
 .todo li:after {
-  position: absolute;
+ position: absolute;
   top: 50%;
   right: 22px;
   display: block;
@@ -5123,6 +5124,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   content: " ";
   background: #fff;
   border-radius: 50%;
+  
   }
 .todo li.todo-done:after {
   font-family: 'Flat-UI-Pro-Icons';
@@ -5140,6 +5142,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   }
+  */
 .todo-search {
   position: relative;
   padding: 19px 25px 20px;

@@ -25,6 +25,13 @@
 			<li><a href="${ctx}/mp/buttonMenu/form">微信平台自定义菜单添加</a></li>
 		</shiro:hasPermission>
 	</ul>
+	<form id="searchForm" modelAttribute="buttonMenu"
+		action="${ctx}/mp/buttonMenu/" method="post"
+		class="breadcrumb form-search">
+		<input id="pageNo" name="page" type="hidden" value="${pageQuery.page}" />
+		<input id="pageSize" name="pageSize" type="hidden"
+			value="${pageQuery.pageSize}" />
+	</form>
 	<div class="breadcrumb form-search">
 		<div
 			style="border-radius: 5px; background: blue; padding: 5px; width: 80px; text-align: center">
@@ -49,7 +56,7 @@
 				<tr id="bl${buttonMenu.id}">
 					<td><c:if test="${buttonMenu.parent==null}">顶级</c:if> <c:if
 							test="${buttonMenu.parent!=null}">${buttonMenu.parent.name}</c:if></td>
-					<td>${buttonMenu.name}</td>
+					<th>${buttonMenu.name}</th>
 					<td><c:if test="${buttonMenu.type=='click'}">关键字</c:if> <c:if
 							test="${buttonMenu.type=='view'}">链接</c:if></td>
 					<td>${buttonMenu.key}</td>

@@ -54,6 +54,13 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label">职位:</label>
+			<div class="controls">
+				<form:input path="job" htmlEscape="false" maxlength="13"
+					class="required" />
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label">电话:</label>
 			<div class="controls">
 				<form:input path="phone" htmlEscape="false" maxlength="13"
