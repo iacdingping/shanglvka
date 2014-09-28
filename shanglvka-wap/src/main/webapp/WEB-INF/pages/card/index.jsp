@@ -40,10 +40,17 @@
 		<p style="text-align: center; height: 25px; width: 100%">
 			${businessCard.name}&nbsp;<img src="${ctx}/static/img/common/v.gif" style="width: 20px;" />
 		</p>
-		<div>
+		<div class="" style="float: left;position: absolute;;width: 100px; height: 100px;top:50px;" id="touxiang">
+			<div style="position: absolute;width: 100px; height: 100px; border-radius: 50px; left: 10px; top: 5px; border: 5px solid #2980B9;z-index: 101">
+			</div>
+			<img src="${businessCard.icoHeader}" id="touxiang"
+				style="position: absolute;width: 90px; height: 90px; border-radius: 50px; left: 15px; top: 10px;z-index: 100" />
+		</div>
+		<!--<div>
 			<img src="${businessCard.icoHeader}" id="touxiang" width="120"
 				style="position: absolute; width: 100px; height: 100px; border-radius: 50px; left: 36%; top: 50px; border: 5px solid #2980B9;" />
 		</div>
+		 -->
 	</div>
 	<div style="height: 50px; width: 100%"></div>
 	<div style="position: relative; width: auto; font-size: 14px;" id="detail-info">
@@ -104,7 +111,6 @@
 				function() {
 					//头像居中 
 					$("#touxiang").css("left", $(document).width() / 2 - 50);
-					$("#touxiang_v").css("left", $(document).width() / 2 + 20);
 					//详细信息居中
 					$("#detail-info").css("width",
 							$("#detail-info").width() / 2)
