@@ -27,6 +27,7 @@
 .todo ul {
 	background-color: #fff;
 }
+
 </style>
 </head>
 <body>
@@ -35,11 +36,19 @@
 			<c:forEach var="item" items="${list}" varStatus="businessCard">
 				<li class="todo-done " id="new-li">
 				<a href="${ctx}/card/index?id=${item.id}">
-					<div class="" style="float: left">
-						<img src="${item.icoHeader}" id="touxiang"
+					<div class="" style="float: left;position: relative;width: 90px; height: 90px;">
+						<!-- <img src="${item.icoHeader}" id="touxiang"
 							width="120"
 							style="width: 80px; height: 80px; border-radius: 40px; left: 36%; top: 50px; border: 5px solid #2980B9;" />
+							 -->
+						<div style="position: absolute;width: 80px; height: 80px; border-radius: 40px; left: 10px; top: 5px; border: 5px solid #2980B9;z-index: 101">
+						
+						</div>
+						<img src="${item.icoHeader}" id="touxiang"
+							style="position: absolute;width: 70px; height: 70px; border-radius: 40px; left: 15px; top: 10px;z-index: 100" />
 					</div>
+					
+							
 					<div class="todo-content"
 						style="color: #000; float: left; margin-left: 10px;">
 						<h6 style="color: #000">${item.name}</h6>
