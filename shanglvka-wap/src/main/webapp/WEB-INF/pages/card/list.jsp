@@ -66,9 +66,10 @@
 	<footer>
 		<div
 			style="width: 100%; text-align: center; padding: 10px 0px; font-size: 14px;">
-			商旅卡服务者<br /> 浙ICP备案号1234567
+			杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
 		</div>
 	</footer>
+	<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
 	<script type="text/javascript">
 		$().ready(
 				});
