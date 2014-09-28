@@ -21,7 +21,7 @@
 
 <div style="min-width:320px;display:none;" class="binddiv">
 	<div style="width:100%; text-align: center; ">
-	   <h6>首次签到，绑定手机领话费</h6>
+	   <h6>首次签到，绑定手机领积分</h6>
 	</div>
 	<div class="form-group">
 		<input type="tel" id="phone" value="" placeholder="请输入您的手机号" class="form-control" style="width:250px;margin: auto;" maxlength="11">
@@ -35,6 +35,7 @@
 <br/>
 
 <footer>
+	<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
 	<div style="width:100%;text-align: center;padding:10px 0px;font-size:14px;">
 		杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
 	</div>
