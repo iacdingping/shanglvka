@@ -44,7 +44,7 @@ public class PurchaseApplyService extends BaseService {
 		DetachedCriteria dc = purchaseApplyDao.createDetachedCriteria();
 		//添加查询条件
 		//dc.add(Restrictions.eq(PurchaseApply.DEL_FLAG, PurchaseApply.DEL_FLAG_NORMAL));
-		//dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("id"));
 		return purchaseApplyDao.find(page, dc);
 	}
 	

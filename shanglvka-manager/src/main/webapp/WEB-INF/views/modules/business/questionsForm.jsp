@@ -34,9 +34,9 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/business/questions/">常见问题解答列表</a></li>
+		<li><a href="${ctx}/business/questions/">${questions.type eq '1'?'用户反馈':'常见问题解答'}列表</a></li>
 		<li class="active"><a
-			href="${ctx}/business/questions/form?id=${questions.id}">常见问题解答<shiro:hasPermission
+			href="${ctx}/business/questions/form?id=${questions.id}&type=${questions.type}">${questions.type eq '1'?'用户反馈':'常见问题解答'}<shiro:hasPermission
 					name="business:questions:edit">${not empty questions.id?'修改':'添加'}</shiro:hasPermission>
 				<shiro:lacksPermission name="business:questions:edit">查看</shiro:lacksPermission></a></li>
 	</ul>
@@ -60,6 +60,7 @@
 					class="required" cssStyle="width:600px;" />
 			</div>
 		</div>
+		<input id="type" name="type" type="hidden" value="${questions.type}">
 		<div class="form-actions">
 			<shiro:hasPermission name="business:questions:edit">
 				<input id="btnSubmit" class="btn btn-primary" type="submit"

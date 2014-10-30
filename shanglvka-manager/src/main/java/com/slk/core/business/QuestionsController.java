@@ -60,6 +60,7 @@ public class QuestionsController extends BaseController {
 		Page<Questions> page = questionsService.find(new Page<Questions>(
 				request, response), questions);
 		model.addAttribute("page", page);
+		model.addAttribute("type", questions.getType());
 		return "modules/business/questionsList";
 	}
 
@@ -78,13 +79,12 @@ public class QuestionsController extends BaseController {
 			return form(questions, model);
 		}
 		if (questions.getId() == null) {
-			questions.setType("0");
 			questions.setCreateTime(new Date());
 		}
 		questionsService.save(questions);
 		addMessage(redirectAttributes, "保存常见问题成功");
 		return "redirect:" + Global.getAdminPath()
-				+ "/business/questions/?repage";
+				+ "/business/questions/?repage&type="+questions.getType();
 	}
 
 	@RequiresPermissions("business:questions:edit")

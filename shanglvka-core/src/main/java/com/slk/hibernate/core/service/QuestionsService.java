@@ -43,10 +43,11 @@ public class QuestionsService extends BaseService {
 
 	public Page<Questions> find(Page<Questions> page, Questions questions) {
 		DetachedCriteria dc = questionsDao.createDetachedCriteria();
-		// 添加查询条件
-		// dc.add(Restrictions.eq(Questions.DEL_FLAG,
-		// Questions.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.asc("id"));
+		if (!com.thinkgem.jeesite.common.utils.StringUtils.isEmpty(questions
+				.getType())) {
+			dc.add(Restrictions.eq("type", questions.getType()));
+		}
+		dc.addOrder(Order.desc("id"));
 		return questionsDao.find(page, dc);
 	}
 
