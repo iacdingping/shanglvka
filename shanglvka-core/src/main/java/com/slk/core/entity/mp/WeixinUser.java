@@ -134,4 +134,41 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 	public void setIsStaff(String isStaff) {
 		this.isStaff = isStaff;
 	}
+
+	private String nickname;
+	private int sex;
+	private String province;
+	private String city;
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 }

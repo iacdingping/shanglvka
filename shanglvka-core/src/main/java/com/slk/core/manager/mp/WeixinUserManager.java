@@ -12,7 +12,7 @@ import com.slk.core.PageQuery;
 import com.slk.core.dao.mp.WeixinUserDao;
 import com.slk.core.entity.mp.WeixinUser;
 import com.slk.core.query.mp.WeixinUserQuery;
-
+import com.thinkgem.jeesite.common.utils.StringUtils;
 
 /**
  *
@@ -26,64 +26,72 @@ public class WeixinUserManager {
 
 	@Autowired
 	private WeixinUserDao userDao;
-	/**增加setXXXX()方法,spring就可以通过autowire自动设置对象属性,请注意大小写*/
+
+	/** 增加setXXXX()方法,spring就可以通过autowire自动设置对象属性,请注意大小写 */
 	public void setUserDao(WeixinUserDao dao) {
 		this.userDao = dao;
 	}
-	
-	/** 
+
+	/**
 	 * 创建User
 	 **/
 	public WeixinUser save(WeixinUser user) {
-	    Assert.notNull(user,"'user' must be not null");
-	    this.userDao.save(user);
-	    return user;
+		Assert.notNull(user, "'user' must be not null");
+		this.userDao.save(user);
+		return user;
 	}
-	
-	/** 
+
+	/**
 	 * 更新User
-	 **/	
-    public WeixinUser update(WeixinUser user) {
-        Assert.notNull(user,"'user' must be not null");
-        this.userDao.update(user);
-        return user;
-    }	
-    
-	/** 
-	 * 删除User
 	 **/
-    public void deleteById(java.lang.Long id) {
-        this.userDao.deleteById(id);
-    }
-    
-	/** 
+	public WeixinUser update(WeixinUser user) {
+		Assert.notNull(user, "'user' must be not null");
+		this.userDao.update(user);
+		return user;
+	}
+
+	/**
+	 * 设置员工
+	 **/
+	public void setStaff(java.lang.Long id) {
+		WeixinUser user = getById(id);
+		if (StringUtils.isEmpty(user.getIsStaff())
+				|| user.getIsStaff().equals("0")) {
+			user.setIsStaff("1");
+		} else {
+			user.setIsStaff("0");
+		}
+		this.userDao.update(user);
+	}
+
+	/**
 	 * 根据ID得到User
-	 **/    
-    public WeixinUser getById(java.lang.Long id) {
-        return this.userDao.getById(id);
-    }
-    
-	/** 
+	 **/
+	public WeixinUser getById(java.lang.Long id) {
+		return this.userDao.getById(id);
+	}
+
+	/**
 	 * 统计总数User
-	 **/ 
+	 **/
 	public Long count(PageQuery query) {
 		return userDao.count(query);
 	}
-	
-	/** 
+
+	/**
 	 * list User
-	 **/ 
+	 **/
 	public List<WeixinUser> list(PageQuery query) {
 		return userDao.list(query);
 	}
-	
-	/** 
+
+	/**
 	 * 分页查询: User
-	 **/      
-	@Transactional(readOnly=true)
+	 **/
+	@Transactional(readOnly = true)
 	public PageList<WeixinUser> findPage(WeixinUserQuery query) {
-	    Assert.notNull(query,"'query' must be not null");
-		return new PageList<WeixinUser>(userDao.findPage(query), 
+		Assert.notNull(query, "'query' must be not null");
+		return new PageList<WeixinUser>(userDao.findPage(query),
 				query.getPage(), query.getPageSize(), count(query));
 	}
 
@@ -93,5 +101,5 @@ public class WeixinUserManager {
 		List<WeixinUser> lists = list(query);
 		return lists.isEmpty() ? null : lists.get(0);
 	}
-	
+
 }

@@ -9,7 +9,9 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="mp-User-columns">
 	    <![CDATA[
-		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag` `phone`, `is_staff` as `isStaff` 
+		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag`,
+		`nickname`,`sex`,`province`,`city`,
+		`phone`, `is_staff` as `isStaff` 
 	    ]]>
 	</sql>	
 
@@ -17,9 +19,9 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO mp_user (
-        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`, `phone`, `is_staff`
+        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`,`nickname`,`sex`,`province`,`city`, `phone`, `is_staff`
         ) VALUES (
-        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}  , #{phone}, #{is_staff}      
+        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}  ,#{nickname},#{sex},#{province},#{city}, #{phone}, #{is_staff}      
         )
     ]]>
 		<!--	
@@ -35,12 +37,12 @@
     <![CDATA[
         UPDATE mp_user SET
 	        `identification` = #{identification} , `platform_code` = #{platformCode} , `type` = #{type} , `create_date` = #{createDate} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
-	        , `phone` = #{phone} , `is_staff` = #{isStaff} 
+	        ,`nickname`=#{nickname},`sex`=#{sex},`province`=#{province},`city`=#{city}, 
+	        `phone` = #{phone} , `is_staff` = #{isStaff} 
         WHERE 
         	id = #{id}  	        
     ]]>
 	</update>
-
     <delete id="deleteById">
     <![CDATA[
         DELETE FROM mp_user WHERE
@@ -87,11 +89,23 @@
 	       <if test="delFlag">
 				AND `del_flag` = #{delFlag}
 			</if>
-	       <if test="delFlag">
+	       <if test="phone">
 				AND `phone` = #{phone}
 			</if>
-	       <if test="delFlag">
+	       <if test="isStaff">
 				AND `is_staff` = #{isStaff}
+			</if>
+	       <if test="nickname">
+				AND `nickname` = #{nickname}
+			</if>
+	       <if test="sex">
+				AND `sex` = #{sex}
+			</if>
+	       <if test="province">
+				AND `province` = #{province}
+			</if>
+	       <if test="city">
+				AND `city` = #{city}
 			</if>
 		</where>
 	</sql>
