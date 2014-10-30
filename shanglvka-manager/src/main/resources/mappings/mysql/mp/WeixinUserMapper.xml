@@ -9,7 +9,7 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="mp-User-columns">
 	    <![CDATA[
-		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag`
+		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag` `phone`, `is_staff` as `isStaff` 
 	    ]]>
 	</sql>	
 
@@ -17,9 +17,9 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO mp_user (
-        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`
+        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`, `phone`, `is_staff`
         ) VALUES (
-        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}        
+        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}  , #{phone}, #{is_staff}      
         )
     ]]>
 		<!--	
@@ -35,6 +35,7 @@
     <![CDATA[
         UPDATE mp_user SET
 	        `identification` = #{identification} , `platform_code` = #{platformCode} , `type` = #{type} , `create_date` = #{createDate} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
+	        , `phone` = #{phone} , `is_staff` = #{isStaff} 
         WHERE 
         	id = #{id}  	        
     ]]>
@@ -85,6 +86,12 @@
 		   </if>
 	       <if test="delFlag">
 				AND `del_flag` = #{delFlag}
+			</if>
+	       <if test="delFlag">
+				AND `phone` = #{phone}
+			</if>
+	       <if test="delFlag">
+				AND `is_staff` = #{isStaff}
 			</if>
 		</where>
 	</sql>
