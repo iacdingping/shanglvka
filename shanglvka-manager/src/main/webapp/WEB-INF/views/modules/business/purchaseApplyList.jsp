@@ -58,11 +58,13 @@
 					<td><fmt:formatDate value="${purchaseApply.createTime}"
 							type="both" /></td>
 					<shiro:hasPermission name="business:purchaseApply:edit">
-						<td><a
-							href="${ctx}/business/purchaseApply/form?id=${purchaseApply.id}">修改</a>
-							<a
-							href="${ctx}/business/purchaseApply/delete?id=${purchaseApply.id}"
-							onclick="return confirmx('确认已处理该申购单吗？', this.href)">处理</a></td>
+						<td><c:if test="${purchaseApply.isTreat eq '0'}">
+								<a
+									href="${ctx}/business/purchaseApply/form?id=${purchaseApply.id}">修改</a>
+								<a
+									href="${ctx}/business/purchaseApply/delete?id=${purchaseApply.id}"
+									onclick="return confirmx('确认已处理该申购单吗？', this.href)">处理</a>
+							</c:if></td>
 					</shiro:hasPermission>
 				</tr>
 			</c:forEach>
