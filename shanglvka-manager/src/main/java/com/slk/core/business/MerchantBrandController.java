@@ -28,7 +28,7 @@ import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
- * 申购单Controller
+ * 商旅品牌Controller
  * 
  * @author 禹波
  * @version 2014-09-27
@@ -80,7 +80,7 @@ public class MerchantBrandController extends BaseController {
 		if (merchantBrand.getId() == null) {
 		}
 		merchantBrandService.save(merchantBrand);
-		addMessage(redirectAttributes, "保存申购单成功");
+		addMessage(redirectAttributes, "保存商旅品牌成功");
 		return "redirect:" + Global.getAdminPath()
 				+ "/business/merchantBrand/?repage";
 	}
@@ -89,7 +89,7 @@ public class MerchantBrandController extends BaseController {
 	@RequestMapping(value = "delete")
 	public String delete(Long id, RedirectAttributes redirectAttributes) {
 		merchantBrandService.delete(id);
-		addMessage(redirectAttributes, "处理申购单成功");
+		addMessage(redirectAttributes, "处理商旅品牌成功");
 		return "redirect:" + Global.getAdminPath()
 				+ "/business/merchantBrand/?repage";
 	}

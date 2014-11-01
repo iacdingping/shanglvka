@@ -45,7 +45,12 @@ public class MerchantBrandService extends BaseService {
 	}
 
 	public List<MerchantBrand> list() {
-		return merchantBrandDao.findAll();
+		DetachedCriteria dc = merchantBrandDao.createDetachedCriteria();
+		// 添加查询条件
+		dc.add(Restrictions.eq(MerchantType.FIELD_DEL_FLAG,
+				MerchantType.DEL_FLAG_NORMAL));
+		dc.addOrder(Order.desc("id"));
+		return merchantBrandDao.find(dc);
 	}
 
 	public Page<MerchantBrand> find(Page<MerchantBrand> page,
