@@ -19,7 +19,7 @@ public class AreaType {
 	 * 获取对象值（导入）
 	 */
 	public static Object getValue(String val) {
-		for (Area e : UserUtils.getAreaList()){
+		for (Area e : UserUtils.getAreaList("")){
 			if (val.equals(e.getName())){
 				return e;
 			}
