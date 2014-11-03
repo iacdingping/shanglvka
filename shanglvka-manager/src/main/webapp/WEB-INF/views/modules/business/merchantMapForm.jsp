@@ -88,7 +88,7 @@
 					class="required" />
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="control-group" style="display: none;">
 			<label class="control-label">简要标签:</label>
 			<div class="controls">
 				<form:input path="label" htmlEscape="false" maxlength="50"

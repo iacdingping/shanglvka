@@ -44,7 +44,6 @@
 		<thead>
 			<tr>
 				<th>店铺名称</th>
-				<th>简要说明</th>
 				<th>地址</th>
 				<th>联系电话</th>
 				<th>优惠简介</th>
@@ -57,7 +56,6 @@
 			<c:forEach items="${page.list}" var="merchantMap">
 				<tr>
 					<td>${merchantMap.title}</td>
-					<td>${merchantMap.label}</td>
 					<td>${merchantMap.address}</td>
 					<td>${merchantMap.phone}</td>
 					<td>${merchantMap.offer}</td>

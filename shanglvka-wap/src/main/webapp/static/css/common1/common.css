@@ -1,6 +1,6 @@
 body { font: normal 100% Helvetica, Arial, sans-serif; }  
 * {border:0px;margin:0px;}
-body { font-family:"微软雅黑"}
+body { font-family:"微软雅黑"; font-size:14px;}
 
 li{ list-style:none;border:0px;}
 ul{border:0px;margin:0px;}
@@ -10,20 +10,15 @@ a:actived{ color:none}
 a:hover{ color:none}
 .clear{clear:both}
 footer{ font-size:14px;}
-
+.hide{ display:none}
 .button{ background:#0f63ae; color:#FFF; padding:10px 0px; border-radius:5px; display:block; text-align:center}
-
-
-
-
-
-
-
-
-
-
-
-
+/**透明*/
+.tm80{
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
 
 body {min-width:320px;}
 .link_btn{ border:1px solid #39F;padding:5px 15px;border-radius:5px; color:#666}

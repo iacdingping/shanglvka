@@ -7,10 +7,15 @@ package com.thinkgem.jeesite.modules.sys.service;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.slk.hibernate.core.entity.MerchantType;
 import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.modules.sys.dao.AreaDao;
 import com.thinkgem.jeesite.modules.sys.entity.Area;
@@ -35,6 +40,21 @@ public class AreaService extends BaseService {
 
 	public List<Area> findAll(String pid) {
 		return UserUtils.getAreaList(pid);
+	}
+
+	public List<Area> findAllByPid(String pid) {
+		@SuppressWarnings("unchecked")
+		List<Area> areaList = (List<Area>) UserUtils
+				.getCache(UserUtils.CACHE_AREA_LIST + pid);
+		if (areaList == null) {
+			DetachedCriteria dc = areaDao.createDetachedCriteria();
+			dc.add(Restrictions.eq("parent.id", pid));
+			dc.add(Restrictions.eq(Area.FIELD_DEL_FLAG, Area.DEL_FLAG_NORMAL));
+			dc.addOrder(Order.desc("id"));
+			areaList = areaDao.find(dc);
+			UserUtils.putCache(UserUtils.CACHE_AREA_LIST + pid, areaList);
+		}
+		return areaList;
 	}
 
 	@Transactional(readOnly = false)

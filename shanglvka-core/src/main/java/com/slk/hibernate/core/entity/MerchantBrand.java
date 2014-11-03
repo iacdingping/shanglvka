@@ -37,6 +37,16 @@ public class MerchantBrand extends BaseEntity<MerchantBrand> {
 	private java.lang.Long id; // id
 	private java.lang.String name; // name
 	private java.lang.String pic;
+	private String label;
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
 	private String delFlag;
 
 	@Length(min = 1, max = 1)

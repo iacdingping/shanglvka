@@ -22,6 +22,7 @@ import com.slk.hibernate.core.entity.MerchantType;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.modules.sys.entity.Area;
+import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 /**
@@ -47,6 +48,24 @@ public class MerchantTypeService extends BaseService {
 
 	public List<MerchantType> findAll() {
 		return UserUtils.findAllMerchantType();
+	}
+
+	public List<MerchantType> findAllByPid(Long pid) {
+		@SuppressWarnings("unchecked")
+		List<MerchantType> typeList = (List<MerchantType>) UserUtils
+				.getCache(UserUtils.CACHE_MERCHANT_TYPE_LIST + pid);
+		if (typeList == null) {
+			DetachedCriteria dc = merchantTypeDao.createDetachedCriteria();
+			// 添加查询条件
+			dc.add(Restrictions.eq(MerchantType.FIELD_DEL_FLAG,
+					MerchantType.DEL_FLAG_NORMAL));
+			dc.add(Restrictions.eq("parentId", pid));
+			dc.addOrder(Order.desc("id"));
+			typeList = UserUtils.findAllMerchantType();
+			UserUtils.putCache(UserUtils.CACHE_MERCHANT_TYPE_LIST + pid,
+					typeList);
+		}
+		return typeList;
 	}
 
 	public Page<MerchantType> find(Page<MerchantType> page,

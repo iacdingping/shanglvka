@@ -38,6 +38,7 @@
 			<tr>
 				<th>品牌名称</th>
 				<th>品牌图片</th>
+				<th>简要描述</th>
 				<shiro:hasPermission name="business:merchantBrand:edit">
 					<th>操作</th>
 				</shiro:hasPermission>
@@ -48,6 +49,7 @@
 				<tr>
 					<td>${merchantBrand.name}</td>
 					<td><img src="${merchantBrand.pic}" width="30px"></td>
+					<td>${merchantBrand.label}</td>
 					<shiro:hasPermission name="business:merchantBrand:edit">
 						<td><a
 							href="${ctx}/business/merchantBrand/form?id=${merchantBrand.id}">修改</a>
