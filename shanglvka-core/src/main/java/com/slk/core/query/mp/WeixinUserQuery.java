@@ -31,6 +31,13 @@ public class WeixinUserQuery extends PageQuery {
 	private java.util.Date updateDateEnd;
 	/** delFlag */
 	private java.lang.Integer delFlag;
+	private String nickname;
+	private String sex;
+	private String province;
+	private String city;
+	private String phone;
+	private Boolean isStaff;
+	private Boolean queried;
 
 	public java.lang.Long getId() {
 		return this.id;
@@ -103,7 +110,62 @@ public class WeixinUserQuery extends PageQuery {
 	public void setDelFlag(java.lang.Integer value) {
 		this.delFlag = value;
 	}
-	
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Boolean getIsStaff() {
+		return isStaff;
+	}
+
+	public void setIsStaff(Boolean isStaff) {
+		this.isStaff = isStaff;
+	}
+
+	public Boolean getQueried() {
+		return queried;
+	}
+
+	public void setQueried(Boolean queried) {
+		this.queried = queried;
+	}
 
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this,ToStringStyle.MULTI_LINE_STYLE);

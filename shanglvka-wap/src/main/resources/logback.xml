@@ -21,6 +21,9 @@
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>
+	
+	<!--log4jdbc -->
+	<logger name="org.springframework.web.client" level="DEBUG"/>
 
 	<root level="WARN">
 		<appender-ref ref="console" />

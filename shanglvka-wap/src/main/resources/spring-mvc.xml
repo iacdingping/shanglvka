@@ -51,7 +51,12 @@
 						</property>
 					</bean>
 				</constructor-arg>
-				<property name="supportedMediaTypes" value="application/xml"></property>
+				<property name="supportedMediaTypes">
+					<list>
+                           <value>text/html;charset=UTF-8</value>  
+                           <value>application/xml;charset=UTF-8</value>  
+                      </list>
+				</property>
 			</bean>
 		</mvc:message-converters>
 		<mvc:argument-resolvers>

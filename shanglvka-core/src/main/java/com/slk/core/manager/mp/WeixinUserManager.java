@@ -1,5 +1,6 @@
 package com.slk.core.manager.mp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,8 @@ public class WeixinUserManager {
 	 **/
 	public WeixinUser save(WeixinUser user) {
 	    Assert.notNull(user,"'user' must be not null");
+	    user.setCreateDate(new Date());
+	    user.setDelFlag(0);
 	    this.userDao.save(user);
 	    return user;
 	}
@@ -45,6 +48,7 @@ public class WeixinUserManager {
 	 **/	
     public WeixinUser update(WeixinUser user) {
         Assert.notNull(user,"'user' must be not null");
+        user.setUpdateDate(new Date());
         this.userDao.update(user);
         return user;
     }	
@@ -93,5 +97,14 @@ public class WeixinUserManager {
 		List<WeixinUser> lists = list(query);
 		return lists.isEmpty() ? null : lists.get(0);
 	}
-	
+
+	public void cancelAttentionUser(String fromUserName) {
+		userDao.cancelAttentionUser(fromUserName);
+	}
+
+	public boolean exists(String fromUserName) {
+		WeixinUserQuery query = new WeixinUserQuery();
+		query.setPlatformCode(fromUserName);
+		return count(query) > 0;
+	}
 }

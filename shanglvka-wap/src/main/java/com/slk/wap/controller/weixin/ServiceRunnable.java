@@ -43,7 +43,14 @@ public class ServiceRunnable {
 		request = parseRequest();
 		
 		Processor<WeixinRequest> processor = InstructionMatcher.match(request);
-		return processor.process(request);
+		WeixinResponse response = processor.process(request);
+		
+		submitTask(request, response);
+		return response;
+	}
+
+	private void submitTask(WeixinRequest request2, WeixinResponse response) {
+		AfterResponseTask.submitTask(request2, response);
 	}
 
 }
