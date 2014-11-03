@@ -15,7 +15,6 @@
 <title>${businessCard.name}</title>
 <style>
 .info_list li {
-	width: 100%;
 	color: #777777;
 	line-height: 30px;
 	margin-left: 28%;
@@ -44,18 +43,16 @@
 </head>
 <body>
 	<div class="palette palette-peter-river"
-		style="height: 100px; position: relative; margin-bottom: 10px; margin: 0 auto; width: 100%;">
+		style="height: 100px; position: relative; margin-bottom: 10px; margin: 0 auto; width: 100%;" id="touxiang">
 		<div class="cycle_bk"></div>
-		<img class="cycle_tu" style="margin: auto;"
-			src="${businessCard.icoHeader}" />
+		<img class="cycle_tu" style="margin: auto;" src="${businessCard.icoHeader}" />
 	</div>
 	<div style="text-align: center; width: 100%; color: #7b7979">
 		<font color="#000000" size="5"><b>${businessCard.name}</b></font>
 		<div  style="margin-top: 10px;margin-bottom: 20px;"><font  color="#000000">${businessCard.job}</font></div>
 	</div>
 	<div class="line" style="background: #999999"></div>
-	<div
-		style="background: #e4e4e4; height: 200px; width: 100%; padding-top: 30px;"
+	<div style="background: #e4e4e4; height: 200px; width: 100%; padding-top: 30px;"
 		class="info_list">
 		<li>手机：<a href="tel:${businessCard.phone}" style="color:#777777;">${businessCard.phone}</a></li>
 		<br>
@@ -73,6 +70,8 @@
 	</footer>
 	<script type="text/javascript">
 		$().ready(function() {
+			$("#touxiang div").css("left" , ($(window).width()/2-45));
+			$("#touxiang img").css("left" , ($(window).width()/2-45));
 		});
 	</script>
 </body>
