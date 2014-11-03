@@ -63,7 +63,7 @@
 		<br>
 		<li>地址： <a  style="color:#777777;"
 			href="http://map.baidu.com/mobile/webapp/place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${businessCard.address}/?fromhash=1#place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${businessCard.address}&vt=map">
-				${businessCard.address}222222222222222222222222222222222222222222222222222222</a></li>
+				${businessCard.address}</a></li>
 	</div>
 
 
