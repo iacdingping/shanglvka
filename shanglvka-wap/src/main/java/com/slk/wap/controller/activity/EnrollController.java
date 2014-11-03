@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.slk.hibernate.core.entity.Enroll;
 import com.slk.hibernate.core.service.EnrollService;
-import com.slk.wap.common.ConstantActivity;
+import com.slk.wap.common.constant.ConstantActivity;
 
 /**
  * 速来报名 

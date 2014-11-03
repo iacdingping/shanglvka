@@ -17,7 +17,7 @@ import com.slk.hibernate.core.entity.BusinessCard;
 import com.slk.hibernate.core.entity.PurchaseApply;
 import com.slk.hibernate.core.service.BusinessCardService;
 import com.slk.hibernate.core.service.PurchaseApplyService;
-import com.slk.wap.common.ConstantActivity;
+import com.slk.wap.common.constant.ConstantActivity;
 import com.slk.wap.common.security.SessionUser;
 import com.thinkgem.jeesite.common.web.BaseController;
 

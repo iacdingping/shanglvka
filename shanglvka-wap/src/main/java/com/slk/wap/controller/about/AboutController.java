@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.slk.hibernate.core.entity.Questions;
 import com.slk.hibernate.core.service.QuestionsService;
-import com.slk.wap.common.ConstantActivity;
+import com.slk.wap.common.constant.ConstantActivity;
 import com.slk.wap.common.security.SessionUser;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;

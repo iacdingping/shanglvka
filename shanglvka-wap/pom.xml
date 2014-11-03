@@ -18,6 +18,10 @@
 			<groupId>iac.dp</groupId>
 			<artifactId>shanglvka-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>iac.dp</groupId>
+			<artifactId>shanglvka-business</artifactId>
+		</dependency>
 		<!-- WEB begin -->
 		<dependency>
 			<groupId>org.springframework</groupId>

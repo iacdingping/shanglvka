@@ -5,13 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.slk.wap.common.ConstantActivity;
+import com.slk.wap.common.constant.ConstantActivity;
 import com.slk.wap.controller.weixin.ArticleItem;
 import com.slk.wap.controller.weixin.WeixinRequest;
 import com.slk.wap.controller.weixin.WeixinResponse;
 import com.slk.wap.weixin.instruction.ResponseUtil;
 import com.thinkgem.jeesite.common.utils.StringUtils;
-import com.thinkgem.jeesite.common.web.Servlets;
 
 /**
  * 图文回复

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.slk.core.entity.mp.WeixinUser;
 import com.slk.core.manager.mp.WeixinUserManager;
-import com.slk.wap.common.ConstantActivity;
+import com.slk.wap.common.constant.ConstantActivity;
 import com.thinkgem.jeesite.common.web.Servlets;
 
 public class SessionInterceptor extends HandlerInterceptorAdapter {
