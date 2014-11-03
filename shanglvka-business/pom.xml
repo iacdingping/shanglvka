@@ -8,5 +8,15 @@
 	</parent>
 	<artifactId>shanglvka-business</artifactId>
 	<packaging>jar</packaging>
+	<properties>
+		<druid.version>1.0.1</druid.version>
+		<mysql.driver.version>5.1.13</mysql.driver.version>
+	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>iac.dp</groupId>
+			<artifactId>shanglvka-core</artifactId>
+		</dependency>
+	</dependencies>
 </project>
