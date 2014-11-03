@@ -14,6 +14,7 @@ import java.util.StringTokenizer;
 import java.util.TreeMap;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -192,5 +193,48 @@ public class Servlets {
 	public static String encodeHttpBasic(String userName, String password) {
 		String encode = userName + ":" + password;
 		return "Basic " + Encodes.encodeBase64(encode.getBytes());
+	}
+	
+	/**
+	 * 设置cookie
+	 */
+	public static void setCookie(HttpServletResponse response, String key, String value) {
+		Cookie c = new Cookie(key, value);
+		c.setMaxAge((int)ONE_YEAR_SECONDS);		//一年
+		c.setPath("/");
+		response.addCookie(c);
+	}
+	
+	/**
+	 * 设置cookie 仅在当前连接中有效
+	 */
+	public static void setCookieOnce(HttpServletResponse response, String key, String value) {
+		Cookie c = new Cookie(key, value);
+		c.setMaxAge(-1);
+		c.setPath("/");
+		response.addCookie(c);
+	}
+	
+	public static void deleteCookie(HttpServletResponse response, String key) {
+		Cookie c = new Cookie(key, null);
+		c.setMaxAge(-1);
+		c.setPath("/");
+		response.addCookie(c);
+	}
+	
+	/**
+	 * 获取cookie值
+	 */
+	public static String getCookie(HttpServletRequest request, String key) {
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(int i=0; i<cookies.length; i++) {
+				Cookie cookie = cookies[i];
+				if(cookie.getName().equals(key)) {
+					return cookie.getValue();
+				}
+			}			
+		}
+		return null;
 	}
 }

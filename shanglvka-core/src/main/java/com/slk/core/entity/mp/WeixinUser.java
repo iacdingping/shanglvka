@@ -50,8 +50,14 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 	 * delFlag db_column: del_flag
 	 */
 	private java.lang.Integer delFlag;
-
-	// columns END
+	private String nickname;
+	private String sex;
+	private String province;
+	private String city;
+	private String phone;
+	private Boolean isStaff;
+	private Boolean queried;
+	//columns END
 
 	public WeixinUser() {
 	}
@@ -115,30 +121,12 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 	public java.lang.Integer getDelFlag() {
 		return this.delFlag;
 	}
-
-	private String phone;
-	private String isStaff;
-
-	public String getPhone() {
-		return phone;
+	public Boolean getQueried() {
+		return queried;
 	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setQueried(Boolean queried) {
+		this.queried = queried;
 	}
-
-	public String getIsStaff() {
-		return isStaff;
-	}
-
-	public void setIsStaff(String isStaff) {
-		this.isStaff = isStaff;
-	}
-
-	private String nickname;
-	private int sex;
-	private String province;
-	private String city;
 
 	public String getNickname() {
 		return nickname;
@@ -148,11 +136,11 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 		this.nickname = nickname;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
@@ -170,5 +158,21 @@ public class WeixinUser extends BaseEntity<WeixinUser> {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Boolean getIsStaff() {
+		return isStaff != null && isStaff;
+	}
+
+	public void setIsStaff(Boolean isStaff) {
+		this.isStaff = isStaff;
 	}
 }

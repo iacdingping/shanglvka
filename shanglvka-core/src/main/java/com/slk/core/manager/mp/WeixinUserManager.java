@@ -1,5 +1,6 @@
 package com.slk.core.manager.mp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,30 +37,32 @@ public class WeixinUserManager {
 	 * 创建User
 	 **/
 	public WeixinUser save(WeixinUser user) {
-		Assert.notNull(user, "'user' must be not null");
-		this.userDao.save(user);
-		return user;
+	    Assert.notNull(user,"'user' must be not null");
+	    user.setCreateDate(new Date());
+	    user.setDelFlag(0);
+	    this.userDao.save(user);
+	    return user;
 	}
 
 	/**
 	 * 更新User
-	 **/
-	public WeixinUser update(WeixinUser user) {
-		Assert.notNull(user, "'user' must be not null");
-		this.userDao.update(user);
-		return user;
-	}
-
+	 **/	
+    public WeixinUser update(WeixinUser user) {
+        Assert.notNull(user,"'user' must be not null");
+        user.setUpdateDate(new Date());
+        this.userDao.update(user);
+        return user;
+    }	
+    
 	/**
 	 * 设置员工
 	 **/
 	public void setStaff(java.lang.Long id) {
 		WeixinUser user = getById(id);
-		if (StringUtils.isEmpty(user.getIsStaff())
-				|| user.getIsStaff().equals("0")) {
-			user.setIsStaff("1");
+		if (user.getIsStaff()) {
+			user.setIsStaff(false);
 		} else {
-			user.setIsStaff("0");
+			user.setIsStaff(true);
 		}
 		this.userDao.update(user);
 	}
@@ -102,4 +105,13 @@ public class WeixinUserManager {
 		return lists.isEmpty() ? null : lists.get(0);
 	}
 
+	public void cancelAttentionUser(String fromUserName) {
+		userDao.cancelAttentionUser(fromUserName);
+	}
+
+	public boolean exists(String fromUserName) {
+		WeixinUserQuery query = new WeixinUserQuery();
+		query.setPlatformCode(fromUserName);
+		return count(query) > 0;
+	}
 }

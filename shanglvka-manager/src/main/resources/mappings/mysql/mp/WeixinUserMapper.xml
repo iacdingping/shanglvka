@@ -9,9 +9,8 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="mp-User-columns">
 	    <![CDATA[
-		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag`,
-		`nickname`,`sex`,`province`,`city`,
-		`phone`, `is_staff` as `isStaff` 
+		`id` as `id`, `identification` as `identification`, `platform_code` as `platformCode`, `type` as `type`, `create_date` as `createDate`, `update_date` as `updateDate`, `del_flag` as `delFlag`, `queried` as `queried`,
+		`nickname` as `nickname`, `sex`, `province`, `city`, `phone`, `is_staff` as `isStaff`
 	    ]]>
 	</sql>	
 
@@ -19,9 +18,9 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO mp_user (
-        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`,`nickname`,`sex`,`province`,`city`, `phone`, `is_staff`
+        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`, `queried`, `nickname`, `sex`, `province`, `city`, `phone`, `is_staff`
         ) VALUES (
-        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}  ,#{nickname},#{sex},#{province},#{city}, #{phone}, #{is_staff}      
+        #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}, #{queried},  #{nickname}, #{sex}, #{province}, #{city}, #{phone}, #{isStaff}
         )
     ]]>
 		<!--	
@@ -36,13 +35,22 @@
 	<update id="update">
     <![CDATA[
         UPDATE mp_user SET
-	        `identification` = #{identification} , `platform_code` = #{platformCode} , `type` = #{type} , `create_date` = #{createDate} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}  
-	        ,`nickname`=#{nickname},`sex`=#{sex},`province`=#{province},`city`=#{city}, 
-	        `phone` = #{phone} , `is_staff` = #{isStaff} 
+	        `identification` = #{identification} , `platform_code` = #{platformCode} , `type` = #{type} , `create_date` = #{createDate} , `update_date` = #{updateDate} , `del_flag` = #{delFlag}, `queried` = #{queried},
+	        `nickname` = #{nickname}, `sex` = #{sex}, `province` = #{province}, `city` = #{city}, `phone` = #{phone}, `is_staff` = #{isStaff}
         WHERE 
         	id = #{id}  	        
     ]]>
 	</update>
+
+	<update id="cancelAttentionUser">
+    <![CDATA[
+        UPDATE mp_user SET
+	        `type` = 2 , `update_date` = now()
+        WHERE 
+        	`platform_code` = #{fromUserName}
+    ]]>
+	</update>
+
     <delete id="deleteById">
     <![CDATA[
         DELETE FROM mp_user WHERE
@@ -89,23 +97,26 @@
 	       <if test="delFlag">
 				AND `del_flag` = #{delFlag}
 			</if>
-	       <if test="phone">
-				AND `phone` = #{phone}
+	       <if test="queried != null">
+				AND `queried` = #{queried}
 			</if>
-	       <if test="isStaff">
-				AND `is_staff` = #{isStaff}
-			</if>
-	       <if test="nickname">
+			<if test="nickname">
 				AND `nickname` = #{nickname}
 			</if>
-	       <if test="sex">
+			<if test="sex">
 				AND `sex` = #{sex}
 			</if>
-	       <if test="province">
+			<if test="province">
 				AND `province` = #{province}
 			</if>
-	       <if test="city">
+			<if test="city">
 				AND `city` = #{city}
+			</if>
+			<if test="phone">
+				AND `phone` = #{phone}
+			</if>
+			<if test="isStaff">
+				AND `is_staff` = #{isStaff}
 			</if>
 		</where>
 	</sql>
@@ -141,6 +152,5 @@
 		</if>
     </select>
 
-	
 </mapper>
 
