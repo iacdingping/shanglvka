@@ -29,7 +29,7 @@
 	display: block;
 	position: absolute;
 	top: 5px;
-	right: -18px;
+	right: -30px;
 }
 
 .arrow_selected {
@@ -196,11 +196,11 @@
 	<div class="tag_selector">
 		<li id="class" class="list_right_border"><span
 			style="position: relative"> <span
-				class="icons class_unselected"></span> 全部分类 <span
-				class="icons arrow_unselected"></span>
+				class="icons class_unselected"></span> <span id="class_txt">全部分类</span>
+				<span class="icons arrow_unselected"></span>
 		</span></li>
 		<li id="city" class="list_right_border"><span
-			style="position: relative">全城区域<span
+			style="position: relative"><span id="city_txt">全城区域</span><span
 				class="icons arrow_unselected"></span></span></li>
 		<li id="order" class="selected" style="display: none;"><span
 			style="position: relative">默认排序<span
@@ -225,7 +225,7 @@
 				<c:forEach var="item" items="${typeList}" varStatus="type">
 					<div id="detail_type${item.id}" class="region_detail_list_items">
 						<c:forEach var="child" items="${item.childList}">
-							<li>${child.name}</li>
+							<li onclick="readType('${child.id}','${child.name}');">${child.name}</li>
 						</c:forEach>
 					</div>
 				</c:forEach>
@@ -244,7 +244,7 @@
 				<c:forEach var="item" items="${areaList}" varStatus="area">
 					<div id="detail_region${item.id}" class="region_detail_list_items">
 						<c:forEach var="child" items="${item.childList}">
-							<li>${child.name}</li>
+							<li onclick="readRegion('${child.id}','${child.name}');">${child.name}</li>
 						</c:forEach>
 					</div>
 				</c:forEach>
@@ -261,15 +261,17 @@
 	</div>
 
 	<div class="query_list">
-		<c:forEach var="item" items="${merchantMaps}" varStatus="businessCard">
-			<li>
-				<p>
-					<img src="${item.pic}" />
-				</p> <span> <span class="title">${item.name}</span> <br /> <span
-					class="introduce">${item.label}</span>
-			</span>
-				<div class="clear"></div>
+		<c:forEach var="item" items="${merchantBrands}">
+			<a href="${ctx}/sl/addressList?brandId=${item.id}">
+				<li>
+					<p>
+						<img src="${item.pic}" />
+					</p> <span> <span class="title">${item.name}</span> <br /> <span
+						class="introduce">${item.label}</span>
+				</span>
+					<div class="clear"></div>
 			</li>
+			</a>
 		</c:forEach>
 	</div>
 
@@ -298,12 +300,7 @@
 											.hide();
 									$("#black_layout").show();
 								} else {
-									$(this).find(".icons").removeClass(
-											"arrow_selected").addClass(
-											"arrow_unselected");
-									$("#" + thisID + "_list").hide().siblings()
-											.hide();
-									$("#black_layout").hide();
+									hideLayout(thisID);
 								}
 							});
 
@@ -316,26 +313,86 @@
 					//类别选择
 					$("#class_list .type_list li").click(function() {
 						var thisID = $(this).attr("id");
-						$("#detail_" + thisID).show().siblings().hide();
+						if (thisID == 'type01') {
+							hideLayout("class");
+							readType('', '全部类别');
+						} else {
+							$("#detail_" + thisID).show().siblings().hide();
+						}
 					});
 					//类别选择
 					$("#class_list .type_detail_list div").click(function() {
 						var thisID = $(this).attr("id");
-						alert(1);
+						hideLayout("class");
 					});
+
 					//地区选择
 					$("#city_list .region_list li").click(function() {
 						var thisID = $(this).attr("id");
-						$("#detail_" + thisID).show().siblings().hide();
+						if (thisID == 'region01') {
+							hideLayout("city");
+							readRegion('', '全城区域');
+						} else {
+							$("#detail_" + thisID).show().siblings().hide();
+						}
 					});
 
 					//类别选择
 					$("#city_list .region_detail_list div").click(function() {
 						var thisID = $(this).attr("id");
-						alert(2);
+						hideLayout("city");
 					});
-					
+
 				});
+		function hideLayout(thisID) {
+			$(this).find(".icons").removeClass("arrow_selected").addClass(
+					"arrow_unselected");
+			$("#" + thisID + "_list").hide().siblings().hide();
+			$("#black_layout").hide();
+		}
+		var classId = '';
+		function readType(id, name) {
+			this.classId = id;
+			readList();
+			$("#class_txt").text("");
+			$("#class_txt").append(name);
+		}
+		var cityId = '';
+		function readRegion(id, name) {
+			this.cityId = id;
+			readList();
+			$("#city_txt").text("");
+			$("#city_txt").append(name);
+		}
+		function readList() {
+			$
+					.ajax({
+						type : "get", //请求方式
+						url : "${ctx}/sl/getBrands", //请求路径
+						cache : false, //(默认: true,dataType为script和jsonp时默认为false) jQuery 1.2 新功能，设置为 false 将不缓存此页面。
+						data : {
+							areaId : cityId,
+							typeId : classId
+						}, //传参
+						//dataType : "html", //返回值类型       使用json的话也可以，但是需要在JS中编写迭代的html代码，如果格式样式
+						success : function(data) {
+							var divshow = $(".query_list");
+							divshow.text("");// 清空数据
+							var html = '';
+							for (var i = 0; i < data.length; i++) {
+								html += '<li><p><img src="'+data[i].pic+'" /></p> <span> <span class="title">'
+										+ data[i].name + '</span> <br />'
+								html += '<span class="introduce">'
+										+ data[i].label
+										+ '</span></span><div class="clear"></div></li>'
+							}
+							if (data.length == 0) {
+								html += '<div style="text-align: center; width: 100%; color: #7b7979;margin-bottom: 16px;margin-top: 20px;">暂无商旅</div>'
+							}
+							divshow.append(html);
+						}
+					});
+		}
 	</script>
 </body>
 </html>
