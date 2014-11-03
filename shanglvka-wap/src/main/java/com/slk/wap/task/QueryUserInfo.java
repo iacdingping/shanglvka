@@ -73,7 +73,7 @@ public class QueryUserInfo implements Runnable {
 		config = RequestConfig.custom().setSocketTimeout(60000).setConnectTimeout(10000).build();
 		
 		threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
-		threadPoolTaskScheduler.setThreadNamePrefix("FlowGiftTask");
+		threadPoolTaskScheduler.setThreadNamePrefix("QueryUserInfo");
 		threadPoolTaskScheduler.initialize();
 
 		threadPoolTaskScheduler.schedule(this, new CronTrigger(cronExpression));

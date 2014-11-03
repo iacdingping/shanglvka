@@ -18,7 +18,7 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO mp_user (
-        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`, `queried`, `nickname`, `sex`, `province`, `city`, `phone`, `is_staff` as `isStaff`
+        `id`, `identification`, `platform_code`, `type`, `create_date`, `update_date`, `del_flag`, `queried`, `nickname`, `sex`, `province`, `city`, `phone`, `is_staff`
         ) VALUES (
         #{id}, #{identification}, #{platformCode}, #{type}, #{createDate}, #{updateDate}, #{delFlag}, #{queried},  #{nickname}, #{sex}, #{province}, #{city}, #{phone}, #{isStaff}
         )

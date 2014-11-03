@@ -24,6 +24,7 @@ public class WelcomeProcessor extends AbstractCompositeProcessor {
 			WeixinUser user = new WeixinUser();
 			user.setPlatformCode(request.getFromUserName());
 			user.setType(WeixinUserType.JUST_PAY_ATTENTION.ordinal());
+			user.setQueried(false);
 			weixinUserManager.save(user);
 		}
 		return ResponseUtil.responseText(request, "welcome 更多精彩等你发现");

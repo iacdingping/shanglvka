@@ -22,7 +22,7 @@
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>
 	
-	<!--log4jdbc -->
+	<!--log4spring rest client -->
 	<logger name="org.springframework.web.client" level="DEBUG"/>
 
 	<root level="WARN">
