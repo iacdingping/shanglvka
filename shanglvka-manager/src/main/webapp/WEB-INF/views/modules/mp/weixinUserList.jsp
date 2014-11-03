@@ -48,10 +48,10 @@
 					<td>${weixinUser.phone}</td>
 					<td>${weixinUser.province}</td>
 					<td>${weixinUser.city}</td>
-					<td>${weixinUser.isStaff eq '1'?'内部员工':'普通用户'}</td>
+					<td>${weixinUser.isStaff?'内部员工':'普通用户'}</td>
 					<td><a
 						href="${ctx}/mp/weixinUser/setStaff?id=${weixinUser.id}"
-						onclick="return confirmx('确认要${weixinUser.isStaff eq '1'?'取消':'设置'}该用户为内部员工吗？', this.href)">${weixinUser.isStaff eq '1'?'取消':'设置'}内部员工</a></td>
+						onclick="return confirmx('确认要${weixinUser.isStaff?'取消':'设置'}该用户为内部员工吗？', this.href)">${weixinUser.isStaff?'取消':'设置'}内部员工</a></td>
 				</tr>
 			</c:forEach>
 		</table>
