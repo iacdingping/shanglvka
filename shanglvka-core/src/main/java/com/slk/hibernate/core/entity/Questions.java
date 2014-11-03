@@ -81,4 +81,14 @@ public class Questions extends BaseEntity<Questions> {
 		this.createTime = createTime;
 	}
 
+	private String platformCode;
+
+	public String getPlatformCode() {
+		return platformCode;
+	}
+
+	public void setPlatformCode(String platformCode) {
+		this.platformCode = platformCode;
+	}
+
 }

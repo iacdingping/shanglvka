@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -56,6 +57,21 @@ public class MerchantType extends BaseEntity<MerchantType> {
 	private java.lang.String name; // name
 	private MerchantType parent;
 	private String delFlag;
+	private List<MerchantType> childList = Lists.newArrayList(); // 拥有子区域列表
+
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	@Where(clause = "del_flag='" + DEL_FLAG_NORMAL + "'")
+	@OrderBy(value = "id")
+	@Fetch(FetchMode.SUBSELECT)
+	@NotFound(action = NotFoundAction.IGNORE)
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	public List<MerchantType> getChildList() {
+		return childList;
+	}
+
+	public void setChildList(List<MerchantType> childList) {
+		this.childList = childList;
+	}
 
 	@Length(min = 1, max = 1)
 	@Field(index = Index.YES, analyze = Analyze.NO, store = Store.YES)

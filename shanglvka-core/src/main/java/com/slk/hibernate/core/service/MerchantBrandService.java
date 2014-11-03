@@ -73,4 +73,8 @@ public class MerchantBrandService extends BaseService {
 		merchantBrandDao.deleteById(id);
 	}
 
+	public List<MerchantBrand> findAllByTypeAndArea(Long typeId, String areaId) {
+		return merchantBrandDao.findAllByTypeAndArea(typeId, areaId);
+	}
+
 }

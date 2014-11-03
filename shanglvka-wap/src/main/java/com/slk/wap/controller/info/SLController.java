@@ -6,8 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.slk.hibernate.core.entity.MerchantBrand;
 import com.slk.hibernate.core.entity.MerchantMap;
+import com.slk.hibernate.core.service.MerchantBrandService;
 import com.slk.hibernate.core.service.MerchantMapService;
+import com.slk.hibernate.core.service.MerchantTypeService;
+import com.thinkgem.jeesite.modules.sys.service.AreaService;
 
 /**
  * 商旅
@@ -17,15 +21,34 @@ import com.slk.hibernate.core.service.MerchantMapService;
 public class SLController {
 	@Autowired
 	private MerchantMapService merchantMapService;
+	@Autowired
+	private AreaService areaService;
+	@Autowired
+	private MerchantBrandService merchantBrandService;
+	@Autowired
+	private MerchantTypeService merchantTypeService;
 
 	/**
-	 * 列表
+	 * 品牌刷选列表
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("merchantMaps", merchantMapService.list());
+	@RequestMapping("/brandlist")
+	public String brandlist(Model model,String areaId,Long typeId) {
+		model.addAttribute("merchantMaps",
+				merchantBrandService.findAllByTypeAndArea(typeId, areaId));
+		return "/info/sl/brandlist";
+	}
+
+	/**
+	 * 地址列表
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/addressList")
+	public String list(Model model, Long brandId) {
+		model.addAttribute("merchantMaps",
+				merchantMapService.listByBrand(brandId));
 		return "/info/sl/list";
 	}
 
@@ -35,7 +58,7 @@ public class SLController {
 	 * @return
 	 */
 	@RequestMapping("/detail/{slID}")
-	public String detail(Model model,@PathVariable Long slID) {
+	public String detail(Model model, @PathVariable Long slID) {
 		MerchantMap merchantMap = merchantMapService.get(slID);
 		model.addAttribute("merchantMap", merchantMap);
 		return "/info/sl/detail";

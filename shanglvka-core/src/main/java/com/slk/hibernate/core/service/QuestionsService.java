@@ -5,7 +5,8 @@
  *****************************************************************/
 package com.slk.hibernate.core.service;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -19,6 +20,7 @@ import com.slk.hibernate.core.dao.QuestionsDao;
 import com.slk.hibernate.core.entity.Questions;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.BaseService;
+import com.thinkgem.jeesite.common.utils.StringUtils;
 
 /**
  * 常见问题解答Service
@@ -39,6 +41,18 @@ public class QuestionsService extends BaseService {
 
 	public Questions get(Long id) {
 		return questionsDao.get(id);
+	}
+
+	public List<Questions> findAllByType(Questions questions) {
+		DetachedCriteria dc=null;
+		if(!StringUtils.isEmpty(questions.getType())){
+			dc=questionsDao.createDetachedCriteria();
+			dc.add(Restrictions.eq("type", questions.getType()));
+			if(questions.getType().equals("1")){
+				dc.add(Restrictions.eq("platform_code", questions.getType()));
+			}
+		}
+		return questionsDao.find(dc);
 	}
 
 	public Page<Questions> find(Page<Questions> page, Questions questions) {
