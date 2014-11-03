@@ -97,7 +97,7 @@
 	       <if test="delFlag">
 				AND `del_flag` = #{delFlag}
 			</if>
-	       <if test="queried">
+	       <if test="queried != null">
 				AND `queried` = #{queried}
 			</if>
 			<if test="nickname">

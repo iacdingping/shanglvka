@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.slk.hibernate.core.entity.MerchantBrand;
 import com.slk.hibernate.core.entity.MerchantMap;
+import com.slk.hibernate.core.service.MerchantBrandService;
 import com.slk.hibernate.core.service.MerchantMapService;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
@@ -40,6 +42,8 @@ public class MerchantMapController extends BaseController {
 	private MerchantMapService merchantMapService;
 	@Autowired
 	private AreaService areaService;
+	@Autowired
+	private MerchantBrandService merchantBrandService;
 
 	@ModelAttribute
 	public MerchantMap get(@RequestParam(required = false) Long id) {
@@ -68,6 +72,8 @@ public class MerchantMapController extends BaseController {
 	@RequestMapping(value = "form")
 	public String form(MerchantMap merchantMap, Model model) {
 		model.addAttribute("merchantMap", merchantMap);
+		model.addAttribute("brandList", merchantBrandService.list());
+		model.addAttribute("typeList", UserUtils.findAllMerchantType());
 		return "modules/business/merchantMapForm";
 	}
 
@@ -78,8 +84,7 @@ public class MerchantMapController extends BaseController {
 		if (!beanValidator(model, merchantMap)) {
 			return form(merchantMap, model);
 		}
-		merchantMap.setArea(areaService.get(merchantMap.getArea()
-				.getId()));
+		merchantMap.setArea(areaService.get(merchantMap.getArea().getId()));
 		merchantMapService.save(merchantMap);
 		addMessage(redirectAttributes, "保存商旅地图成功");
 		return "redirect:" + Global.getAdminPath()

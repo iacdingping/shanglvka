@@ -5,7 +5,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.slk.core.PageQuery;
 
-
 /**
  *
  * @author dingp email:dingp@51box.cn
@@ -13,7 +12,6 @@ import com.slk.core.PageQuery;
  * @since 1.0
  * */
 public class WeixinUserQuery extends PageQuery {
-    
 
 	/** id */
 	private java.lang.Long id;
@@ -42,71 +40,71 @@ public class WeixinUserQuery extends PageQuery {
 	public java.lang.Long getId() {
 		return this.id;
 	}
-	
+
 	public void setId(java.lang.Long value) {
 		this.id = value;
 	}
-	
+
 	public java.lang.String getIdentification() {
 		return this.identification;
 	}
-	
+
 	public void setIdentification(java.lang.String value) {
 		this.identification = value;
 	}
-	
+
 	public java.lang.String getPlatformCode() {
 		return this.platformCode;
 	}
-	
+
 	public void setPlatformCode(java.lang.String value) {
 		this.platformCode = value;
 	}
-	
+
 	public java.lang.Integer getType() {
 		return this.type;
 	}
-	
+
 	public void setType(java.lang.Integer value) {
 		this.type = value;
 	}
-	
+
 	public java.util.Date getCreateDateBegin() {
 		return this.createDateBegin;
 	}
-	
+
 	public void setCreateDateBegin(java.util.Date value) {
 		this.createDateBegin = value;
-	}	
-	
+	}
+
 	public java.util.Date getCreateDateEnd() {
 		return this.createDateEnd;
 	}
-	
+
 	public void setCreateDateEnd(java.util.Date value) {
 		this.createDateEnd = value;
 	}
-	
+
 	public java.util.Date getUpdateDateBegin() {
 		return this.updateDateBegin;
 	}
-	
+
 	public void setUpdateDateBegin(java.util.Date value) {
 		this.updateDateBegin = value;
-	}	
-	
+	}
+
 	public java.util.Date getUpdateDateEnd() {
 		return this.updateDateEnd;
 	}
-	
+
 	public void setUpdateDateEnd(java.util.Date value) {
 		this.updateDateEnd = value;
 	}
-	
+
 	public java.lang.Integer getDelFlag() {
 		return this.delFlag;
 	}
-	
+
 	public void setDelFlag(java.lang.Integer value) {
 		this.delFlag = value;
 	}
@@ -168,8 +166,8 @@ public class WeixinUserQuery extends PageQuery {
 	}
 
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this,ToStringStyle.MULTI_LINE_STYLE);
+		return ToStringBuilder.reflectionToString(this,
+				ToStringStyle.MULTI_LINE_STYLE);
 	}
-	
-}
 
+}

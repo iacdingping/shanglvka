@@ -33,8 +33,8 @@ public class AreaService extends BaseService {
 		return areaDao.get(id);
 	}
 
-	public List<Area> findAll() {
-		return UserUtils.getAreaList();
+	public List<Area> findAll(String pid) {
+		return UserUtils.getAreaList(pid);
 	}
 
 	@Transactional(readOnly = false)

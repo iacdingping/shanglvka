@@ -144,6 +144,7 @@
 		    FROM mp_button_menu 
 	        WHERE 
 		        `parent` = #{id} 
+		    order by id
 	    ]]>
 	</select>
 </mapper>

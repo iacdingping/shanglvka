@@ -13,7 +13,7 @@
 	src="${ctx}/static/js/common/jquery.min.js"></script>
 <script type="text/javascript"
 	src="${ctx}/static/js/plugins/scrollAd.js"></script>
-	<link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
+<link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
 <link rel="stylesheet" href="${ctx}/static/css/info/view.css" />
 <title>文章列表</title>
 </head>
@@ -21,40 +21,48 @@
 	<div class="limit_wth">
 		<div class=" positionR">
 			<!--顶部轮播 -->
-			<div class="box">
-				<ol></ol>
-				<ul id="top_swipe_list">
-					<c:forEach items="${topPage.list}" var="article" varStatus="status">
-						<li class="active" style="left: 0; z-index: 11;" alt="${article.title}" title="${article.title}">
-								<a href="${ctx}/info/view/detail/${article.id}">
-								<img src="${article.image}" align="middle" style="margin: auto; vertical-align: middle" width="100%" />
-								<p class="positionA touming" style="bottom: 0px;height:40px;width: 100%;background: #000;line-height: 40px;font-size: 16px">
-								<span style="color:#fff;padding-left: 10px;">${fns:rabbr(article.title, 40)}</span>
-								</p>
-								</a>
-						</li>
-					</c:forEach>
-				</ul>
-			</div>
-			<div>
-			</div>
+			<c:if test="${fn:length(topPage.list)>0 }">
+				<div class="box">
+					<ol></ol>
+					<ul id="top_swipe_list">
+						<c:forEach items="${topPage.list}" var="article"
+							varStatus="status">
+							<li class="active" style="left: 0; z-index: 11;"
+								alt="${article.title}" title="${article.title}"><a
+								href="${ctx}/info/view/detail/${article.id}"> <img
+									src="${article.image}" align="middle"
+									style="margin: auto; vertical-align: middle" width="100%" />
+									<p class="positionA touming"
+										style="bottom: 0px; height: 40px; width: 100%; background: #000; line-height: 40px; font-size: 16px">
+										<span style="color: #fff; padding-left: 10px;">${fns:rabbr(article.title, 40)}</span>
+									</p>
+							</a></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
+			<div></div>
 			<!-- /顶部轮播 -->
 		</div>
 		<div class="margin_T20">
 			<ul>
-				<c:forEach items="${notTopPage.list}"  var="article">
-				<li class=" padding-T10 border_bottom1 padding-B10" style="height:70px;padding-left:10px;" alt="${article.title}" title="${article.title}">
-					<a href="${ctx}/info/view/detail/${article.id}">
-					<img src="${article.image}" align="left"
-					style="margin-right:10px;" width="70" />
-					<p style="height: 30px;">
-						<span class="font_size_17" style="color:#0b0c0e;font-weight: 700">${fns:rabbr(article.title, 24)}</span>
-					</p>
-					<p>
-						<span class="font_size_15 font_color_h" style="color:#696969">${fns:rabbr(article.description, 60)}</span>
-					</p>
-					</a>
-					</li>
+				<c:forEach items="${notTopPage.list}" var="article">
+					<li class=" padding-T10 border_bottom1 padding-B10"
+						style="height: 70px; padding-left: 10px;" alt="${article.title}"
+						title="${article.title}"><a
+						href="${ctx}/info/view/detail/${article.id}"> <c:if
+								test="${not empty article.image}">
+								<img src="${article.image}" align="left"
+									style="margin-right: 10px;" width="70" />
+							</c:if>
+							<p style="height: 30px;">
+								<span class="font_size_17"
+									style="color: #0b0c0e; font-weight: 700">${fns:rabbr(article.title, 24)}</span>
+							</p>
+							<p>
+								<span class="font_size_15 font_color_h" style="color: #696969">${fns:rabbr(article.description, 60)}</span>
+							</p>
+					</a></li>
 				</c:forEach>
 			</ul>
 			<br />
@@ -72,9 +80,9 @@
 		</div>
 	</footer>
 	<script type="text/javascript">
-		$().ready(function(){
-			var size = $("#top_swipe_list").find("li").size();			
-			$(".box ol a").css("width" ,(100/size)+"%")
+		$().ready(function() {
+			var size = $("#top_swipe_list").find("li").size();
+			$(".box ol a").css("width", (100 / size) + "%")
 		});
 	</script>
 </body>

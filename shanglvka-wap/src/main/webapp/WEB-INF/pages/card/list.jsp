@@ -27,6 +27,7 @@
 .todo ul {
 	background-color: #fff;
 }
+
 </style>
 </head>
 <body>
@@ -35,11 +36,13 @@
 			<c:forEach var="item" items="${list}" varStatus="businessCard">
 				<li class="todo-done " id="new-li">
 				<a href="${ctx}/card/index?id=${item.id}">
-					<div class="" style="float: left">
+					<div class="" style="float: left;position: relative;width: 90px; height: 90px;">
+						<div style="position: absolute;width: 80px; height: 80px; border-radius: 40px; left: 10px; top: 5px; border: 5px solid #2980B9;z-index: 101">
+						</div>
 						<img src="${item.icoHeader}" id="touxiang"
-							width="120"
-							style="width: 80px; height: 80px; border-radius: 40px; left: 36%; top: 50px; border: 5px solid #2980B9;" />
+							style="position: absolute;width: 70px; height: 70px; border-radius: 40px; left: 15px; top: 10px;z-index: 100" />
 					</div>
+							
 					<div class="todo-content"
 						style="color: #000; float: left; margin-left: 10px;">
 						<h6 style="color: #000">${item.name}</h6>
@@ -57,9 +60,10 @@
 	<footer>
 		<div
 			style="width: 100%; text-align: center; padding: 10px 0px; font-size: 14px;">
-			商旅卡服务者<br /> 浙ICP备案号1234567
+			杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
 		</div>
 	</footer>
+	<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
 	<script type="text/javascript">
 		$().ready(
 				});
