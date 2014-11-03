@@ -39,9 +39,10 @@ public class MerchantBrandDao extends BaseDao<MerchantBrand> {
 		}
 		if (StringUtils.isNotEmpty(areaId)) {
 			sb.append(" and smm.area_id in (select sa.id from sys_area sa where sa.parent_ids like '%"
-					+ areaId + ",%') ");
+					+ areaId + ",%' or sa.id='"+areaId+"') ");
 		}
 		sb.append(")");
+		System.out.println(sb.toString());
 		return findBySql(sb.toString(), null, MerchantBrand.class);
 	}
 }
