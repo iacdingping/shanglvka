@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.slk.hibernate.core.entity.Questions;
 import com.slk.hibernate.core.service.QuestionsService;
+import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 
 /**
@@ -72,11 +73,16 @@ public class AboutController extends BaseController {
 			addMessage(redirectAttributes, "数据不对");
 			return "redirect:/about/come/";
 		}
+		if(StringUtils.isEmpty(questions.getQuestion())){
+			addMessage(redirectAttributes, "请填写问题！");
+			return "redirect:/about/come/";
+		}
 		// 保存微信用户code
 		questions.setCreateTime(new Date());
 		questions.setPlatformCode("");
+		questions.setType("1");
 		questionsService.save(questions);
-		addMessage(redirectAttributes, "保存常见问题成功");
+		addMessage(redirectAttributes, "提交商旅问题成功");
 		return "redirect:/about/come/";
 	}
 }

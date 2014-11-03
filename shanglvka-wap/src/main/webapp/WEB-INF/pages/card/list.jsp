@@ -4,70 +4,88 @@
 <!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
+	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <script type="text/javascript"
 	src="${ctx}/static/js/common/jquery.min.js"></script>
-<!-- Loading Bootstrap -->
-<link href="${ctx}/static/css/common/flat-ui/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Loading Flat UI -->
-<link href="${ctx}/static/css/common/flat-ui/flat-ui.css"
-	rel="stylesheet">
-<link href="${ctx}/static/css/common/flat-ui/demo.css" rel="stylesheet">
-<title>抢. 购商旅卡</title>
-<style type="text/css">
-#new-li {
-	background: #fff;
-	padding: 10px 42px 15px 25px;
-	border-bottom: 2px dashed #2980b9;
+<script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${ctx}/static/css/common1/common.css" />
+<title>购卡助手</title>
+<link href="common.css" rel="stylesheet" type="text/css" />
+<style>
+.line {
+	border-bottom: 1px solid #ccc;
+	background: none;
+	margin-left: 20px;
 }
 
-.todo ul {
-	background-color: #fff;
+.cycle_bk {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50px;
+	top: 5px;
+	border: 2px solid #000;
+	z-index: 101
 }
 
+.cycle_tu {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50px;
+	left: 2px;
+	top: 7px;
+	z-index: 100
+}
+
+.title_style {
+	float: left;
+	margin-left: 110px;
+	margin-top: 25px;
+}
+
+.arror_style {
+	font-size: 25px;
+	color: #999;
+	float: right;
+	line-height: 100px;
+	padding-right: 20px;
+}
 </style>
 </head>
+
 <body>
-	<div class="todo">
-		<ul>
+
+	<div>
+		<!--循环元素-->
 			<c:forEach var="item" items="${list}" varStatus="businessCard">
-				<li class="todo-done " id="new-li">
-				<a href="${ctx}/card/index?id=${item.id}">
-					<div class="" style="float: left;position: relative;width: 90px; height: 90px;">
-						<div style="position: absolute;width: 80px; height: 80px; border-radius: 40px; left: 10px; top: 5px; border: 5px solid #2980B9;z-index: 101">
-						</div>
-						<img src="${item.icoHeader}" id="touxiang"
-							style="position: absolute;width: 70px; height: 70px; border-radius: 40px; left: 15px; top: 10px;z-index: 100" />
-					</div>
-							
-					<div class="todo-content"
-						style="color: #000; float: left; margin-left: 10px;">
-						<h6 style="color: #000">${item.name}</h6>
-						<span class="fui-user"></span>&nbsp;${item.job}
-					</div>
-					<div style="float: right; color: #2980b9; font-size: 25px;">
-						<span class="fui-arrow-right" style="line-height: 80px"></span>
-					</div>
-					<div style="clear: both"></div></a>
-				</li>
-			</c:forEach>
-		</ul>
+		<a href="${ctx}/card/index?id=${item.id}">
+			<div class="line" style="position: relative; height: 100px;"
+				id="touxiang">
+				<div class="cycle_bk"></div>
+				<img class="cycle_tu" src="${item.icoHeader}" />
+				<div class="title_style">
+					<span style="color: #000; font-size: 24px;"><b>${item.name}</b><br />
+					<span style="color: #ccc; font-size: 16px;">${item.job}</span>
+				</div>
+				<div class="arror_style">&gt;</div>
+				<div class="clear"></div>
+			</div>
+		</a>
+		</c:forEach>
 	</div>
-	<br />
-	<footer>
-		<div
-			style="width: 100%; text-align: center; padding: 10px 0px; font-size: 14px;">
-			杭州市商贸旅游集团版权所有<br /> 浙B2-20100257
-		</div>
-	</footer>
-	<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
-	<script type="text/javascript">
-		$().ready(
-				});
-	</script>
+
+	<footer style="margin-top: 40px;">
+		<div style="text-align: center; width: 100%; color: #7b7979">杭州市商贸旅游集团商旅卡销售分公司</div>
+		</foote>
+		<script>
+$().ready(function(){
+	
+});
+</script>
 </body>
 </html>
 

@@ -20,7 +20,7 @@
 <script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${ctx}/static/css/common1/common.css" />
-<title>查. MY商旅卡</title>
+<title>购卡助手</title>
 <style type="text/css">
 #purchaseApply_form label.error {
 	padding-left: 16px;
@@ -45,8 +45,8 @@
 </style>
 <script>
 	$(document).ready(function() {
-		if ('${success}' == 'true') {
-			alert('提交信息成功，客服会在近期与您联系！');
+		if ('${message}'!='') {
+			alert('${message}');
 		}
 		$("#purchaseApply_form").validate();
 	});

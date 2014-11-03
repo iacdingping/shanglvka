@@ -57,8 +57,7 @@ public class MyCardController extends BaseController {
 		purchaseApply.setIsTreat("0");
 		purchaseApply.setCreateTime(new Date());
 		purchaseApplyService.save(purchaseApply);
-//		addMessage(redirectAttributes, "保存申购单成功");
-		modelMap.put("success", true);
+		addMessage(redirectAttributes, "提交申购单成功");
 		return "/card/purchase";
 	}
 
