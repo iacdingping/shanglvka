@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Maps;
+import com.slk.hibernate.core.entity.MerchantType;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.security.Digests;
 import com.thinkgem.jeesite.common.service.BaseService;
@@ -227,6 +228,10 @@ public class SystemService extends BaseService  {
 
 	public List<Menu> findAllMenu(){
 		return UserUtils.getMenuList();
+	}
+	
+	public List<MerchantType> findAllMerchantType(){
+		return UserUtils.findAllMerchantType();
 	}
 	
 	@Transactional(readOnly = false)

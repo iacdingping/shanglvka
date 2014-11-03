@@ -51,7 +51,12 @@
 						</property>
 					</bean>
 				</constructor-arg>
-				<property name="supportedMediaTypes" value="application/xml"></property>
+				<property name="supportedMediaTypes">
+					<list>
+                           <value>text/html;charset=UTF-8</value>  
+                           <value>application/xml;charset=UTF-8</value>  
+                      </list>
+				</property>
 			</bean>
 		</mvc:message-converters>
 		<mvc:argument-resolvers>
@@ -85,9 +90,6 @@
 	<!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
 	<mvc:default-servlet-handler />
 
-	<!-- 定义无Controller的path<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="redirect:/index" />
-	
 	<context:component-scan base-package="org.springframework.web.fileupload" />
 
 	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -95,4 +97,8 @@
         <property name="maxUploadSize" value="104857600"/>
 	    <property name="maxInMemorySize" value="4096"/>
     </bean>
+    
+    <mvc:interceptors>  
+    	<bean class="com.slk.wap.common.security.SessionInterceptor" />  
+	</mvc:interceptors>
 </beans>

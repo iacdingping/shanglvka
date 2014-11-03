@@ -1,0 +1,30 @@
+body { font: normal 100% Helvetica, Arial, sans-serif; }  
+* {border:0px;margin:0px;}
+body { font-family:"微软雅黑"}
+
+li{ list-style:none;border:0px;}
+ul{border:0px;margin:0px;}
+a{ text-decoration:none}
+a{ color:none}
+a:actived{ color:none}
+a:hover{ color:none}
+.clear{clear:both}
+footer{ font-size:14px;}
+
+.button{ background:#0f63ae; color:#FFF; padding:10px 0px; border-radius:5px; display:block; text-align:center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {min-width:320px;}
+.link_btn{ border:1px solid #39F;padding:5px 15px;border-radius:5px; color:#666}
+.line{height:1px;width:100%; background:#e0e0e0}

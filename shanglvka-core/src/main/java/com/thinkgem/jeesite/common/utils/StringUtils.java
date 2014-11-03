@@ -7,6 +7,8 @@ package com.thinkgem.jeesite.common.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -152,6 +154,36 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         	remoteAddr = request.getHeader("WL-Proxy-Client-IP");
         }
         return remoteAddr != null ? remoteAddr : request.getRemoteAddr();
+	}
+	
+	public static String appendURLParamMap(String src, Map<String, String> params) {
+		StringBuilder sb = new StringBuilder();
+		for(Entry<String, String> en : params.entrySet()) {
+			if(isNotEmpty(en.getKey()) && isNotEmpty(en.getValue())) {
+				if(sb.length() > 0) 
+					sb.append("&");
+				sb.append(en.getKey()).append("=").append(en.getValue());
+			}
+		}
+		return appendURLParams(src, sb.toString());
+	}
+	
+	public static String appendURLParam(String src, String key, String value) {
+		if(isBlank(key) || isBlank(value))
+			return src;
+		return appendURLParams(src, key + "=" + value);
+	}
+	
+	public static String appendURLParams(String src, String appendParams) {
+		if(isBlank(appendParams))
+			return src;
+		
+		boolean hasQM = src.indexOf("?") > 0;
+		boolean hasET = src.indexOf("=") > 0;
+		src = hasQM ? 
+				(hasET ? src : src.substring(0, src.indexOf("?"))) : src;
+		
+		return src + (hasQM && hasET ? ("&" + appendParams) : ("?" + appendParams)); 
 	}
 	
 }

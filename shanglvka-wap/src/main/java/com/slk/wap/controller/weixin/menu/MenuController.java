@@ -54,6 +54,7 @@ public class MenuController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		ButtonMenuQuery query=new ButtonMenuQuery();
 		query.setParent(new ButtonMenu(0l));
+		query.setSortColumns("id");
 		String result = "";
 		String params = getMenuJson(buttonMenuManager.list(query));
 		System.out.println(params);

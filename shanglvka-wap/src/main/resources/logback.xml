@@ -16,11 +16,14 @@
 		</encoder>
 	</appender>
 
-	<!-- project default level -->
-	<logger name="com.slk" level="DEBUG" />
+	<!-- project default level 
+	<logger name="com.slk" level="DEBUG" />-->
 
-	<!--log4jdbc -->
-	<logger name="jdbc.sqltiming" level="INFO"/>
+	<!--log4jdbc 
+	<logger name="jdbc.sqltiming" level="INFO"/>-->
+	
+	<!--log4spring rest client -->
+	<logger name="org.springframework.web.client" level="DEBUG"/>
 
 	<root level="WARN">
 		<appender-ref ref="console" />

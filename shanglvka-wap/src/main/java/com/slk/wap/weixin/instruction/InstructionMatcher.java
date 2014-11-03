@@ -6,6 +6,7 @@ import java.util.List;
 import com.slk.core.SpringContextUtil;
 import com.slk.wap.controller.weixin.WeixinRequest;
 import com.slk.wap.weixin.process.Processor;
+import com.slk.wap.weixin.process.impl.CancelAttentionProcessor;
 import com.slk.wap.weixin.process.impl.KeyWordsProcessor;
 import com.slk.wap.weixin.process.impl.LocationProcessor;
 import com.slk.wap.weixin.process.impl.PictureProcessor;
@@ -33,23 +34,25 @@ public class InstructionMatcher {
 	public static Processor<WeixinRequest> match(WeixinRequest request) {
 		if("subscribe".equals(request.getEvent())) {
 			return SpringContextUtil.getBean(WelcomeProcessor.class);
-		}
-		
-		switch (RequestType.getByValue(request.getMsgType())) {
-		case TEXT:
-			return textMatch(request.getContent());
-		case EVENT:
-			//后续的event都根据content去匹配
-			request.setContent(request.getEventKey());
-			return textMatch(request.getEventKey());
-		case VOICE:
-			return SpringContextUtil.getBean(VoiceProcessor.class);
-		case IMAGE:
-			return SpringContextUtil.getBean(PictureProcessor.class);
-		case LOCATION:
-			return SpringContextUtil.getBean(LocationProcessor.class);
-		default:
-			return SpringContextUtil.getBean(UnknowRequestTypeProcessor.class);
+		} else if("unsubscribe".equals(request.getEvent())) {
+			return SpringContextUtil.getBean(CancelAttentionProcessor.class);
+		} else {
+			switch (RequestType.getByValue(request.getMsgType())) {
+			case TEXT:
+				return textMatch(request.getContent());
+			case EVENT:
+				//后续的event都根据content去匹配
+				request.setContent(request.getEventKey());
+				return textMatch(request.getEventKey());
+			case VOICE:
+				return SpringContextUtil.getBean(VoiceProcessor.class);
+			case IMAGE:
+				return SpringContextUtil.getBean(PictureProcessor.class);
+			case LOCATION:
+				return SpringContextUtil.getBean(LocationProcessor.class);
+			default:
+				return SpringContextUtil.getBean(UnknowRequestTypeProcessor.class);
+			}
 		}
 	}
 	/**

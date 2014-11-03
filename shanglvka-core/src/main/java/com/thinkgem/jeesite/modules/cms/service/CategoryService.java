@@ -137,6 +137,8 @@ public class CategoryService extends BaseService {
         if (StringUtils.isNotBlank(category.getViewConfig())){
             category.setViewConfig(StringEscapeUtils.unescapeHtml4(category.getViewConfig()));
         }
+		User user = UserUtils.getUser();
+        category.setOffice(user.getOffice());
 		categoryDao.clear();
         categoryDao.save(category);
 		// 更新子节点 parentIds

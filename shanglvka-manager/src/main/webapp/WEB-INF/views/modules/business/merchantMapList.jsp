@@ -43,7 +43,7 @@
 		class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>名称</th>
+				<th>店铺名称</th>
 				<th>简要说明</th>
 				<th>地址</th>
 				<th>联系电话</th>

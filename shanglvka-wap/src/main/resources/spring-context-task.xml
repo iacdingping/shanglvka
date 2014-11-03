@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>使用Spring的 Scheduled的定时任务配置</description>
+	
+	<!-- coding 方式的加強版 -->
+	<bean id="springCronJob" class="com.slk.wap.task.QueryUserInfo" lazy-init="false">
+		<property name="cronExpression" value="*/10 * 0-5,9-23 * * *"/>
+		<property name="shutdownTimeout" value="20" />
+	</bean>
+</beans>
