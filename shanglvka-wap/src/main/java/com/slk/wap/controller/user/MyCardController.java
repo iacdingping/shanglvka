@@ -2,9 +2,12 @@ package com.slk.wap.controller.user;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -14,6 +17,8 @@ import com.slk.hibernate.core.entity.BusinessCard;
 import com.slk.hibernate.core.entity.PurchaseApply;
 import com.slk.hibernate.core.service.BusinessCardService;
 import com.slk.hibernate.core.service.PurchaseApplyService;
+import com.slk.wap.common.ConstantActivity;
+import com.slk.wap.common.security.SessionUser;
 import com.thinkgem.jeesite.common.web.BaseController;
 
 /**
@@ -30,9 +35,11 @@ public class MyCardController extends BaseController {
 	private PurchaseApplyService purchaseApplyService;
 
 	@RequestMapping("/jump")
-	public String jump(Model model) {
-		WeixinUser weixinUser = weixinUserManager.getById(1L);
-		if (weixinUser.getIsStaff()) {
+	public String jump(Model model, HttpServletRequest request) {
+		SessionUser user = (SessionUser) request.getSession().getAttribute(
+				ConstantActivity.SESSION_USER_KEY);
+		WeixinUser weixinUser = user.getWeixinUser();
+		if (weixinUser != null && weixinUser.getIsStaff()) {
 			model.addAttribute("list", businessCardService.list());
 			return "/card/list";
 		}
@@ -42,7 +49,7 @@ public class MyCardController extends BaseController {
 
 	@RequestMapping(value = "purchaseSave")
 	public String save(PurchaseApply purchaseApply, Model model,
-			RedirectAttributes redirectAttributes) {
+			ModelMap modelMap, RedirectAttributes redirectAttributes) {
 		if (!beanValidator(model, purchaseApply)) {
 			addMessage(redirectAttributes, "数据不对");
 			return "redirect:/card/purchase";
@@ -54,8 +61,8 @@ public class MyCardController extends BaseController {
 		purchaseApply.setIsTreat("0");
 		purchaseApply.setCreateTime(new Date());
 		purchaseApplyService.save(purchaseApply);
-		addMessage(redirectAttributes, "保存申购单成功");
-		return "redirect:/card/purchase";
+		addMessage(redirectAttributes, "提交申购单成功");
+		return "/card/purchase";
 	}
 
 	@RequestMapping("/list")

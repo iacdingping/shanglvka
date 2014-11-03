@@ -45,11 +45,11 @@ public class QuestionsService extends BaseService {
 
 	public List<Questions> findAllByType(Questions questions) {
 		DetachedCriteria dc=null;
-		if(!StringUtils.isEmpty(questions.getType())){
+		if(StringUtils.isNotEmpty(questions.getType())){
 			dc=questionsDao.createDetachedCriteria();
 			dc.add(Restrictions.eq("type", questions.getType()));
-			if(questions.getType().equals("1")){
-				dc.add(Restrictions.eq("platform_code", questions.getType()));
+			if(StringUtils.isNotEmpty(questions.getPlatformCode())){
+				dc.add(Restrictions.eq("platformCode", questions.getPlatformCode()));
 			}
 		}
 		return questionsDao.find(dc);
