@@ -61,31 +61,31 @@
 
 	<div>
 		<!--循环元素-->
-			<c:forEach var="item" items="${list}" varStatus="businessCard">
-		<a href="${ctx}/card/index?id=${item.id}">
-			<div class="line" style="position: relative; height: 100px;"
-				id="touxiang">
-				<div class="cycle_bk"></div>
-				<img class="cycle_tu" src="${item.icoHeader}" />
-				<div class="title_style">
-					<span style="color: #000; font-size: 24px;"><b>${item.name}</b><br />
-					<span style="color: #ccc; font-size: 16px;">${item.job}</span>
+		<c:forEach var="item" items="${list}" varStatus="businessCard">
+			<a href="${ctx}/card/index?id=${item.id}">
+				<div class="line" style="position: relative; height: 100px;"
+					id="touxiang">
+					<div class="cycle_bk"></div>
+					<img class="cycle_tu" src="${item.icoHeader}" />
+					<div class="title_style">
+						<span style="color: #000; font-size: 24px;"><b>${item.name}</b><br />
+							<span style="color: #ccc; font-size: 16px;">${item.job}</span>
+					</div>
+					<div class="arror_style">&gt;</div>
+					<div class="clear"></div>
 				</div>
-				<div class="arror_style">&gt;</div>
-				<div class="clear"></div>
-			</div>
-		</a>
+			</a>
 		</c:forEach>
 	</div>
 
 	<footer style="margin-top: 40px;">
-		<div style="text-align: center; width: 100%; color: #7b7979">杭州市商贸旅游集团商旅卡销售分公司</div>
-		</footer>
-		<script>
-$().ready(function(){
-	
-});
-</script>
+		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
+	</footer>
+	<script>
+		$().ready(function() {
+
+		});
+	</script>
 </body>
 </html>
 
