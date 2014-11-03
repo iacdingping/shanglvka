@@ -10,4 +10,7 @@ public class ConstantActivity {
 	
 	/**报名活动的访问路径  /act/enroll*/
 	public static final String URI_ENROLL = "/act/enroll";
+	
+	public static final String PLATFORM_PARAM = "openid";
+	public static final String SESSION_USER_KEY = "session_user";
 }
