@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*微社区*/
+
+
+.pinglun-icon01{width:18px;height:19px;background-position:0 -101px;}
+.pinglun-icon02{width:16px;height:19px;background-position:0 -40px;}
+.pinglun-icon03{width:16px;height:19px;background-position:0 -239px;}
+.pinglun-icon04{width:18px;height:18px;background-position:0 -183px;}
+
+
+.user-icon{ background:url(images/wicon.png) no-repeat; background-size:18px auto;}
+.user-icon01{width:13px;height:12px;background-position:0 -5px;}
+.user-icon02{ width:13px; height:15px;background-position:0 -24px;}
+
+.fabiao{ bottom:0; left:0; z-index:20; background:#f7f7f7;}
+.wrapper {
+	position: relative;
+	z-index: 1;
+	height: 85px;
+	width: 100%;
+	overflow: hidden;
+
+}
+.scroller img{height:85px;}
+.scroller {
+	position: absolute;
+	z-index: 1;
+	width:400px;
+	height: 85px;
+
+}
+
+.scroller ul {
+	list-style: none;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.scroller .b-map a{height:85px;}
+.scroller .b-map a:first-child { margin-left:0;}
+.scroller img{height:85px;}
+
+.addimg{width:60px; height:60px;display:inline-block;}
+.addimg img{width:60px;height:60px;}
+.closeimg{ width:25px; height:25px;background:url(/static/img/act/pos/icon01.png) no-repeat;background-size:24px auto; background-position:0 -207px; right:-12px;top:-12px;}
+
+
+.fileInput{width:60px;height:60px;background: #d9d9d9 url(/static/img/act/pos/add.png) no-repeat center center; background-size:30px 30px;overflow:hidden;position:relative;}
+.upfile{position:absolute;top:-100px;}
+.upFileBtn{width:60px;height:60px;opacity:0;filter:alpha(opacity=0);cursor:pointer;}
+
+.select-pos{ position:absolute;top:14px;left:36px; width:84px;}
+.arrow-down{ position:absolute ;width:6px;height:6px;border-right:2px solid #ccc;border-bottom: 2px solid #ccc;cursor: pointer;-webkit-transform: rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg);top:1px;right:0px;}
+.showall{ height:19px; line-height:19px;}
+.win-mask{position:absolute;top: 0;left: 0;opacity:0.5;background:#000;width:100%;height:100%;z-index:10;}
+.zhiding{ background:#ff9900; width:32px; height:16px; line-height:16px;position:absolute;top:10px; right:11px; color:#fff;text-align:center; -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}

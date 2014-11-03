@@ -1,0 +1,119 @@
+.icon_list {
+
+}
+
+.icon_list_1 {
+	background: url("/static/img/index/icon01.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+
+.icon_list_2 {
+	background: url("/static/img/index/icon02.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+
+.icon_list_3 {
+	background: url("/static/img/index/icon03.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+.icon_list_4 {
+	background: url("/static/img/index/icon04.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+.icon_list_5 {
+	background: url("/static/img/index/icon05.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+.icon_list_6 {
+	background: url("/static/img/index/icon06.png") no-repeat 50% 50%;
+	background-size: 100%;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+
+.border_right {
+	border-right: 1px solid #d5d5d5
+}
+
+li.styleAuto {
+	width: 33%;
+	float: left;
+	text-align: center;
+}
+
+
+/**首页轮播 */
+
+
+li {
+	list-style-type: none;
+}
+
+.box {
+	width: 100%;
+	height: 190px;
+	text-align: center;
+	font-size: 50px;
+	position: relative;
+	overflow: hidden;
+}
+
+.box ul {
+	height: 190px;
+	width: 100%;
+	position: relative;
+}
+
+.box ul li {
+	width: 100%;
+	height: 190px;
+	top: 0;
+	position: absolute;
+}
+
+.box ol {
+	position: absolute;
+	bottom: 10%;
+	width: 260px;
+	margin-left: -130px;
+	left: 50%;
+	z-index: 20;
+	text-align: center;
+}
+
+.box ol a {
+	width: 10px;
+	height: 10px;
+	margin-right: 10px;
+	background: #3F9;
+	border-radius: 50%;
+	display: inline-block;
+	box-shadow: 2px 3px 5px #CCCCCC;
+}
+
+.box ol a.active {
+	background: white;
+	z-index: 18;
+}
