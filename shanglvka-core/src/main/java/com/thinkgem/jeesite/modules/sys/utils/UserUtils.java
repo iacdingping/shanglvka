@@ -122,7 +122,7 @@ public class UserUtils extends BaseService {
 			dc.createAlias("mapList", "mapList", JoinType.LEFT_OUTER_JOIN);
 			dc.add(Restrictions.eq(MerchantType.FIELD_DEL_FLAG,
 					MerchantType.DEL_FLAG_NORMAL));
-//			dc.addOrder(Order.asc("office.code")).addOrder(Order.asc("name"));
+			// dc.addOrder(Order.asc("office.code")).addOrder(Order.asc("name"));
 			dc.addOrder(Order.asc("id"));
 			list = merchantTypeDao.find(dc);
 			putCache(CACHE_MERCHANT_TYPE_LIST, list);
@@ -203,7 +203,17 @@ public class UserUtils extends BaseService {
 	}
 
 	public static void removeCache(String key) {
-		getCacheMap().remove(key);
+		Map<String, Object> cacheMap = getCacheMap();
+		if (key.equals(UserUtils.CACHE_AREA_LIST)
+				|| key.equals(UserUtils.CACHE_MERCHANT_TYPE_LIST)) {
+			for (Map.Entry<String, Object> entry : cacheMap.entrySet()) {
+				if (entry.getKey().startsWith(key)) {
+					cacheMap.remove(entry.getKey());
+				}
+			}
+		} else {
+			cacheMap.remove(key);
+		}
 	}
 
 	public static Map<String, Object> getCacheMap() {

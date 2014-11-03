@@ -45,7 +45,7 @@
 </style>
 <script>
 	$(document).ready(function() {
-		if ('${message}'!='') {
+		if ('${message}' != '') {
 			alert('${message}');
 		}
 		$("#purchaseApply_form").validate();
@@ -66,7 +66,7 @@
 			<li>购卡人电话<input type="text" id="buyPhone" name="buyPhone"
 				placeholder="请输入购卡人电话" class="form-control required" /></li>
 			<li>购卡单位&nbsp;&nbsp;&nbsp;<input type="text" id="buyUnit"
-				name="buyUnit" placeholder="请输入购卡单位" class="form-control required"/></li>
+				name="buyUnit" placeholder="请输入购卡单位" class="form-control required" /></li>
 			<br />
 			<p style="font-size: 14px; color: #999">请您详细填写以上信息，以方便我们为您服务，谢谢您的支持</p>
 			<br />
@@ -75,7 +75,7 @@
 		</form>
 	</div>
 	<footer style="margin-top: 40px;">
-		<div style="text-align: center; width: 100%; color: #7b7979">杭州市商贸旅游集团商旅卡销售分公司</div>
-		</foote>
+		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

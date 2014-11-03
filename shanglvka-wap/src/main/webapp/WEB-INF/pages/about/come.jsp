@@ -143,8 +143,8 @@
 				<form id="question_form" action="${ctx}/about/questionSave"
 					method="post" modelAttribute="question" name="question">
 					<h3 style="margin: 10px;">商旅提问</h3>
-					<textarea name="question" rows="5" cols="5" style="margin: 10px; width: 90%"
-						placeholder="提交您的问题" maxlength=""></textarea>
+					<textarea name="question" rows="5" cols="5"
+						style="margin: 10px; width: 90%" placeholder="提交您的问题" maxlength=""></textarea>
 					<br />
 					<button type="submit" class="button"
 						style="margin: 0px 10px; margin: auto; width: 80%;">提交</button>
@@ -182,22 +182,22 @@
 	</div>
 
 	<footer style="margin-top: 40px;">
-		<div style="text-align: center; width: 100%; color: #7b7979">杭州市商贸旅游集团商旅卡销售分公司</div>
-		</foote>
-		<script>
-			$().ready(function() {
-				$(".tag_selector li").click(function() {
-					$(this).addClass("selected");
-					$(this).siblings().removeClass("selected");
-					var thisID = $(this).attr("id");
-					$("#" + thisID + "_content").show();
-					$("#" + thisID + "_content").siblings().hide();
-				});
-				if ('${message}'!='') {
-					alert('${message}');
-				}
-				$("#purchaseApply_form").validate();
+		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
+	</footer>
+	<script>
+		$().ready(function() {
+			$(".tag_selector li").click(function() {
+				$(this).addClass("selected");
+				$(this).siblings().removeClass("selected");
+				var thisID = $(this).attr("id");
+				$("#" + thisID + "_content").show();
+				$("#" + thisID + "_content").siblings().hide();
 			});
-		</script>
+			if ('${message}' != '') {
+				alert('${message}');
+			}
+			$("#purchaseApply_form").validate();
+		});
+	</script>
 </body>
 </html>

@@ -88,9 +88,12 @@ public class AboutController extends BaseController {
 		}
 		// 保存微信用户code
 		questions.setCreateTime(new Date());
-		if (user.getWeixinUser() != null)
+		if (user.getWeixinUser() != null) {
 			// 保存微信用户code
 			questions.setPlatformCode(user.getWeixinUser().getPlatformCode());
+		} else {
+			questions.setPlatformCode("undefined");
+		}
 		questions.setType("1");
 		questionsService.save(questions);
 		addMessage(redirectAttributes, "提交商旅问题成功");

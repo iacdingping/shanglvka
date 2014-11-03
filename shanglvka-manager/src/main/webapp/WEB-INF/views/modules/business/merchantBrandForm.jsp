@@ -63,6 +63,13 @@
 					uploadPath="/business/merchantBrand" selectMultiple="false" />
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">品牌描述:</label>
+			<div class="controls">
+				<form:input path="label" htmlEscape="false" maxlength="200"
+					class="required" />
+			</div>
+		</div>
 		<div class="form-actions">
 			<shiro:hasPermission name="business:merchantBrand:edit">
 				<input id="btnSubmit" class="btn btn-primary" type="submit"

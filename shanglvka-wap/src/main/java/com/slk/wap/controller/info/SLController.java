@@ -34,7 +34,10 @@ public class SLController {
 	 * @return
 	 */
 	@RequestMapping("/brandlist")
-	public String brandlist(Model model,String areaId,Long typeId) {
+	public String brandlist(Model model, String areaId, Long typeId) {
+		model.addAttribute("areaList",
+				areaService.findAllByPid("3e9ab3f7ea4a43e79e3e067d2835d303"));
+		model.addAttribute("typeList", merchantTypeService.findAllByPid(1L));
 		model.addAttribute("merchantMaps",
 				merchantBrandService.findAllByTypeAndArea(typeId, areaId));
 		return "/info/sl/brandlist";

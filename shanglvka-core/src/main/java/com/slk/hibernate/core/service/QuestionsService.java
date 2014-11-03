@@ -52,6 +52,7 @@ public class QuestionsService extends BaseService {
 				dc.add(Restrictions.eq("platformCode", questions.getPlatformCode()));
 			}
 		}
+		dc.addOrder(Order.desc("id"));
 		return questionsDao.find(dc);
 	}
 
