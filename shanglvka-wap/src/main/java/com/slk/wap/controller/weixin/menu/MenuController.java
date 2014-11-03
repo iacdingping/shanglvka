@@ -57,6 +57,10 @@ public class MenuController {
 		query.setSortColumns("id");
 		String result = "";
 		String params = getMenuJson(buttonMenuManager.list(query));
+		//处理URL中的"&"被转成“&amp;”的BUG
+		if(params.contains("&amp;")){
+			params = params.replaceAll("&amp;", "&");
+		}
 		System.out.println(params);
 		String accessToken = this.getAccessToken(appid, secret);
 		String delStr = deleteMenuInfo(accessToken);
