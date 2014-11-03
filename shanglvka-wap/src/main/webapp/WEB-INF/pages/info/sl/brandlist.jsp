@@ -252,7 +252,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--排序选择-->
-		<div id="order_list" class="dropdown_content" style="display: none;">
+		<div id="order_list" class="dropdown_content"  style="display: none;">
 			<li class="selected">默认排序</li>
 			<li>离我最近</li>
 			<li>评价最高</li>
