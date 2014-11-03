@@ -49,7 +49,6 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	private void preparedSessionUser(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
 		String uri = request.getRequestURI();
-		System.out.println(uri);
 		
 		HttpSession session = request.getSession();
 		SessionUser user = (SessionUser)session.getAttribute(ConstantActivity.SESSION_USER_KEY);
