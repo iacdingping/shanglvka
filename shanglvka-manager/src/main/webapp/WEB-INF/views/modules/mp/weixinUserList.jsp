@@ -36,6 +36,8 @@
 				<th>昵称</th>
 				<th>状态</th>
 				<th>电话</th>
+				<th>省份</th>
+				<th>城市</th>
 				<th>用户属性</th>
 				<th>操作</th>
 			</tr>
@@ -44,6 +46,8 @@
 					<td>${weixinUser.nickname}</td>
 					<td>${weixinUser.type eq '1'?'关注用户':'取消关注'}</td>
 					<td>${weixinUser.phone}</td>
+					<td>${weixinUser.province}</td>
+					<td>${weixinUser.city}</td>
 					<td>${weixinUser.isStaff eq '1'?'内部员工':'普通用户'}</td>
 					<td><a
 						href="${ctx}/mp/weixinUser/setStaff?id=${weixinUser.id}"

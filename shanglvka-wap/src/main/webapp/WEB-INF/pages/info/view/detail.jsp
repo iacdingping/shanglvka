@@ -54,10 +54,9 @@
 		});
 	}
 </script>
-<title>详情页</title>
+<title>${fns:rabbr(viewData.title, 34)}</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/pages/include/common.jsp"></jsp:include>
 	<div class=" margin_T20 ">
 		<header class="border_bottom1 padding-B10 content_area">
 			<div class="title">${fns:rabbr(viewData.title, 34)}</div>

@@ -5,18 +5,16 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.slk.core.entity.mp.WeixinUser;
 import com.slk.core.manager.mp.WeixinUserManager;
 import com.slk.hibernate.core.entity.BusinessCard;
-import com.slk.hibernate.core.entity.Enroll;
 import com.slk.hibernate.core.entity.PurchaseApply;
 import com.slk.hibernate.core.service.BusinessCardService;
-import com.slk.hibernate.core.service.EnrollService;
 import com.slk.hibernate.core.service.PurchaseApplyService;
-import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 
@@ -46,7 +44,7 @@ public class MyCardController extends BaseController {
 	}
 
 	@RequestMapping(value = "purchaseSave")
-	public String save(PurchaseApply purchaseApply, Model model,
+	public String save(PurchaseApply purchaseApply, Model model,ModelMap modelMap,
 			RedirectAttributes redirectAttributes) {
 		if (!beanValidator(model, purchaseApply)) {
 			addMessage(redirectAttributes, "数据不对");
@@ -59,8 +57,9 @@ public class MyCardController extends BaseController {
 		purchaseApply.setIsTreat("0");
 		purchaseApply.setCreateTime(new Date());
 		purchaseApplyService.save(purchaseApply);
-		addMessage(redirectAttributes, "保存申购单成功");
-		return "redirect:/card/purchase";
+//		addMessage(redirectAttributes, "保存申购单成功");
+		modelMap.put("success", true);
+		return "/card/purchase";
 	}
 
 	@RequestMapping("/list")

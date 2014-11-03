@@ -53,7 +53,7 @@
 		 -->
 	</div>
 	<div style="height: 50px; width: 100%"></div>
-	<div style="position: relative; width: auto; font-size: 14px;" id="detail-info">
+	<div style="position: relative; width: auto; font-size: 14px; width: 420px;" id="detail-info">
 		<div>
 			<span class="fui-user"></span>&nbsp;职位：${businessCard.job}
 		</div>
@@ -70,35 +70,7 @@
 					${businessCard.address}</a>
 		</div>
 	</div>
-	<div style="background: #6CF; margin-top: 20px; height: 100px;padding-top:10px">
-		<ul id="service-list">
-			<li><a href="${ctx}/">
-					<div
-						style="width: 60px; height: 60px; border: 2px solid yellow; border-radius: 50px; text-align: center; line-height: 64px;">
-						<span class="fui-windows"></span>
-					</div>商&nbsp;旅&nbsp;卡
-			</a></li>
-			<li><a href="">
-					<div
-						style="width: 60px; height: 60px; border: 2px solid yellow; border-radius: 50px; text-align: center; line-height: 60px;">
-						<span class="fui-star-2"></span>
-					</div>精彩活动
-			</a></li>
-			<li><a href="">
-					<div
-						style="width: 60px; height: 60px; border: 2px solid yellow; border-radius: 50px; text-align: center; line-height: 60px;">
-						<span class="fui-cmd"></span>
-					</div>商旅人脉
-			</a></li>
-			<li><a href="">
-					<div
-						style="width: 60px; height: 60px; border: 2px solid yellow; border-radius: 50px; text-align: center; line-height: 60px;">
-						<span class="fui-exit"></span>
-					</div>更多福利
-			</a></li>
-			
-		</ul>
-	</div>
+	
 	<br />
 	<footer>
 		<div
