@@ -28,7 +28,7 @@
 	color: #1ca9c0
 }
 </style>
-<div style="text-align: center; width: 100%; color: #7b7979">杭州市商贸旅游集团商旅卡销售分公司</div>
+<div style="text-align: center; width: 100%; color: #7b7979;margin-bottom: 16px;">杭州市商贸旅游集团商旅卡销售分公司</div>
 <div style="position: fixed; right: 20px; bottom: 20px; cursor: pointer">
 	<div
 		style="color: #1ca9c0; font-size: 30px; font-weight: bold; width: 25px; height: 25px; border: 1px solid #e9e8e9; background: #e9e8e9; border-radius: 25px; text-align: center; line-height: 25px;padding-bottom: 2px;"
