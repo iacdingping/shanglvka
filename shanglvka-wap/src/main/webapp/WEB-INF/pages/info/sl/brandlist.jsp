@@ -216,44 +216,38 @@
 		<!--全部分类-->
 		<div id="class_list" class="dropdown_content hide">
 			<div class="type_list">
-				<li id="type01" class="selected">类&nbsp;&nbsp;&nbsp;别 <span>&gt;</span></li>
-				<li id="type02">西湖区 --<span>&gt;</span></li>
-				<li id="type03">拱墅区-- <span>&gt;</span></li>
-				<li id="type04">萧山区 --<span>&gt;</span></li>
+				<li id="type01" class="selected">全部分类 <span>&gt;</span></li>
+				<c:forEach var="item" items="${typeList}" varStatus="type">
+					<li id="type${item.id}">${item.name}<span>&gt;</span></li>
+				</c:forEach>
 			</div>
 			<div class="type_detail_list">
-				<div id="detail_type01" class="region_detail_list_items">
-					<li class="selected">全部</li>
-					<li>城厢</li>
-					<li>北干</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-				</div>
+				<c:forEach var="item" items="${typeList}" varStatus="type">
+					<div id="detail_type${item.id}" class="region_detail_list_items">
+						<c:forEach var="child" items="${item.childList}">
+							<li>${child.name}</li>
+						</c:forEach>
+					</div>
+				</c:forEach>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<!--城市选择-->
 		<div id="city_list" class="dropdown_content hide">
 			<div class="region_list">
-				<li id="region01" class="selected">全&nbsp;&nbsp;&nbsp;城 <span>&gt;</span></li>
+				<li id="region01" class="selected">全城区域 <span>&gt;</span></li>
 				<c:forEach var="item" items="${areaList}" varStatus="area">
-					<li id="region${item.id}">${item.name} <span>&gt;</span></li>
+					<li id="region${item.id}">${item.name}<span>&gt;</span></li>
 				</c:forEach>
 			</div>
 			<div class="region_detail_list">
-				<div id="detail_region01" class="region_detail_list_items">
-					<li class="selected">全部</li>
-					<li>城厢</li>
-					<li>北干</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-					<li>市心北路</li>
-				</div>
+				<c:forEach var="item" items="${areaList}" varStatus="area">
+					<div id="detail_region${item.id}" class="region_detail_list_items">
+						<c:forEach var="child" items="${item.childList}">
+							<li>${child.name}</li>
+						</c:forEach>
+					</div>
+				</c:forEach>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -322,15 +316,25 @@
 					//类别选择
 					$("#class_list .type_list li").click(function() {
 						var thisID = $(this).attr("id");
-						alert(thisID);
 						$("#detail_" + thisID).show().siblings().hide();
 					});
-
+					//类别选择
+					$("#class_list .type_detail_list div").click(function() {
+						var thisID = $(this).attr("id");
+						alert(1);
+					});
 					//地区选择
 					$("#city_list .region_list li").click(function() {
 						var thisID = $(this).attr("id");
 						$("#detail_" + thisID).show().siblings().hide();
 					});
+
+					//类别选择
+					$("#city_list .region_detail_list div").click(function() {
+						var thisID = $(this).attr("id");
+						alert(2);
+					});
+					
 				});
 	</script>
 </body>

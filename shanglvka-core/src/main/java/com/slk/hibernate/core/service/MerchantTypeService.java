@@ -59,9 +59,9 @@ public class MerchantTypeService extends BaseService {
 			// 添加查询条件
 			dc.add(Restrictions.eq(MerchantType.FIELD_DEL_FLAG,
 					MerchantType.DEL_FLAG_NORMAL));
-			dc.add(Restrictions.eq("parentId", pid));
+			dc.add(Restrictions.eq("parent.id", pid));
 			dc.addOrder(Order.desc("id"));
-			typeList = UserUtils.findAllMerchantType();
+			typeList = merchantTypeDao.find(dc);
 			UserUtils.putCache(UserUtils.CACHE_MERCHANT_TYPE_LIST + pid,
 					typeList);
 		}
