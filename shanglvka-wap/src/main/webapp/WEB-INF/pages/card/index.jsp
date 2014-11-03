@@ -27,7 +27,7 @@
 	height: 80px;
 	border-radius: 50px;
 	top: 5px;
-	border: 2px solid #000;
+	border: 2px solid #6c6c6c;
 	z-index: 101
 }
 
@@ -50,7 +50,7 @@
 			src="${businessCard.icoHeader}" />
 	</div>
 	<div style="text-align: center; width: 100%; color: #7b7979">
-		<font color="#000000" size="6">${businessCard.name}</font>
+		<font color="#000000" size="5"><b>${businessCard.name}</b></font>
 		<div  style="margin-top: 10px;margin-bottom: 20px;"><font  color="#000000">${businessCard.job}</font></div>
 	</div>
 	<div class="line" style="background: #999999"></div>
