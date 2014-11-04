@@ -82,7 +82,7 @@
 			<div class="controls">
 				<input type="hidden" id="picture" name="picture"
 					value="${keyword.picture}" />
-				<tags:ckfinder input="picture" type="thumb" uploadPath="/cms/article"
+				<tags:ckfinder input="picture" type="images" uploadPath="/business/keyWord"
 					selectMultiple="false" />
 			</div>
 		</div>

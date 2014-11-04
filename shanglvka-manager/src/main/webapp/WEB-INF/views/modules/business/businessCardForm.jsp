@@ -86,8 +86,8 @@
 			<div class="controls">
 				<input type="hidden" id="icoHeader" name="icoHeader"
 					value="${businessCard.icoHeader}" />
-				<tags:ckfinder input="icoHeader" type="thumb"
-					uploadPath="/ico/header" selectMultiple="false" />
+				<tags:ckfinder input="icoHeader" type="images"
+					uploadPath="/business/header" selectMultiple="false" />
 			</div>
 		</div>
 		<div class="form-actions">
