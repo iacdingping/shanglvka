@@ -68,7 +68,7 @@
 		<directory>%BASE_DIR%_thumbs</directory>
 		<directAccess>true</directAccess>
 		<maxWidth>220</maxWidth>
-		<maxHeight>240</maxHeight>
+		<maxHeight>140</maxHeight>
 		<quality>80</quality>
 	</thumbs>
 	<plugins>
