@@ -83,7 +83,7 @@
 			<label class="control-label">图片<span id="size">(640*320)</span>:</label>
 			<div class="controls">
                 <input type="hidden" id="pic" name="pic" value="${wapHome.pic}"  class="required"/>
-				<tags:ckfinder input="pic" type="thumb" uploadPath="/cms/wapHome" selectMultiple="false"/>
+				<tags:ckfinder input="pic" type="images" uploadPath="/business/wapHome" selectMultiple="false"/>
 			</div>
 		</div>
         <div class="control-group">

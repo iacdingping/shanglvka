@@ -59,7 +59,7 @@
 			<div class="controls">
 				<input type="hidden" id="pic" name="pic"
 					value="${merchantBrand.pic}" />
-				<tags:ckfinder input="pic" type="thumb"
+				<tags:ckfinder input="pic" type="images"
 					uploadPath="/business/merchantBrand" selectMultiple="false" />
 			</div>
 		</div>

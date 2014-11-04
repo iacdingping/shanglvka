@@ -76,7 +76,6 @@
 			<label class="control-label">所属品牌:</label>
 			<div class="controls">
 				<form:select path="merchantBrand.id">
-					<form:option value="" label="请选择"/>
 					<form:options items="${brandList}" itemLabel="name" itemValue="id" htmlEscape="false"/>
 				</form:select>
 			</div>
@@ -100,8 +99,8 @@
 			<div class="controls">
 				<input type="hidden" id="smallPic" name="smallPic"
 					value="${merchantMap.smallPic}" />
-				<tags:ckfinder input="smallPic" type="thumb"
-					uploadPath="/cms/article" selectMultiple="false" />
+				<tags:ckfinder input="smallPic" type="images"
+					uploadPath="/business/merchantMap" selectMultiple="false" />
 			</div>
 		</div>
 		<div class="control-group">
@@ -109,7 +108,7 @@
 			<div class="controls">
 				<input type="hidden" id="bgPic" name="bgPic"
 					value="${merchantMap.bgPic}" />
-				<tags:ckfinder input="bgPic" type="thumb" uploadPath="/cms/article"
+				<tags:ckfinder input="bgPic" type="images" uploadPath="/business/merchantMap"
 					selectMultiple="false" />
 			</div>
 		</div>

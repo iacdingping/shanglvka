@@ -5,6 +5,7 @@
  */
 package com.thinkgem.jeesite.modules.sys.utils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -203,14 +204,16 @@ public class UserUtils extends BaseService {
 	}
 
 	public static void removeCache(String key) {
-		Map<String, Object> cacheMap = getCacheMap();
+		HashMap<String, Object> cacheMap = (HashMap<String, Object>) getCacheMap();
 		if (key.equals(UserUtils.CACHE_AREA_LIST)
 				|| key.equals(UserUtils.CACHE_MERCHANT_TYPE_LIST)) {
-			for (Map.Entry<String, Object> entry : cacheMap.entrySet()) {
+			HashMap<String, Object> b = (HashMap) cacheMap.clone();
+			for (Map.Entry<String, Object> entry : b.entrySet()) {
 				if (entry.getKey().startsWith(key)) {
 					cacheMap.remove(entry.getKey());
 				}
 			}
+			b.clear();
 		} else {
 			cacheMap.remove(key);
 		}

@@ -35,7 +35,7 @@ public class MerchantBrandDao extends BaseDao<MerchantBrand> {
 		sb.append(" where 1=1 ");
 		if (typeId != null) {
 			sb.append(" and smm.id in (select distinct mt.map_id from slk_map_type mt where mt.type_id in (select smt.id from slk_merchant_type smt where smt.parent_id ="
-					+ typeId + "))");
+					+ typeId + " or smt.id=5))");
 		}
 		if (StringUtils.isNotEmpty(areaId)) {
 			sb.append(" and smm.area_id in (select sa.id from sys_area sa where sa.parent_ids like '%"

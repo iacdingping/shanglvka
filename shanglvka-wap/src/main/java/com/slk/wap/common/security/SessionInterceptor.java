@@ -16,6 +16,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.slk.core.entity.mp.WeixinUser;
 import com.slk.core.manager.mp.WeixinUserManager;
+import com.slk.core.query.mp.ChatRequestComponent;
+import com.slk.core.query.mp.ChatRequestComponent.AccessToken;
+import com.slk.core.query.mp.ResponseError;
 import com.slk.wap.common.constant.ConstantActivity;
 import com.thinkgem.jeesite.common.web.Servlets;
 
@@ -25,6 +28,8 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	
 	@Autowired
 	private WeixinUserManager weixinUserManager;
+	@Autowired
+	private ChatRequestComponent chatRequest;
 
 	// 重写 preHandle()方法，在业务处理器处理请求之前对该请求进行拦截处理
 	public boolean preHandle(HttpServletRequest request,
@@ -48,8 +53,6 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	 */
 	private void preparedSessionUser(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
-		String uri = request.getRequestURI();
-		
 		HttpSession session = request.getSession();
 		SessionUser user = (SessionUser)session.getAttribute(ConstantActivity.SESSION_USER_KEY);
 		if(user == null) {
@@ -57,12 +60,25 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 			session.setAttribute(ConstantActivity.SESSION_USER_KEY, user);
 		}
 		
-		String openid = request.getParameter(ConstantActivity.PLATFORM_PARAM);
+		String code = request.getParameter("code");
+		String openid = request.getParameter(ConstantActivity.PLATFORM_PARAM);;
+		System.out.println("获取用户授权code：" + code + "， 参数openid：" + openid);
+		if(StringUtils.isNotBlank(code) && StringUtils.isBlank(openid)) {
+			try {
+				AccessToken token = chatRequest.queryAccessToken(code);
+				openid = token.getOpenid();
+				System.out.println("获取用户授权token中的openid：" + openid);
+			} catch (ResponseError e) {
+				logger.warn("获取用户授权token失败", e);
+			}
+		}
+		
 		if(StringUtils.isNotBlank(openid)) {
 			Servlets.setCookieOnce(response, ConstantActivity.PLATFORM_PARAM, openid);
 			
 			WeixinUser weixinUser = weixinUserManager.getbyPlatformCode(openid);
 			user.setWeixinUser(weixinUser);
+			System.out.println(weixinUser == null ? "么有查到微信用户" : weixinUser.getNickname());
 		}
 	}
 

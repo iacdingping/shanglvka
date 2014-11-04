@@ -18,26 +18,40 @@
 		<artifactId>parent</artifactId>
 		<version>1.0</version>
 	</parent>
-	
+
 	<!-- 项目属性 -->
 	<properties>
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
 		<jdbc.driver.version>5.1.24</jdbc.driver.version>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
-		<dependency>
-			<groupId>iac.dp</groupId>
-			<artifactId>shanglvka-business</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>iac.dp</groupId>
-			<artifactId>shanglvka-core</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-	</dependencies>
+			<dependency>
+				<groupId>iac.dp</groupId>
+				<artifactId>shanglvka-business</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>iac.dp</groupId>
+				<artifactId>shanglvka-core</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>  
+                  <groupId>org.apache.maven.plugins</groupId>  
+                  <artifactId>maven-surefire-plugin</artifactId>  
+                  <version>2.16</version>  
+                  <configuration>  
+                        <skipTests>true</skipTests>                   
+                  </configuration>  
+                </plugin>  
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>

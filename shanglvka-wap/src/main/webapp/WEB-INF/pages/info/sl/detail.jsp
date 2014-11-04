@@ -17,21 +17,24 @@
 <body>
 	<div>
 		<article class="content_detail">
-			
-			<div style="margin: auto; vertical-align: middle;z-index:1" class="positionR">
-				<img src="${merchantMap.bgPic} " width="100%"/>
-				<div style="left: 10%;z-index:2;top:30%" class="positionA">
+
+			<div style="margin: auto; vertical-align: middle; z-index: 1"
+				class="positionR">
+				<img src="${merchantMap.bgPic} " width="100%" />
+				<div style="left: 10%; z-index: 2; top: 30%" class="positionA">
 					<span class="font_size_25 font_color_b">${merchantMap.title}</span>
-					<hr style="border:1px solid #fff;"/>
+					<hr style="border: 1px solid #fff;" />
 					<span class="font_size_16 font_color_b">${merchantMap.address}</span>
 				</div>
 			</div>
-			<div class="list border_bottom1">
-				<span class="words07 margin_L20">预约电话：</span> <span class="words06">${merchantMap.phone}</span>
-				<span class="floatR BTN01"><img
-					src="${ctx}/static/img/info/icon04.png" height="20" align="left" /><a
-					href="tel:${merchantMap.phone}">拨打电话</a></span>
-			</div>
+			<c:if test="${not empty item.phone}">
+				<div class="list border_bottom1">
+					<span class="words07 margin_L20">预约电话：</span> <span class="words06">${merchantMap.phone}</span>
+					<span class="floatR BTN01"><img
+						src="${ctx}/static/img/info/icon04.png" height="20" align="left" /><a
+						href="tel:${merchantMap.phone}">拨打电话</a></span>
+				</div>
+			</c:if>
 			<div class="list border_bottom1">
 				<span class="words07 margin_L20">所在地区：</span> <span class="words06">${merchantMap.area.name}</span>
 				<span class="floatR BTN02"><img

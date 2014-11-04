@@ -380,11 +380,11 @@
 							divshow.text("");// 清空数据
 							var html = '';
 							for (var i = 0; i < data.length; i++) {
-								html += '<li><p><img src="'+data[i].pic+'" /></p> <span> <span class="title">'
+								html += '<a href="${ctx}/sl/addressList?brandId='+data[i].id+'"><li><p><img src="'+data[i].pic+'" /></p> <span> <span class="title">'
 										+ data[i].name + '</span> <br />'
 								html += '<span class="introduce">'
 										+ data[i].label
-										+ '</span></span><div class="clear"></div></li>'
+										+ '</span></span><div class="clear"></div></li></a>'
 							}
 							if (data.length == 0) {
 								html += '<div style="text-align: center; width: 100%; color: #7b7979;margin-bottom: 16px;margin-top: 20px;">暂无商旅</div>'
