@@ -213,6 +213,7 @@ public class UserUtils extends BaseService {
 					cacheMap.remove(entry.getKey());
 				}
 			}
+			b.clear();
 		} else {
 			cacheMap.remove(key);
 		}
