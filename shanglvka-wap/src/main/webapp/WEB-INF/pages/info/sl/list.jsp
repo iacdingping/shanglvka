@@ -41,6 +41,9 @@
 	color: #0f63ae;
 	font-size: 16px;
 	font-weight: bold;
+	 overflow: hidden;
+	 width: 220px;
+	 white-space: nowrap;
 }
 
 
