@@ -57,6 +57,7 @@ public class MenuController {
 		query.setSortColumns("id");
 		String result = "";
 		String params = getMenuJson(buttonMenuManager.list(query));
+
 		params = params.replaceAll("&amp;", "&");
 		System.out.println(params);
 		String accessToken = this.getAccessToken(appid, secret);

@@ -15,10 +15,9 @@
 <title>商旅列表</title>
 <style>
 .store_list .store {
-	height: 100px;
 	border-bottom: 1px solid #ccc;
 	position: relative;
-	width: 90%;
+	width: 94%;
 	margin: auto;
 	margin-top: 10px;
 	padding-bottom: 10px;
@@ -26,7 +25,6 @@
 
 .store_list .store div {
 	line-height: 33.3px;
-	height: 33.3px;
 	position: relative
 }
 
@@ -43,18 +41,25 @@
 	color: #0f63ae;
 	font-size: 16px;
 	font-weight: bold;
+	 overflow: hidden;
+	 width: 220px;
+	 white-space: nowrap;
 }
 
-.store_list .store div.telephone {
+
+.store_list .store div.telephone , .store_list .store div.telephone a {
 	color: #666666;
 	font-size: 18px;
 }
 
-.store_list .store div.address {
+.store_list .store div.address,.store_list .store div.address a {
 	color: #666666;
 	font-size: 14px;
 }
-
+.store_list .store div.address{
+	line-height: 28px;
+	width:95%;
+}
 .store_list .store .more {
 	border-radius: 8px;
 	position: absolute;
@@ -63,7 +68,9 @@
 	padding: 0px 10px;
 	border: 2px solid #0f63ae;
 	color: #0f63ae;
-	font-size: 16px;
+	font-size: 14px;
+	height:25px;
+	line-height: 25px;
 }
 </style>
 </head>

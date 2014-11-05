@@ -29,7 +29,7 @@
 	display: block;
 	position: absolute;
 	top: 5px;
-	right: -30px;
+	right: -18px;
 }
 
 .arrow_selected {

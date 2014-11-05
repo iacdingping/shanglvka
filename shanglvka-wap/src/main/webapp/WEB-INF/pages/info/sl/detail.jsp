@@ -21,7 +21,7 @@
 			<div style="margin: auto; vertical-align: middle; z-index: 1"
 				class="positionR">
 				<img src="${merchantMap.bgPic} " width="100%" />
-				<div style="left: 10%; z-index: 2; top: 30%" class="positionA">
+				<div style="left: 0%; z-index: 2; top: 30%; background:#000;padding:10px 20px 20px 20px;max-width: 290px" class="positionA">
 					<span class="font_size_25 font_color_b">${merchantMap.title}</span>
 					<hr style="border: 1px solid #fff;" />
 					<span class="font_size_16 font_color_b">${merchantMap.address}</span>
@@ -41,8 +41,8 @@
 					src="${ctx}/static/img/info/icon06.png" height="20" align="left" /><a
 					href="http://map.baidu.com/mobile/webapp/place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${merchantMap.address}/?fromhash=1#place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${merchantMap.address}&vt=map">查看地图</a></span>
 			</div>
-			<div class="list border_bottom1">
-				<span class="words07 margin_L20">折扣优惠：</span><span class="words06">${merchantMap.offer}</span>
+			<div class="list border_bottom1" style="padding:10px 0px;">
+				<p class="words07 margin_L20" style="line-height: 25px;">折扣优惠：<span class="words06">${merchantMap.offer}</span></p>
 			</div>
 			<div class="list">
 				<span class="words07 margin_L20">商户介绍：</span>
