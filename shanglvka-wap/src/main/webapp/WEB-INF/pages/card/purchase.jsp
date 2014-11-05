@@ -10,17 +10,10 @@
 <script type="text/javascript"
 	src="${ctx}/static/js/common/jquery.min.js"></script>
 <script type="text/javascript"
-	src="${ctx}/static/js/common/validate/jquery.validate.method.js"></script>
-<script type="text/javascript"
-	src="${ctx}/static/js/common/validate/jquery.validate.method.min.js"></script>
-<script type="text/javascript"
-	src="${ctx}/static/js/common/validate/jquery.validate.min.js"></script>
-<script type="text/javascript"
-	src="${ctx}/static/js/common/validate/localization/messages_zh.js"></script>
-<script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
-<link rel="stylesheet" type="text/css"
+	<script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
+	<link rel="stylesheet" type="text/css"
 	href="${ctx}/static/css/common1/common.css" />
-<title>购卡助手</title>
+	<title>购卡助手</title>
 <style type="text/css">
 #purchaseApply_form label.error {
 	padding-left: 16px;
@@ -48,8 +41,22 @@
 		if ('${message}' != '') {
 			alert('${message}');
 		}
-		$("#purchaseApply_form").validate();
 	});
+
+	function submitFrom() {
+		if ($("#buyMoney").val() == '' || isNaN($("#buyMoney").val())) {
+			alert('请输入购卡金额');
+		} else if ($("#buyName").val() == '') {
+			alert('请输入购卡联系人');
+		} else if ($("#buyPhone").val() == '') {
+			alert('请输入购卡人电话');
+		} else if ($("#buyUnit").val() == '') {
+			alert('请输入购卡单位');
+		} else {
+			purchaseForm.action = '${ctx}/card/purchaseSave';
+			purchaseForm.submit();
+		}
+	}
 </script>
 </head>
 <body>
@@ -57,20 +64,18 @@
 		<IMG src="${ctx}/static/img/bind01.jpg" width="100%" />
 	</div>
 	<div style="margin: 0px 10px;" class="form_list">
-		<form id="purchaseApply_form" action="${ctx}/card/purchaseSave"
-			method="post" modelAttribute="purchaseApply" name="purchaseApply">
+		<form id="purchaseForm" name="purchaseForm">
 			<li>购卡金额&nbsp;&nbsp;&nbsp;<input type="text" id="buyMoney"
-				name="buyMoney" placeholder="请输入购卡金额" class="digits required" /></li>
+				name="buyMoney" placeholder="请输入购卡金额" /></li>
 			<li>购卡联系人<input type="text" id="buyName" name="buyName"
-				placeholder="请输入购卡联系" class="form-control required" /></li>
+				placeholder="请输入购卡联系" /></li>
 			<li>购卡人电话<input type="text" id="buyPhone" name="buyPhone"
-				placeholder="请输入购卡人电话" class="form-control required" /></li>
+				placeholder="请输入购卡人电话" /></li>
 			<li>购卡单位&nbsp;&nbsp;&nbsp;<input type="text" id="buyUnit"
-				name="buyUnit" placeholder="请输入购卡单位" class="form-control required" /></li>
-			<br />
+				name="buyUnit" placeholder="请输入购卡单位" /></li> <br />
 			<p style="font-size: 14px; color: #999">请您详细填写以上信息，以方便我们为您服务，谢谢您的支持</p>
 			<br />
-			<button type="submit" class="button"
+			<button type="button" onclick="submitFrom();" class="button"
 				style="margin: 0px 10px; margin: auto; width: 100%;">确认</button>
 		</form>
 	</div>

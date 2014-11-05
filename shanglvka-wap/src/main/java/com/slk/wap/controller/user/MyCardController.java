@@ -52,17 +52,17 @@ public class MyCardController extends BaseController {
 			ModelMap modelMap, RedirectAttributes redirectAttributes) {
 		if (!beanValidator(model, purchaseApply)) {
 			addMessage(redirectAttributes, "数据不对");
-			return "redirect:/card/purchase";
+			return "redirect:/card/jump";
 		}
 		if (purchaseApply.getId() != null) {
 			addMessage(redirectAttributes, "数据不对");
-			return "/card/purchase";
+			return "redirect:/card/jump";
 		}
 		purchaseApply.setIsTreat("0");
 		purchaseApply.setCreateTime(new Date());
 		purchaseApplyService.save(purchaseApply);
 		addMessage(redirectAttributes, "提交申购单成功");
-		return "/card/purchase";
+		return "redirect:/card/jump";
 	}
 
 	@RequestMapping("/list")
