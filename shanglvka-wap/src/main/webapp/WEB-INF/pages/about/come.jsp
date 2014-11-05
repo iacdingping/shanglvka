@@ -64,34 +64,11 @@
 }
 
 .contact_bg {
-	background: url(${ctx}/static/img/contact_icon.png);
-	background-size: 100%;
 	display: block;
-	width: 30px;
 	height: 31px;
 	float: left;
-	margin-right: 15px;
+	margin-right: 2px;
 	margin-bottom: 10px;
-}
-
-.bg01 {
-	background-position: 0px 0px;
-}
-
-.bg02 {
-	background-position: 0px -47px;
-}
-
-.bg03 {
-	background-position: 0px -95px;
-}
-
-.bg04 {
-	background-position: 0px -145px;
-}
-
-.bg05 {
-	background-position: 0px -192px;
 }
 
 #contact_content li {
@@ -102,14 +79,14 @@
 
 <body>
 	<div class="tag_selector">
-		<li id="faq" class="selected"
-			style=" background:url(${ctx}/static/img/cccbg.jpg) repeat-y right">常见问答</li>
-		<li id="contact">联系我们</li>
+		<li id="faq">常见问答</li>
+		<li id="contact" class="selected"
+			style=" background:url(${ctx}/static/img/cccbg.jpg) repeat-y right">联系我们</li>
 		<div class="clear"></div>
 	</div>
 	<div>
 		<!--FAQ 内容-->
-		<div id="faq_content" style="background: #f5f5f5;">
+		<div id="faq_content" style="display: none">
 			<br />
 
 			<!--我的问题-->
@@ -153,25 +130,32 @@
 			<br />
 		</div>
 		<!--联系我们 内容-->
-		<div id="contact_content" style="display: none">
+		<div id="contact_content" style="background: #f5f5f5;">
 			<br /> <br />
 			<div style="width: 100%;">
 				<div style="width: 100%; margin: auto; text-align: center">
 					<img src="${ctx}/static/img/logo.jpg" width="40%" />
 				</div>
 				<div style="margin-left: 20%; font-size: 16px;">
-					<li><span class="contact_bg bg01"></span><a
-						href="tel:0571-87250823" style="color: #333333">0571-87250823</a>
+					<li><span class="contact_bg">客服电话：</span><a
+						href="tel:0571-28196999" style="color: #333333">0571-28196999</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg bg02"></span><font color="#F39C12"><a
-							href="${ctx}/" style="color: #333333">杭州商旅卡微信公众简介</a></font>
+					<li><span class="contact_bg">加盟热线：</span><a
+						href="tel:0571-28206308" style="color: #333333">0571-28206308</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg bg03"></span>info@4000001888.com
+					<li><span class="contact_bg">官方网址：</span><a
+						href="http://www.51ctcard.com" style="color: #333333">商旅卡</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg bg04"></span><a
-						href="http://www.51ctcard.com" style="color: #333333">商旅卡-商旅集团</a>
+					<li  style="display: none;"><span class="contact_bg">微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信：</span><a
+						href="weixin://contacts/profile/MjM5MTE5MTE5Mg==" style="color: #333333">商旅卡</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg bg05"></span>@杭州市商贸旅游集团
+					<li><span class="contact_bg">新浪微博：</span><a
+						href="http://weibo.com/u/3472602042/home?wvr=5&upfrom=v5"
+						style="color: #333333">商旅卡CTCARD</a>
+						<div class="clear"></div></li>
+					<li><span class="contact_bg">腾讯微博：</span><a
+						href="http://t.qq.com/HZshanglvka/profile?pgv_ref=im.aio.t&ptlang=2052"
+						style="color: #333333">商旅卡CTCARD</a>
 						<div class="clear"></div></li>
 
 				</div>
