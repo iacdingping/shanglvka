@@ -38,8 +38,10 @@
 			<div class="list border_bottom1">
 				<span class="words07 margin_L20">所在地区：</span> <span class="words06">${merchantMap.area.name}</span>
 				<span class="floatR BTN02"><img
-					src="${ctx}/static/img/info/icon06.png" height="20" align="left" /><a
-					href="http://map.baidu.com/mobile/webapp/place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${merchantMap.address}/?fromhash=1#place/detail/qt=s&c=179&searchFlag=bigBox&version=5&exptype=dep/i=0&showall=1&detail_from=list&wd=${merchantMap.address}&vt=map">查看地图</a></span>
+					src="${ctx}/static/img/info/icon06.png" height="20" align="left" />
+					<a
+						href="http://map.baidu.com/mobile/webapp/index/index#search/search/qt=s&wd=${merchantMap.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=">${merchantMap.address}</a>
+					</span>
 			</div>
 			<div class="list border_bottom1" style="padding:10px 0px;">
 				<p class="words07 margin_L20" style="line-height: 25px;">折扣优惠：<span class="words06">${merchantMap.offer}</span></p>
