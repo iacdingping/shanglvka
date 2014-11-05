@@ -252,7 +252,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--排序选择-->
-		<div id="order_list" class="dropdown_content"  style="display: none;">
+		<div id="order_list" class="dropdown_content" style="display: none;">
 			<li class="selected">默认排序</li>
 			<li>离我最近</li>
 			<li>评价最高</li>
@@ -316,9 +316,12 @@
 						if (thisID == 'type01') {
 							hideLayout("class");
 							readType('', '全部类别');
-						} else {
-							$("#detail_" + thisID).show().siblings().hide();
-						}
+						} else if($("#detail_" + thisID).children("li").size()==0){
+								hideLayout("class");
+								readType(thisID.replace('type',''), $(this).text().replace('>',''));
+							}else{
+								$("#detail_" + thisID).show().siblings().hide();
+							}
 					});
 					//类别选择
 					$("#class_list .type_detail_list div").click(function() {
@@ -332,7 +335,10 @@
 						if (thisID == 'region01') {
 							hideLayout("city");
 							readRegion('', '全城区域');
-						} else {
+						} else if($("#detail_" + thisID).children("li").size()==0){
+							hideLayout("city");
+							readRegion(thisID.replace('region',''), $(this).text().replace('>',''));
+						}else{
 							$("#detail_" + thisID).show().siblings().hide();
 						}
 					});
