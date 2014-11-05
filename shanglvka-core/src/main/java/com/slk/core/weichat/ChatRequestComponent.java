@@ -1,4 +1,4 @@
-package com.slk.core.query.mp;
+package com.slk.core.weichat;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -19,8 +20,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
+import com.thinkgem.jeesite.common.utils.Encodes;
 
 /**
  * 微信平台请求容器
@@ -55,7 +56,6 @@ public class ChatRequestComponent {
 	
 	@PostConstruct
 	private void init() {
-		setGlobalAccessToken();
 		httpclient = HttpClients.createDefault();
 		config = RequestConfig.custom().setSocketTimeout(20000).setConnectTimeout(10000).build();
 	}
@@ -83,6 +83,9 @@ public class ChatRequestComponent {
 	}
 	
 	public UserInfo synUserInfoByGlobalToken(String openid) throws ResponseError, InvalidTokenException {
+		if(StringUtils.isBlank(globalAccessToken)) {
+			setGlobalAccessToken();
+		}
 		return synUserInfo(globalAccessToken, openid);
 	}
 	
@@ -186,7 +189,22 @@ public class ChatRequestComponent {
 		return result.indexOf("\"errcode\":0") > -1;
 	}
 	
+	/**
+	 * 获取用户授权url 再自定义按钮为view时候 可以用微信授权页面获取openid
+	 * @param baseUrl
+	 * @param type
+	 * @return
+	 */
+	public String getUserAuthorizeUrl(String baseUrl, AuthorizeType type) {
+		return String.format(
+				"https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=STATE#wechat_redirect",
+				appid, Encodes.urlEncode(baseUrl), type.getValue());
+	}
+	
 	public String getGlobalAccessToken() {
+		if(StringUtils.isBlank(globalAccessToken)) 
+			setGlobalAccessToken();
+		
 		return globalAccessToken;
 	}
 
@@ -197,169 +215,4 @@ public class ChatRequestComponent {
 		this.globalAccessToken = queryGlobalAccessToken();
 	}
 	
-	public static class AccessToken {
-		@JsonProperty("access_token")
-		private String accessToken;
-		@JsonProperty("expires_in")
-		private Integer expires;
-		@JsonProperty("refresh_token")
-		private String refreshToken;
-		@JsonProperty("openid")
-		private String openid;
-		@JsonProperty("scope")
-		private String scope;
-		public String getAccessToken() {
-			return accessToken;
-		}
-		public void setAccessToken(String accessToken) {
-			this.accessToken = accessToken;
-		}
-		public Integer getExpires() {
-			return expires;
-		}
-		public void setExpires(Integer expires) {
-			this.expires = expires;
-		}
-		public String getRefreshToken() {
-			return refreshToken;
-		}
-		public void setRefreshToken(String refreshToken) {
-			this.refreshToken = refreshToken;
-		}
-		public String getOpenid() {
-			return openid;
-		}
-		public void setOpenid(String openid) {
-			this.openid = openid;
-		}
-		public String getScope() {
-			return scope;
-		}
-		public void setScope(String scope) {
-			this.scope = scope;
-		}
-	}
-	
-	public static class UserInfo {
-		private String subscribe;
-		private String openid;
-		private String nickname;
-		private Integer sex;
-		private String language;
-		private String city;
-		private String province;
-		private String country;
-		private String headimgurl;
-		@JsonProperty("subscribe_time")
-		private String subscribeTime;
-		private String unionid;
-		
-		private List<String> privilege;
-		public String getSubscribe() {
-			return subscribe;
-		}
-		public void setSubscribe(String subscribe) {
-			this.subscribe = subscribe;
-		}
-		public String getOpenid() {
-			return openid;
-		}
-		public void setOpenid(String openid) {
-			this.openid = openid;
-		}
-		public String getNickname() {
-			return nickname;
-		}
-		public void setNickname(String nickname) {
-			this.nickname = nickname;
-		}
-		public Integer getSex() {
-			return sex;
-		}
-		public void setSex(Integer sex) {
-			this.sex = sex;
-		}
-		public String getUnionid() {
-			return unionid;
-		}
-		public void setUnionid(String unionid) {
-			this.unionid = unionid;
-		}
-		public String getLanguage() {
-			return language;
-		}
-		public void setLanguage(String language) {
-			this.language = language;
-		}
-		public String getCity() {
-			return city;
-		}
-		public void setCity(String city) {
-			this.city = city;
-		}
-		public String getProvince() {
-			return province;
-		}
-		public void setProvince(String province) {
-			this.province = province;
-		}
-		public String getCountry() {
-			return country;
-		}
-		public void setCountry(String country) {
-			this.country = country;
-		}
-		public String getHeadimgurl() {
-			return headimgurl;
-		}
-		public void setHeadimgurl(String headimgurl) {
-			this.headimgurl = headimgurl;
-		}
-		public String getSubscribeTime() {
-			return subscribeTime;
-		}
-		public void setSubscribeTime(String subscribeTime) {
-			this.subscribeTime = subscribeTime;
-		}
-		public List<String> getPrivilege() {
-			return privilege;
-		}
-		public void setPrivilege(List<String> privilege) {
-			this.privilege = privilege;
-		}
-	}
-	public static class NomalResponse {
-		private Integer errcode;
-		private String errmsg;
-		public Integer getErrcode() {
-			return errcode;
-		}
-		public void setErrcode(Integer errcode) {
-			this.errcode = errcode;
-		}
-		public String getErrmsg() {
-			return errmsg;
-		}
-		public void setErrmsg(String errmsg) {
-			this.errmsg = errmsg;
-		}
-	} 
-	public static class GlobalAccessToken {
-		@JsonProperty("access_token")
-		private String accessToken;
-		@JsonProperty("expires_in")
-		private Integer expires;
-		public String getAccessToken() {
-			return accessToken;
-		}
-		public void setAccessToken(String accessToken) {
-			this.accessToken = accessToken;
-		}
-		public Integer getExpires() {
-			return expires;
-		}
-		public void setExpires(Integer expires) {
-			this.expires = expires;
-		}
-	}
 }

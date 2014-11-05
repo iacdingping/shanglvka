@@ -16,9 +16,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.slk.core.entity.mp.WeixinUser;
 import com.slk.core.manager.mp.WeixinUserManager;
-import com.slk.core.query.mp.ChatRequestComponent;
-import com.slk.core.query.mp.ChatRequestComponent.AccessToken;
-import com.slk.core.query.mp.ResponseError;
+import com.slk.core.weichat.AccessToken;
+import com.slk.core.weichat.ChatRequestComponent;
+import com.slk.core.weichat.ResponseError;
 import com.slk.wap.common.constant.ConstantActivity;
 import com.thinkgem.jeesite.common.web.Servlets;
 

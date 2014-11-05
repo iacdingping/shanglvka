@@ -15,11 +15,11 @@ import org.springframework.scheduling.support.CronTrigger;
 
 import com.slk.core.entity.mp.WeixinUser;
 import com.slk.core.manager.mp.WeixinUserManager;
-import com.slk.core.query.mp.ChatRequestComponent;
-import com.slk.core.query.mp.ChatRequestComponent.UserInfo;
-import com.slk.core.query.mp.InvalidTokenException;
-import com.slk.core.query.mp.ResponseError;
 import com.slk.core.query.mp.WeixinUserQuery;
+import com.slk.core.weichat.ChatRequestComponent;
+import com.slk.core.weichat.InvalidTokenException;
+import com.slk.core.weichat.ResponseError;
+import com.slk.core.weichat.UserInfo;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.utils.Threads;
 

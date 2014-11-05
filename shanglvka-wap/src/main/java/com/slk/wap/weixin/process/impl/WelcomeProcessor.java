@@ -20,12 +20,17 @@ public class WelcomeProcessor extends AbstractCompositeProcessor {
 	@Override
 	public WeixinResponse process(WeixinRequest request) {
 		// 记录用户表 失败的呢 /。  在用户绑定再去处理好了
-		if(!weixinUserManager.exists(request.getFromUserName())) {
-			WeixinUser user = new WeixinUser();
+		WeixinUser user = weixinUserManager.getbyPlatformCode(request.getFromUserName());
+		
+		if(user == null) {
+			user = new WeixinUser();
 			user.setPlatformCode(request.getFromUserName());
 			user.setType(WeixinUserType.JUST_PAY_ATTENTION.ordinal());
 			user.setQueried(false);
 			weixinUserManager.save(user);
+		} else {
+			user.setType(WeixinUserType.JUST_PAY_ATTENTION.ordinal());
+			weixinUserManager.update(user);
 		}
 		return ResponseUtil.responseText(request, "welcome 更多精彩等你发现");
 	}
