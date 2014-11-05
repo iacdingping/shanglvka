@@ -1,6 +1,5 @@
 package com.slk.wap.controller.weixin.menu;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.slk.core.entity.mp.ButtonMenu;
 import com.slk.core.manager.mp.ButtonMenuManager;
 import com.slk.core.query.mp.ButtonMenuQuery;
+import com.slk.core.weichat.AuthorizeType;
+import com.slk.core.weichat.ChatRequestComponent;
 
 @Controller
 @RequestMapping(value = "/set-menu")
@@ -34,6 +35,8 @@ public class MenuController {
 
 	private static HttpClient httpclient;
 
+	@Autowired
+	ChatRequestComponent chatRequest;
 	static {
 		httpclient = new DefaultHttpClient();
 	}
@@ -57,7 +60,6 @@ public class MenuController {
 		query.setSortColumns("id");
 		String result = "";
 		String params = getMenuJson(buttonMenuManager.list(query));
-
 		params = params.replaceAll("&amp;", "&");
 		System.out.println(params);
 		String accessToken = this.getAccessToken(appid, secret);
@@ -192,7 +194,16 @@ public class MenuController {
 						JSONObject jsonObject2 = new JSONObject();
 						jsonObject2.put("type", menu2.getType());
 						jsonObject2.put("name", menu2.getName());
-						jsonObject2.put(menu2.getType().equals("view")?"url":"key", menu2.getKey());
+						if(menu2.getType().equals("view")) {
+							if(menu2.getKey().indexOf("weixin") == -1 && menu2.getKey().indexOf(":") == -1) {
+								jsonObject2.put("url", chatRequest.getUserAuthorizeUrl(menu2.getKey(), AuthorizeType.BASE));
+							} else {
+								jsonObject2.put("url", menu2.getKey());
+							}
+						} else {
+							jsonObject2.put("key", menu2.getKey());
+						}
+						
 						jsonArr2.put(jsonObject2);
 					}
 					jsonObject.put("sub_button", jsonArr2);
@@ -200,7 +211,15 @@ public class MenuController {
 					jsonObject.put("type", menu.getType());
 					jsonObject.put("name", menu.getName());
 					
-					jsonObject.put(menu.getType().equals("view")?"url":"key", menu.getKey());
+					if(menu.getType().equals("view")) {
+						if(menu.getKey().indexOf("weixin") == -1 && menu.getKey().indexOf(":") == -1) {
+							jsonObject.put("url", chatRequest.getUserAuthorizeUrl(menu.getKey(), AuthorizeType.BASE));
+						} {
+							jsonObject.put("url", menu.getKey());
+						}
+					} else {
+						jsonObject.put("key", menu.getKey());
+					}
 				}
 				jsonArr.put(jsonObject);
 			}

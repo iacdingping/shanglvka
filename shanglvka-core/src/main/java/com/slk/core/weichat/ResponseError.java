@@ -1,4 +1,4 @@
-package com.slk.core.query.mp;
+package com.slk.core.weichat;
 
 public class ResponseError extends Exception {
 
