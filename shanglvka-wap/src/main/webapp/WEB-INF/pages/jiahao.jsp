@@ -18,23 +18,31 @@
 <style>
 #show-list ul li {
 	list-style-type: none;
-	line-height: 25px;
-	height: 30px;
+	line-height: 34px;
+	height:34px;
+	width:34px;
+	text-align:center;
 	background: #e9e8e9;
-	border-radius: 15px;
+	border-radius: 30px;
 	margin-bottom: 15px;
-	padding: 0px 8px;
-	padding-top:5px;
-	color: #1ca9c0
+	color: #1ca9c0;
+	box-shadow:2px 2px
+             rgba(20%,20%,40%,0.5);
 }
+#show-list ul li:first-child {
+  margin-left: 20px;
+}
+#show-list ul li a{
+	font-size:12px;
+} 
 </style>
 <div style="text-align: center; width: 100%; color: #7b7979;margin-bottom: 16px;">杭州市商贸旅游集团商旅卡销售分公司</div>
 <div style="position: fixed; right: 20px; bottom: 20px; cursor: pointer">
+	<div style="width: 40px; height:40px;" id="show-btn">
+		<img src="${ctx}/static/img/icons04.png" />
+	</div>
 	<div
-		style="color: #1ca9c0; font-size: 30px; font-weight: bold; width: 25px; height: 25px; border: 1px solid #e9e8e9; background: #e9e8e9; border-radius: 25px; text-align: center; line-height: 25px;padding-bottom: 2px;"
-		id="show-btn">+</div>
-	<div
-		style="display: none; position: absolute; left: -100px; top: -40px;"
+		style=" position: absolute; left: -85px; top: -45px; display: none"
 		id="show-list">
 		<ul>
 			<li><a style="color: #1ca9c0"

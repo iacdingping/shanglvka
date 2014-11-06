@@ -12,16 +12,18 @@
 	src="${ctx}/static/js/common/jquery.min.js"></script>
 <link rel="stylesheet" href="${ctx}/static/css/common/common.css" />
 <link rel="stylesheet" href="${ctx}/static/css/info/sl.css" />
-<title>详情页</title>
+<title>商户详情</title>
 </head>
 <body>
+	<header>
+			
+	</header>
 	<div>
 		<article class="content_detail">
-
 			<div style="margin: auto; vertical-align: middle; z-index: 1"
 				class="positionR">
 				<img src="${merchantMap.bgPic} " width="100%" />
-				<div style="left: 0%; z-index: 2; top: 30%; background:#000;padding:10px 20px 20px 20px;max-width: 290px" class="positionA">
+				<div style="left: 0%; z-index: 2; top: 30%; background:#000;padding:10px 20px 20px 20px;max-width: 290px" class="positionA touming">
 					<span class="font_size_25 font_color_b">${merchantMap.title}</span>
 					<hr style="border: 1px solid #fff;" />
 					<span class="font_size_16 font_color_b">${merchantMap.address}</span>

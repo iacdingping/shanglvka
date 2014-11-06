@@ -103,23 +103,26 @@
 
 .query_list li p img {
 	width: 80px;
-	height: 80px;
+	height: 70px;
 	border: 1px solid #c7c7c7;
 	padding: 2px;
 	margin-right: 10px;
 }
 
-.query_list li span {
-	
+.query_list li > span {
+	margin-top: 15px;
+	display: block;
 }
 
 .query_list li span .title {
-	font-size: 25px;
+	font-size: 18px;
+	color: #171819;
+	font-family: "黑体";
 }
 
 .query_list li span .introduce {
 	color: #999898;
-	font-size: 16px
+	font-size: 13px
 }
 
 .dropdown_content {
@@ -266,7 +269,8 @@
 				<li>
 					<p>
 						<img src="${item.pic}" />
-					</p> <span> <span class="title">${item.name}</span> <br /> <span
+					</p> 
+					<span><span class="title">${item.name}</span> <br /> <span
 						class="introduce">${item.label}</span>
 				</span>
 					<div class="clear"></div>
@@ -311,18 +315,22 @@
 										.removeClass("selected");
 							});
 					//类别选择
-					$("#class_list .type_list li").click(function() {
-						var thisID = $(this).attr("id");
-						if (thisID == 'type01') {
-							hideLayout("class");
-							readType('', '全部类别');
-						} else if($("#detail_" + thisID).children("li").size()==0){
-								hideLayout("class");
-								readType(thisID.replace('type',''), $(this).text().replace('>',''));
-							}else{
-								$("#detail_" + thisID).show().siblings().hide();
-							}
-					});
+					$("#class_list .type_list li").click(
+							function() {
+								var thisID = $(this).attr("id");
+								if (thisID == 'type01') {
+									hideLayout("class");
+									readType('', '全部类别');
+								} else if ($("#detail_" + thisID)
+										.children("li").size() == 0) {
+									hideLayout("class");
+									readType(thisID.replace('type', ''),
+											$(this).text().replace('>', ''));
+								} else {
+									$("#detail_" + thisID).show().siblings()
+											.hide();
+								}
+							});
 					//类别选择
 					$("#class_list .type_detail_list div").click(function() {
 						var thisID = $(this).attr("id");
@@ -330,18 +338,22 @@
 					});
 
 					//地区选择
-					$("#city_list .region_list li").click(function() {
-						var thisID = $(this).attr("id");
-						if (thisID == 'region01') {
-							hideLayout("city");
-							readRegion('', '全城区域');
-						} else if($("#detail_" + thisID).children("li").size()==0){
-							hideLayout("city");
-							readRegion(thisID.replace('region',''), $(this).text().replace('>',''));
-						}else{
-							$("#detail_" + thisID).show().siblings().hide();
-						}
-					});
+					$("#city_list .region_list li").click(
+							function() {
+								var thisID = $(this).attr("id");
+								if (thisID == 'region01') {
+									hideLayout("city");
+									readRegion('', '全城区域');
+								} else if ($("#detail_" + thisID)
+										.children("li").size() == 0) {
+									hideLayout("city");
+									readRegion(thisID.replace('region', ''), $(
+											this).text().replace('>', ''));
+								} else {
+									$("#detail_" + thisID).show().siblings()
+											.hide();
+								}
+							});
 
 					//类别选择
 					$("#city_list .region_detail_list div").click(function() {
@@ -385,8 +397,10 @@
 							var divshow = $(".query_list");
 							divshow.text("");// 清空数据
 							var html = '';
-							for (var i = 0; i < data.length; i++) {
-								html += '<a href="${ctx}/sl/addressList?brandId='+data[i].id+'"><li><p><img src="'+data[i].pic+'" /></p> <span> <span class="title">'
+							for ( var i = 0; i < data.length; i++) {
+								html += '<a href="${ctx}/sl/addressList?brandId='
+										+ data[i].id
+										+ '"><li><p><img src="'+data[i].pic+'" /></p> <span> <span class="title">'
 										+ data[i].name + '</span> <br />'
 								html += '<span class="introduce">'
 										+ data[i].label

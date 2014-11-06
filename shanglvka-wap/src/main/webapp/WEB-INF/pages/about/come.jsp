@@ -36,12 +36,13 @@
 	border-bottom: 3px solid #0f63ae;
 	height: 38px;
 }
-
+#faq_content{
+	margin-top: 20px;
+}
 #faq_content div {
 	padding: 10px 0px;
 	width: 90%;
 	margin: auto;
-	background: #FFF;
 }
 
 #faq_content div li {
@@ -52,25 +53,36 @@
 	font-size: 14px;
 }
 
-#faq_content div li p.q {
-	font-weight: bold;
+#faq_content li {
 	color: #3e3e3e;
-	line-height: 30px;
+	font-size: 14px;
+	height:40px;
+	line-height: 40px;
 }
 
-#faq_content div li p.a {
+#faq_content li p.a {
 	color: #666666;
 	line-height: 20px;
+	font-size: 14px;
 }
 
 .contact_bg {
+	background: url(${ctx}/static/img/contact_icon02.png) no-repeat;
+	background-size:100%;
 	display: block;
-	height: 31px;
-	float: left;
-	margin-right: 2px;
-	margin-bottom: 10px;
+	width:25px;
+	height:25px;
+	float:left;
+	margin-right:10px;
+	margin-bottom:10px;
+	
 }
-
+.bg01 {background-position: 0px 5px;}
+.bg02 {background-position: 0px -37px;}
+.bg03 {background-position: 0px -80px;}
+.bg04 {background-position: 0px -115px;}
+.bg05 {background-position: 0px -156px;}
+.bg06 {background-position: 0px -200px;}
 #contact_content li {
 	line-height: 30px;
 }
@@ -79,16 +91,14 @@
 
 <body>
 	<div class="tag_selector">
-		<li id="faq">常见问答</li>
-		<li id="contact" class="selected"
-			style=" background:url(${ctx}/static/img/cccbg.jpg) repeat-y right">联系我们</li>
+		<li id="faq" style=" background:url(${ctx}/static/img/cccbg.jpg) repeat-y right">常见问答</li>
+		<li id="contact" class="selected">联系我们</li>
 		<div class="clear"></div>
 	</div>
 	<div>
 		<!--FAQ 内容-->
 		<div id="faq_content" style="display: none">
 			<br />
-
 			<!--我的问题-->
 			<c:forEach var="item" items="${myQuestions}" varStatus="questions">
 				<div style="border-bottom: 1px dashed #ccc;">
@@ -121,7 +131,7 @@
 					method="post" modelAttribute="question" name="question">
 					<h3 style="margin: 10px;">商旅提问</h3>
 					<textarea name="question" rows="5" cols="5"
-						style="margin: 10px; width: 90%" placeholder="提交您的问题" maxlength=""></textarea>
+						style="margin: 10px; width: 90%; border: 1px solid #ccc;" placeholder="提交您的问题" maxlength=""></textarea>
 					<br />
 					<button type="submit" class="button"
 						style="margin: 0px 10px; margin: auto; width: 80%;">提交</button>
@@ -134,30 +144,29 @@
 			<br /> <br />
 			<div style="width: 100%;">
 				<div style="width: 100%; margin: auto; text-align: center">
-					<img src="${ctx}/static/img/logo.jpg" width="40%" />
+					<img src="${ctx}/static/img/logo.png" width="50%" />
 				</div>
-				<div style="margin-left: 20%; font-size: 16px;">
-					<li><span class="contact_bg">客服电话：</span><a
-						href="tel:0571-28196999" style="color: #333333">0571-28196999</a>
+				<div style="margin-left: 20%; font-size: 16px;" id="faq_content">
+					<li><span class="contact_bg bg01"></span><a
+						href="tel:0571-28196999" style="color: #333333" target="_blank">客服电话：0571-28196999</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg">加盟热线：</span><a
-						href="tel:0571-28206308" style="color: #333333">0571-28206308</a>
+					<li><span class="contact_bg bg02"></span><a
+						href="tel:0571-28206308" style="color: #333333" target="_blank">加盟热线：0571-28206308</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg">官方网址：</span><a
-						href="http://www.51ctcard.com" style="color: #333333">商旅卡</a>
+					<li><span class="contact_bg bg03"></span><a
+						href="weixin://contacts/profile/MjM5MTE5MTE5Mg==" target="_blank" style="color: #333333">微&nbsp;&nbsp;信&nbsp;&nbsp;号：ctcard51</a>
 						<div class="clear"></div></li>
-					<li  style="display: none;"><span class="contact_bg">微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信：</span><a
-						href="weixin://contacts/profile/MjM5MTE5MTE5Mg==" style="color: #333333">商旅卡</a>
+					<li><span class="contact_bg bg04"></span><a
+						href="http://www.51ctcard.com" style="color: #333333" target="_blank">官方网址：www.51ctcard.com</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg">新浪微博：</span><a
+					<li><span class="contact_bg bg05"></span><a
 						href="http://weibo.com/u/3472602042/home?wvr=5&upfrom=v5"
-						style="color: #333333">商旅卡CTCARD</a>
+						style="color: #333333" target="_blank">新浪微博：商旅卡CTCARD</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg">腾讯微博：</span><a
+					<li><span class="contact_bg bg06"></span><a
 						href="http://t.qq.com/HZshanglvka/profile?pgv_ref=im.aio.t&ptlang=2052"
-						style="color: #333333">商旅卡CTCARD</a>
+						style="color: #333333" target="_blank">腾讯微博：商旅卡CTCARD</a>
 						<div class="clear"></div></li>
-
 				</div>
 			</div>
 
