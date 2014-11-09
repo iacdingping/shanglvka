@@ -78,11 +78,11 @@
 	
 }
 .bg01 {background-position: 0px 5px;}
-.bg02 {background-position: 0px -37px;}
-.bg03 {background-position: 0px -80px;}
-.bg04 {background-position: 0px -115px;}
-.bg05 {background-position: 0px -156px;}
-.bg06 {background-position: 0px -200px;}
+.bg02 {background-position: 0px -40px;}
+.bg03 {background-position: 0px -83px;}
+.bg04 {background-position: 0px -119px;}
+.bg05 {background-position: 0px -161px;}
+.bg06 {background-position: 0px -203px;}
 #contact_content li {
 	line-height: 30px;
 }

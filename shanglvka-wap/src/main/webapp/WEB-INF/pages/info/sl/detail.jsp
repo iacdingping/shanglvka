@@ -24,8 +24,6 @@ header span{display: block;}
 	background-size:100%;
 	width:25px;
 	height:35px;
-	margin-right:10px;
-	margin-bottom:10px;
 	
 }
 .bg01 {background-position: 0px 13px;}
@@ -33,7 +31,7 @@ header span{display: block;}
 </head>
 <body>
 	<header style="background: #f9fcfd; height: 40px;">
-		<a href="#"><span class="header_icon icon01" style="float: left;margin-left: 10px;"></span></a>
+		<a href="javascript:history.go(-1);"><span class="header_icon icon01" style="float: left;margin-left: 10px;"></span></a>
 		<a href="#"><span class="header_icon icon03" style="float: right; margin-right: 10px;"></span></a>
 		<a href="#"><span class="header_icon icon02" style="float: right;"></span></a>
 	</header>
@@ -45,12 +43,15 @@ header span{display: block;}
 				<img src="${merchantMap.bgPic} " width="100%" />
 			</div>
 			<!-- 优惠信息 和 电话 -->
-			<div class="list border_bottom1 margin_T10">
-				<span class="margin_L20" style="font-size: 45px; color: red; font-weight: bold; font-family:fantasy,'黑体';">9.3折</span>
-				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px;">
+			<div class="list border_bottom1 margin_T10" style="position: relative;">
+				<span class="margin_L20" style="font-size: 35px; line-height:45px; color: red; font-weight: bold; font-family:fantasy,'黑体';width: 150px; display: block; float: left">
+					9.3折
+				</span>
+				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px; right:10px;bottom:23%; position: absolute;">
 					<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
 				</span>
-				<span class="floatR contact_bg bg01"></span>
+				<span class="floatR contact_bg bg01"  style="right:145px;bottom:23%; position: absolute;"></span>
+				<div class="cl"></div>
 			</div>
 			<!-- 店名 -->
 			<div class="list border_bottom1">
