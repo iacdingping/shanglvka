@@ -57,6 +57,15 @@ public class MerchantMap extends DataEntity<MerchantMap> {
 	private java.lang.String offer; // offer
 	private java.lang.String detail; // detail
 	private String label;
+	private String offerBrief;
+
+	public String getOfferBrief() {
+		return offerBrief;
+	}
+
+	public void setOfferBrief(String offerBrief) {
+		this.offerBrief = offerBrief;
+	}
 
 	public String getLabel() {
 		return label;
