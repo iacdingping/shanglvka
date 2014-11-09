@@ -46,7 +46,7 @@ header span{display: block;}
 			</div>
 			<!-- 优惠信息 和 电话 -->
 			<div class="list border_bottom1 margin_T10">
-				<span class="margin_L20" style="font-size: 45px; color: red; font-weight: bold; font-family:fantasy,'黑体';">9.3折</span>
+				<span class="margin_L20" style="font-size: 45px; color: red; font-weight: bold; font-family:fantasy,'黑体';">${merchantMap.offer}</span>
 				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px;">
 					<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
 				</span>
@@ -60,7 +60,7 @@ header span{display: block;}
 			</div>
 			<!-- 优惠介绍 -->
 			<div class="list border_bottom1" style="background: #f0f0f0">
-				<p class="margin_L20 margin_R20 font_size_15" style="color:#bbbbbb; line-height: 20px;">评商旅卡享受9.5折，烟、酒水除外，使用此优惠后，不能参与其他优惠，不可叠加使用
+				<p class="margin_L20 margin_R20 font_size_15" style="color:#bbbbbb; line-height: 20px;">${merchantMap.offerBrief}
 				</p>
 			</div>
 			<!-- show more -->
@@ -105,5 +105,8 @@ header span{display: block;}
 			style="line-height: 20px;"></div>
 		<div class="clearboth"></div>
 	</div>
+		<footer style="margin-top: 40px;">
+		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
+	</footer>
 </body>
 </html>
