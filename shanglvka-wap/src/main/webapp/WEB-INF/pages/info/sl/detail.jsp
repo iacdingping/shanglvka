@@ -43,17 +43,11 @@ header span{display: block;}
 				<img src="${merchantMap.bgPic} " width="100%" />
 			</div>
 			<!-- 优惠信息 和 电话 -->
-<<<<<<< HEAD
 			<div class="list border_bottom1 margin_T10" style="position: relative;">
 				<span class="margin_L20" style="font-size: 35px; line-height:45px; color: red; font-weight: bold; font-family:fantasy,'黑体';width: 150px; display: block; float: left">
-					9.3折
+					${merchantMap.offer}
 				</span>
 				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px; right:10px;bottom:23%; position: absolute;">
-=======
-			<div class="list border_bottom1 margin_T10">
-				<span class="margin_L20" style="font-size: 45px; color: red; font-weight: bold; font-family:fantasy,'黑体';">${merchantMap.offer}</span>
-				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px;">
->>>>>>> 82cb902b94191c2154afc3ff85cd58beb1e1a59c
 					<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
 				</span>
 				<span class="floatR contact_bg bg01"  style="right:145px;bottom:23%; position: absolute;"></span>
