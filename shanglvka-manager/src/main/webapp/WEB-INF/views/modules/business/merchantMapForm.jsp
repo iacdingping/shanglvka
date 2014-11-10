@@ -145,10 +145,17 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">优惠简介:</label>
+			<label class="control-label">优惠:</label>
 			<div class="controls">
 				<form:input path="offer" htmlEscape="false" maxlength="30"
 					class="required" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">优惠简介:</label>
+			<div class="controls">
+				<form:textarea path="offerBrief" htmlEscape="false" rows="2"
+					maxlength="500" class="required input-xxlarge" />
 			</div>
 		</div>
 		<div class="control-group">
