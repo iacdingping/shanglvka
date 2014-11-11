@@ -14,6 +14,35 @@
 	href="${ctx}/static/css/common1/common.css" />
 <title>商旅查询</title>
 <style>
+.search_bar {
+	height: 40px;
+	width: 100%;
+	background: #3698bc;
+	color: #fff;
+}
+
+.search_bar span {
+	display: block;
+	float: left;
+}
+
+.search_bar span input {
+	width: 200px;
+	padding-top: 5px;
+	color: #000;
+	height: 25px;
+	font-size: 15px;
+	background: #3698bc;
+	color: #fff;
+	font-family: '黑体';
+	margin: 2px 10px 0px 10px;
+}
+
+.search_bar span img {
+	margin-top: 8px;
+	height: 25px;
+}
+
 .list_right_border {
 	background: url(${ctx}/static/img/cccbg.jpg) repeat-y right
 }
@@ -28,7 +57,7 @@
 	height: 9px;
 	display: block;
 	position: absolute;
-	top: 5px;
+	top: 2px;
 	right: -18px;
 }
 
@@ -38,7 +67,6 @@
 	height: 9px;
 	display: block;
 	position: absolute;
-	top: 5px;
 	right: -18px;
 }
 
@@ -48,7 +76,7 @@
 	height: 14px;
 	display: block;
 	position: absolute;
-	top: 5px;
+	top: 1px;
 	left: -18px;
 }
 
@@ -58,7 +86,7 @@
 	height: 14px;
 	display: block;
 	position: absolute;
-	top: 5px;
+	top: 1px;
 	left: -18px;
 }
 
@@ -66,15 +94,14 @@
 	width: 100%;
 	height: 40px;
 	line-height: 40px;
-	background: #f5f5f5;
+	background: #fdfdff;
 }
 
 .tag_selector li {
 	float: left;
 	display: block;
-	width: 50%;
 	text-align: center;
-	border-bottom: 1px solid #cccccc;
+	border-bottom: 1px solid #e9e8e6;
 	font-size: 14px;
 }
 
@@ -84,16 +111,13 @@
 	height: 40px;
 }
 
-.query_list {
-	
-}
-
+/**店铺列表*/
 .query_list li {
 	width: 100%;
 	margin: auto;
 	border-bottom: 1px solid #e6e8e8;
-	padding-bottom: 20px;
-	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
 
 .query_list li p {
@@ -102,36 +126,42 @@
 }
 
 .query_list li p img {
-	width: 80px;
-	height: 70px;
-	border: 1px solid #c7c7c7;
+	border-radius:5px;
+	width: 95px;
+	height: 85px;
 	padding: 2px;
 	margin-right: 10px;
 }
 
-.query_list li > span {
-	margin-top: 15px;
+.query_list li span {
+	margin-top: 5px;
 	display: block;
 }
 
 .query_list li span .title {
-	font-size: 18px;
+	font-size: 17px;
 	color: #171819;
 	font-family: "黑体";
+	height:60px;
+	overflow:hidden;
+	line-height:20px;
 }
 
 .query_list li span .introduce {
 	color: #999898;
-	font-size: 13px
+	font-size: 13px;
 }
+/**--店铺列表*/
 
+/**下拉内容*/
 .dropdown_content {
 	position: fixed;
 	z-index: 11;
-	top: 42px;
+	top: 80px;
 	background: #f5f5f5;
 	width: 100%;
 	min-height: 300px;
+	border-top: 1px solid #e9e8e6;
 }
 
 .dropdown_content li {
@@ -139,11 +169,12 @@
 	line-height: 40px;
 	padding-left: 20px;
 	border-bottom: 1px solid #e6e8e8;
+	
 }
 
 .dropdown_content li.selected {
 	background: #FFF;
-	color: #0f63ae
+	color: #0f63ae;
 }
 
 #city_list .region_list {
@@ -180,7 +211,7 @@
 }
 
 #class_list .type_list li span {
-	color: #ccc;
+	color: #8d8d8f;
 	margin-left: 20px;
 }
 
@@ -189,21 +220,27 @@
 	background: #FFF;
 	float: left;
 }
-
-#class_list .type_detail_list li span {
-	
-}
 </style>
 </head>
 <body>
+	<!-- 搜索条 -->
+	<div id="search" class="search_bar">
+		<span style="margin-left: 20px;"><img
+			src="${ctx}/static/img/info/search_icon.jpg" /></span> <span><input
+			id="keyword" class="keyword_input" placeholder="" value="全部商家" /></span> <span
+			style="float: right; margin-right: 20px;"><img
+			src="${ctx}/static/img/info/search_btn.jpg" /></span>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
 	<div class="tag_selector">
-		<li id="class" class="list_right_border"><span
+		<li id="class" class="list_right_border" style="width: 35%"><span
 			style="position: relative"> <span
 				class="icons class_unselected"></span> <span id="class_txt">全部分类</span>
 				<span class="icons arrow_unselected"></span>
 		</span></li>
-		<li id="city" class="list_right_border"><span
-			style="position: relative"><span id="city_txt">全城区域</span><span
+		<li id="city" class="list_right_border" style="width: 65%"><span
+			style="position: relative"><span id="city_txt">全城</span><span
 				class="icons arrow_unselected"></span></span></li>
 		<li id="order" class="selected" style="display: none;"><span
 			style="position: relative">默认排序<span
@@ -212,7 +249,7 @@
 	</div>
 	<!--黑色透明层层-->
 	<div id="black_layout"
-		style="position: fixed; z-index: 10; background: #000; width: 100%; height: 100%; top: 42px; display: none;"
+		style="position: fixed; z-index: 10; background: #000; width: 100%; height: 100%; top: 80px; display: none;"
 		class="tm80"></div>
 	<!--下拉内容-->
 	<div id="dropdown_area">
@@ -254,13 +291,14 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		<!--排序选择-->
+		<!--排序选择
 		<div id="order_list" class="dropdown_content" style="display: none;">
 			<li class="selected">默认排序</li>
 			<li>离我最近</li>
 			<li>评价最高</li>
 			<li>价格最低</li>
 		</div>
+		-->
 	</div>
 
 	<div class="query_list">
@@ -269,10 +307,9 @@
 				<li>
 					<p>
 						<img src="${item.pic}" />
-					</p> 
-					<span><span class="title">${item.name}</span> <br /> <span
-						class="introduce">${item.label}</span>
-				</span>
+					</p> <span><span class="title">${item.name} </span> 
+					<span
+						class="introduce">${item.label} </span> </span>
 					<div class="clear"></div>
 			</li>
 			</a>
@@ -288,8 +325,11 @@
 					//选择操作
 					$(".tag_selector li").click(
 							function() {
-								$(this).addClass("selected").siblings()
+								$(this).toggleClass("selected").siblings()
 										.removeClass("selected");
+								$(this).find(".icons").removeClass(
+										"arrow_selected").addClass(
+										"arrow_unselected");
 								$(this).siblings().find(".icons").removeClass(
 										"arrow_selected").addClass(
 										"arrow_unselected");

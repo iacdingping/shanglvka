@@ -56,8 +56,6 @@
 #faq_content li {
 	color: #3e3e3e;
 	font-size: 14px;
-	height:40px;
-	line-height: 40px;
 }
 
 #faq_content li p.a {

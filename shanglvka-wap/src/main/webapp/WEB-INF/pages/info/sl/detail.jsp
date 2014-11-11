@@ -24,7 +24,6 @@ header span{display: block;}
 	background-size:100%;
 	width:25px;
 	height:35px;
-	
 }
 .bg01 {background-position: 0px 13px;}
 </style>
@@ -40,20 +39,14 @@ header span{display: block;}
 			<!-- 顶部图片 -->
 			<div style="margin: auto; vertical-align: middle; z-index: 1"
 				class="positionR">
-				<img src="${merchantMap.bgPic} " width="100%" />
+				<img src="${merchantMap.bgPic} " width="100%" height="195"  style="border-bottom:1px solid #dadbdc;border-top:1px solid #dadbdc;"/>
 			</div>
 			<!-- 优惠信息 和 电话 -->
-<<<<<<< HEAD
 			<div class="list border_bottom1 margin_T10" style="position: relative;">
-				<span class="margin_L20" style="font-size: 35px; line-height:45px; color: red; font-weight: bold; font-family:fantasy,'黑体';width: 150px; display: block; float: left">
-					9.3折
+				<span class="margin_L20" style="font-size: 35px; line-height:45px; color: #ff6632; font-weight: bold; font-family:fantasy,'黑体';width: 150px; display: block; float: left">
+					${merchantMap.offer}
 				</span>
 				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px; right:10px;bottom:23%; position: absolute;">
-=======
-			<div class="list border_bottom1 margin_T10">
-				<span class="margin_L20" style="font-size: 45px; color: red; font-weight: bold; font-family:fantasy,'黑体';">${merchantMap.offer}</span>
-				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px;">
->>>>>>> 82cb902b94191c2154afc3ff85cd58beb1e1a59c
 					<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
 				</span>
 				<span class="floatR contact_bg bg01"  style="right:145px;bottom:23%; position: absolute;"></span>
@@ -101,9 +94,7 @@ header span{display: block;}
 			-->
 			<div class="list border_bottom1" style="background: #f0f0f0">
 				<span class="words07 margin_L20" style="color:#bbbbbb;">商户介绍</span>
-			</div>
-			<div class="list">
-				<p class="sj2 words06 margin_L20 margin_R20">${merchantMap.detail}
+				<p class="sj2 words06 margin_L20 margin_R20" style="color:#bbbbbb;">${merchantMap.detail}
 					<br /> <br /> <br />
 				</p>
 			</div>
