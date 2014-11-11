@@ -156,12 +156,12 @@
 
 /**下拉内容*/
 .dropdown_content {
-	position: fixed;
+	position: absolute;
 	z-index: 11;
 	top: 80px;
 	background: #f5f5f5;
 	width: 100%;
-	min-height: 300px;
+	max-height:300px;
 	border-top: 1px solid #e9e8e6;
 }
 
@@ -174,13 +174,15 @@
 }
 
 .dropdown_content li.selected {
-	background: #FFF;
+	background: #eeeeee;
 	color: #0f63ae;
 }
 
 #city_list .region_list {
 	width: 50%;
 	float: left;
+	max-height:300px;
+	overflow-y:scroll;
 }
 
 #city_list .region_list li {
@@ -206,6 +208,8 @@
 	width: 50%;
 	float: left;
 	background: #f7f7f7;
+	max-height:300px;
+	overflow-y:scroll;
 }
 
 #class_list .type_list li {
@@ -230,7 +234,7 @@
 		<span style="margin-left: 20px;"><img
 			src="${ctx}/static/img/info/search_icon.jpg" /></span> <span><input
 			id="keyword" class="keyword_input" placeholder="" value="全部商家" /></span> <span
-			style="float: right; margin-right: 20px;"><img
+			style="float: right; margin-right: 20px;" onclick="focusInput()"><img
 			src="${ctx}/static/img/info/search_btn.jpg" /></span>
 		<div class="clear"></div>
 	</div>
@@ -251,9 +255,9 @@
 				class="icons arrow_selected"></span></span></li>
 		<div class="clear"></div>
 	</div>
-	<!--黑色透明层层-->
+	<!--黑色透明层-->
 	<div id="black_layout"
-		style="position: fixed; z-index: 10; background: #000; width: 100%; height: 100%; top: 80px; display: none;"
+		style=" z-index: 10; background: #000; width: 100%; height: 100%; top: 80px; display: none;position: absolute;"
 		class="tm80"></div>
 	<!--下拉内容-->
 	<div id="dropdown_area">
@@ -326,9 +330,13 @@
 	<script>
 		$().ready(
 				function() {
+					//设置黑色透明弹出层的高度
+					$("#black_layout").css("height" , $("body").height()+"px");
 					//选择操作
 					$(".tag_selector li").click(
 							function() {
+								$("body").css("height",$(window).height());
+								$("body").eq(0).css("overflow","hidden");
 								$(this).toggleClass("selected").siblings()
 										.removeClass("selected");
 								$(this).find(".icons").removeClass(
@@ -357,7 +365,8 @@
 							function(e) {
 								$(e.target).addClass("selected").siblings()
 										.removeClass("selected");
-							});
+								$("#")
+					});
 					//类别选择
 					$("#class_list .type_list li").click(
 							function() {
@@ -418,6 +427,8 @@
 			readList();
 			$("#class_txt").text("");
 			$("#class_txt").append(name);
+			$("#class_txt").parent().parent().removeClass("selected");
+			$("#class_txt").siblings().removeClass("arrow_selected");
 		}
 		var cityId = '';
 		function readRegion(id, name) {
@@ -425,6 +436,8 @@
 			readList();
 			$("#city_txt").text("");
 			$("#city_txt").append(name);
+			$("#city_txt").parent().parent().removeClass("selected");
+			$("#city_txt").siblings().removeClass("arrow_selected");
 		}
 		function readList() {
 			$
@@ -445,7 +458,7 @@
 								html += '<a href="${ctx}/sl/addressList?brandId='
 										+ data[i].id
 										+ '"><li><p><img src="'+data[i].pic+'" /></p> <span> <span class="title">'
-										+ data[i].name + '</span> <br />'
+										+ data[i].name + '</span> '
 								html += '<span class="introduce">'
 										+ data[i].label
 										+ '</span></span><div class="clear"></div></li></a>'
@@ -456,6 +469,11 @@
 							divshow.append(html);
 						}
 					});
+		}
+		function focusInput(){
+			$("#keyword").focus();
+			$("#keyword").attr("value" , "抱歉，暂不支持关键词检索");
+			$("#keyword").select();
 		}
 	</script>
 </body>
