@@ -47,6 +47,7 @@ header span{display: block;}
 					${merchantMap.offer}
 				</span>
 				<span class="floatR BTN02" style="background: #0056a2;border-radius:7px; right:10px;bottom:23%; position: absolute;">
+
 					<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
 				</span>
 				<span class="floatR contact_bg bg01"  style="right:145px;bottom:23%; position: absolute;"></span>
