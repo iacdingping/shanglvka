@@ -50,15 +50,17 @@ public class AboutController extends BaseController {
 		questions.setType("0");
 		List<Questions> commonQuestions = questionsService
 				.findAllByType(questions);
-		questions.setType("1");
-		if (user.getWeixinUser() != null)
+		if (user.getWeixinUser() != null) {
+			questions.setType("1");
 			// 保存微信用户code
 			questions.setPlatformCode(user.getWeixinUser().getPlatformCode());
-		List<Questions> myQuestions = questionsService.findAllByType(questions);
+			List<Questions> myQuestions = questionsService
+					.findAllByType(questions);
+			// 我的问题
+			model.addAttribute("myQuestions", myQuestions);
+		}
 		// 常见问题
 		model.addAttribute("commonQuestions", commonQuestions);
-		// 我的问题
-		model.addAttribute("myQuestions", myQuestions);
 		return "/about/come";
 	}
 
