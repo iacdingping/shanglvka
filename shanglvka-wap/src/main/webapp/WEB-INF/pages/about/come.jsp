@@ -36,9 +36,11 @@
 	border-bottom: 3px solid #0f63ae;
 	height: 38px;
 }
-#faq_content{
+
+#faq_content {
 	margin-top: 20px;
 }
+
 #faq_content div {
 	padding: 10px 0px;
 	width: 90%;
@@ -66,21 +68,39 @@
 
 .contact_bg {
 	background: url(${ctx}/static/img/contact_icon02.png) no-repeat;
-	background-size:100%;
+	background-size: 100%;
 	display: block;
-	width:25px;
-	height:25px;
-	float:left;
-	margin-right:10px;
-	margin-bottom:10px;
-	
+	width: 25px;
+	height: 25px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
-.bg01 {background-position: 0px 5px;}
-.bg02 {background-position: 0px -40px;}
-.bg03 {background-position: 0px -83px;}
-.bg04 {background-position: 0px -119px;}
-.bg05 {background-position: 0px -161px;}
-.bg06 {background-position: 0px -203px;}
+
+.bg01 {
+	background-position: 0px 5px;
+}
+
+.bg02 {
+	background-position: 0px -40px;
+}
+
+.bg03 {
+	background-position: 0px -83px;
+}
+
+.bg04 {
+	background-position: 0px -119px;
+}
+
+.bg05 {
+	background-position: 0px -161px;
+}
+
+.bg06 {
+	background-position: 0px -203px;
+}
+
 #contact_content li {
 	line-height: 30px;
 }
@@ -89,7 +109,8 @@
 
 <body>
 	<div class="tag_selector">
-		<li id="faq" style=" background:url(${ctx}/static/img/cccbg.jpg) repeat-y right">常见问答</li>
+		<li id="faq"
+			style=" background:url(${ctx}/static/img/cccbg.jpg) repeat-y right">常见问答</li>
 		<li id="contact" class="selected">联系我们</li>
 		<div class="clear"></div>
 	</div>
@@ -97,12 +118,25 @@
 		<!--FAQ 内容-->
 		<div id="faq_content" style="display: none">
 			<br />
+			<!--常见问题-->
+			<c:forEach var="item" items="${commonQuestions}"
+				varStatus="questions">
+				<div style="border-bottom: 1px dashed #ccc;">
+					<li>
+						<p class="q">
+							<font color="#0056a2"><b>Q:${item.question}</b></font>
+						</p>
+						<p class="a">${item.context}</p>
+					</li>
+				</div>
+			</c:forEach>
+			<br />
 			<!--我的问题-->
 			<c:forEach var="item" items="${myQuestions}" varStatus="questions">
 				<div style="border-bottom: 1px dashed #ccc;">
 					<li>
 						<p class="q">
-							<font color="red">我</font>:${item.question}
+							<font color="#0056a2"><b>我:${item.question}</b></font>
 						</p> <c:if test="${empty item.context}">
 							<p class="a">
 								<font color="red">请稍等，客服正在解答……</font>
@@ -113,23 +147,13 @@
 					</li>
 				</div>
 			</c:forEach>
-			<!--常见问题-->
-			<c:forEach var="item" items="${commonQuestions}"
-				varStatus="questions">
-				<div style="border-bottom: 1px dashed #ccc;">
-					<li>
-						<p class="q">Q:${item.question}</p>
-						<p class="a">${item.context}</p>
-					</li>
-				</div>
-			</c:forEach>
-			<br />
 			<div style="padding: 10px 0px; width: 90%; margin: auto;">
 				<form id="question_form" action="${ctx}/about/questionSave"
 					method="post" modelAttribute="question" name="question">
 					<h3 style="margin: 10px;">商旅提问</h3>
 					<textarea name="question" rows="5" cols="5"
-						style="margin: 10px; width: 90%; border: 1px solid #ccc;" placeholder="提交您的问题" maxlength=""></textarea>
+						style="margin: 10px; width: 90%; border: 1px solid #ccc;"
+						placeholder="提交您的问题" maxlength=""></textarea>
 					<br />
 					<button type="submit" class="button"
 						style="margin: 0px 10px; margin: auto; width: 80%;">提交</button>
@@ -152,10 +176,12 @@
 						href="tel:0571-28206308" style="color: #333333" target="_blank">加盟热线：0571-28206308</a>
 						<div class="clear"></div></li>
 					<li><span class="contact_bg bg03"></span><a
-						href="weixin://contacts/profile/MjM5MTE5MTE5Mg==" target="_blank" style="color: #333333">微&nbsp;&nbsp;信&nbsp;&nbsp;号：ctcard51</a>
+						href="weixin://contacts/profile/MjM5MTE5MTE5Mg==" target="_blank"
+						style="color: #333333">微&nbsp;&nbsp;信&nbsp;&nbsp;号：ctcard51</a>
 						<div class="clear"></div></li>
 					<li><span class="contact_bg bg04"></span><a
-						href="http://www.51ctcard.com" style="color: #333333" target="_blank">官方网址：www.51ctcard.com</a>
+						href="http://www.51ctcard.com" style="color: #333333"
+						target="_blank">官方网址：www.51ctcard.com</a>
 						<div class="clear"></div></li>
 					<li><span class="contact_bg bg05"></span><a
 						href="http://weibo.com/u/3472602042/home?wvr=5&upfrom=v5"
