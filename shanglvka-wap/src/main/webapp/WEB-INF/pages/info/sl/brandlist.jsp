@@ -103,6 +103,7 @@
 	text-align: center;
 	border-bottom: 1px solid #e9e8e6;
 	font-size: 14px;
+	color: #a9aaa1;
 }
 
 .tag_selector li.selected {
@@ -178,22 +179,22 @@
 }
 
 #city_list .region_list {
-	width: 35%;
+	width: 50%;
 	float: left;
 }
 
 #city_list .region_list li {
-	width: 100%;
 }
 
 #city_list .region_list li span {
 	color: #ccc;
-	margin-left: 20px;
+	padding-right:10px;
+	float: right;
 }
 
 #city_list .region_detail_list {
-	width: 65%;
-	background: #FFF;
+	width: 50%;
+	background: #eeeeee;
 	float: left;
 }
 
@@ -202,22 +203,23 @@
 }
 
 #class_list .type_list {
-	width: 35%;
+	width: 50%;
 	float: left;
+	background: #f7f7f7;
 }
 
 #class_list .type_list li {
-	width: 100%;
 }
 
 #class_list .type_list li span {
 	color: #8d8d8f;
-	margin-left: 20px;
+	padding-right:10px;
+	float: right;
 }
 
 #class_list .type_detail_list {
-	width: 65%;
-	background: #FFF;
+	width: 50%;
+	background: #eeeeee;
 	float: left;
 }
 </style>
@@ -234,11 +236,13 @@
 	</div>
 	<div class="clear"></div>
 	<div class="tag_selector">
-		<li id="class" class="list_right_border" style="width: 35%"><span
-			style="position: relative"> <span
-				class="icons class_unselected"></span> <span id="class_txt">全部分类</span>
-				<span class="icons arrow_unselected"></span>
-		</span></li>
+		<li id="class" class="list_right_border" style="width: 35%">
+				<span style="position: relative"> 
+					<span class="icons class_unselected"></span>
+					<span id="class_txt">全部分类</span>
+					<span class="icons arrow_unselected"></span>
+				</span>
+		</li>
 		<li id="city" class="list_right_border" style="width: 65%"><span
 			style="position: relative"><span id="city_txt">全城</span><span
 				class="icons arrow_unselected"></span></span></li>
@@ -256,7 +260,7 @@
 		<!--全部分类-->
 		<div id="class_list" class="dropdown_content hide">
 			<div class="type_list">
-				<li id="type01" class="selected">全部分类 <span>&gt;</span></li>
+				<li id="type01">全部分类 <span>&gt;</span></li>
 				<c:forEach var="item" items="${typeList}" varStatus="type">
 					<li id="type${item.id}">${item.name}<span>&gt;</span></li>
 				</c:forEach>
