@@ -33,6 +33,15 @@ public class Questions extends BaseEntity<Questions> {
 
 	private java.lang.Long id; // id
 	private java.lang.String context; // context
+	private Integer sort;
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

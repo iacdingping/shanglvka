@@ -52,7 +52,7 @@ public class QuestionsService extends BaseService {
 				dc.add(Restrictions.eq("platformCode", questions.getPlatformCode()));
 			}
 		}
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.asc("sort")).addOrder(Order.desc("id"));
 		return questionsDao.find(dc);
 	}
 
@@ -62,7 +62,7 @@ public class QuestionsService extends BaseService {
 				.getType())) {
 			dc.add(Restrictions.eq("type", questions.getType()));
 		}
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.asc("sort")).addOrder(Order.desc("id"));
 		return questionsDao.find(page, dc);
 	}
 

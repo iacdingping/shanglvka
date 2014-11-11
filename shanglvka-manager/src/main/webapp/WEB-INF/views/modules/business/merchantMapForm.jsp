@@ -155,14 +155,14 @@
 			<label class="control-label">优惠简介:</label>
 			<div class="controls">
 				<form:textarea path="offerBrief" htmlEscape="false" rows="2"
-					maxlength="500" class="required input-xxlarge" />
+					maxlength="500" class="input-xxlarge" />
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">详细说明:</label>
 			<div class="controls">
 				<form:textarea path="detail" htmlEscape="false" rows="4"
-					maxlength="500" class="required input-xxlarge" />
+					maxlength="500" class="input-xxlarge" />
 			</div>
 		</div>
 		<div class="form-actions">

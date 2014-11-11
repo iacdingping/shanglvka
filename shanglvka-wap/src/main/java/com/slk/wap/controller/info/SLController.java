@@ -37,19 +37,20 @@ public class SLController {
 	 * @return
 	 */
 	@RequestMapping("/brandlist")
-	public String brandlist(Model model, String areaId, Long typeId) {
+	public String brandlist(Model model, String areaId, Long typeId, String name) {
 		model.addAttribute("areaList",
 				areaService.findAllByPid("3e9ab3f7ea4a43e79e3e067d2835d303"));
 		model.addAttribute("typeList", merchantTypeService.findAllByPid(1L));
 		model.addAttribute("merchantBrands",
-				merchantBrandService.findAllByTypeAndArea(typeId, areaId));
+				merchantBrandService.findAllByTypeAndArea(typeId, areaId, name));
 		return "/info/sl/brandlist";
 	}
 
 	@RequestMapping("/getBrands")
 	@ResponseBody
-	public List<MerchantBrand> getBrands(Model model, String areaId, Long typeId) {
-		return merchantBrandService.findAllByTypeAndArea(typeId, areaId);
+	public List<MerchantBrand> getBrands(Model model, String areaId,
+			Long typeId, String name) {
+		return merchantBrandService.findAllByTypeAndArea(typeId, areaId, name);
 	}
 
 	/**
@@ -73,6 +74,8 @@ public class SLController {
 	public String detail(Model model, @PathVariable Long slID) {
 		MerchantMap merchantMap = merchantMapService.get(slID);
 		model.addAttribute("merchantMap", merchantMap);
+		model.addAttribute("brandCount", merchantMapService
+				.countByBrand(merchantMap.getMerchantBrand().getId()));
 		return "/info/sl/detail";
 	}
 }

@@ -52,6 +52,14 @@ public class MerchantMapService extends BaseService {
 		return merchantMapDao.find(dc);
 	}
 
+	public Long countByBrand(Long brandId) {
+		DetachedCriteria dc = merchantMapDao.createDetachedCriteria();
+		dc.add(Restrictions.eq(MerchantMap.FIELD_DEL_FLAG,
+				MerchantMap.DEL_FLAG_NORMAL));
+		dc.add(Restrictions.eq("merchantBrand.id", brandId));
+		return merchantMapDao.count(dc);
+	}
+
 	public Page<MerchantMap> find(Page<MerchantMap> page,
 			MerchantMap merchantMap) {
 		DetachedCriteria dc = merchantMapDao.createDetachedCriteria();

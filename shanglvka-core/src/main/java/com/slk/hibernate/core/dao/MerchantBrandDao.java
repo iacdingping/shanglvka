@@ -29,7 +29,8 @@ public class MerchantBrandDao extends BaseDao<MerchantBrand> {
 	 * @param areaId
 	 * @return
 	 */
-	public List<MerchantBrand> findAllByTypeAndArea(Long typeId, String areaId) {
+	public List<MerchantBrand> findAllByTypeAndArea(Long typeId, String areaId,
+			String name) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("select * from slk_merchant_brand  where id in (select distinct smm.brand_id from slk_merchant_map smm ");
 		sb.append(" where 1=1 ");
@@ -39,9 +40,14 @@ public class MerchantBrandDao extends BaseDao<MerchantBrand> {
 		}
 		if (StringUtils.isNotEmpty(areaId)) {
 			sb.append(" and smm.area_id in (select sa.id from sys_area sa where sa.parent_ids like '%"
-					+ areaId + ",%' or sa.id='"+areaId+"') ");
+					+ areaId + ",%' or sa.id='" + areaId + "') ");
 		}
 		sb.append(")");
+		if (StringUtils.isNotEmpty(name)) {
+			sb.append(" and name like '%");
+			sb.append(name);
+			sb.append("%'");
+		}
 		System.out.println(sb.toString());
 		return findBySql(sb.toString(), null, MerchantBrand.class);
 	}
