@@ -93,21 +93,23 @@ header span {
 			<!-- 优惠介绍 -->
 			<div class="list border_bottom1" style="background: #f0f0f0">
 				<p class="margin_L20 margin_R20 font_size_15"
-					style="color: #bbbbbb; line-height: 20px;">${merchantMap.offerBrief}
+					style="color: #5e5e5e; line-height: 20px;">${merchantMap.offerBrief}
 				</p>
 			</div>
 			<!-- show more -->
-			<div class="list border_bottom1">
-				<c:if test="${brandCount>1}">
-					<a
-						href="${ctx}/sl/addressList?brandId=${merchantMap.merchantBrand.id}">
-						<span class="margin_L20 font_size_15"
-						style="color: #4c4c4c; font-family: '黑体'">查看全部${brandCount}家商户</span>
-						<span class="floatR margin_R20 font_size_19"
-						style="color: #b2b2b2">&gt;</span>
-					</a>
-				</c:if>
-			</div>
+			<c:if test="${brandCount>1}">
+				<div class="list border_bottom1">
+					
+						<a
+							href="${ctx}/sl/addressList?brandId=${merchantMap.merchantBrand.id}">
+							<span class="margin_L20 font_size_15"
+							style="color: #4c4c4c; font-family: '黑体'">查看全部${brandCount}家商户</span>
+							<span class="floatR margin_R20 font_size_19"
+							style="color: #b2b2b2">&gt;</span>
+						</a>
+					
+				</div>
+			</c:if>
 			<!--  没用的就删掉吧
 			<c:if test="${not empty item.phone}">
 				<div class="list border_bottom1">
