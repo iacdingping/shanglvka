@@ -44,6 +44,7 @@
 				<th>#</th>
 				<th>问</th>
 				<th>答</th>
+				<th>排序</th>
 				<th>创建时间</th>
 				<shiro:hasPermission name="business:questions:edit">
 					<th>操作</th>
@@ -56,6 +57,7 @@
 					<td>${qu.index+1}</td>
 					<td>${questions.question}</td>
 					<td>${fn:replace(questions.context,kongge,"<br>")}</td>
+					<td>${questions.sort}</td>
 					<td><fmt:formatDate value="${questions.createTime}"
 							type="both" /></td>
 					<shiro:hasPermission name="business:questions:edit">

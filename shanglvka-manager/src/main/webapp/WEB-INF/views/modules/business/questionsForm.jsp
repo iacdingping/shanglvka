@@ -60,6 +60,13 @@
 					class="required" cssStyle="width:600px;" />
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">排序:</label>
+			<div class="controls">
+				<form:input path="sort" htmlEscape="false" maxlength="50"
+					class="required digits" />
+			</div>
+		</div>
 		<input id="type" name="type" type="hidden" value="${questions.type}">
 		<div class="form-actions">
 			<shiro:hasPermission name="business:questions:edit">
