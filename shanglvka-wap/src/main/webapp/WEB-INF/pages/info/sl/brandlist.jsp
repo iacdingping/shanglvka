@@ -67,6 +67,7 @@
 	height: 9px;
 	display: block;
 	position: absolute;
+	top: 2px;
 	right: -18px;
 }
 
@@ -79,14 +80,32 @@
 	top: 1px;
 	left: -18px;
 }
-
-.city_unselected {
-	background-position: -30px 0px;
+.class_selected {
+	background-position: -15px -15px;
 	width: 16px;
 	height: 14px;
 	display: block;
 	position: absolute;
 	top: 1px;
+	left: -18px;
+}
+
+.city_unselected {
+	background-position: -31px 0px;
+	width: 15px;
+	height: 16px;
+	display: block;
+	position: absolute;
+	top: -1px;
+	left: -18px;
+}
+.city_selected {
+	background-position: -31px -18px;
+	width: 15px;
+	height: 16px;
+	display: block;
+	position: absolute;
+	top: -1px;
 	left: -18px;
 }
 
@@ -242,14 +261,18 @@
 	<div class="tag_selector">
 		<li id="class" class="list_right_border" style="width: 35%">
 				<span style="position: relative"> 
-					<span class="icons class_unselected"></span>
+					<span class="icons class_unselected" id="icon_class_pre"></span>
 					<span id="class_txt">全部分类</span>
-					<span class="icons arrow_unselected"></span>
+					<span class="icons arrow_unselected" id="icon_class_back"></span>
 				</span>
 		</li>
-		<li id="city" class="list_right_border" style="width: 65%"><span
-			style="position: relative"><span id="city_txt">全城</span><span
-				class="icons arrow_unselected"></span></span></li>
+		<li id="city" class="list_right_border" style="width: 65%">
+			<span style="position: relative">
+				<span class="icons city_unselected" id="icon_city_pre"></span>
+				<span id="city_txt">全城</span>
+				<span class="icons arrow_unselected" id="icon_city_back"></span>
+			</span>
+		</li>
 		<li id="order" class="selected" style="display: none;"><span
 			style="position: relative">默认排序<span
 				class="icons arrow_selected"></span></span></li>
@@ -328,24 +351,31 @@
 		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
 	</footer>
 	<script>
-		$().ready(
+	function beSelected(index){
+		if(index==0){
+			$("#icon_class_pre").toggleClass("class_selected").toggleClass("class_unselected");
+			$("#icon_class_back").toggleClass("arrow_selected").toggleClass("arrow_unselected");
+			$("#icon_city_pre").removeClass("city_selected").addClass("city_unselected");
+			$("#icon_city_back").removeClass("arrow_selected").addClass("arrow_unselected");
+		}else{
+			$("#icon_city_pre").toggleClass("city_selected").toggleClass("city_unselected");
+			$("#icon_city_back").toggleClass("arrow_selected").toggleClass("arrow_unselected");
+			$("#icon_class_pre").removeClass("class_selected").addClass("class_unselected");
+			$("#icon_class_back").removeClass("arrow_selected").addClass("arrow_unselected");
+		}
+	}
+	$().ready(
 				function() {
 					//设置黑色透明弹出层的高度
 					$("#black_layout").css("height" , $("body").height()+"px");
 					//选择操作
 					$(".tag_selector li").click(
 							function() {
-								$("body").css("height",$(window).height());
-								$("body").eq(0).css("overflow","hidden");
 								$(this).toggleClass("selected").siblings()
 										.removeClass("selected");
-								$(this).find(".icons").removeClass(
-										"arrow_selected").addClass(
-										"arrow_unselected");
-								$(this).siblings().find(".icons").removeClass(
-										"arrow_selected").addClass(
-										"arrow_unselected");
 								var thisID = $(this).attr("id");
+								beSelected($(this).index());
+								
 								//如果点击"全部分类"，就隐藏了，直接拉取所有店铺
 								if ((thisID == "city" || thisID == "class")
 										&& $("#" + thisID + "_list").is(
@@ -359,7 +389,7 @@
 									hideLayout(thisID);
 								}
 							});
-
+				
 					//选择内容
 					$("#dropdown_area").click(
 							function(e) {
@@ -408,7 +438,7 @@
 								}
 							});
 
-					//类别选择
+					//地区选择
 					$("#city_list .region_detail_list div").click(function() {
 						var thisID = $(this).attr("id");
 						hideLayout("city");
@@ -416,8 +446,8 @@
 
 				});
 		function hideLayout(thisID) {
-			$(this).find(".icons").removeClass("arrow_selected").addClass(
-					"arrow_unselected");
+			$("#icon_"+thisID+"_pre").removeClass(thisID+"_selected").addClass(thisID+"_unselected");
+			$("#icon_"+thisID+"_back").removeClass("arrow_selected").addClass("arrow_unselected");
 			$("#" + thisID + "_list").hide().siblings().hide();
 			$("#black_layout").hide();
 		}
