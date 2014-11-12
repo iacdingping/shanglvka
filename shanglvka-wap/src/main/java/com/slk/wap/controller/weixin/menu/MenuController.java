@@ -195,7 +195,7 @@ public class MenuController {
 						jsonObject2.put("type", menu2.getType());
 						jsonObject2.put("name", menu2.getName());
 						if(menu2.getType().equals("view")) {
-							if(menu2.getKey().indexOf("weixin") == -1 && menu2.getKey().indexOf(":") == -1) {
+							if(couldWeichatRedirect(menu2.getKey())) {
 								jsonObject2.put("url", chatRequest.getUserAuthorizeUrl(menu2.getKey(), AuthorizeType.BASE));
 							} else {
 								jsonObject2.put("url", menu2.getKey());
@@ -212,7 +212,7 @@ public class MenuController {
 					jsonObject.put("name", menu.getName());
 					
 					if(menu.getType().equals("view")) {
-						if(menu.getKey().indexOf("weixin") == -1 && menu.getKey().indexOf(":") == -1) {
+						if(couldWeichatRedirect(menu.getKey())) {
 							jsonObject.put("url", chatRequest.getUserAuthorizeUrl(menu.getKey(), AuthorizeType.BASE));
 						} {
 							jsonObject.put("url", menu.getKey());
@@ -230,5 +230,15 @@ public class MenuController {
 			e.printStackTrace();
 		}
 		return jsonObj.toString();
+	}
+	
+	private boolean couldWeichatRedirect(String url) {
+		String reg = ".*:[0-9]+.*";
+		return !url.matches(reg) && url.indexOf("weixin.qq.com") == -1;
+	}
+	
+	public static void main(String[] args) {
+		MenuController c = new MenuController();
+		System.out.println(c.couldWeichatRedirect("http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5MTE5MTE5Mg==#wechat_webview_type=1&wechat_redirect"));
 	}
 }

@@ -128,4 +128,8 @@ public class Encodes {
 			throw Exceptions.unchecked(e);
 		}
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(urlEncode("http://121.40.174.127/card/jump"));
+	}
 }
