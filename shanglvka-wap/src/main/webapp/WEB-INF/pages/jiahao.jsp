@@ -36,7 +36,7 @@
 	font-size:12px;
 } 
 </style>
-<div style="text-align: center; width: 100%; color: #7b7979;margin-bottom: 16px;">杭州市商贸旅游集团商旅卡销售分公司</div>
+<div style="text-align: center; width: 100%; color: #7b7979;margin-bottom: 16px;">杭州市商贸旅游集团·商旅卡</div>
 <div style="position: fixed; right: 20px; bottom: 20px; cursor: pointer">
 	<div style="width: 40px; height:40px;" id="show-btn">
 		<img src="${ctx}/static/img/icons04.png" />

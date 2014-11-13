@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<%@ include file="/WEB-INF/pages/include/taglib-activity.jsp"%>
+<%
+	request.setAttribute("kongge", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,12 +78,17 @@ header span {
 				style="position: relative;">
 				<span class="margin_L20"
 					style="font-size: 35px; line-height: 45px; color: #ff6632; font-weight: bold; font-family: fantasy, '黑体'; width: 150px; display: block; float: left">
-					${merchantMap.offer} </span> <span class="floatR BTN02"
-					style="background: #0056a2; border-radius: 7px; right: 10px; bottom: 23%; position: absolute;">
+					${merchantMap.offer}</span>
 
-					<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
-				</span> <span class="floatR contact_bg bg01"
-					style="right: 145px; bottom: 23%; position: absolute;"></span>
+				<c:if test="${not empty merchantMap.phone}">
+					<span class="floatR BTN02"
+						style="background: #0056a2; border-radius: 7px; right: 10px; bottom: 23%; position: absolute;">
+
+						<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
+					</span>
+					<span class="floatR contact_bg bg01"
+						style="right: 145px; bottom: 23%; position: absolute;"></span>
+				</c:if>
 				<div class="cl"></div>
 			</div>
 			<!-- 店名 -->
@@ -89,29 +96,30 @@ header span {
 				<span class="margin_L20 font_size_19 bold" style="color: #343434">${merchantMap.title}</span>
 				<br /> <span class="margin_L20 font_size_15"
 					style="color: #878787;"> <a
-					href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${merchantMap.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">${merchantMap.address}</a>
+					href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${merchantMap.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">
+					${fn:replace(merchantMap.address,kongge,"<br>")}
+					</a>
 				</span>
 			</div>
 			<!-- 优惠介绍 -->
 			<div class="list border_bottom1" style="background: #f0f0f0">
 				<p class="margin_L20 margin_R20 font_size_15"
-					style="color: #5e5e5e; line-height: 20px;">${merchantMap.offerBrief}
+					style="color: #5e5e5e; line-height: 20px;">${fn:replace(merchantMap.offerBrief,kongge,"<br>")}
 				</p>
 			</div>
 			<!-- show more -->
-			<c:if test="${brandCount>1}">
-				<div class="list border_bottom1">
-					
-						<a
-							href="${ctx}/sl/addressList?brandId=${merchantMap.merchantBrand.id}">
-							<span class="margin_L20 font_size_15"
-							style="color: #4c4c4c; font-family: '黑体'">查看全部${brandCount}家商户</span>
-							<span class="floatR margin_R20 font_size_19"
-							style="color: #b2b2b2">&gt;</span>
-						</a>
-					
-				</div>
-			</c:if>
+			<div class="list border_bottom1">
+				<c:if test="${brandCount>1}">
+					<a
+						href="${ctx}/sl/addressList?brandId=${merchantMap.merchantBrand.id}">
+						<span class="margin_L20 font_size_15"
+						style="color: #4c4c4c; font-family: '黑体'">查看全部${brandCount}家商户</span>
+						<span class="floatR margin_R20 font_size_19"
+						style="color: #b2b2b2">&gt;</span>
+					</a>
+				</c:if>
+
+			</div>
 			<!--  没用的就删掉吧
 			<c:if test="${not empty item.phone}">
 				<div class="list border_bottom1">
@@ -136,11 +144,12 @@ header span {
 			-->
 			<div class="list border_bottom1" style="background: #f0f0f0">
 				<c:if test="${not empty merchantMap.detail}">
-					<span class="words07 margin_L20" style="color: #bbbbbb;">商户介绍</span>
-					<p class="sj2 words06 margin_L20 margin_R20"
-						style="color: #bbbbbb;">${merchantMap.detail}
+					<span class="words07 margin_L20" style="color: #5e5e5e;">商户介绍</span>
+					<p class="words06 margin_R20 font_size_15"
+						style="color: #5e5e5e; line-height: 20px; margin-left: 40px;">${fn:replace(merchantMap.detail,kongge,"<br>")}
 						<br /> <br /> <br />
 					</p>
+					
 				</c:if>
 			</div>
 		</article>
