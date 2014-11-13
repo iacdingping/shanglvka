@@ -317,6 +317,7 @@
 					<li id="region${item.id}">${item.name}<span>&gt;</span></li>
 				</c:forEach>
 			</div>
+	
 			<div class="region_detail_list">
 				<c:forEach var="item" items="${areaList}" varStatus="area">
 					<div id="detail_region${item.id}" class="region_detail_list_items">
@@ -483,7 +484,8 @@
 						cache : false, //(默认: true,dataType为script和jsonp时默认为false) jQuery 1.2 新功能，设置为 false 将不缓存此页面。
 						data : {
 							areaId : cityId,
-							typeId : classId
+							typeId : classId,
+							name : name
 						}, //传参
 						//dataType : "html", //返回值类型       使用json的话也可以，但是需要在JS中编写迭代的html代码，如果格式样式
 						success : function(data) {
@@ -506,10 +508,12 @@
 						}
 					});
 		}
+		var name = '';
 		function focusInput(){
 			$("#keyword").focus();
-			$("#keyword").attr("value" , "抱歉，暂不支持关键词检索");
 			$("#keyword").select();
+			name=$("#keyword").val();
+			readList();
 		}
 	</script>
 </body>

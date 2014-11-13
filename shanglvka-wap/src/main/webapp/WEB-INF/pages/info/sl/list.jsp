@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<script type="text/javascript" src="${ctx}/static/js/common/jquery.min.js"></script>
+<script type="text/javascript"
+	src="${ctx}/static/js/common/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${ctx}/static/css/common1/common.css" />
@@ -44,12 +45,12 @@
 	font-family: '黑体';
 }
 
-.store_list .store div.telephone,.store_list .store div.telephone a {
+.store_list .store div.telephone, .store_list .store div.telephone a {
 	color: #5c5c5c;
 	font-size: 16px;
 }
 
-.store_list .store div.address,.store_list .store div.address a {
+.store_list .store div.address, .store_list .store div.address a {
 	color: #666666;
 	font-size: 14px;
 }
@@ -85,23 +86,24 @@
 			<div class="store">
 				<div class="store_name">${item.title}</div>
 				<c:choose>
-					<c:when  test="${not empty item.phone}">
+					<c:when test="${not empty item.phone}">
 						<div class="telephone">
-							<img src="${ctx}/static/img/icons02.png" width="20" />
-							<span><a href="tel:${item.phone}">${item.phone}</a></span>
+							<a href="tel:${item.phone}"> <img
+								src="${ctx}/static/img/icons02.png" width="20" /> <span>${item.phone}</span></a>
 						</div>
 					</c:when>
 					<c:otherwise>
 						<div class="telephone">
-							<img src="${ctx}/static/img/icons02.png" width="20" />
-							<span><a href="javascript:void(0)" style="color:#ccc">暂无号码</a></span>
+							<a href="javascript:void(0)" style="color: #ccc"> 请至窗口购买</a>
 						</div>
-					 </c:otherwise>
+					</c:otherwise>
 				</c:choose>
 				<div class="address">
-					<img src="${ctx}/static/img/icons03.png" width="16" /><span> <a
-						href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${item.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">${item.address}</a>
-					</span>
+					<a
+						href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${item.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">
+						<img src="${ctx}/static/img/icons03.png" width="16" /><span>
+							${item.address} </span>
+					</a>
 				</div>
 				<a href="${ctx}/sl/detail/${item.id}">
 					<div class="more">详情>></div>

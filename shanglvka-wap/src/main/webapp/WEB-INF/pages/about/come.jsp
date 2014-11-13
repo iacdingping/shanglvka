@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pages/include/taglib-activity.jsp"%>
+<%
+	request.setAttribute("kongge", "\n");
+%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -126,7 +129,7 @@
 						<p class="q">
 							<font color="#0056a2"><b>Q:${item.question}</b></font>
 						</p>
-						<p class="a">${item.context}</p>
+						<p class="a">${fn:replace(item.context,kongge,"<br>")}</p>
 					</li>
 				</div>
 			</c:forEach>
@@ -142,7 +145,7 @@
 								<font color="red">请稍等，客服正在解答……</font>
 							</p>
 						</c:if> <c:if test="${not empty item.context}">
-							<p class="a">${item.context}</p>
+							<p class="a">${fn:replace(item.context,kongge,"<br>")}</p>
 						</c:if>
 					</li>
 				</div>
@@ -175,9 +178,7 @@
 					<li><span class="contact_bg bg02"></span><a
 						href="tel:0571-28206308" style="color: #333333" target="_blank">加盟热线：0571-28206308</a>
 						<div class="clear"></div></li>
-					<li><span class="contact_bg bg03"></span><a
-						href="weixin://contacts/profile/MjM5MTE5MTE5Mg==" target="_blank"
-						style="color: #333333">微&nbsp;&nbsp;信&nbsp;&nbsp;号：ctcard51</a>
+					<li><span class="contact_bg bg03"></span>微&nbsp;&nbsp;信&nbsp;&nbsp;号：ctcard51
 						<div class="clear"></div></li>
 					<li><span class="contact_bg bg04"></span><a
 						href="http://www.51ctcard.com" style="color: #333333"

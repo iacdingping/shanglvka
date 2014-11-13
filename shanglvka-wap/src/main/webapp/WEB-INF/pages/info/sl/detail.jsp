@@ -81,13 +81,11 @@ header span {
 					${merchantMap.offer}</span>
 
 				<c:if test="${not empty merchantMap.phone}">
-					<span class="floatR BTN02"
+					<a href="tel:${merchantMap.phone}"> <span class="floatR BTN02"
 						style="background: #0056a2; border-radius: 7px; right: 10px; bottom: 23%; position: absolute;">
-
-						<a href="tel:${merchantMap.phone}">${merchantMap.phone}</a>
-					</span>
-					<span class="floatR contact_bg bg01"
+							${merchantMap.phone} </span> <span class="floatR contact_bg bg01"
 						style="right: 145px; bottom: 23%; position: absolute;"></span>
+					</a>
 				</c:if>
 				<div class="cl"></div>
 			</div>
@@ -97,8 +95,7 @@ header span {
 				<br /> <span class="margin_L20 font_size_15"
 					style="color: #878787;"> <a
 					href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${merchantMap.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">
-					${fn:replace(merchantMap.address,kongge,"<br>")}
-					</a>
+						${fn:replace(merchantMap.address,kongge,"<br>")} </a>
 				</span>
 			</div>
 			<!-- 优惠介绍 -->
@@ -149,7 +146,7 @@ header span {
 						style="color: #5e5e5e; line-height: 20px; margin-left: 40px;">${fn:replace(merchantMap.detail,kongge,"<br>")}
 						<br /> <br /> <br />
 					</p>
-					
+
 				</c:if>
 			</div>
 		</article>
