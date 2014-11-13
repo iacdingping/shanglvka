@@ -88,7 +88,9 @@ header span {
 			<div class="list border_bottom1">
 				<span class="margin_L20 font_size_19 bold" style="color: #343434">${merchantMap.title}</span>
 				<br /> <span class="margin_L20 font_size_15"
-					style="color: #878787;">${merchantMap.address}</span>
+					style="color: #878787;"> <a
+					href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${merchantMap.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">${merchantMap.address}</a>
+				</span>
 			</div>
 			<!-- 优惠介绍 -->
 			<div class="list border_bottom1" style="background: #f0f0f0">

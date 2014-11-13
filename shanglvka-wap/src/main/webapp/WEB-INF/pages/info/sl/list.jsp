@@ -100,7 +100,7 @@
 				</c:choose>
 				<div class="address">
 					<img src="${ctx}/static/img/icons03.png" width="16" /><span> <a
-						href="http://map.baidu.com/mobile/webapp/index/index#search/search/qt=s&wd=${item.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=">${item.address}</a>
+						href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=${item.address}&c=179&searchFlag=bigBox&version=5&exptype=dep/vt=/?pagelets[]=pager&pagelets[]=page_data&t=697386">${item.address}</a>
 					</span>
 				</div>
 				<a href="${ctx}/sl/detail/${item.id}">
