@@ -15,7 +15,7 @@
 <title>商旅查询</title>
 <style>
 .search_bar {
-	height: 40px;
+	height: 45px;
 	width: 100%;
 	background: #3698bc;
 	color: #fff;
@@ -25,17 +25,23 @@
 	display: block;
 	float: left;
 }
-
+.search_bar span#search_input{
+	background: #2a7d9b;
+	margin: 4px 0px 0px 10px;
+	height: 35px;
+	border-radius:5px;
+	width: 77%;
+}
 .search_bar span input {
-	width: 150px;
+	width: 70%;
 	padding-top: 5px;
 	color: #000;
-	height: 25px;
+	height: 20px;
 	font-size: 15px;
-	background: #3698bc;
+	background: #2a7d9b;
 	color: #fff;
 	font-family: '黑体';
-	margin: 2px 10px 0px 10px;
+	margin: 4px 10px 0px 10px;
 }
 
 .search_bar span img {
@@ -251,10 +257,10 @@
 	<!-- 搜索条 -->
 	<div id="search" class="search_bar">
 		<span style="margin-left: 20px;"><img
-			src="${ctx}/static/img/info/search_icon.jpg" /></span> <span><input
-			id="keyword" class="keyword_input" placeholder="" value="全部商家" /></span> <span
-			style="float: right; margin-right: 20px;" onclick="focusInput()"><img
-			src="${ctx}/static/img/info/search_btn.jpg" /></span>
+			src="${ctx}/static/img/info/search_icon.jpg" /></span> <span id="search_input"><input
+			id="keyword" class="keyword_input" placeholder="输入商家" value="" />
+			<img src="${ctx}/static/img/info/search.png" style="float: right;height: 22px;width:22px;margin-right: 10px;" onclick="focusInput()"/></span>
+			</span>
 		<div class="clear"></div>
 	</div>
 	<div class="clear"></div>
