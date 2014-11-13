@@ -25,12 +25,16 @@
 	display: block;
 	float: left;
 }
-.search_bar span#search_input{
-	background: #2a7d9b;
+.search_bar span#search_input {
 	margin: 4px 0px 0px 10px;
 	height: 35px;
-	border-radius:5px;
 	width: 77%;
+	text-align: center;
+	line-height: 35px;
+}
+.search_bar span.input_style{
+	background: #2a7d9b;
+	border-radius:5px;
 }
 .search_bar span input {
 	width: 70%;
@@ -256,9 +260,15 @@
 	<!-- 搜索条 -->
 	<div id="search" class="search_bar">
 		<span style="margin-left: 20px;"><img
-			src="${ctx}/static/img/info/search_icon.jpg" /></span> <span id="search_input"><input
-			id="keyword" class="keyword_input" placeholder="输入商家" value="" />
-			<img src="${ctx}/static/img/info/search.png" style="float: right;height: 22px;width:22px;margin-right: 10px;" onclick="focusInput()"/></span>
+			src="${ctx}/static/img/info/search_icon.jpg" /></span>
+			<span id="search_input">
+				全部商家
+				<img src="${ctx}/static/img/info/search.png" style="float: right;height: 22px;width:22px;margin-right: 10px;" onclick="setSearchBar()"/>
+				<!--可搜索状态 
+				<input id="keyword" class="keyword_input" placeholder="输入商家" value="" />
+				<img src="${ctx}/static/img/info/search.png" style="float: right;height: 22px;width:22px;margin-right: 10px;" onclick="focusInput()"/>
+				 -->
+			</span>
 			</span>
 		<div class="clear"></div>
 	</div>
@@ -449,8 +459,19 @@
 						var thisID = $(this).attr("id");
 						hideLayout("city");
 					});
-
 				});
+		function setSearchBar(){
+			//重置头部为可搜索状态
+			$("#search_input").addClass("input_style").html("");
+			$("#search_input").html("<input id=\"keyword\" class=\"keyword_input\" placeholder=\"输入商家\" value=\"\" />"+
+					"<img src=\"${ctx}/static/img/info/search.png\" style=\"float: right;height: 22px;width:22px;margin-right: 10px;\" onclick=\"focusInput()\"/>");
+			$("#keyword").focus();
+		}
+	     //重置头部为非搜索状态
+		function resetSearchBar(keyword){
+			$("#search_input").removeClass("input_style").html("");
+			$("#search_input").html(keyword+"<img src=\"${ctx}/static/img/info/search.png\" style=\"float: right;height: 22px;width:22px;margin-right: 10px;\" onclick=\"setSearchBar()\"/>");
+		}
 		function hideLayout(thisID) {
 			$("#icon_"+thisID+"_pre").removeClass(thisID+"_selected").addClass(thisID+"_unselected");
 			$("#icon_"+thisID+"_back").removeClass("arrow_selected").addClass("arrow_unselected");
@@ -509,10 +530,10 @@
 		}
 		var name = '';
 		function focusInput(){
-			$("#keyword").focus();
 			$("#keyword").select();
 			name=$("#keyword").val();
 			readList();
+			resetSearchBar(name);
 		}
 	</script>
 </body>
