@@ -533,7 +533,8 @@
 			$("#keyword").select();
 			name=$("#keyword").val();
 			readList();
-			resetSearchBar(name);
+			//不重置回去了
+			//resetSearchBar(name);
 		}
 	</script>
 </body>
