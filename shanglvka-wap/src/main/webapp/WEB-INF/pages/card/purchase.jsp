@@ -9,11 +9,9 @@
 	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <script type="text/javascript"
 	src="${ctx}/static/js/common/jquery.min.js"></script>
-<script type="text/javascript"
-	<script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
-	<link rel="stylesheet" type="text/css"
-	href="${ctx}/static/css/common1/common.css" />
-	<title>购卡助手</title>
+<script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
+<link rel="stylesheet" type="text/css" href="${ctx}/static/css/common1/common.css" />
+<title>购卡助手</title>
 <style type="text/css">
 #purchaseApply_form label.error {
 	padding-left: 16px;
@@ -21,8 +19,6 @@
 	font-size: 14px;
 	color: red;
 }
-</style>
-<style>
 .form_list li {
 	height: 35px;
 	line-height: 35px;
@@ -41,6 +37,17 @@
 		if ('${message}' != '') {
 			alert('${message}');
 		}
+		//表单被focus。调整滚动条位置
+		$("#purchaseForm").find("input").each(function(){
+			$(this).focus(function(){
+				$("#appendHtml").html("<br/><br/><br/><br/>");
+				$("body").animate({scrollTop:"150"} , 500);		
+			});
+			$(this).unfocus(function(){
+				$("#appendHtml").html("");
+				$("body").animate({scrollTop:"30"} , 500);		
+			});
+		});
 	});
 
 	function submitFrom() {
@@ -78,6 +85,7 @@
 			<button type="button" onclick="submitFrom();" class="button"
 				style="margin: 0px 10px; margin: auto; width: 100%;">确认</button>
 		</form>
+		<div id="appendHtml"></div>
 	</div>
 	<footer style="margin-top: 40px;">
 		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>

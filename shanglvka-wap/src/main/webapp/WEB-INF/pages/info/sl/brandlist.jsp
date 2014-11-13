@@ -184,7 +184,7 @@
 	position: absolute;
 	z-index: 11;
 	top: 80px;
-	background: #f5f5f5;
+	background: #eeeeee;
 	width: 100%;
 	max-height:300px;
 	border-top: 1px solid #e9e8e6;
@@ -195,7 +195,6 @@
 	line-height: 40px;
 	padding-left: 20px;
 	border-bottom: 1px solid #e6e8e8;
-	
 }
 
 .dropdown_content li.selected {
