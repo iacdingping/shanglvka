@@ -40,6 +40,7 @@ public class WeixinUserManager {
 	    Assert.notNull(user,"'user' must be not null");
 	    user.setCreateDate(new Date());
 	    user.setDelFlag(0);
+	    user.setQueried(false);
 	    this.userDao.save(user);
 	    return user;
 	}
