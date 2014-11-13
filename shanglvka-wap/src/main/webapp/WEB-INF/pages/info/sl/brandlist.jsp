@@ -27,7 +27,7 @@
 }
 
 .search_bar span input {
-	width: 200px;
+	width: 150px;
 	padding-top: 5px;
 	color: #000;
 	height: 25px;
