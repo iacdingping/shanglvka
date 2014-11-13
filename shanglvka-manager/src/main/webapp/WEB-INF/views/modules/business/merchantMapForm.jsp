@@ -147,8 +147,7 @@
 		<div class="control-group">
 			<label class="control-label">优惠:</label>
 			<div class="controls">
-				<form:input path="offer" htmlEscape="false" maxlength="30"
-					class="required" />
+				<form:input path="offer" htmlEscape="false" maxlength="30"/>
 			</div>
 		</div>
 		<div class="control-group">
