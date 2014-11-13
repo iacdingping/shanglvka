@@ -77,6 +77,12 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 			Servlets.setCookieOnce(response, ConstantActivity.PLATFORM_PARAM, openid);
 			
 			WeixinUser weixinUser = weixinUserManager.getbyPlatformCode(openid);
+			
+			if(weixinUser == null) {
+				weixinUser = new WeixinUser();
+				weixinUser.setPlatformCode(openid);
+				weixinUserManager.save(weixinUser);
+			}
 			user.setWeixinUser(weixinUser);
 			System.out.println(weixinUser == null ? "么有查到微信用户" : weixinUser.getNickname());
 		}
