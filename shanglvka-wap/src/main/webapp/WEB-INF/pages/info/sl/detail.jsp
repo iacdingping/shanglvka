@@ -61,8 +61,8 @@ header span {
 	<header style="background: #f9fcfd; height: 40px;">
 		<a href="javascript:history.go(-1);"><span
 			class="header_icon icon01" style="float: left; margin-left: 10px;"></span></a>
-		<a href="#"><span class="header_icon icon03"
-			style="float: right; margin-right: 10px;"></span></a> <a href="#"><span
+		<a href="#" style="display: none;"><span class="header_icon icon03"
+			style="float: right; margin-right: 10px;"></span></a> <a href="#" style="display: none;"><span
 			class="header_icon icon02" style="float: right;"></span></a>
 	</header>
 	<div>
@@ -82,7 +82,7 @@ header span {
 
 				<c:if test="${not empty merchantMap.phone}">
 					<a href="tel:${merchantMap.phone}"> <span class="floatR BTN02"
-						style="background: #0056a2; border-radius: 7px; right: 10px; bottom: 23%; position: absolute;">
+						style="background: #0056a2; border-radius: 7px; right: 10px; bottom: 23%; position: absolute;color: white;">
 							${merchantMap.phone} </span> <span class="floatR contact_bg bg01"
 						style="right: 145px; bottom: 23%; position: absolute;"></span>
 					</a>

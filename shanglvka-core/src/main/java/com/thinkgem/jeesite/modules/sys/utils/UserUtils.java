@@ -153,6 +153,7 @@ public class UserUtils extends BaseService {
 			DetachedCriteria dc = areaDao.createDetachedCriteria();
 			dc.add(Restrictions.like("parentIds", pid, MatchMode.ANYWHERE));
 			dc.add(Restrictions.eq(Area.FIELD_DEL_FLAG, Area.DEL_FLAG_NORMAL));
+			dc.addOrder(Order.asc("sort")).addOrder(Order.desc("id"));
 			areaList = areaDao.find(dc);
 			putCache(CACHE_AREA_LIST + "_" + pid, areaList);
 		}
