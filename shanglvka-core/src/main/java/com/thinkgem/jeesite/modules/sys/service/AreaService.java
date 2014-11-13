@@ -50,7 +50,7 @@ public class AreaService extends BaseService {
 			DetachedCriteria dc = areaDao.createDetachedCriteria();
 			dc.add(Restrictions.eq("parent.id", pid));
 			dc.add(Restrictions.eq(Area.FIELD_DEL_FLAG, Area.DEL_FLAG_NORMAL));
-			dc.addOrder(Order.desc("id"));
+			dc.addOrder(Order.asc("sort")).addOrder(Order.desc("id"));
 			areaList = areaDao.find(dc);
 			UserUtils.putCache(UserUtils.CACHE_AREA_LIST + pid, areaList);
 		}
