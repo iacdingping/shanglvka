@@ -209,6 +209,7 @@
 #city_list .region_list {
 	width: 50%;
 	float: left;
+	background: #f7f7f7;
 	max-height:300px;
 	overflow-y:scroll;
 }
@@ -284,7 +285,7 @@
 		<li id="city" class="list_right_border" style="width: 65%">
 			<span style="position: relative">
 				<span class="icons city_unselected" id="icon_city_pre"></span>
-				<span id="city_txt">全城</span>
+				<span id="city_txt">全城区域</span>
 				<span class="icons arrow_unselected" id="icon_city_back"></span>
 			</span>
 		</li>
