@@ -39,13 +39,13 @@
 		}
 		//表单被focus。调整滚动条位置
 		$("#purchaseForm").find("input").each(function(){
-			$(this).focus(function(){
-				$("#appendHtml").html("<br/><br/><br/><br/>");
-				$("body").animate({scrollTop:"150"} , 500);		
-			});
 			$(this).unfocus(function(){
 				$("#appendHtml").html("");
 				$("body").animate({scrollTop:"30"} , 500);		
+			});
+			$(this).focus(function(){
+				$("#appendHtml").html("<br/><br/><br/><br/>");
+				$("body").animate({scrollTop:"150"} , 500);		
 			});
 		});
 	});
