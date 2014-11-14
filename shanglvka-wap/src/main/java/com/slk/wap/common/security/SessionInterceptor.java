@@ -15,6 +15,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.slk.core.entity.mp.WeixinUser;
+import com.slk.core.entity.mp.WeixinUserType;
 import com.slk.core.manager.mp.WeixinUserManager;
 import com.slk.core.weichat.AccessToken;
 import com.slk.core.weichat.ChatRequestComponent;
@@ -81,6 +82,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 			if(weixinUser == null) {
 				weixinUser = new WeixinUser();
 				weixinUser.setPlatformCode(openid);
+				weixinUser.setType(WeixinUserType.JUST_PAY_ATTENTION.ordinal());
 				weixinUserManager.save(weixinUser);
 			}
 			user.setWeixinUser(weixinUser);

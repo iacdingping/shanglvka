@@ -8,7 +8,6 @@ import com.slk.core.entity.mp.WeixinUserType;
 import com.slk.core.manager.mp.WeixinUserManager;
 import com.slk.wap.controller.weixin.WeixinRequest;
 import com.slk.wap.controller.weixin.WeixinResponse;
-import com.slk.wap.weixin.instruction.ResponseUtil;
 import com.slk.wap.weixin.process.AbstractCompositeProcessor;
 
 @Component
@@ -16,6 +15,9 @@ public class WelcomeProcessor extends AbstractCompositeProcessor {
 
 	@Autowired
 	private WeixinUserManager weixinUserManager;
+	
+	@Autowired
+	private KeyWordsProcessor keyWordsProcessor;
 	
 	@Override
 	public WeixinResponse process(WeixinRequest request) {
@@ -32,6 +34,7 @@ public class WelcomeProcessor extends AbstractCompositeProcessor {
 			user.setType(WeixinUserType.JUST_PAY_ATTENTION.ordinal());
 			weixinUserManager.update(user);
 		}
-		return ResponseUtil.responseText(request, "welcome 更多精彩等你发现");
+		request.setContent("welcome");
+		return keyWordsProcessor.process(request);
 	}
 }

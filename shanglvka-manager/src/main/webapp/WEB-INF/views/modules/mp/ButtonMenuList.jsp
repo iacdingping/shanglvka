@@ -36,7 +36,7 @@
 		<div
 			style="border-radius: 5px; background: blue; padding: 5px; width: 80px; text-align: center">
 			<a
-				href="http://${pageContext.request.serverName}/set-menu?appid=wx4aca1adff0c2ffd9&secret=0f9a89339f7234ed090493138898ce1f"
+				href="http://${pageContext.request.serverName}/set-menu?appid=wxccded0129bb687f5&secret=1b9e58d0e7359db0f5187b9381f89932"
 				target="_blank" style="color: #fff">菜单生成</a>
 		</div>
 	</div>
