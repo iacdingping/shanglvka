@@ -232,9 +232,15 @@ public class MenuController {
 		return jsonObj.toString();
 	}
 	
+	/**
+	 * 微信auth2.0 跳转 应该判定是我们的域名的地址即可跳转
+	 * @param url
+	 * @return
+	 */
 	private boolean couldWeichatRedirect(String url) {
 		String reg = ".*:[0-9]+.*";
-		return !url.matches(reg) && url.indexOf("weixin.qq.com") == -1;
+//		return !url.matches(reg) && url.indexOf("weixin.qq.com") == -1;
+		return false;
 	}
 	
 	public static void main(String[] args) {
