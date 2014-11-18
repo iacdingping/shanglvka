@@ -29,8 +29,12 @@ public class KeyWordsProcessor extends AbstractCompositeProcessor {
 		WeixinUser user = queryUser(request);
 		
 		Keyword keyword = keywordManager.findByKey(request.getContent());
-		if(keyword == null) 
+		if(keyword == null) {
+			keyword = keywordManager.findByKey("unknownMessage");
+		}
+		if(keyword == null) {
 			return ResponseUtil.responseText(request, "懒得理你 T_T");
+		}
 		
 		boolean responseBindMessage = keyword.getNeedBind() && user != null;
 		ResponseType responseType = ResponseType.valueOf(keyword.getResponseType());
@@ -47,7 +51,7 @@ public class KeyWordsProcessor extends AbstractCompositeProcessor {
 			break;
 		case MUSIC :
 		default :
-			throw new RuntimeException("Unknown type of response type with id :" + keyword.getId()); 
+			throw new RuntimeException("Unknown type of response type with id :" + keyword.getId());
 		}
 		return response;
 	}
