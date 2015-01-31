@@ -36,9 +36,9 @@ public class NeedLoginInterceptor extends HandlerInterceptorAdapter {
 		// 取得session中的用户信息, 以便判断是否登录了系统
 		Object user = session.getAttribute(ConstantActivity.SESSION_USER_KEY);
 		if (null == user) {
-			if(StringUtils.isNotBlank(login.noLloginUrl())) {
+			if(StringUtils.isNotBlank(login.noLoginUrl())) {
 				response.sendRedirect(request.getContextPath()+ 
-						(login.noLloginUrl().startsWith("/") ? login.noLloginUrl() : "/" + login.noLloginUrl()));
+						(login.noLoginUrl().startsWith("/") ? login.noLoginUrl() : "/" + login.noLoginUrl()));
 				return false;
 			}
 			

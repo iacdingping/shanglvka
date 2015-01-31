@@ -20,7 +20,7 @@ import com.slk.wap.common.security.SessionUser;
  */
 @Controller
 @RequestMapping("uc/")
-@NeedLogin(noLloginUrl="/")
+@NeedLogin(noLoginUrl="/")
 public class UserCenterController {
 
 	@Autowired

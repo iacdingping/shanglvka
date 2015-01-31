@@ -10,6 +10,7 @@ import java.lang.annotation.Target;
  * 需要登陆的controller类
  * 可以标注在整个类上
  * 也可以标注到单个方法
+ * noLoginUrl 不为空时 直接跳转至该页面
  * @author "iacdp"
  * 
  */
@@ -20,6 +21,6 @@ public @interface NeedLogin {
 	ResultType value() default ResultType.page;
 	String message() default "无效登陆";
 	String loginUrl() default "/uc/login";
-	String noLloginUrl() default "";
+	String noLoginUrl() default "";
 	String redirectKey() default "redirectUrl";
 }
