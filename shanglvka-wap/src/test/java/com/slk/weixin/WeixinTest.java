@@ -17,7 +17,8 @@ import com.thinkgem.jeesite.common.mapper.JaxbMapper;
 
 public class WeixinTest {
 	
-	public static String s = "http://127.0.0.1:8080/weixin";
+//	public static String s = "http://127.0.0.1:8080/weixin";
+	public static String s = "http://101.71.9.68/weixin";
 
 	public static void main(String[] args) throws IOException {
 		CloseableHttpClient httpclient = HttpClients.createDefault();

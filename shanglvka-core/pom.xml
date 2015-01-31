@@ -27,6 +27,8 @@
 		<!-- jdbc driver setting -->
 		<mysql.driver.version>5.1.13</mysql.driver.version>
 		<oracle.driver.version>10.2.0.1.0</oracle.driver.version>
+		<cxf-version>3.0.0</cxf-version>
+		<xmlschema-version>2.0.2</xmlschema-version>
 	</properties>
 	<dependencies>
 		<!-- SPRING basic begin -->
@@ -38,6 +40,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
 		</dependency>
 		<!-- SPRING basic end -->
 		<!-- SPRING end -->
@@ -326,5 +333,27 @@
 			<version>1.1.2</version>
 			<type>jar</type>
 		</dependency>
+		
+		<!-- cxf -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http-jetty</artifactId>
+				<version>${cxf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ws.xmlschema</groupId>
+				<artifactId>xmlschema-core</artifactId>
+				<version>${xmlschema-version}</version>
+			</dependency>
 	</dependencies>
 </project>

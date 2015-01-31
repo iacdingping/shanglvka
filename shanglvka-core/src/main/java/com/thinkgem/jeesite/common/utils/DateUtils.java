@@ -7,7 +7,6 @@ package com.thinkgem.jeesite.common.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang.time.DateFormatUtils;
@@ -19,8 +18,10 @@ import org.apache.commons.lang.time.DateFormatUtils;
  */
 public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	
-	private static String[] parsePatterns = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
-		"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm" };
+	private static String[] parsePatterns = { 
+		"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
+		"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
+		"yyyyMMdd"};
 
 	/**
 	 * 得到当前日期字符串 格式（yyyy-MM-dd）
@@ -101,7 +102,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	/**
 	 * 日期型字符串转化为日期 格式
 	 * { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
-	 *   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm" }
+	 *   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", }
 	 */
 	public static Date parseDate(Object str) {
 		if (str == null){

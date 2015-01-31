@@ -1,0 +1,7 @@
+1、utf8编码时不支持emoji表情的。要使用emoji表情，就需要用utf8mb4编码。 在客户端使用jdbc的情况下，如何正确的使用utf8mb4？
+修改mysql字符集编码为
+character-set-server=utf8mb4
+collation_server=utf8mb4_unicode_ci
+
+than 重启mysql服务
+service mysql restart

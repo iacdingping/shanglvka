@@ -89,7 +89,7 @@ public class QueryUserInfo implements Runnable {
 		}
 		
 		user.setNickname(userInfo.getNickname());
-		user.setSex(userInfo.getSex().toString());
+		user.setSex(userInfo.getSex() == null ? "0" : userInfo.getSex().toString());
 		user.setProvince(userInfo.getProvince());
 		user.setCity(userInfo.getCity());
 		user.setQueried(true);

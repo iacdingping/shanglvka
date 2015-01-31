@@ -5,6 +5,8 @@
  */
 package com.thinkgem.jeesite.common.web;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -29,7 +31,7 @@ import com.thinkgem.jeesite.common.utils.Encodes;
  * @version 2013-01-15
  */
 public class Servlets {
-
+	public static final String DEFAULT_URL_ENCODING = "UTF-8";
 	// -- 常用数值定义 --//
 	public static final long ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 
@@ -236,5 +238,17 @@ public class Servlets {
 			}			
 		}
 		return null;
+	}
+
+	public static String getRelativeUrl(HttpServletRequest request) throws IOException {
+		String result = request.getRequestURI().substring(request.getContextPath().length()) + 
+				(request.getQueryString() == null ? "" : "?" + request.getQueryString());
+		return result;
+	}
+
+	public static void writeResponse(HttpServletResponse response, String str) throws IOException {
+		OutputStream os = response.getOutputStream();
+		os.write(str.getBytes(DEFAULT_URL_ENCODING));
+		os.flush();
 	}
 }
