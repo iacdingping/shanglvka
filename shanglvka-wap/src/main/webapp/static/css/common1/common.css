@@ -30,7 +30,18 @@ body {min-width:320px;}
 .font_c_b{color:#000;}
 .font_c_b1{color:#333;}
 .font_c_h{color:#ccc;}
+.font_c_h1{color:#aaa;}
 .font_c_white{color:#fff;}
+
+.font_w_b{font-weight: bold}
+
+.font_s_14{font-size: 14px}
+.font_s_16{font-size: 16px}
+.font_s_18{font-size: 18px}
+.font_s_20{font-size: 20px}
+.font_s_22{font-size: 22px}
+.font_s_24{font-size: 24px}
+
 
 .h40{height:40px;}
 
@@ -44,6 +55,7 @@ body {min-width:320px;}
 .lh40{ line-height:40px;}
 
 .w_center{text-align:center}
+.w_right{text-align: right;}
 
 .clear{clear:both;}
 
@@ -52,7 +64,9 @@ body {min-width:320px;}
 .mg_a_10{margin:10px;}
 .mg_l_10{margin-left:10px;}
 .mg_l_20{margin-left:20px;}
+.mg_t_5{ margin-top:5px;}
 .mg_t_10{ margin-top:10px;}
+.mg_t_15{ margin-top:15px;}
 .mg_t_30{ margin-top:30px;}
 .mg_nt_10{margin:0px 10px 10px 10px;}
 .mg_nb_10{margin:10px 10px 0px 10px;}
@@ -65,6 +79,9 @@ body {min-width:320px;}
 
 .f_l{float:left;}
 .f_r{float:right;}
+
+.h50per{height:50%;}
+
 
 /**Í¸Ã÷¶È*/
 .toum{filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
