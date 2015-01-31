@@ -82,4 +82,5 @@ public class MyCardController extends BaseController {
 	public String detail() {
 		return "/card/detail";
 	}
+	
 }

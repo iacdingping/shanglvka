@@ -5,7 +5,7 @@ body { font-family:"寰蒋闆呴粦"; font-size:14px;}
 li{ list-style:none;border:0px;}
 ul{border:0px;margin:0px;}
 a{ text-decoration:none}
-a{ color:none}
+a{color:#fff}
 a:actived{ color:none}
 a:hover{ color:none}
 .clear{clear:both}
@@ -22,4 +22,77 @@ footer{ font-size:14px;}
 
 body {min-width:320px;}
 .link_btn{ border:1px solid #39F;padding:5px 15px;border-radius:5px; color:#666}
-.line{height:1px;width:100%; background:#e0e0e0}
+.line{height:1px;width:100%; background:#e0e0e0;}
+
+.container{width:100%;}
+#header_title{color:#fff;font-size:20px;}
+
+.font_c_b{color:#000;}
+.font_c_b1{color:#333;}
+.font_c_h{color:#ccc;}
+.font_c_white{color:#fff;}
+
+.h40{height:40px;}
+
+.wfull{width:100%}
+
+.border1{border:1px solid #39F;}
+
+.border_radius3{border-radius:3px;}
+.border_radius5{border-radius:5px;}
+
+.lh40{ line-height:40px;}
+
+.w_center{text-align:center}
+
+.clear{clear:both;}
+
+.bg1{background:#39F;}
+
+.mg_a_10{margin:10px;}
+.mg_l_10{margin-left:10px;}
+.mg_l_20{margin-left:20px;}
+.mg_t_10{ margin-top:10px;}
+.mg_t_30{ margin-top:30px;}
+.mg_nt_10{margin:0px 10px 10px 10px;}
+.mg_nb_10{margin:10px 10px 0px 10px;}
+
+.pd_a_10{padding:10px;}
+.pd_l_10{padding-left:10px;}
+.pd_l_20{padding-left:20px;}
+
+.btn_span_01{width:auto;padding:5px 10px; background:#3CF; font-size:14px}
+
+.f_l{float:left;}
+.f_r{float:right;}
+
+/**透明度*/
+.toum{filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
+
+/***/
+/**全屏遮罩及其动画*/
+.b_tk{width:100%; background:#000; top:40px; left:0px; z-index:9; position:fixed;}
+.tk_show_slide_down{
+	-webkit-animation:0.5s hieght2full forwards;
+	animation:0.5s hieght2full forwards;
+}
+._tk_show_slide_down{
+	-webkit-animation:0.5s _hieght2full forwards;
+	animation:0.5s _hieght2full forwards;
+}
+@-webkit-keyframes hieght2full{
+  0% { height: 0%; }
+  100% { height: 100%; }
+}
+@keyframes hieght2full{
+  0% { height: 0%; }
+  100% { height: 100%; }
+}
+@-webkit-keyframes _hieght2full{
+  0% { height: 100%; }
+  100% { height: 0%; }
+}
+@keyframes _hieght2full{
+  0% { height: 100%; }
+  100% { height: 0%; }
+}
