@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 根据卡号、密码查询余额及有效期
@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class GetCardInfoParam extends AbstractParam {
 
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private String cardNo;
-	@JsonProperty("Password")
+	@PropertyKey("Password")
 	private String password;
 	public GetCardInfoParam() {
 	}

@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 根据卡号，密码，CVV码，设置卡状态为口头挂失
@@ -9,11 +9,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class RegisterLossCardParam extends AbstractParam {
 
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private String cardNo;
-	@JsonProperty("Password")
+	@PropertyKey("Password")
 	private String password;
-	@JsonProperty("Cvv")
+	@PropertyKey("Cvv")
 	private String cvv;
 	public RegisterLossCardParam() {
 	}

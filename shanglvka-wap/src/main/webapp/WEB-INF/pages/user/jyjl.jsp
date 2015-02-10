@@ -66,12 +66,12 @@
 	<div class="container">
 		<div class="mg_b_10 font_c_white pd_l_10 w_center"
 			style="background: #156bc3; height: 40px; line-height: 40px;">
-			查询日期: <select class="select_style" name="year">
+			查询日期: <select id="year" class="select_style" name="year">
 				<option value="2015">2015</option>
 				<option value="2014">2014</option>
 				<option value="2013">2013</option>
 				<option value="2012">2012</option>
-			</select> 年 <select class="select_style" name="year">
+			</select> 年 <select id="month" class="select_style" name="year">
 				<option value="01">01</option>
 				<option value="02">02</option>
 				<option value="03">03</option>
@@ -158,6 +158,48 @@
 				alert("a"+year);
 			});
 		});
+	
+		function transactionQuery() {
+			var cardNo = '${cardNo}';
+			var password = '${password}';
+			var beginTime = $('#year').val() + '-' + $('#month') + '01'
+			$.ajax({
+				url: '${ctx}/uc/jyjl',
+				data: {'cardNo' : cardNo, 'password' : password, 'beginTime' : beginTime},
+				type: 'post',
+				success: function(data) {
+					if(data.success) {
+						for(transaction in data.transactions) {
+							builderHtml(transaction);
+						}
+					} else {
+						alert(data.errorMsg);
+					}
+				},
+				error: function() {
+					alert('服务错误，请稍后再试');
+				}
+			})
+		}
+		
+		function builderHtml(transaction) {
+			var html =  
+			'<li>' +
+			'<div class="f_l">' +
+			'	<img src="${ctx}/static/img/index/icon01.png" />' +
+			'</div>' +
+			'<div class="f_l mg_l_10 shanghu">' +
+			'	<div class="font_s_18 mg_t_05">' + transaction.merchantName + '</div>' +
+			'	<div class="font_c_h1  mg_t_10">' + transaction.transactionTime + '</div>' +
+			'</div>' +
+			'<div class="f_r mg_l_10">' +
+			'	<div class="font_s_16 font_w_b mg_t_05 w_right h">' + transaction.money + '</div>' +
+			'</div>' +
+			'<div class="clear"></div>' +
+			'</li>';
+			
+			$('#item_list').append(html);
+		}
 	</script>
 </body>
 </html>

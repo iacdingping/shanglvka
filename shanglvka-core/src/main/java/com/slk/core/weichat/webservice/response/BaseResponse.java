@@ -2,16 +2,16 @@ package com.slk.core.weichat.webservice.response;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 @XmlRootElement
 public class BaseResponse {
 
-	@JsonProperty("RESULT")
+	@PropertyKey("RESULT")
 	private Integer result;
-	@JsonProperty("ERRORCODE")
+	@PropertyKey("ERRORCODE")
 	private String errorCode;
-	@JsonProperty("ERRORMSG")
+	@PropertyKey("ERRORMSG")
 	private String errorMsg;
 	public BaseResponse() {
 	}

@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 根据身份证号查询名下所有卡号集合
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class GetCardNoByIDParam extends AbstractParam {
 
-	@JsonProperty("IDNO")
+	@PropertyKey("IDNO")
 	private String identificationCard;
 	public GetCardNoByIDParam() {
 	}

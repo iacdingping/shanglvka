@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 根据身份证号码获取所有名下的卡，设置卡状态为口头挂失。
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class RegisterLossCardByIDParam extends AbstractParam {
 
-	@JsonProperty("IDNO")
+	@PropertyKey("IDNO")
 	private String identificationCard;
 	public RegisterLossCardByIDParam() {
 	}

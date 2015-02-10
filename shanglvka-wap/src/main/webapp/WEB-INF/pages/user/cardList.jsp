@@ -59,7 +59,7 @@
 function checkPassword(i) {
 	var password = $('#password_' + i).val();
 	if(password == null || password == '') {
-		$('#notice_}' + i).html('请先输入密码').show().fadeout(3000);
+		$('#notice_' + i).html('请先输入密码').show().fadeOut(3000);
 		$('#password_' + i).focus();
 		return null;
 	}
@@ -75,13 +75,13 @@ function balanceQuery(i) {
 	var cardNo = $('#card_' + i).val();
 	// ajax bind ? 
 	$.ajax({
-		url:'${ctx}/yecx',
+		url:'${ctx}/uc/yecx',
 		data:{'cardNo': cardNo , 'password' : password},
 		type:'post',
 		success: function(data) {
-			console.log('data');
+			console.log(data);
 			if(data.success) {
-				alert('balance: ' + data.money + ' 有效时间：' + data.validTime);
+				$('#notice_' + i).html('balance: ' + data.money + ' 有效时间：' + data.validTime).hide().show();
 			} else {
 				alert('服务错误， 请稍后再试');
 			}
@@ -99,7 +99,7 @@ function transactionQuery(i) {
 	}
 	
 	var cardNo = $('#card_' + i).val();
-	windows.location = '${ctx}/uc/jyjl?cardNo=' + cardNo + '&password='+password;
+	window.location = '${ctx}/uc/jyjl?cardNo=' + cardNo + '&password='+password;
 }
 
 function pointQuery(i) {
@@ -111,19 +111,19 @@ function pointQuery(i) {
 	var cardNo = $('#card_' + i).val();
 	// ajax bind ? 
 	$.ajax({
-		url:'${ctx}/jfcx',
+		url:'${ctx}/uc/jfcx',
 		data:{'cardNo': cardNo , 'password' : password},
 		type:'post',
 		success: function(data) {
 			console.log('data');
 			if(data.success) {
-				alert('有效积分为： ' + data.point);
+				$('#notice_' + i).html('有效积分为： ' + data.point).hide().show();
 			} else {
-				alert('服务错误， 请稍后再试');
+				$('#notice_' + i).html('服务错误， 请稍后再试').fadeOut(3000);
 			}
 		},
 		error: function() {
-			alert('服务错误， 请稍后再试');
+			$('#notice_' + i).html('服务错误， 请稍后再试').fadeOut(3000);
 		}
 	})
 }

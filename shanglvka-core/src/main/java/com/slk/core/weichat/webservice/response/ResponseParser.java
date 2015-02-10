@@ -12,9 +12,9 @@ import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.slk.core.weichat.webservice.Column;
 import com.slk.core.weichat.webservice.DataSet;
+import com.slk.core.weichat.webservice.PropertyKey;
 import com.slk.core.weichat.webservice.Row;
 import com.thinkgem.jeesite.common.mapper.JaxbMapper;
 import com.thinkgem.jeesite.common.utils.Reflections;
@@ -89,7 +89,7 @@ public class ResponseParser {
 			String name = f.getName();
 			Object v = properties.get(name);
 			if(v == null) {
-				JsonProperty p = f.getAnnotation(JsonProperty.class);
+				PropertyKey p = f.getAnnotation(PropertyKey.class);
 				if(p!= null && StringUtils.isNotBlank(p.value())) {
 					v = properties.get(p.value());
 				}
@@ -197,5 +197,76 @@ public class ResponseParser {
 				"</DBSET>";
 		GetCardNoByIDResponse gcnbr = parse(GetCardNoByIDResponse.class, xml);
 		System.out.println(JaxbMapper.toXml(gcnbr));
+		
+		xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + 
+				"" + 
+				"<DBSET RESULT=\"1\">" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130909 19:12:47</C>" + 
+				"  <C N=\"Money\">49.96</C>" + 
+				"  <C N=\"CardBalanceBefore\">49.96</C>" + 
+				"  <C N=\"CardBalance\">0</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130906 19:26:42</C>" + 
+				"  <C N=\"Money\">146.87</C>" + 
+				"  <C N=\"CardBalanceBefore\">196.83</C>" + 
+				"  <C N=\"CardBalance\">49.96</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130906 14:31:18</C>" + 
+				"  <C N=\"Money\">59</C>" + 
+				"  <C N=\"CardBalanceBefore\">255.83</C>" + 
+				"  <C N=\"CardBalance\">196.83</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130905 13:37:55</C>" + 
+				"  <C N=\"Money\">59</C>" + 
+				"  <C N=\"CardBalanceBefore\">314.83</C>" + 
+				"  <C N=\"CardBalance\">255.83</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130904 19:59:19</C>" + 
+				"  <C N=\"Money\">87.02</C>" + 
+				"  <C N=\"CardBalanceBefore\">401.85</C>" + 
+				"  <C N=\"CardBalance\">314.83</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130904 15:15:27</C>" + 
+				"  <C N=\"Money\">90.45</C>" + 
+				"  <C N=\"CardBalanceBefore\">492.3</C>" + 
+				"  <C N=\"CardBalance\">401.85</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130902 20:51:44</C>" + 
+				"  <C N=\"Money\">158.65</C>" + 
+				"  <C N=\"CardBalanceBefore\">650.95</C>" + 
+				"  <C N=\"CardBalance\">492.3</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130902 15:00:51</C>" + 
+				"  <C N=\"Money\">149.25</C>" + 
+				"  <C N=\"CardBalanceBefore\">800.2</C>" + 
+				"  <C N=\"CardBalance\">650.95</C>" + 
+				" </R>" + 
+				" <R>" + 
+				"  <C N=\"MerchantName\">杭州知味观</C>" + 
+				"  <C N=\"TransactionTime\">20130901 14:27:33</C>" + 
+				"  <C N=\"Money\">199.8</C>" + 
+				"  <C N=\"CardBalanceBefore\">1000</C>" + 
+				"  <C N=\"CardBalance\">800.2</C>" + 
+				" </R>" + 
+				"</DBSET>";
+		
+		GetTransactionResponse transactions = parse(GetTransactionResponse.class, xml);
+		System.out.println(JaxbMapper.toXml(transactions));
 	}
 }

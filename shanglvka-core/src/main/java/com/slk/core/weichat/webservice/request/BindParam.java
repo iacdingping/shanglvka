@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 微信系统发送卡号、微信号到卡系统，卡系统把卡号与微信号绑定，存储在卡系统
@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class BindParam extends AbstractParam {
 
-	@JsonProperty("WXNO")
+	@PropertyKey("WXNO")
 	private String weChatNo;
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private String cardNo;
 	public BindParam() {
 	}

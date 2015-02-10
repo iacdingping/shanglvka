@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.slk.core.entity.mp.UserBindCard;
 import com.slk.core.manager.mp.UserBindCardManager;
-import com.slk.core.weichat.webservice.ShangLvSoapClient;
+import com.slk.core.weichat.webservice.IShangLvSoapClient;
 import com.slk.core.weichat.webservice.response.BaseResponse;
 import com.slk.core.weichat.webservice.response.GetCardInfoResponse;
 import com.slk.core.weichat.webservice.response.GetCardPointResponse;
@@ -37,7 +37,7 @@ import com.thinkgem.jeesite.common.web.BaseController;
 public class UserCenterController extends BaseController {
 
 	@Autowired
-	private ShangLvSoapClient shanglvSoapClient;
+	private IShangLvSoapClient shanglvSoapClient;
 	@Autowired
 	private UserBindCardManager userBindCardManager;
 	
@@ -127,9 +127,10 @@ public class UserCenterController extends BaseController {
 			@RequestParam("password") String password,
 			@RequestParam("cardNo") String cardNo,
 			@RequestParam("beginTime") Date beginTime,
-			@RequestParam("endTime") Date endTime){
+			@RequestParam(value="endTime", required=false) Date endTime){
 		//本地绑定记录查询 如过没有则提示用户去购买
 		// 存在绑定的卡 用户输入密码 然后查询
+		endTime = endTime == null ? new Date() : endTime;
 		GetTransactionResponse transactions = shanglvSoapClient.getTransactions(cardNo, password, beginTime, endTime);
 		return transactions;
 	}

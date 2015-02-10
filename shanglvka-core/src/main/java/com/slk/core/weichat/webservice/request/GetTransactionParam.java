@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 根据卡号、密码、起止交易时间查询交易记录。
@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class GetTransactionParam extends AbstractParam {
 
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private String cardNo;
-	@JsonProperty("Password")
+	@PropertyKey("Password")
 	private String password;
-	@JsonProperty("BeginTime")
+	@PropertyKey("BeginTime")
 	private String beginTime;
-	@JsonProperty("EndTime")
+	@PropertyKey("EndTime")
 	private String endTime;
 	public GetTransactionParam() {
 	}

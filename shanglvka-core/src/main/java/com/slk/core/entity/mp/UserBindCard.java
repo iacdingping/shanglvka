@@ -51,6 +51,8 @@ public class UserBindCard extends BaseEntity<UserBindCard> {
      * createDate       db_column: create_date 
      */	
 	private java.util.Date createDate;
+	
+	private String password;
 	//columns END
 
 	public UserBindCard(){
@@ -104,6 +106,13 @@ public class UserBindCard extends BaseEntity<UserBindCard> {
 	public java.util.Date getCreateDate() {
 		return this.createDate;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public static void main(String[] args) {
 		UserBindCard card = new UserBindCard();
 		card.setCardNo("123sdfaskvadf0987");

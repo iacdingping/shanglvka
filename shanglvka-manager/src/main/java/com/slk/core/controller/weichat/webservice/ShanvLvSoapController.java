@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.slk.core.weichat.webservice.IShangLvSoapClient;
 import com.slk.core.weichat.webservice.RequestBody;
 import com.slk.core.weichat.webservice.ServiceInvalidError;
-import com.slk.core.weichat.webservice.ShangLvSoapClient;
 import com.slk.core.weichat.webservice.request.AbstractParam;
 import com.slk.core.weichat.webservice.request.AddCardPointParam;
 import com.slk.core.weichat.webservice.request.BindParam;
@@ -29,7 +29,7 @@ import com.slk.core.weichat.webservice.request.RegisterLossCardParam;
 public class ShanvLvSoapController {
 	
 	@Autowired
-	private ShangLvSoapClient shanglvSoapClient;
+	private IShangLvSoapClient shanglvSoapClient;
 
 	@RequestMapping(value="request", method=RequestMethod.GET)
 	public String requestForm(ModelMap map) {

@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 @XmlRootElement
 public class GetCardNoByIDResponse extends BaseResponse {
 
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private List<String> cardNos;
 	public GetCardNoByIDResponse() {
 		super();

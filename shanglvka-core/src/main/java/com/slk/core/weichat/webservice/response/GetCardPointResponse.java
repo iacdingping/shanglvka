@@ -2,12 +2,12 @@ package com.slk.core.weichat.webservice.response;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 @XmlRootElement
 public class GetCardPointResponse extends BaseResponse {
 
-	@JsonProperty("Point")
+	@PropertyKey("Point")
 	private Integer point;
 	public GetCardPointResponse() {
 		super();

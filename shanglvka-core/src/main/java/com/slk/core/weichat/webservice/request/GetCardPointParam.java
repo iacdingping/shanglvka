@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 微信中使用发送卡号、微信号，查询积分
@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class GetCardPointParam extends AbstractParam {
 
-	@JsonProperty("WXNO")
+	@PropertyKey("WXNO")
 	private String weChatNo;
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private String cardNo;
 	public GetCardPointParam() {
 		super();

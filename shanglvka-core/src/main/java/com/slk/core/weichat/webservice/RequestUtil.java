@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.slk.core.weichat.webservice.request.AbstractParam;
 import com.thinkgem.jeesite.common.mapper.JaxbMapper;
 import com.thinkgem.jeesite.common.utils.Reflections;
@@ -36,7 +35,7 @@ public class RequestUtil {
 		ds.setRows(Arrays.asList(r));
 		List<Column> columns = new ArrayList<Column>();
 		for(Field f : fields) {
-			JsonProperty property = f.getAnnotation(JsonProperty.class);
+			PropertyKey property = f.getAnnotation(PropertyKey.class);
 			String key = property != null && StringUtils.isNotBlank(property.value()) ?
 					property.value() : f.getName();
 			String value = f.get(param).toString();

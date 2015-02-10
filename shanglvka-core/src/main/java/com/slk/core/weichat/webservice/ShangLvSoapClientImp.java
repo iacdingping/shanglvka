@@ -11,7 +11,6 @@ import org.apache.cxf.transport.http.HTTPConduit;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import com.slk.core.weichat.webservice.request.AbstractParam;
 import com.slk.core.weichat.webservice.request.AddCardPointParam;
@@ -33,15 +32,15 @@ import com.slk.core.weichat.webservice.response.ResponseResult;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.utils.DateUtils;
 
-@Component
-public class ShangLvSoapClient {
+//@Component
+public class ShangLvSoapClientImp	 implements IShangLvSoapClient {
 
 	private String url = "http://172.129.1.4:7001/services/Service";
 	public String userName = "harmony3";
 	public String password = "harmony3";
 	private String path = "harmony.services.user.Pay.WX";
 	
-	private Logger log = LoggerFactory.getLogger(ShangLvSoapClient.class);
+	private Logger log = LoggerFactory.getLogger(ShangLvSoapClientImp.class);
 	
 	private ShangLvSoapService shanglvSoapService;
 	
@@ -262,5 +261,13 @@ public class ShangLvSoapClient {
 	 */
 	public BaseResponse registerCard(String cardNo, String password, String cvv) {
 		return baseOperate(new RegisterLossCardParam(cardNo, password, cvv));
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }

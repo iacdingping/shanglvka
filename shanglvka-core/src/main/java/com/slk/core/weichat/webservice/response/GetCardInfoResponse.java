@@ -5,15 +5,15 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 import com.thinkgem.jeesite.common.utils.DateUtils;
 
 @XmlRootElement
 public class GetCardInfoResponse extends BaseResponse {
 
-	@JsonProperty("Money")
+	@PropertyKey("Money")
 	private Float money;
-	@JsonProperty("Deadline")
+	@PropertyKey("Deadline")
 	private String validTime;
 	public GetCardInfoResponse() {
 		super();

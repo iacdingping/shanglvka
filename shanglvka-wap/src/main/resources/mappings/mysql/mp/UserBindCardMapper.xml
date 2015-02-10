@@ -9,7 +9,7 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="mp-UserBindCard-columns">
 	    <![CDATA[
-		`id` as `id`, `platform_code` as `platformCode`, `card_no` as `cardNo`, `status` as `status`, `update_time` as `updateTime`, `create_date` as `createDate`
+		`id` as `id`, `platform_code` as `platformCode`, `card_no` as `cardNo`, `status` as `status`, `update_time` as `updateTime`, `create_date` as `createDate`, `password` as `password`
 	    ]]>
 	</sql>	
 
@@ -17,9 +17,9 @@
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
         INSERT INTO mp_user_bind_card (
-        `id`, `platform_code`, `card_no`, `status`, `update_time`, `create_date`
+        `id`, `platform_code`, `card_no`, `status`, `update_time`, `create_date`, `password`
         ) VALUES (
-        #{id}, #{platformCode}, #{cardNo}, #{status}, #{updateTime}, #{createDate}        
+        #{id}, #{platformCode}, #{cardNo}, #{status}, #{updateTime}, #{createDate}, #{password}
         )
     ]]>
 		<!--	
@@ -34,7 +34,7 @@
 	<update id="update">
     <![CDATA[
         UPDATE mp_user_bind_card SET
-	        `platform_code` = #{platformCode} , `card_no` = #{cardNo} , `status` = #{status} , `update_time` = #{updateTime} , `create_date` = #{createDate}  
+	        `platform_code` = #{platformCode} , `card_no` = #{cardNo} , `status` = #{status} , `update_time` = #{updateTime} , `create_date` = #{createDate}, `password`=#{password}  
         WHERE 
         	id = #{id}  	        
     ]]>

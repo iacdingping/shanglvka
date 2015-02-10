@@ -3,20 +3,20 @@ package com.slk.core.weichat.webservice.request;
 import javax.xml.bind.annotation.XmlTransient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.IShangLvSoapClient;
+import com.slk.core.weichat.webservice.PropertyKey;
 import com.slk.core.weichat.webservice.RequestUtil;
-import com.slk.core.weichat.webservice.ShangLvSoapClient;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 
 public abstract class AbstractParam {
 	@JsonIgnore
 	@XmlTransient
-	private ShangLvSoapClient client = SpringContextHolder.getBean(ShangLvSoapClient.class);
+	private IShangLvSoapClient client = SpringContextHolder.getBean(IShangLvSoapClient.class);
 	
-	@JsonProperty("UserName")
-	private String userName = client.userName;
-	@JsonProperty("Password_sys")
-	private String password = client.password;
+	@PropertyKey("UserName")
+	private String userName = client.getUserName();
+	@PropertyKey("Password_sys")
+	private String password = client.getPassword();
 	
 	
 	public String getUserName() {

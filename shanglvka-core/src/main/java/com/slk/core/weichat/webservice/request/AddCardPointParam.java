@@ -1,6 +1,6 @@
 package com.slk.core.weichat.webservice.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.slk.core.weichat.webservice.PropertyKey;
 
 /**
  * 微信中存在签到送积分，即签到后，由微信发起，绑定到某张商旅卡，增加多少积分，发送到预付费卡系统后，预付费卡系统对该卡进行积分增加
@@ -9,11 +9,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class AddCardPointParam extends AbstractParam {
 
-	@JsonProperty("WXNO")
+	@PropertyKey("WXNO")
 	private String weChatNo;
-	@JsonProperty("CardNO")
+	@PropertyKey("CardNO")
 	private String cardNo;
-	@JsonProperty("Point")
+	@PropertyKey("Point")
 	private Integer value;
 	public AddCardPointParam() {
 	}
