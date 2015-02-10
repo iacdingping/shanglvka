@@ -5,3 +5,15 @@ collation_server=utf8mb4_unicode_ci
 
 than 重启mysql服务
 service mysql restart
+
+
+2、mp_user_bind_card
+
+create table `mp_user_bind_card`(
+`id` bigint primary key auto_increment, 
+`platform_code` varchar(100) comment '平台openid', 
+`card_no` varchar(100) comment '绑定卡号', 
+`status` int(4) comment '状态，0 删除绑定 1 绑定成功 2 绑定失败', 
+`update_time` date, 
+`create_date` date
+);

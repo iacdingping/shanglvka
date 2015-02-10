@@ -1,4 +1,4 @@
-package com.slk.core.weichat.webservice.response;
+package com.slk.core.weichat.webservice;
 
 import java.util.Arrays;
 import java.util.List;

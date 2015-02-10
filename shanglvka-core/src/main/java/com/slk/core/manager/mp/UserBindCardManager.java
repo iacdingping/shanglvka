@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 import com.slk.core.PageList;
 import com.slk.core.PageQuery;
 import com.slk.core.dao.mp.UserBindCardDao;
+import com.slk.core.entity.mp.CardStatus;
 import com.slk.core.entity.mp.UserBindCard;
 import com.slk.core.query.mp.UserBindCardQuery;
 
@@ -93,6 +94,13 @@ public class UserBindCardManager {
 	    Assert.notNull(query,"'query' must be not null");
 		return new PageList<UserBindCard>(userBindCardDao.findPage(query), 
 				query.getPage(), query.getPageSize(), count(query));
+	}
+
+	public List<UserBindCard> listByPlatformCode(String openId) {
+		UserBindCardQuery query = new UserBindCardQuery();
+		query.setPlatformCode(openId);
+//		query.setStatus(CardStatus.BIND.ordinal());
+		return list(query);
 	}
     
 }

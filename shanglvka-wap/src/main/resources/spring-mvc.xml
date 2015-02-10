@@ -99,6 +99,7 @@
     </bean>
     
     <mvc:interceptors>  
-    	<bean class="com.slk.wap.common.security.SessionInterceptor" />  
+    	<bean class="com.slk.wap.common.security.SessionInterceptor" />
+    	<bean class="com.slk.wap.common.security.NeedLoginInterceptor" />  
 	</mvc:interceptors>
 </beans>

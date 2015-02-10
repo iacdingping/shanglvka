@@ -11,12 +11,18 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAttribute;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 反射工具类.
@@ -158,6 +164,48 @@ public class Reflections {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * 获取class 中未设置忽略标签的属性
+	 * 
+	 * 循环向上转型, 获取对象的DeclaredField, 并强制设置为可访问.
+	 * 
+	 * 如向上转型到Object仍无法找到, 返回null.
+	 */
+	public static List<Field> getAllFieldWithOutIgnoreSign(final Object obj) {
+		Validate.notNull(obj, "object can't be null");
+		List<Field> result = new ArrayList<Field>();
+		for (Class<?> superClass = obj.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
+			Field[] fields = superClass.getDeclaredFields();
+			for(Field field : fields) {
+				if (field.getAnnotation(XmlAttribute.class) == null &&
+						field.getAnnotation(JsonIgnore.class) == null) {
+					makeAccessible(field);
+					result.add(field);
+				}
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 获取class 中未设置忽略标签的自身定义属性
+	 * @param obj
+	 * @return
+	 */
+	public static List<Field> getSelfFieldWithOutIgnoreSign(final Object obj) {
+		List<Field> result = new ArrayList<Field>();
+		Class<?> superClass = obj.getClass();
+		Field[] fields = superClass.getDeclaredFields();
+		for(Field field : fields) {
+			if (field.getAnnotation(XmlAttribute.class) == null &&
+					field.getAnnotation(JsonIgnore.class) == null) {
+				makeAccessible(field);
+				result.add(field);
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -303,4 +351,5 @@ public class Reflections {
 		}
 		return new RuntimeException("Unexpected Checked Exception.", e);
 	}
+	
 }

@@ -1,7 +1,10 @@
 package com.slk.core.weichat.webservice.response;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@XmlRootElement
 public class BaseResponse {
 
 	@JsonProperty("RESULT")

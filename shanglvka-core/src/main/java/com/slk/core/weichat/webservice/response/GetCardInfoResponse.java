@@ -2,10 +2,13 @@ package com.slk.core.weichat.webservice.response;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thinkgem.jeesite.common.utils.DateUtils;
 
+@XmlRootElement
 public class GetCardInfoResponse extends BaseResponse {
 
 	@JsonProperty("Money")

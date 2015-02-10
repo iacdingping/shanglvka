@@ -1,5 +1,7 @@
 package com.slk.core.weichat.webservice;
 
+import java.util.Date;
+
 import javax.annotation.PostConstruct;
 
 import org.apache.cxf.endpoint.Client;
@@ -17,23 +19,26 @@ import com.slk.core.weichat.webservice.request.BindParam;
 import com.slk.core.weichat.webservice.request.GetCardInfoParam;
 import com.slk.core.weichat.webservice.request.GetCardNoByIDParam;
 import com.slk.core.weichat.webservice.request.GetCardPointParam;
+import com.slk.core.weichat.webservice.request.GetTransactionParam;
 import com.slk.core.weichat.webservice.request.MinusCardPointParam;
 import com.slk.core.weichat.webservice.request.RegisterLossCardByIDParam;
 import com.slk.core.weichat.webservice.request.RegisterLossCardParam;
 import com.slk.core.weichat.webservice.response.BaseResponse;
 import com.slk.core.weichat.webservice.response.GetCardInfoResponse;
-import com.slk.core.weichat.webservice.response.GetCardNoResponse;
+import com.slk.core.weichat.webservice.response.GetCardNoByIDResponse;
 import com.slk.core.weichat.webservice.response.GetCardPointResponse;
+import com.slk.core.weichat.webservice.response.GetTransactionResponse;
 import com.slk.core.weichat.webservice.response.ResponseCode;
 import com.slk.core.weichat.webservice.response.ResponseResult;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
+import com.thinkgem.jeesite.common.utils.DateUtils;
 
 @Component
 public class ShangLvSoapClient {
 
 	private String url = "http://172.129.1.4:7001/services/Service";
-	private String userName = "harmony3";
-	private String password = "harmony3";
+	public String userName = "harmony3";
+	public String password = "harmony3";
 	private String path = "harmony.services.user.Pay.WX";
 	
 	private Logger log = LoggerFactory.getLogger(ShangLvSoapClient.class);
@@ -113,13 +118,20 @@ public class ShangLvSoapClient {
 	}
 	
 	/**
-	 * 绑定
+	 * 绑定 
+	 * 需要先调用查询余额接口  校验密码是否正确
 	 * @param weChatNo
 	 * @param cardNo
+	 * @param password
 	 * @return
 	 */
-	public BaseResponse bind(String weChatNo, String cardNo) {
-		return baseOperate(new BindParam(weChatNo, cardNo));
+	public BaseResponse bind(String weChatNo, String cardNo, String password) {
+		GetCardInfoResponse response = getCardInfo(cardNo, cardNo);
+		if(response.isSuccess()) {
+			return baseOperate(new BindParam(weChatNo, cardNo));
+		} else {
+			return new BaseResponse(ResponseResult.FAIURE.ordinal(), response.getErrorCode(), response.getErrorMsg());
+		}
 	}
 	
 	/**
@@ -189,16 +201,39 @@ public class ShangLvSoapClient {
 	}
 	
 	/**
+	 * 查询交易记录
+	 * @param idNo 身份证卡号
+	 * @return
+	 */
+	public GetTransactionResponse getTransactions(String cardNo, String password, Date beginTime, Date endTime) {
+		String result = "";
+		try {
+			result = invoke(new GetTransactionParam(cardNo, password, 
+					DateUtils.formatDate(beginTime, "yyyyMMdd hh:mm:ss"), 
+					DateUtils.formatDate(endTime, "yyyyMMdd hh:mm:ss")));
+			
+			GetTransactionResponse response = jsonMapper.fromJson(result, GetTransactionResponse.class);
+			
+			return response;
+		} catch (ServiceInvalidError e) {
+			
+		} catch (Throwable t) {
+			log.error(String.format("getTransactions cardNo [%s], result [%s], parse error.", cardNo, result), t);
+		}
+		return new GetTransactionResponse(ResponseResult.FAIURE.ordinal(), ResponseCode.INVALID_SERVICE.getCode(), ResponseCode.INVALID_SERVICE.getMessage());
+	}
+	
+	/**
 	 * 查询身份证名下的卡号集合
 	 * @param idNo 身份证卡号
 	 * @return
 	 */
-	public GetCardNoResponse getCardByID(String idNo) {
+	public GetCardNoByIDResponse getCardByID(String idNo) {
 		String result = "";
 		try {
 			result = invoke(new GetCardNoByIDParam(idNo));
 			
-			GetCardNoResponse response = jsonMapper.fromJson(result, GetCardNoResponse.class);
+			GetCardNoByIDResponse response = jsonMapper.fromJson(result, GetCardNoByIDResponse.class);
 			
 			return response;
 		} catch (ServiceInvalidError e) {
@@ -206,7 +241,7 @@ public class ShangLvSoapClient {
 		} catch (Throwable t) {
 			log.error(String.format("GetCardByID idNo [%s], result [%s], parse error.", idNo, result), t);
 		}
-		return new GetCardNoResponse(ResponseResult.FAIURE.ordinal(), ResponseCode.INVALID_SERVICE.getCode(), ResponseCode.INVALID_SERVICE.getMessage());
+		return new GetCardNoByIDResponse(ResponseResult.FAIURE.ordinal(), ResponseCode.INVALID_SERVICE.getCode(), ResponseCode.INVALID_SERVICE.getMessage());
 	}
 	
 	/**

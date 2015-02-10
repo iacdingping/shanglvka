@@ -15,7 +15,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.slk.core.entity.mp.WeixinUser;
-import com.slk.core.entity.mp.WeixinUserType;
 import com.slk.core.manager.mp.WeixinUserManager;
 import com.slk.core.weichat.AccessToken;
 import com.slk.core.weichat.ChatRequestComponent;
@@ -58,7 +57,6 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 		SessionUser user = (SessionUser)session.getAttribute(ConstantActivity.SESSION_USER_KEY);
 		if(user == null) {
 			user = new SessionUser();
-			session.setAttribute(ConstantActivity.SESSION_USER_KEY, user);
 		}
 		
 		String code = request.getParameter("code");
@@ -79,13 +77,10 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 			
 			WeixinUser weixinUser = weixinUserManager.getbyPlatformCode(openid);
 			
-			if(weixinUser == null) {
-				weixinUser = new WeixinUser();
-				weixinUser.setPlatformCode(openid);
-				weixinUser.setType(WeixinUserType.JUST_PAY_ATTENTION.ordinal());
-				weixinUserManager.save(weixinUser);
+			if(weixinUser != null) {
+				user.setWeixinUser(weixinUser);
+				session.setAttribute(ConstantActivity.SESSION_USER_KEY, user);
 			}
-			user.setWeixinUser(weixinUser);
 			System.out.println(weixinUser == null ? "么有查到微信用户" : weixinUser.getNickname());
 		}
 	}

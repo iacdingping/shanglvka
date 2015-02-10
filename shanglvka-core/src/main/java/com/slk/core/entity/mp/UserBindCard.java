@@ -1,6 +1,7 @@
 package com.slk.core.entity.mp;
 
 import com.thinkgem.jeesite.common.persistence.BaseEntity;
+import com.thinkgem.jeesite.common.utils.StringUtils;
 
 
 /**
@@ -79,6 +80,12 @@ public class UserBindCard extends BaseEntity<UserBindCard> {
 	public java.lang.String getCardNo() {
 		return this.cardNo;
 	}
+	public String getHiddenCardNo() {
+		return StringUtils.isNotEmpty(cardNo) ? 
+				cardNo.substring(0, 4) + "********" + cardNo.subSequence(cardNo.length() - 4, cardNo.length())
+				: "";
+	}
+	
 	public void setStatus(java.lang.Integer value) {
 		this.status = value;
 	}
@@ -96,6 +103,11 @@ public class UserBindCard extends BaseEntity<UserBindCard> {
 	}
 	public java.util.Date getCreateDate() {
 		return this.createDate;
+	}
+	public static void main(String[] args) {
+		UserBindCard card = new UserBindCard();
+		card.setCardNo("123sdfaskvadf0987");
+		System.out.println(card.getHiddenCardNo());
 	}
 }
 

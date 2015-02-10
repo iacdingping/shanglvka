@@ -8,3 +8,4 @@
 <%@ page import="com.slk.wap.common.constant.ConstantActivity" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="ctxStatic" value="${pageContext.request.contextPath}/static"/>
+<c:set var="user" value="${sessionScope.session_user}" />

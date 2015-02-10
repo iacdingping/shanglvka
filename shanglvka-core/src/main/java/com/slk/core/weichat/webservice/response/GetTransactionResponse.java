@@ -2,8 +2,11 @@ package com.slk.core.weichat.webservice.response;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@XmlRootElement
 public class GetTransactionResponse extends BaseResponse {
 
 	@JsonProperty("Transactions")
