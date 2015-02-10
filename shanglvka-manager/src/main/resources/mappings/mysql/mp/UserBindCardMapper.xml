@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.slk.core.dao.mp.UserBindCardDao">
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="mp-UserBindCard-columns">
+	    <![CDATA[
+		`id` as `id`, `platform_code` as `platformCode`, `card_no` as `cardNo`, `status` as `status`, `update_time` as `updateTime`, `create_date` as `createDate`, `password` as `password`
+	    ]]>
+	</sql>	
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO mp_user_bind_card (
+        `id`, `platform_code`, `card_no`, `status`, `update_time`, `create_date`, `password`
+        ) VALUES (
+        #{id}, #{platformCode}, #{cardNo}, #{status}, #{updateTime}, #{createDate}, #{password}
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="update">
+    <![CDATA[
+        UPDATE mp_user_bind_card SET
+	        `platform_code` = #{platformCode} , `card_no` = #{cardNo} , `status` = #{status} , `update_time` = #{updateTime} , `create_date` = #{createDate}, `password`=#{password}  
+        WHERE 
+        	id = #{id}  	        
+    ]]>
+	</update>
+
+    <delete id="deleteById">
+    <![CDATA[
+        DELETE FROM mp_user_bind_card WHERE
+        `id` = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultType="UserBindCard">
+		SELECT <include refid="mp-UserBindCard-columns" />
+	    <![CDATA[
+		    FROM mp_user_bind_card 
+	        WHERE 
+		        `id` = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="UserBindCard-where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+	       <if test="id">
+				AND `id` = #{id}
+			</if>
+	       <if test="platformCode">
+				AND `platform_code` = #{platformCode}
+			</if>
+	       <if test="cardNo">
+				AND `card_no` = #{cardNo}
+			</if>
+	       <if test="status">
+				AND `status` = #{status}
+			</if>
+	       <if test="updateTimeBegin != null">
+				AND `update_time` >= #{updateTimeBegin}
+		   </if>
+		   <if test="updateTimeEnd != null">
+				AND `update_time` &lt;= #{updateTimeEnd}
+		   </if>
+	       <if test="createDateBegin != null">
+				AND `create_date` >= #{createDateBegin}
+		   </if>
+		   <if test="createDateEnd != null">
+				AND `create_date` &lt;= #{createDateEnd}
+		   </if>
+		</where>
+	</sql>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM mp_user_bind_card 
+		<include refid="UserBindCard-where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="findPage" resultType="UserBindCard">
+		SELECT <include refid="mp-UserBindCard-columns" /> FROM (
+			SELECT *
+			FROM mp_user_bind_card 
+			<include refid="UserBindCard-where"/>
+			
+			<if test="sortColumns != null">
+				ORDER BY ${sortColumns}
+			</if>
+		) a limit #{offset}, #{pageSize}
+    </select>
+	
+	<select id="list" resultType="UserBindCard">
+    	SELECT <include refid="mp-UserBindCard-columns" />
+	    FROM mp_user_bind_card 
+		<include refid="UserBindCard-where"/>
+		
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+	
+</mapper>
+
