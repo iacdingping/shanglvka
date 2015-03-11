@@ -62,6 +62,7 @@ body {min-width:320px;}
 .bg1{background:#39F;}
 
 .mg_a_10{margin:10px;}
+.mg_l_5{margin-left:5px;}
 .mg_l_10{margin-left:10px;}
 .mg_l_20{margin-left:20px;}
 .mg_t_5{ margin-top:5px;}
@@ -83,11 +84,11 @@ body {min-width:320px;}
 .h50per{height:50%;}
 
 
-/**Í¸Ã÷¶È*/
+/**Í¸ï¿½ï¿½ï¿½ï¿½*/
 .toum{filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
 
 /***/
-/**È«ÆÁÕÚÕÖ¼°Æä¶¯»­*/
+/**È«ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ä¶¯ï¿½ï¿½*/
 .b_tk{width:100%; background:#000; top:40px; left:0px; z-index:9; position:fixed;}
 .tk_show_slide_down{
 	-webkit-animation:0.5s hieght2full forwards;

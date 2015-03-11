@@ -7,59 +7,137 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<script type="text/javascript"
-	src="${ctx}/static/js/common/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${ctx}/static/css/common1/common.css" />
+<style>
+.info_list li {
+	color: #777777;
+	line-height: 30px;
+	margin-left: 28%;
+}
+
+.cycle_bk {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50px;
+	top: 5px;
+	border: 2px solid #6c6c6c;
+	z-index: 101
+}
+
+.cycle_tu {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50px;
+	left: 2px;
+	top: 7px;
+	z-index: 100;
+}
+
+#item_list li,#item_list a {
+	height: 35px;
+	display: block;
+}
+
+#item_list li {
+	width: 48%;
+	float: left;
+	font-size: 15px;
+	text-align: center;
+	line-height: 35px;
+}
+
+#item_list li:nth-child(2n) {
+	margin-left: 10px;
+}
+
+#item_list li:nth-child(n+3) {
+	margin-top: 10px;
+}
+.pwd_input{width:130px ;float: right; margin-right: 10px; border:1px solid #ccc; height:25px;}
+</style>
 <title>个人中心</title>
 </head>
 <body>
+	<header class="h40 lh40 bg1 w_center">
+		<span id="header_title">个人中心</span>
+		<div class="clear"></div>
+	</header>
 	<div style="text-align: center; width: 100%; color: #7b7979">
 		<font color="#000000" size="5"><b>${user.weixinUser.nickname}</b></font>
-		<div  style="margin-top: 10px;margin-bottom: 20px;"><font  color="#000000">厉害的人</font></div>
+		<div style="margin-top: 10px; margin-bottom: 20px;">
+			<font color="#000000">厉害的人</font>
+		</div>
 	</div>
 	<div class="line" style="background: #999999"></div>
-	<div class="mg_t_10 mg_l_10">
+	<div class="mg_t_10">
 		<c:choose>
 			<c:when test="${empty cards}">
 				<ul>
-					<li><a href="${ctx}/card/jump" style="color:red;">申请卡号</a></li>
-					<li><a href="${ctx}/uc/bind" style="color:red;">绑定卡号</a></li>
+					<li><a href="${ctx}/card/jump" style="color: red;">申请卡号</a></li>
 				</ul>
 			</c:when>
 			<c:otherwise>
-				<div id="item_list" style="margin: auto;width:96%;">
+				<div id="item_list" style="margin: auto; width: 96%;">
 					<c:forEach items="${cards}" var="card" varStatus="status">
-						卡号: ${card.hiddenCardNo}
-						<input type="hidden" id="card_${status.index}" value="${card.cardNo}"/>
-						<input type="password" id="password_${status.index}"/>
-						
-						<c:if test="${card.status == 1}">
-							状态：已绑定		绑定时间：<fmt:formatDate value="${card.updateTime}" pattern="yyyy-MM-dd HH:mm"/>
-							<a href="javascript:void(0);" onclick="balanceQuery(${status.index})" style="color:red;">余额查询</a>
-							<a href="javascript:void(0);" onclick="transactionQuery(${status.index})" style="color:red;">交易记录</a>
-							<a href="javascript:void(0);" onclick="pointQuery(${status.index})" style="color:red;">积分记录</a>
-							<!-- <a href="javascript:void(0);" onclick="pointExchange(${status.index})" style="color:red;">积分兑换</a> -->
-						</c:if>
-						<c:if test="${card.status == 0 or card.status == 2}">
-							<a href="javascript:void(0);" onclick="bind(${status.index})">重新绑定</a>
-						</c:if>
-						<span id="notice_${status.index}" style="display:none;">此处显示操作消息</span>
+						<div style="margin: 10px 0px; padding:10px 0px; border:1px dashed #666">
+							<div class="" style="height:30px;line-height: 30px;">
+								<span class="font_w_b mg_l_5">卡号:</span> ${card.hiddenCardNo}
+								<input type="password" id="password_${status.index}"  placeholder="请输入密码进行操作" class="pwd_input"/>
+							</div>
+							<c:if test="${card.status == 1}">
+								<span style="display:none">状态：已绑定
+								<br />绑定时间：<fmt:formatDate value="${card.updateTime}"
+										pattern="yyyy-MM-dd HH:mm" /></span>
+							</c:if>
+							<c:if test="${card.status == 0 or card.status == 2}">
+								<a href="javascript:void(0);" onclick="bind(${status.index})">重新绑定</a>
+							</c:if>
+							<div class="mg_t_10">
+								<div id="item_list" style="margin: auto; width: 96%;">
+									<li style="background: #01cf45"><a href="javascript:void(0);"
+										onclick="balanceQuery(${status.index})">余额查询</a></li>
+									<li style="background: #6a74f8"><a href="javascript:void(0);"
+										onclick="transactionQuery(${status.index})">交易记录</a></li>
+									<li style="background: #0ec3ce"><a href="javascript:void(0);"
+										onclick="pointQuery(${status.index})">积分查询</a></li>
+									<li style="background: #d2f339"><a href="${ctx}/uc/jfdh">积分兑换</a></li>
+									<div class="clear"></div>
+								</div>
+							</div>
+							<input type="hidden" id="card_${status.index}" value="${card.cardNo}" />
+							 <span
+								id="notice_${status.index}" style="display: none;">此处显示操作消息</span>
+						</div>
 					</c:forEach>
 					<div class="clear"></div>
+					<a href="${ctx}/uc/bind">
+					<div class="mg_t_10" style="height:70px;width:100%; background: #ddd; margin: auto; text-align: center;line-height:70px;color: #888; font-size: 20px;">
+						绑定新卡
+					</div>
+					</a>
 				</div>
 			</c:otherwise>
 		</c:choose>
+		
 	</div>
-	
+
 	<footer style="margin-top: 40px;">
 		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
 	</footer>
-	
-<script type="text/javascript">
+
+	<script type="text/javascript">
 function checkPassword(i) {
-	var password = $('#password_' + i).val();
+	var pwd_input = $('#password_' + i);
+	var password = pwd_input.val();
 	if(password == null || password == '') {
-		$('#notice_' + i).html('请先输入密码').show().fadeOut(3000);
+		pwd_input.attr("placeholder" , "请先输入密码");
+		pwd_input.css("border" , "1px solid red");
+		//$('#notice_' + i).html('请先输入密码').show().fadeOut(3000);
 		$('#password_' + i).focus();
 		return null;
 	}
