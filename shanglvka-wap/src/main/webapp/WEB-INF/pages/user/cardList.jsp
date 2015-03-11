@@ -44,8 +44,8 @@
 							<a href="javascript:void(0);" onclick="bind(${status.index})">重新绑定</a>
 						</c:if>
 						<span id="notice_${status.index}" style="display:none;">此处显示操作消息</span>
+						<div class="clear"></div>
 					</c:forEach>
-					<div class="clear"></div>
 				</div>
 			</c:otherwise>
 		</c:choose>

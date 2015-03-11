@@ -3,10 +3,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <%@ page contentType="text/html;charset=UTF-8"%>
 <script type="text/javascript"
-	src="http://3g.k189.cn/static/js/common/jquery.min.js"></script>
+	src="${ctx}/static/js/common/jquery.min.js"></script>
 
 <script>
 	$().ready(function(e) {

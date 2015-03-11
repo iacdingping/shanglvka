@@ -62,7 +62,7 @@
 		<img class="cycle_tu" style="margin: auto;" src="${businessCard.icoHeader}" alt="头像"/>
 	</div>
 	<div style="text-align: center; width: 100%; color: #7b7979">
-		<font color="#000000" size="5"><b>叶文渠</b></font>
+		<font color="#000000" size="5"><b>${user.weixinUser.nickname}</b></font>
 		<div  style="margin-top: 10px;margin-bottom: 20px;"><font  color="#000000">厉害的人</font></div>
 	</div>
 	<div class="line" style="background: #999999"></div>
