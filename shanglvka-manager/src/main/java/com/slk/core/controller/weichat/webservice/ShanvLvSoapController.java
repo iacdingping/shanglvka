@@ -42,7 +42,8 @@ public class ShanvLvSoapController {
 	public String ajaxRequest(RequestBody requestBody) {
 		System.out.println(requestBody.getMethod() + " : " + requestBody.getJsonData());
 		try {
-			return shanglvSoapClient.invoke(requestBody.getMethod(), requestBody.getJsonData());
+			String requestJson = requestBody.getJsonData().replaceAll("</?xmp>", "");
+			return shanglvSoapClient.invoke(requestBody.getMethod(), requestJson);
 		} catch (ServiceInvalidError e) {
 			e.printStackTrace();
 			return "service error :" + e.toString();

@@ -63,7 +63,7 @@
 				
 				<span id="method0" style="display:none;"></span>
 				<c:forEach items="${requestMethod}" var="method" varStatus="status">
-					<span id="method${status.index + 1}" style="display:none;">${method.example}</span>
+					<span id="method${status.index + 1}" style="display:none;"><xmp>${method.example}</xmp></span>
 				</c:forEach>
 				</div>
 			</div>

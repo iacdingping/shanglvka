@@ -11,6 +11,8 @@ import org.apache.cxf.transport.http.HTTPConduit;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.slk.core.weichat.webservice.request.AbstractParam;
 import com.slk.core.weichat.webservice.request.AddCardPointParam;
@@ -35,9 +37,13 @@ import com.thinkgem.jeesite.common.utils.DateUtils;
 //@Component
 public class ShangLvSoapClientImp	 implements IShangLvSoapClient {
 
-	private String url = "http://172.129.1.4:7001/services/Service";
+	@Value("${soap.wechat.url}")
+	private String url = "http://localhost:7000/services/Service";
+	@Value("${soap.wechat.username}")
 	public String userName = "harmony3";
+	@Value("${soap.wechat.password}")
 	public String password = "harmony3";
+	@Value("${soap.wechat.path}")
 	private String path = "harmony.services.user.Pay.WX";
 	
 	private Logger log = LoggerFactory.getLogger(ShangLvSoapClientImp.class);
