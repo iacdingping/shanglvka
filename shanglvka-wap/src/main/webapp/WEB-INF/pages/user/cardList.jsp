@@ -7,9 +7,60 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<script type="text/javascript"
-	src="${ctx}/static/js/common/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/common/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${ctx}/static/css/common1/common.css" />
+<style>
+.info_list li {
+	color: #777777;
+	line-height: 30px;
+	margin-left: 28%;
+}
+
+.cycle_bk {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50px;
+	top: 5px;
+	border: 2px solid #6c6c6c;
+	z-index: 101
+}
+
+.cycle_tu {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50px;
+	left: 2px;
+	top: 7px;
+	z-index: 100;
+}
+
+#item_list li,#item_list a {
+	height: 35px;
+	display: block;
+}
+
+#item_list li {
+	width: 48%;
+	float: left;
+	font-size: 15px;
+	text-align: center;
+	line-height: 35px;
+}
+
+#item_list li:nth-child(2n) {
+	margin-left: 10px;
+}
+
+#item_list li:nth-child(n+3) {
+	margin-top: 10px;
+}
+.pwd_input{width:130px ;float: right; margin-right: 10px; border:1px solid #ccc; height:25px;}
+.query_result{ margin-top: 10px; width: 100%;text-align: center; font-weight: bold; display: block}
+</style>
 <title>个人中心</title>
 </head>
 <body>
@@ -28,8 +79,7 @@
 		<c:choose>
 			<c:when test="${empty cards}">
 				<ul>
-					<li><a href="${ctx}/card/jump" style="color:red;">申请卡号</a></li>
-					<li><a href="${ctx}/uc/bind" style="color:red;">绑定卡号</a></li>
+					<li><a href="${ctx}/card/jump" style="color: red;">申请卡号</a></li>
 				</ul>
 			</c:when>
 			<c:otherwise>
@@ -62,7 +112,7 @@
 							</div>
 							<input type="hidden" id="card_${status.index}" value="${card.cardNo}" />
 							 <span
-								id="notice_${status.index}" style="display: none;">此处显示操作消息</span>
+								id="notice_${status.index}" style="display: none;" class="query_result">此处显示操作消息</span>
 						</div>
 					</c:forEach>
 					<div class="clear"></div>
@@ -80,8 +130,8 @@
 	<footer style="margin-top: 40px;">
 		<jsp:include page="${ctx}/WEB-INF/pages/jiahao.jsp"></jsp:include>
 	</footer>
-	
-<script type="text/javascript">
+
+	<script type="text/javascript">
 function checkPassword(i) {
 	var pwd_input = $('#password_' + i);
 	var password = pwd_input.val();

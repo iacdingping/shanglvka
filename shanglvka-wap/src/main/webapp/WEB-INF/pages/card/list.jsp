@@ -12,8 +12,8 @@
 <script type="text/javascript" src="${ctx}/static/js/page-frame.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${ctx}/static/css/common1/common.css" />
-<title>购卡助手</title>
 <link href="common.css" rel="stylesheet" type="text/css" />
+<title>购卡助手</title>
 <style>
 .line {
 	border-bottom: 1px solid #ccc;
