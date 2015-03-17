@@ -11,7 +11,7 @@ import com.slk.core.weichat.webservice.response.GetCardPointResponse;
 import com.slk.core.weichat.webservice.response.GetTransactionResponse;
 import com.slk.core.weichat.webservice.response.ResponseParser;
 
-@Component
+//@Component
 public class ShangLvSoapClientTest implements IShangLvSoapClient {
 
 	/**
@@ -24,6 +24,7 @@ public class ShangLvSoapClientTest implements IShangLvSoapClient {
 	 */
 	public BaseResponse bind(String weChatNo, String cardNo, String password) {
 		try {
+			System.out.println(cardNo + "---" + cardNo.hashCode() % 3);
 			if(cardNo.hashCode() % 3 == 0) {
 				return  ResponseParser.parse(BaseResponse.class, 
 								"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +

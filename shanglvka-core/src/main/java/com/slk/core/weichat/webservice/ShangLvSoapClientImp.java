@@ -34,7 +34,7 @@ import com.slk.core.weichat.webservice.response.ResponseResult;
 import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.utils.DateUtils;
 
-//@Component
+@Component
 public class ShangLvSoapClientImp	 implements IShangLvSoapClient {
 
 	@Value("${soap.wechat.url}")

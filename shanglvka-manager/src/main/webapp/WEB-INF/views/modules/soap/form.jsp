@@ -14,7 +14,8 @@
 			var index = obj.selectedIndex; // 选中索引
 			console.log(index);
 			
-			$('#jsonData').html($('#method' + index).html());
+			var value = $('#method' + index).html().replace('<xmp>', '').replace('</xmp>', '');
+			$('#jsonData').val(value);
 		}) 
 	})
 

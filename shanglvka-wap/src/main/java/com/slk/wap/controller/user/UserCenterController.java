@@ -66,6 +66,12 @@ public class UserCenterController extends BaseController {
 		SessionUser user = (SessionUser)session.getAttribute(ConstantActivity.SESSION_USER_KEY);
 		BaseResponse br = shanglvSoapClient.bind(user.getWeixinUser().getPlatformCode(), cardNo, password);
 		if(br.isSuccess()) {
+			UserBindCard userCard = new UserBindCard();
+			userCard.setCardNo(cardNo);
+			userCard.setPassword(password);
+			userCard.setCreateDate(new Date());
+			userCard.setPlatformCode(user.getWeixinUser().getPlatformCode());
+			userBindCardManager.save(userCard);
 			return "redirect:/uc/card/list";
 		} else {
 			map.put("message", br.getErrorMsg());
