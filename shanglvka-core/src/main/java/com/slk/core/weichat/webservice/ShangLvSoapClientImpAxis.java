@@ -1,14 +1,11 @@
 package com.slk.core.weichat.webservice;
 
+import java.net.URL;
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
-
-import org.apache.cxf.endpoint.Client;
-import org.apache.cxf.frontend.ClientProxy;
-import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-import org.apache.cxf.transport.http.HTTPConduit;
-import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
+import org.apache.axis.client.Call;
+import org.apache.axis.client.Service;
+import org.apache.axis.message.SOAPHeaderElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +32,7 @@ import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.utils.DateUtils;
 
 @Component
-public class ShangLvSoapClientImp	 {
+public class ShangLvSoapClientImpAxis {
 
 	@Value("${soap.wechat.url}")
 	private String url = "http://localhost:7000/services/Service";
@@ -46,56 +43,24 @@ public class ShangLvSoapClientImp	 {
 	@Value("${soap.wechat.path}")
 	private String path = "harmony.services.user.Pay.WX";
 	
-	private Logger log = LoggerFactory.getLogger(ShangLvSoapClientImp.class);
+	private Logger log = LoggerFactory.getLogger(ShangLvSoapClientImpAxis.class);
 	
-	private ShangLvSoapService shanglvSoapService;
+	public String callSerivce(String method, String jsonData) throws Exception {
+		Service service = new Service();
+		Call call = (Call) service.createCall();
+		call.setTargetEndpointAddress(new URL(url));
+		call.addHeader(new SOAPHeaderElement("Authorization", "username", userName));
+		call.addHeader(new SOAPHeaderElement("Authorization", "password", password));
+		call.setOperationName("invoke");
+		String res = (String) call.invoke(new Object[] { path, method, jsonData });
+		return res;
+	}
 	
 	private JsonMapper jsonMapper = JsonMapper.nonDefaultMapper();
 	
-	private ShangLvSoapService creatClient() {
-		JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
-		proxyFactory.setAddress(url);
-		proxyFactory.setServiceClass(ShangLvSoapService.class);
-		ShangLvSoapService shanglvSoapService = (ShangLvSoapService) proxyFactory.create();
-
-		// (可选)演示重新设定endpoint address.
-//		((BindingProvider) fpknoticeSoapService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-//				address);
-
-		// (可选)演示重新设定Timeout时间
-		Client client = ClientProxy.getClient(shanglvSoapService);
-		
-		//设定拦截器
-		ShangLvHeaderInterceptor interceptor = new ShangLvHeaderInterceptor();
-		interceptor.setUserName(userName);
-		interceptor.setPassword(password);
-		client.getOutInterceptors().add(interceptor);
-		
-		HTTPConduit conduit = (HTTPConduit) client.getConduit();
-		HTTPClientPolicy policy = conduit.getClient();
-		policy.setReceiveTimeout(30000);
-
-		return shanglvSoapService;
-	}
-
-	public void setTimeOut(int seconds) {
-		if(shanglvSoapService == null) {
-			shanglvSoapService = creatClient();
-		}
-		Client client = ClientProxy.getClient(shanglvSoapService);
-		HTTPConduit conduit = (HTTPConduit) client.getConduit();
-		HTTPClientPolicy policy = conduit.getClient();
-		policy.setReceiveTimeout(seconds * 1000);
-	}
-	
-	@PostConstruct
-	private void init() {
-		this.setTimeOut(30);
-	}
-	
 	public String invoke(String method, String requestBody) throws ServiceInvalidError {
 		try {
-			return shanglvSoapService.invoke(path, method, requestBody);
+			return callSerivce(method, requestBody);
 		} catch(Throwable t) {
 			log.error("Service invoke {} with request body {} failed.", method, requestBody, t);
 			throw new ServiceInvalidError(t);

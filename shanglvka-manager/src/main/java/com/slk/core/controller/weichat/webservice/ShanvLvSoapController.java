@@ -3,16 +3,18 @@ package com.slk.core.controller.weichat.webservice;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.slk.core.weichat.webservice.IShangLvSoapClient;
 import com.slk.core.weichat.webservice.RequestBody;
 import com.slk.core.weichat.webservice.ServiceInvalidError;
+import com.slk.core.weichat.webservice.ShangLvSoapClientImp;
+import com.slk.core.weichat.webservice.ShangLvSoapClientImpAxis;
 import com.slk.core.weichat.webservice.request.AbstractParam;
 import com.slk.core.weichat.webservice.request.AddCardPointParam;
 import com.slk.core.weichat.webservice.request.BindParam;
@@ -28,8 +30,11 @@ import com.slk.core.weichat.webservice.request.RegisterLossCardParam;
 @RequestMapping("${adminPath}/shanglv/soap")
 public class ShanvLvSoapController {
 	
-	@Autowired
-	private IShangLvSoapClient shanglvSoapClient;
+	@Resource(type=ShangLvSoapClientImp.class)
+	private ShangLvSoapClientImp shanglvSoapClient;
+	
+	@Resource(type=ShangLvSoapClientImpAxis.class)
+	private ShangLvSoapClientImpAxis shanglvSoapClientAxis;
 
 	@RequestMapping(value="request", method=RequestMethod.GET)
 	public String requestForm(ModelMap map) {
@@ -44,6 +49,19 @@ public class ShanvLvSoapController {
 		try {
 			String requestJson = requestBody.getJsonData().replaceAll("</?xmp>", "");
 			return shanglvSoapClient.invoke(requestBody.getMethod(), requestJson);
+		} catch (ServiceInvalidError e) {
+			e.printStackTrace();
+			return "service error :" + e.toString();
+		}
+	}
+	
+	@RequestMapping(value="ajaxRequestAxis", method=RequestMethod.POST)
+	@ResponseBody
+	public String ajaxRequestAxis(RequestBody requestBody) {
+		System.out.println(requestBody.getMethod() + " : " + requestBody.getJsonData());
+		try {
+			String requestJson = requestBody.getJsonData().replaceAll("</?xmp>", "");
+			return shanglvSoapClientAxis.invoke(requestBody.getMethod(), requestJson);
 		} catch (ServiceInvalidError e) {
 			e.printStackTrace();
 			return "service error :" + e.toString();

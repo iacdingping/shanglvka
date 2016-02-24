@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.slk.core.entity.mp.UserBindCard;
 import com.slk.core.manager.mp.UserBindCardManager;
-import com.slk.core.weichat.webservice.IShangLvSoapClient;
+import com.slk.core.weichat.webservice.ShangLvSoapClientImp;
 import com.slk.core.weichat.webservice.response.BaseResponse;
 import com.slk.core.weichat.webservice.response.GetCardInfoResponse;
 import com.slk.core.weichat.webservice.response.GetCardPointResponse;
@@ -37,7 +37,7 @@ import com.thinkgem.jeesite.common.web.BaseController;
 public class UserCenterController extends BaseController {
 
 	@Autowired
-	private IShangLvSoapClient shanglvSoapClient;
+	private ShangLvSoapClientImp shanglvSoapClient;
 	@Autowired
 	private UserBindCardManager userBindCardManager;
 	

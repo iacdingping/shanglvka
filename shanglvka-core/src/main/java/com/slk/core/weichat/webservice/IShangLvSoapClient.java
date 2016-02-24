@@ -2,15 +2,12 @@ package com.slk.core.weichat.webservice;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
-
 import com.slk.core.weichat.webservice.response.BaseResponse;
 import com.slk.core.weichat.webservice.response.GetCardInfoResponse;
 import com.slk.core.weichat.webservice.response.GetCardNoByIDResponse;
 import com.slk.core.weichat.webservice.response.GetCardPointResponse;
 import com.slk.core.weichat.webservice.response.GetTransactionResponse;
 
-@Component
 public interface IShangLvSoapClient {
 
 	/**

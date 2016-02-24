@@ -3,7 +3,7 @@ package com.slk.core.weichat.webservice.request;
 import javax.xml.bind.annotation.XmlTransient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.slk.core.weichat.webservice.IShangLvSoapClient;
+import com.slk.core.Config;
 import com.slk.core.weichat.webservice.PropertyKey;
 import com.slk.core.weichat.webservice.RequestUtil;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
@@ -11,12 +11,12 @@ import com.thinkgem.jeesite.common.utils.SpringContextHolder;
 public abstract class AbstractParam {
 	@JsonIgnore
 	@XmlTransient
-	private IShangLvSoapClient client = SpringContextHolder.getBean(IShangLvSoapClient.class);
+	private Config config = SpringContextHolder.getBean(Config.class);
 	
 	@PropertyKey("UserName")
-	private String userName = client.getUserName();
+	private String userName = config.getUserName();
 	@PropertyKey("Password_sys")
-	private String password = client.getPassword();
+	private String password = config.getPassword();
 	
 	
 	public String getUserName() {

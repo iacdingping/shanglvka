@@ -11,8 +11,8 @@ import com.slk.core.weichat.webservice.response.GetCardPointResponse;
 import com.slk.core.weichat.webservice.response.GetTransactionResponse;
 import com.slk.core.weichat.webservice.response.ResponseParser;
 
-//@Component
-public class ShangLvSoapClientTest implements IShangLvSoapClient {
+@Component
+public class ShangLvSoapClientTest {
 
 	/**
 	 * 绑定 
@@ -257,27 +257,22 @@ public class ShangLvSoapClientTest implements IShangLvSoapClient {
 		}
 	}
 
-	@Override
 	public BaseResponse registerCardByID(String idNo) {
 		return null;
 	}
 
-	@Override
 	public BaseResponse registerCard(String cardNo, String password, String cvv) {
 		return null;
 	}
 
-	@Override
 	public String invoke(String method, String jsonData) {
 		return "It's test";
 	}
 
-	@Override
 	public String getUserName() {
 		return "username";
 	}
 
-	@Override
 	public String getPassword() {
 		return "password";
 	}

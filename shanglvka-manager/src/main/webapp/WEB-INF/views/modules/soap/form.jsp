@@ -7,6 +7,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$('#ajax_submit_btn').click(formSubmit);
+		$('#ajax_submit_axis_btn').click(formSubmitAxis);
 		
 		$('#method').change(function(){ 
 			var obj = document.getElementById("method"); //selectid
@@ -42,6 +43,32 @@
 			error : function(xhr, ajaxOptions, thrownError) {
 				$('#response').val('请求失败，请查看日志').show().focus();
 				$('#ajax_submit_btn').removeAttr('onclick').unbind('click').bind('click', formSubmit);
+			} 
+		});
+	}
+	
+	function formSubmitAxis() {
+		var form = $('#inputForm');
+		var data = form.serialize();
+		
+		var action = '${ctx}/shanglv/soap/ajaxRequestAxis'; 
+		var method = form.attr('method') || 'get';
+		$('#response').val('waiting...').show().focus();
+		$('#ajax_submit_axis_btn').unbind('click').removeAttr('onClick');
+		$('#ajax_submit_axis_btn').bind('click', function() {alert('wait for previous submit finished.');});
+		
+		$.ajax({
+			type : method,
+			url : action,
+			data : data,
+			dataType : 'json',
+			success : function(data) {
+				$('#response').val(data).show();
+				$('#ajax_submit_axis_btn').removeAttr('onclick').unbind('click').bind('click', formSubmitAxis);
+			},
+			error : function(xhr, ajaxOptions, thrownError) {
+				$('#response').val('请求失败，请查看日志').show().focus();
+				$('#ajax_submit_axis_btn').removeAttr('onclick').unbind('click').bind('click', formSubmitAxis);
 			} 
 		});
 	}
@@ -83,6 +110,7 @@
 			</div>
 			<div class="form-actions">
 				<span id="ajax_submit_btn" class="btn btn-primary" >提交</span>&nbsp;	
+				<span id="ajax_submit_axis_btn" class="btn btn-primary" >axis提交</span>&nbsp;
 				<input id="cancel_btn" class="btn" type="button" value="返回" onclick="history.back()"/>
 			</div>
 		</fieldset>
